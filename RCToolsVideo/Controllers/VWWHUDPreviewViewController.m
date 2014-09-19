@@ -8,7 +8,7 @@
 
 #import "VWWHUDPreviewViewController.h"
 #import "VWWLocationController.h"
-
+#import "VWWMotionMonitor.h"
 @interface VWWHUDPreviewViewController ()
 
 @end
@@ -56,6 +56,7 @@
 }
 -(void)doubleTapGestureHandler:(id)sender{
     [[VWWLocationController sharedInstance]resetStats];
+    [[VWWMotionMonitor sharedInstance]resetStats];
 }
 
 @end

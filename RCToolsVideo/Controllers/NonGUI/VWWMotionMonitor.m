@@ -9,23 +9,15 @@
 #import "VWWMotionMonitor.h"
 #import "VWW.h"
 
-const NSUInteger kFilterSampleCount = 32;
-
 @interface VWWMotionMonitor ()
 @property (nonatomic, strong) CMMotionManager *motionManager;
+@property (nonatomic) NSTimeInterval updateInterval;
+
 @property (nonatomic) BOOL accelerometerRunning;
 @property (nonatomic) BOOL magnetometerRunning;
 @property (nonatomic) BOOL gyrosRunning;
 @property (nonatomic) BOOL deviceRunning;
 
-
-@property (nonatomic) BOOL altimeterRunning;
-@property (nonatomic, strong) CMAltimeter *altimeterManager;
-
-
-@property (nonatomic, strong) NSMutableArray *accelerometersHistory;
-@property (nonatomic, strong) NSMutableArray *gyroscopesHistory;
-@property (nonatomic, strong) NSMutableArray *magnetometersHistory;
 @end
 
 
@@ -48,33 +40,9 @@ const NSUInteger kFilterSampleCount = 32;
     return self;
 }
 
-+(BOOL)serviceExists{
-    VWW_LOG_TODO;
-    return YES;
-    
-}
-
--(void)startAll{
-    [self startAccelerometer];
-    [self startGyroscope];
-    [self startMagnetometer];
-    [self startDevice];
-    //    [self startAltimeter];
-    
-}
--(void)stopAll{
-    [self stopAccelerometer];
-    [self stopGyroscope];
-    [self stopMagnetometer];
-    [self stopDevice];
-    //    [self stopAltimeter];
-}
-
-
 
 -(void)setUpdateInterval:(NSTimeInterval)updateInterval{
     _updateInterval = updateInterval;
-    
     if(self.accelerometerRunning){
         self.motionManager.accelerometerUpdateInterval = self.updateInterval;
     }
@@ -90,6 +58,9 @@ const NSUInteger kFilterSampleCount = 32;
     if(self.deviceRunning){
         self.motionManager.deviceMotionUpdateInterval = self.updateInterval;
     }
+    if(self.deviceRunning){
+        self.motionManager.deviceMotionUpdateInterval = self.updateInterval;
+    }
     
 }
 
@@ -99,62 +70,52 @@ const NSUInteger kFilterSampleCount = 32;
     self.motionManager = [[CMMotionManager alloc]init];
     self.updateInterval = 1/30.0f;
     
-    self.altimeterManager = [[CMAltimeter alloc]init];
-    
-    
-    self.accelerometersHistory = [@[]mutableCopy];
-    self.gyroscopesHistory = [@[]mutableCopy];
-    self.magnetometersHistory = [@[]mutableCopy];
-    for(NSUInteger index = 0; index < kFilterSampleCount; index++){
-        VWWSample *sample = [[VWWSample alloc]init];
-        [self.accelerometersHistory addObject:sample];
-        [self.gyroscopesHistory addObject:sample];
-        [self.magnetometersHistory addObject:sample];
-    }
-    
-    VWW_LOG_TRACE;
+    self.accelerometerLimits = [[VWWDeviceLimits alloc]init];
+    self.gyroscopeLimits = [[VWWDeviceLimits alloc]init];
+    self.magnetometerLimits = [[VWWDeviceLimits alloc]init];
 }
 
+
+
+#pragma mark Public methods
+-(void)startAll{
+    [self startAccelerometer];
+    [self startGyroscope];
+    [self startMagnetometer];
+    [self startDevice];
+}
+-(void)stopAll{
+    [self stopAccelerometer];
+    [self stopGyroscope];
+    [self stopMagnetometer];
+    [self stopDevice];
+}
+-(void)resetStats{
+    @synchronized(self.accelerometerLimits){
+        self.accelerometerLimits = [[VWWDeviceLimits alloc]init];
+    }
+    @synchronized(self.gyroscopeLimits){
+        self.gyroscopeLimits = [[VWWDeviceLimits alloc]init];
+    }
+    @synchronized(self.magnetometerLimits){
+        self.magnetometerLimits = [[VWWDeviceLimits alloc]init];
+    }
+}
 
 #pragma mark Accelerometers
 -(void)startAccelerometer{
     if(self.accelerometerRunning == YES) return;
-    
     self.motionManager.accelerometerUpdateInterval = self.updateInterval;
-    
     NSOperationQueue* accelerometerQueue = [[NSOperationQueue alloc] init];
-    
     [self.motionManager startAccelerometerUpdatesToQueue:accelerometerQueue withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
-        @synchronized(self.accelerometersHistory){
-            // Subtract the average of the last kFilterSampleCount samples
-            float xTotal = 0, yTotal = 0, zTotal = 0;
-            for(NSUInteger index = 0; index < kFilterSampleCount; index++){
-                VWWSample *sample = self.accelerometersHistory[index];
-                xTotal += sample.x.value;
-                yTotal += sample.y.value;
-                zTotal += sample.z.value;
-            }
-            
-            float xHPF = xTotal / (float)kFilterSampleCount;
-            float yHPF = yTotal / (float)kFilterSampleCount;
-            float zHPF = zTotal / (float)kFilterSampleCount;
-            
-            if(self.delegate && [self.delegate respondsToSelector:@selector(motionController:didUpdateAcceleremeters:)]){
-                
-                VWWSample *currentSample = [[VWWSample alloc]init];
-                currentSample.x.value = accelerometerData.acceleration.x;
-                currentSample.y.value = accelerometerData.acceleration.y;
-                currentSample.z.value = accelerometerData.acceleration.z;
-                currentSample.x.hpf = xHPF;
-                currentSample.y.hpf = yHPF;
-                currentSample.z.hpf = zHPF;
-                
-                [self.delegate motionController:self didUpdateAcceleremeters:currentSample];
-                
-                // Add this sample to the history
-                [self.accelerometersHistory addObject:currentSample];
-                [self.accelerometersHistory removeObjectAtIndex:0];
-            }
+        @synchronized(self.accelerometerLimits){
+            self.accelerometers = [accelerometerData copy];
+            self.accelerometerLimits.x.max = MAX(self.accelerometerLimits.x.max, accelerometerData.acceleration.x);
+            self.accelerometerLimits.x.min = MIN(self.accelerometerLimits.x.min, accelerometerData.acceleration.x);
+            self.accelerometerLimits.y.max = MAX(self.accelerometerLimits.y.max, accelerometerData.acceleration.y);
+            self.accelerometerLimits.y.min = MIN(self.accelerometerLimits.y.min, accelerometerData.acceleration.y);
+            self.accelerometerLimits.z.max = MAX(self.accelerometerLimits.z.max, accelerometerData.acceleration.z);
+            self.accelerometerLimits.z.min = MIN(self.accelerometerLimits.z.min, accelerometerData.acceleration.z);
         }
     }];
     self.accelerometerRunning = YES;
@@ -175,42 +136,17 @@ const NSUInteger kFilterSampleCount = 32;
 
 -(void)startGyroscope{
     if(self.gyrosRunning == YES) return;
-    
     self.motionManager.gyroUpdateInterval = self.updateInterval;
-    
     NSOperationQueue* gyroQueue = [[NSOperationQueue alloc] init];
-    
     [self.motionManager startGyroUpdatesToQueue:gyroQueue withHandler:^(CMGyroData *gyroData, NSError *error) {
-        @synchronized(self.gyroscopesHistory){
-            // Subtract the average of the last kFilterSampleCount samples
-            float xTotal = 0, yTotal = 0, zTotal = 0;
-            for(NSUInteger index = 0; index < kFilterSampleCount; index++){
-                VWWSample *sample = self.gyroscopesHistory[index];
-                xTotal += sample.x.value;
-                yTotal += sample.y.value;
-                zTotal += sample.z.value;
-            }
-            
-            float xHPF = xTotal / (float)kFilterSampleCount;
-            float yHPF = yTotal / (float)kFilterSampleCount;
-            float zHPF = zTotal / (float)kFilterSampleCount;
-            
-            if(self.delegate && [self.delegate respondsToSelector:@selector(motionController:didUpdateGyroscopes:)]){
-                
-                VWWSample *currentSample = [[VWWSample alloc]init];
-                currentSample.x.value = gyroData.rotationRate.x;
-                currentSample.y.value = gyroData.rotationRate.y;
-                currentSample.z.value = gyroData.rotationRate.z;
-                currentSample.x.hpf = xHPF;
-                currentSample.y.hpf = yHPF;
-                currentSample.z.hpf = zHPF;
-                
-                [self.delegate motionController:self didUpdateGyroscopes:currentSample];
-                
-                // Add this sample to the history
-                [self.gyroscopesHistory addObject:currentSample];
-                [self.gyroscopesHistory removeObjectAtIndex:0];
-            }
+        @synchronized(self.gyroscopeLimits){
+            self.gyroscopes = [gyroData copy];
+            self.gyroscopeLimits.x.max = MAX(self.gyroscopeLimits.x.max, gyroData.rotationRate.x);
+            self.gyroscopeLimits.x.min = MIN(self.gyroscopeLimits.x.min, gyroData.rotationRate.x);
+            self.gyroscopeLimits.y.max = MAX(self.gyroscopeLimits.y.max, gyroData.rotationRate.y);
+            self.gyroscopeLimits.y.min = MIN(self.gyroscopeLimits.y.min, gyroData.rotationRate.y);
+            self.gyroscopeLimits.z.max = MAX(self.gyroscopeLimits.z.max, gyroData.rotationRate.z);
+            self.gyroscopeLimits.z.min = MIN(self.gyroscopeLimits.z.min, gyroData.rotationRate.z);
         }
     }];
     self.gyrosRunning = YES;
@@ -231,42 +167,17 @@ const NSUInteger kFilterSampleCount = 32;
 
 -(void)startMagnetometer{
     if(self.magnetometerRunning == YES) return;
-    
     self.motionManager.magnetometerUpdateInterval = self.updateInterval;
-    
     NSOperationQueue* magnetometerQueue = [[NSOperationQueue alloc] init];
-    
     [self.motionManager startMagnetometerUpdatesToQueue:magnetometerQueue withHandler:^(CMMagnetometerData *magnetometerData, NSError *error) {
-        @synchronized(self.magnetometersHistory){
-            // Subtract the average of the last kFilterSampleCount samples
-            float xTotal = 0, yTotal = 0, zTotal = 0;
-            for(NSUInteger index = 0; index < kFilterSampleCount; index++){
-                VWWSample *sample = self.magnetometersHistory[index];
-                xTotal += sample.x.value;
-                yTotal += sample.y.value;
-                zTotal += sample.z.value;
-            }
-            
-            float xHPF = xTotal / (float)kFilterSampleCount;
-            float yHPF = yTotal / (float)kFilterSampleCount;
-            float zHPF = zTotal / (float)kFilterSampleCount;
-            
-            if(self.delegate && [self.delegate respondsToSelector:@selector(motionController:didUpdateMagnetometers:)]){
-                
-                VWWSample *currentSample = [[VWWSample alloc]init];
-                currentSample.x.value = magnetometerData.magneticField.x;
-                currentSample.y.value = magnetometerData.magneticField.y;
-                currentSample.z.value = magnetometerData.magneticField.z;
-                currentSample.x.hpf = xHPF;
-                currentSample.y.hpf = yHPF;
-                currentSample.z.hpf = zHPF;
-                
-                [self.delegate motionController:self didUpdateMagnetometers:currentSample];
-                
-                // Add this sample to the history
-                [self.magnetometersHistory addObject:currentSample];
-                [self.magnetometersHistory removeObjectAtIndex:0];
-            }
+        @synchronized(self.magnetometerLimits){
+            self.magnetometers = [magnetometerData copy];
+            self.magnetometerLimits.x.max = MAX(self.magnetometerLimits.x.max, magnetometerData.magneticField.x);
+            self.magnetometerLimits.x.min = MIN(self.magnetometerLimits.x.min, magnetometerData.magneticField.x);
+            self.magnetometerLimits.y.max = MAX(self.magnetometerLimits.y.max, magnetometerData.magneticField.y);
+            self.magnetometerLimits.y.min = MIN(self.magnetometerLimits.y.min, magnetometerData.magneticField.y);
+            self.magnetometerLimits.z.max = MAX(self.magnetometerLimits.z.max, magnetometerData.magneticField.z);
+            self.magnetometerLimits.z.min = MIN(self.magnetometerLimits.z.min, magnetometerData.magneticField.z);
         }
     }];
     
@@ -286,39 +197,14 @@ const NSUInteger kFilterSampleCount = 32;
 #pragma mark Attitude
 -(void)startDevice{
     if(self.deviceRunning == YES) return;
-    
     self.motionManager.deviceMotionUpdateInterval = self.updateInterval;
-    
     NSOperationQueue* deviceQueue = [[NSOperationQueue alloc] init];
-    
-    CMDeviceMotionHandler deviceHandler = ^(CMDeviceMotion *motion, NSError *error) {
-        
-        //        float xHPF = 0;
-        //        float yHPF = 0;
-        //        float zHPF = 0;
-        
-        
-        if(self.delegate && [self.delegate respondsToSelector:@selector(motionController:didUpdateAttitude:)]){
-            //        VWWSampleAxis *x = [[VWWSampleAxis alloc]init];
-            //        x.value = magnetometerData.magneticField.x;
-            //        x.hpf = xHPF;
-            //
-            //        VWWSampleAxis *y = [[VWWSampleAxis alloc]init];
-            //        y.value = magnetometerData.magneticField.y;
-            //        y.hpf = yHPF;
-            //
-            //        VWWSampleAxis *z = [[VWWSampleAxis alloc]init];
-            //        z.value = magnetometerData.magneticField.z;
-            //        z.hpf = zHPF;
-            //
-            //        VWWSample *sample = [[VWWSample alloc]initWithX:x Y:y Z:z];
-            VWWSample *sample = [[VWWSample alloc]init];
-            
-            [self.delegate motionController:self didUpdateAttitude:sample];
-        }
-    };
-    
-    [self.motionManager startDeviceMotionUpdatesToQueue:deviceQueue withHandler:deviceHandler];
+    [self.motionManager startDeviceMotionUpdatesUsingReferenceFrame:self.motionManager.attitudeReferenceFrame toQueue:deviceQueue withHandler:^(CMDeviceMotion *motion, NSError *error) {
+        self.device = [motion copy];
+    }];
+//    [self.motionManager startDeviceMotionUpdatesToQueue:deviceQueue withHandler:^(CMDeviceMotion *motion, NSError *error) {
+//            self.device = [motion copy];
+//    }];
     self.deviceRunning = YES;
     VWW_LOG_DEBUG(@"Started device motion");
     
@@ -331,30 +217,5 @@ const NSUInteger kFilterSampleCount = 32;
     VWW_LOG_DEBUG(@"Stopped device motion");
 }
 
-
-#pragma mark Altimeter
-//-(void)startAltimeter{
-//    if(self.altimeterRunning == YES) return;
-//
-//    NSOperationQueue* altimeterQueue = [[NSOperationQueue alloc] init];
-//    [self.altimeterManager startRelativeAltitudeUpdatesToQueue:altimeterQueue withHandler:^(CMAltitudeData *altimeterData, NSError *error) {
-//
-//
-//
-//        if(self.delegate && [self.delegate respondsToSelector:@selector(motionController:didUpdateAltimeter:limits:)]){
-//            [self.delegate motionController:self didUpdateAltimeter:altimeterData limits:self.altimeterLimits];
-//        }
-//    }];
-//    self.altimeterRunning = YES;
-//    VWW_LOG_DEBUG(@"Started Altimeter");
-//}
-//
-//-(void)stopAltimeter{
-//    if(self.altimeterRunning == NO) return;
-//
-//    [self.altimeterManager stopRelativeAltitudeUpdates];
-//    self.altimeterRunning = NO;
-//    VWW_LOG_DEBUG(@"Stopped Altimeter");
-//}
 
 @end

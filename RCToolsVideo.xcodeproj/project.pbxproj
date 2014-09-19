@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
 		CFB9ADB619CC151300247538 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB519CC151300247538 /* VWWHUDView.m */; };
+		CFB9ADBB19CCBD6500247538 /* VWWDeviceAxisLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB719CCBD6500247538 /* VWWDeviceAxisLimits.m */; };
+		CFB9ADBC19CCBD6500247538 /* VWWDeviceLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB819CCBD6500247538 /* VWWDeviceLimits.m */; };
 		CFCB901819CBB88D00D05317 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901719CBB88D00D05317 /* main.m */; };
 		CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901A19CBB88D00D05317 /* AppDelegate.m */; };
 		CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCB901F19CBB88D00D05317 /* Main.storyboard */; };
@@ -65,6 +67,10 @@
 		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CFB9ADB419CC151300247538 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
 		CFB9ADB519CC151300247538 /* VWWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDView.m; sourceTree = "<group>"; };
+		CFB9ADB719CCBD6500247538 /* VWWDeviceAxisLimits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWDeviceAxisLimits.m; sourceTree = "<group>"; };
+		CFB9ADB819CCBD6500247538 /* VWWDeviceLimits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWDeviceLimits.m; sourceTree = "<group>"; };
+		CFB9ADB919CCBD6500247538 /* VWWDeviceAxisLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWDeviceAxisLimits.h; sourceTree = "<group>"; };
+		CFB9ADBA19CCBD6500247538 /* VWWDeviceLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWDeviceLimits.h; sourceTree = "<group>"; };
 		CFCB901219CBB88D00D05317 /* RCToolsVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCToolsVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCB901619CBB88D00D05317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCB901719CBB88D00D05317 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -426,6 +432,10 @@
 		CFD098AB19CBCB1800C88A76 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CFB9ADB719CCBD6500247538 /* VWWDeviceAxisLimits.m */,
+				CFB9ADB819CCBD6500247538 /* VWWDeviceLimits.m */,
+				CFB9ADB919CCBD6500247538 /* VWWDeviceAxisLimits.h */,
+				CFB9ADBA19CCBD6500247538 /* VWWDeviceLimits.h */,
 				CFD098AF19CBCB2E00C88A76 /* VWWSampleAxis.h */,
 				CFD098B019CBCB2E00C88A76 /* VWWSampleAxis.m */,
 				CFD098AC19CBCB1800C88A76 /* VWWSample.h */,
@@ -565,6 +575,7 @@
 				CFD0989519CBCA3B00C88A76 /* VWWFileController.m in Sources */,
 				CFD0989719CBCA3B00C88A76 /* VWWCollectionViewCell.m in Sources */,
 				CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */,
+				CFB9ADBB19CCBD6500247538 /* VWWDeviceAxisLimits.m in Sources */,
 				CFCB905019CBB8FB00D05317 /* VWWVideoProcessor.m in Sources */,
 				CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */,
 				CFD0989A19CBCA3B00C88A76 /* VWWTableViewController.m in Sources */,
@@ -581,6 +592,7 @@
 				CFCB904F19CBB8FB00D05317 /* VWWPreviewView.m in Sources */,
 				CFD098AE19CBCB1800C88A76 /* VWWSample.m in Sources */,
 				CFD0989619CBCA3B00C88A76 /* VWWMotionMonitor.m in Sources */,
+				CFB9ADBC19CCBD6500247538 /* VWWDeviceLimits.m in Sources */,
 				CFD098A419CBCA8000C88A76 /* MBProgressHUD.m in Sources */,
 				CFD098BA19CBCB9B00C88A76 /* UIFont+VWW.m in Sources */,
 			);

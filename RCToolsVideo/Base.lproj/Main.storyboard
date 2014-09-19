@@ -269,10 +269,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Qk3-fj-gh6" firstAttribute="leading" secondItem="x3c-7o-Ptc" secondAttribute="leading" id="Qlt-a2-GyV"/>
-                            <constraint firstAttribute="bottom" secondItem="Qk3-fj-gh6" secondAttribute="bottom" id="djk-oT-vBO"/>
-                            <constraint firstAttribute="trailing" secondItem="Qk3-fj-gh6" secondAttribute="trailing" id="pbj-rH-eCq"/>
-                            <constraint firstItem="Qk3-fj-gh6" firstAttribute="top" secondItem="1GM-Pg-bDV" secondAttribute="bottom" constant="-64" id="xXG-9I-Ohy"/>
+                            <constraint firstItem="Qk3-fj-gh6" firstAttribute="top" secondItem="x3c-7o-Ptc" secondAttribute="top" id="AEh-LF-NA7"/>
+                            <constraint firstItem="CWi-aA-7gu" firstAttribute="top" secondItem="Qk3-fj-gh6" secondAttribute="bottom" id="KEO-sk-LU2"/>
+                            <constraint firstAttribute="trailing" secondItem="Qk3-fj-gh6" secondAttribute="trailing" id="ghV-1M-ptd"/>
+                            <constraint firstItem="Qk3-fj-gh6" firstAttribute="leading" secondItem="x3c-7o-Ptc" secondAttribute="leading" id="k8K-VW-TI8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ses-ci-stM"/>

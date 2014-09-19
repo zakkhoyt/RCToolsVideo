@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface VWWHUDView : UIView
-
+@property (nonatomic) BOOL renderDropShadows;
+@property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, strong) UIColor *labelColor;
+@property (nonatomic, strong) UIColor *hudColor;
+@property (nonatomic) NSTextAlignment textAlignment;
 @end
