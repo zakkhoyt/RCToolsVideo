@@ -278,8 +278,8 @@
 		CFD0987C19CBCA3B00C88A76 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CFD0987D19CBCA3B00C88A76 /* NonGUI */,
 				CFD0989E19CBCA4B00C88A76 /* GUI */,
+				CFD0987D19CBCA3B00C88A76 /* NonGUI */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -287,10 +287,10 @@
 		CFD0987D19CBCA3B00C88A76 /* NonGUI */ = {
 			isa = PBXGroup;
 			children = (
-				CFD098A819CBCACF00C88A76 /* Video */,
 				CFD098A919CBCAD700C88A76 /* File */,
-				CFD098AA19CBCADC00C88A76 /* Motion */,
 				CFD098C519CBD42500C88A76 /* Location */,
+				CFD098AA19CBCADC00C88A76 /* Motion */,
+				CFD098A819CBCACF00C88A76 /* Video */,
 			);
 			path = NonGUI;
 			sourceTree = "<group>";
@@ -690,10 +690,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb0b2197-3274-4abb-95af-066a74117e70";
 			};
 			name = Debug;
 		};
@@ -701,10 +702,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "eb0b2197-3274-4abb-95af-066a74117e70";
 			};
 			name = Release;
 		};
