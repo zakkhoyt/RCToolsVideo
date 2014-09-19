@@ -16,10 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="me1-Zx-r2x">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11p-wm-dsh">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -38,21 +34,54 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Cj9-ZN-hi8"/>
                                 </items>
                             </toolbar>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Qv-B7-kLv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ks1-9z-0Wl">
+                                        <rect key="frame" x="116" y="0.0" width="44" height="44"/>
+                                        <state key="normal" title="Rec">
+                                            <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv7-AK-NCK">
+                                        <rect key="frame" x="233" y="0.0" width="44" height="44"/>
+                                        <state key="normal" title="Set">
+                                            <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Tkw-dq-Wgf"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="me1-Zx-r2x">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="11p-wm-dsh" secondAttribute="trailing" id="9sW-Ed-Ml5"/>
-                            <constraint firstAttribute="trailing" secondItem="me1-Zx-r2x" secondAttribute="trailing" id="BcV-38-Syg"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="me1-Zx-r2x" secondAttribute="bottom" id="IBr-u9-CbQ"/>
-                            <constraint firstItem="me1-Zx-r2x" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="MHz-bd-hXD"/>
-                            <constraint firstItem="me1-Zx-r2x" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Mhd-qf-rah"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="11p-wm-dsh" secondAttribute="bottom" id="WUV-wD-Aqw"/>
-                            <constraint firstItem="11p-wm-dsh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="he7-Cn-Chu"/>
+                            <constraint firstItem="me1-Zx-r2x" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="32c-lP-9rB"/>
+                            <constraint firstAttribute="trailing" secondItem="11p-wm-dsh" secondAttribute="trailing" id="Kco-OM-aJa"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="me1-Zx-r2x" secondAttribute="bottom" id="S3i-hf-JQM"/>
+                            <constraint firstItem="4Qv-B7-kLv" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="TFX-JK-xhm"/>
+                            <constraint firstItem="11p-wm-dsh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ToQ-D8-tLa"/>
+                            <constraint firstAttribute="trailing" secondItem="4Qv-B7-kLv" secondAttribute="trailing" id="a4q-Hx-mAl"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="11p-wm-dsh" secondAttribute="bottom" id="az1-0L-q5v"/>
+                            <constraint firstItem="me1-Zx-r2x" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="nmK-gD-rs1"/>
+                            <constraint firstAttribute="trailing" secondItem="me1-Zx-r2x" secondAttribute="trailing" id="yZf-nX-Dml"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="previewView" destination="me1-Zx-r2x" id="8Iu-hs-7Zp"/>
+                        <outlet property="rButton" destination="Ks1-9z-0Wl" id="ahu-DX-8cO"/>
                         <outlet property="recordButton" destination="CZx-qh-UFU" id="eBV-nX-aSC"/>
+                        <outlet property="sButton" destination="Dv7-AK-NCK" id="Wm5-rd-s5E"/>
+                        <outlet property="toolbar" destination="11p-wm-dsh" id="hic-nb-b8X"/>
+                        <outlet property="toolbarView" destination="4Qv-B7-kLv" id="7dJ-bT-cJV"/>
                         <segue destination="TtC-Or-6pi" kind="show" identifier="VWWSegueSessionToOptions" id="qF9-oJ-3HT"/>
                     </connections>
                 </viewController>

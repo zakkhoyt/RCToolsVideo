@@ -7,6 +7,10 @@
 static NSString *VWWSegueSessionToOptions = @"VWWSegueSessionToOptions";
 
 @interface VWWSessionViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *rButton;
+@property (weak, nonatomic) IBOutlet UIButton *sButton;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIView *toolbarView;
 
 @end
 
@@ -59,11 +63,6 @@ static NSString *VWWSegueSessionToOptions = @"VWWSegueSessionToOptions";
     // Set up labels
     shouldShowStats = YES;
     
-    //    UILabel *v = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
-    //    v.backgroundColor = [UIColor redColor];
-    //    v.text = @"Testing";
-    //    [previewView addSubview:v];
-    
     frameRateLabel = [self labelWithText:@"" yPosition: (CGFloat) 10.0];
     [previewView addSubview:frameRateLabel];
     
@@ -72,6 +71,10 @@ static NSString *VWWSegueSessionToOptions = @"VWWSegueSessionToOptions";
     
     typeLabel = [self labelWithText:@"" yPosition: (CGFloat) 98.0];
     [previewView addSubview:typeLabel];
+    
+    [self.view bringSubviewToFront:self.toolbar];
+    [self.view bringSubviewToFront:self.toolbarView];
+
 }
 
 
@@ -112,10 +115,32 @@ static NSString *VWWSegueSessionToOptions = @"VWWSegueSessionToOptions";
     // Don't update the reference orientation when the device orientation is face up/down or unknown.
     if ( UIDeviceOrientationIsPortrait(orientation) || UIDeviceOrientationIsLandscape(orientation) )
         [videoProcessor setReferenceOrientation:(AVCaptureVideoOrientation)orientation];
+    
+    if(orientation == UIDeviceOrientationPortrait){
+        [UIView animateWithDuration:0.2 animations:^{
+            self.rButton.transform = CGAffineTransformIdentity;
+            self.sButton.transform = CGAffineTransformIdentity;
+        }];
+    } else if(orientation == UIDeviceOrientationPortraitUpsideDown){
+        [UIView animateWithDuration:0.2 animations:^{
+            self.rButton.transform = CGAffineTransformMakeRotation(M_PI);
+            self.sButton.transform = CGAffineTransformMakeRotation(M_PI);
+        }];
+    } else if(orientation == UIDeviceOrientationLandscapeLeft){
+        [UIView animateWithDuration:0.2 animations:^{
+            self.rButton.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
+            self.sButton.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
+        }];
+    } else if(orientation == UIDeviceOrientationLandscapeRight){
+        [UIView animateWithDuration:0.2 animations:^{
+            self.rButton.transform = CGAffineTransformMakeRotation(-M_PI / 2.0);
+            self.sButton.transform = CGAffineTransformMakeRotation(-M_PI / 2.0);
+        }];
+    }
 }
 
 
-- (void)dealloc 
+- (void)dealloc
 {
     [self cleanup];
     //	[super dealloc];
