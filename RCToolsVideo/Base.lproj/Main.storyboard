@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="VWWViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,8 +15,39 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="me1-Zx-r2x">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11p-wm-dsh">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3CO-pR-ixQ"/>
+                                    <barButtonItem title="Record" width="62" id="CZx-qh-UFU">
+                                        <connections>
+                                            <action selector="toggleRecording:" destination="vXZ-lx-hvc" id="CfS-d7-HuJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="esu-S6-BYS"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="11p-wm-dsh" secondAttribute="trailing" id="9sW-Ed-Ml5"/>
+                            <constraint firstAttribute="trailing" secondItem="me1-Zx-r2x" secondAttribute="trailing" id="BcV-38-Syg"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="me1-Zx-r2x" secondAttribute="bottom" id="IBr-u9-CbQ"/>
+                            <constraint firstItem="me1-Zx-r2x" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="MHz-bd-hXD"/>
+                            <constraint firstItem="me1-Zx-r2x" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Mhd-qf-rah"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="11p-wm-dsh" secondAttribute="bottom" id="WUV-wD-Aqw"/>
+                            <constraint firstItem="11p-wm-dsh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="he7-Cn-Chu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="previewView" destination="me1-Zx-r2x" id="8Iu-hs-7Zp"/>
+                        <outlet property="recordButton" destination="CZx-qh-UFU" id="eBV-nX-aSC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

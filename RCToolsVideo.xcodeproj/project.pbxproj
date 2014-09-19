@@ -9,11 +9,26 @@
 /* Begin PBXBuildFile section */
 		CFCB901819CBB88D00D05317 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901719CBB88D00D05317 /* main.m */; };
 		CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901A19CBB88D00D05317 /* AppDelegate.m */; };
-		CFCB901E19CBB88D00D05317 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901D19CBB88D00D05317 /* ViewController.m */; };
 		CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCB901F19CBB88D00D05317 /* Main.storyboard */; };
 		CFCB902319CBB88D00D05317 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCB902219CBB88D00D05317 /* Images.xcassets */; };
 		CFCB902619CBB88D00D05317 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFCB902419CBB88D00D05317 /* LaunchScreen.xib */; };
 		CFCB903219CBB88D00D05317 /* RCToolsVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB903119CBB88D00D05317 /* RCToolsVideoTests.m */; };
+		CFCB904C19CBB8FB00D05317 /* passThrough.fsh in Resources */ = {isa = PBXBuildFile; fileRef = CFCB903E19CBB8FB00D05317 /* passThrough.fsh */; };
+		CFCB904D19CBB8FB00D05317 /* passThrough.vsh in Resources */ = {isa = PBXBuildFile; fileRef = CFCB903F19CBB8FB00D05317 /* passThrough.vsh */; };
+		CFCB904F19CBB8FB00D05317 /* VWWPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */; };
+		CFCB905019CBB8FB00D05317 /* VWWVideoProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904619CBB8FB00D05317 /* VWWVideoProcessor.m */; };
+		CFCB905119CBB8FB00D05317 /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904819CBB8FB00D05317 /* VWWViewController.m */; };
+		CFCB905219CBB8FB00D05317 /* ShaderUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904919CBB8FB00D05317 /* ShaderUtilities.c */; };
+		CFCB905419CBBAAD00D05317 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905319CBBAAD00D05317 /* OpenGLES.framework */; };
+		CFCB905619CBBAB200D05317 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905519CBBAB200D05317 /* Foundation.framework */; };
+		CFCB905819CBBAB800D05317 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905719CBBAB800D05317 /* UIKit.framework */; };
+		CFCB905A19CBBABC00D05317 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905919CBBABC00D05317 /* CoreGraphics.framework */; };
+		CFCB905C19CBBAC300D05317 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905B19CBBAC200D05317 /* AVFoundation.framework */; };
+		CFCB905E19CBBAC800D05317 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905D19CBBAC800D05317 /* CoreMedia.framework */; };
+		CFCB906019CBBACC00D05317 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905F19CBBACC00D05317 /* CoreVideo.framework */; };
+		CFCB906219CBBAD400D05317 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */; };
+		CFCB906419CBBAD900D05317 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */; };
+		CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906519CBBADE00D05317 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +47,32 @@
 		CFCB901719CBB88D00D05317 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFCB901919CBB88D00D05317 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CFCB901A19CBB88D00D05317 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CFCB901C19CBB88D00D05317 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CFCB901D19CBB88D00D05317 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CFCB902019CBB88D00D05317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CFCB902219CBB88D00D05317 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CFCB902519CBB88D00D05317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CFCB902B19CBB88D00D05317 /* RCToolsVideoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RCToolsVideoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCB903019CBB88D00D05317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCB903119CBB88D00D05317 /* RCToolsVideoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCToolsVideoTests.m; sourceTree = "<group>"; };
+		CFCB903E19CBB8FB00D05317 /* passThrough.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.fsh; sourceTree = "<group>"; };
+		CFCB903F19CBB8FB00D05317 /* passThrough.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.vsh; sourceTree = "<group>"; };
+		CFCB904319CBB8FB00D05317 /* VWWPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWPreviewView.h; sourceTree = "<group>"; };
+		CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWPreviewView.m; sourceTree = "<group>"; };
+		CFCB904519CBB8FB00D05317 /* VWWVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWVideoProcessor.h; sourceTree = "<group>"; };
+		CFCB904619CBB8FB00D05317 /* VWWVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWVideoProcessor.m; sourceTree = "<group>"; };
+		CFCB904719CBB8FB00D05317 /* VWWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWViewController.h; sourceTree = "<group>"; };
+		CFCB904819CBB8FB00D05317 /* VWWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWViewController.m; sourceTree = "<group>"; };
+		CFCB904919CBB8FB00D05317 /* ShaderUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ShaderUtilities.c; path = ../Classes/ShaderUtilities.c; sourceTree = "<group>"; };
+		CFCB904A19CBB8FB00D05317 /* ShaderUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderUtilities.h; path = ../Classes/ShaderUtilities.h; sourceTree = "<group>"; };
+		CFCB905319CBBAAD00D05317 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		CFCB905519CBBAB200D05317 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CFCB905719CBBAB800D05317 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CFCB905919CBBABC00D05317 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CFCB905B19CBBAC200D05317 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CFCB905D19CBBAC800D05317 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CFCB905F19CBBACC00D05317 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		CFCB906519CBBADE00D05317 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +80,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */,
+				CFCB906419CBBAD900D05317 /* AssetsLibrary.framework in Frameworks */,
+				CFCB906219CBBAD400D05317 /* MobileCoreServices.framework in Frameworks */,
+				CFCB906019CBBACC00D05317 /* CoreVideo.framework in Frameworks */,
+				CFCB905E19CBBAC800D05317 /* CoreMedia.framework in Frameworks */,
+				CFCB905C19CBBAC300D05317 /* AVFoundation.framework in Frameworks */,
+				CFCB905A19CBBABC00D05317 /* CoreGraphics.framework in Frameworks */,
+				CFCB905819CBBAB800D05317 /* UIKit.framework in Frameworks */,
+				CFCB905619CBBAB200D05317 /* Foundation.framework in Frameworks */,
+				CFCB905419CBBAAD00D05317 /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,14 +124,12 @@
 		CFCB901419CBB88D00D05317 /* RCToolsVideo */ = {
 			isa = PBXGroup;
 			children = (
-				CFCB901919CBB88D00D05317 /* AppDelegate.h */,
-				CFCB901A19CBB88D00D05317 /* AppDelegate.m */,
-				CFCB901C19CBB88D00D05317 /* ViewController.h */,
-				CFCB901D19CBB88D00D05317 /* ViewController.m */,
-				CFCB901F19CBB88D00D05317 /* Main.storyboard */,
+				CFCB904019CBB8FB00D05317 /* Classes */,
+				CFD0987B19CBBD8E00C88A76 /* Frameworks */,
 				CFCB902219CBB88D00D05317 /* Images.xcassets */,
-				CFCB902419CBB88D00D05317 /* LaunchScreen.xib */,
+				CFCB903D19CBB8FB00D05317 /* Shaders */,
 				CFCB901519CBB88D00D05317 /* Supporting Files */,
+				CFD0987A19CBBD5F00C88A76 /* UserInterface */,
 			);
 			path = RCToolsVideo;
 			sourceTree = "<group>";
@@ -96,6 +137,8 @@
 		CFCB901519CBB88D00D05317 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFCB901919CBB88D00D05317 /* AppDelegate.h */,
+				CFCB901A19CBB88D00D05317 /* AppDelegate.m */,
 				CFCB901619CBB88D00D05317 /* Info.plist */,
 				CFCB901719CBB88D00D05317 /* main.m */,
 			);
@@ -117,6 +160,57 @@
 				CFCB903019CBB88D00D05317 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFCB903D19CBB8FB00D05317 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				CFCB904919CBB8FB00D05317 /* ShaderUtilities.c */,
+				CFCB904A19CBB8FB00D05317 /* ShaderUtilities.h */,
+				CFCB903E19CBB8FB00D05317 /* passThrough.fsh */,
+				CFCB903F19CBB8FB00D05317 /* passThrough.vsh */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		CFCB904019CBB8FB00D05317 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CFCB904319CBB8FB00D05317 /* VWWPreviewView.h */,
+				CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */,
+				CFCB904519CBB8FB00D05317 /* VWWVideoProcessor.h */,
+				CFCB904619CBB8FB00D05317 /* VWWVideoProcessor.m */,
+				CFCB904719CBB8FB00D05317 /* VWWViewController.h */,
+				CFCB904819CBB8FB00D05317 /* VWWViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CFD0987A19CBBD5F00C88A76 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				CFCB901F19CBB88D00D05317 /* Main.storyboard */,
+				CFCB902419CBB88D00D05317 /* LaunchScreen.xib */,
+			);
+			name = UserInterface;
+			sourceTree = "<group>";
+		};
+		CFD0987B19CBBD8E00C88A76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFCB906519CBBADE00D05317 /* QuartzCore.framework */,
+				CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */,
+				CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */,
+				CFCB905F19CBBACC00D05317 /* CoreVideo.framework */,
+				CFCB905D19CBBAC800D05317 /* CoreMedia.framework */,
+				CFCB905B19CBBAC200D05317 /* AVFoundation.framework */,
+				CFCB905919CBBABC00D05317 /* CoreGraphics.framework */,
+				CFCB905719CBBAB800D05317 /* UIKit.framework */,
+				CFCB905519CBBAB200D05317 /* Foundation.framework */,
+				CFCB905319CBBAAD00D05317 /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +293,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFCB904D19CBB8FB00D05317 /* passThrough.vsh in Resources */,
 				CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */,
 				CFCB902619CBB88D00D05317 /* LaunchScreen.xib in Resources */,
+				CFCB904C19CBB8FB00D05317 /* passThrough.fsh in Resources */,
 				CFCB902319CBB88D00D05317 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,9 +315,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFCB901E19CBB88D00D05317 /* ViewController.m in Sources */,
 				CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */,
+				CFCB905019CBB8FB00D05317 /* VWWVideoProcessor.m in Sources */,
+				CFCB905119CBB8FB00D05317 /* VWWViewController.m in Sources */,
 				CFCB901819CBB88D00D05317 /* main.m in Sources */,
+				CFCB905219CBB8FB00D05317 /* ShaderUtilities.c in Sources */,
+				CFCB904F19CBB8FB00D05317 /* VWWPreviewView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +511,7 @@
 				CFCB903719CBB88D00D05317 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CFCB903819CBB88D00D05317 /* Build configuration list for PBXNativeTarget "RCToolsVideoTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +520,7 @@
 				CFCB903A19CBB88D00D05317 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

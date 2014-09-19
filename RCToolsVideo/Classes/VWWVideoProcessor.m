@@ -1,57 +1,12 @@
-/*
-     File: RosyWriterVideoProcessor.m
- Abstract: The class that creates and manages the AV capture session and asset writer
-  Version: 1.2
- 
- Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
- Inc. ("Apple") in consideration of your agreement to the following
- terms, and your use, installation, modification or redistribution of
- this Apple software constitutes acceptance of these terms.  If you do
- not agree with these terms, please do not use, install, modify or
- redistribute this Apple software.
- 
- In consideration of your agreement to abide by the following terms, and
- subject to these terms, Apple grants you a personal, non-exclusive
- license, under Apple's copyrights in this original Apple software (the
- "Apple Software"), to use, reproduce, modify and redistribute the Apple
- Software, with or without modifications, in source and/or binary forms;
- provided that if you redistribute the Apple Software in its entirety and
- without modifications, you must retain this notice and the following
- text and disclaimers in all such redistributions of the Apple Software.
- Neither the name, trademarks, service marks or logos of Apple Inc. may
- be used to endorse or promote products derived from the Apple Software
- without specific prior written permission from Apple.  Except as
- expressly stated in this notice, no other rights or licenses, express or
- implied, are granted by Apple herein, including but not limited to any
- patent rights that may be infringed by your derivative works or by other
- works in which the Apple Software may be incorporated.
- 
- The Apple Software is provided by Apple on an "AS IS" basis.  APPLE
- MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
- THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS
- FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
- OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
- 
- IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
- OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
- MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
- AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
- STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
- POSSIBILITY OF SUCH DAMAGE.
- 
- Copyright (C) 2011 Apple Inc. All Rights Reserved.
- 
- */
 
+#import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "RosyWriterVideoProcessor.h"
+#import "VWWVideoProcessor.h"
 
 #define BYTES_PER_PIXEL 4
 
-@interface RosyWriterVideoProcessor ()
+@interface VWWVideoProcessor ()
 
 // Redeclared as readwrite so that we can write to the property and still be atomic with external readers.
 @property (readwrite) Float64 videoFrameRate;
@@ -64,7 +19,7 @@
 
 @end
 
-@implementation RosyWriterVideoProcessor
+@implementation VWWVideoProcessor
 
 @synthesize delegate;
 @synthesize videoFrameRate, videoDimensions, videoType;
@@ -76,21 +31,21 @@
 {
     if (self = [super init]) {
         previousSecondTimestamps = [[NSMutableArray alloc] init];
-        referenceOrientation = UIDeviceOrientationPortrait;
+        referenceOrientation = AVCaptureVideoOrientationPortrait;
         
         // The temporary path for the video before saving it to the photo album
         movieURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), @"Movie.MOV"]];
-        [movieURL retain];
+//        [movieURL retain];
     }
     return self;
 }
 
 - (void)dealloc 
 {
-    [previousSecondTimestamps release];
-    [movieURL release];
-
-	[super dealloc];
+//    [previousSecondTimestamps release];
+//    [movieURL release];
+//
+//	[super dealloc];
 }
 
 #pragma mark Utilities
@@ -179,7 +134,7 @@
 										[self.delegate recordingDidStop];
 									});
 								}];
-	[library release];
+//	[library release];
 }
 
 - (void) writeSampleBuffer:(CMSampleBufferRef)sampleBuffer ofType:(NSString *)mediaType
@@ -330,10 +285,19 @@
 		// recordingDidStop is called from saveMovieToCameraRoll
 		[self.delegate recordingWillStop];
 
+        
+//        [assetWriter finishWritingWithCompletionHandler:^{
+//            dispatch_async(movieWritingQueue, ^{
+//                assetWriter = nil;
+//                
+//                readyToRecordVideo = NO;
+//                readyToRecordAudio = NO;
+//                
+//                [self saveMovieToCameraRoll];
+//            });
+//        }];
+        
 		if ([assetWriter finishWriting]) {
-			[assetWriterAudioIn release];
-			[assetWriterVideoIn release];
-			[assetWriter release];
 			assetWriter = nil;
 			
 			readyToRecordVideo = NO;
@@ -359,7 +323,7 @@
                              nil];
     CVImageBufferRef pxbuffer = NULL;
     CVReturn status = CVPixelBufferCreate(kCFAllocatorDefault, frameSize.width,
-                                          frameSize.height,  kCVPixelFormatType_32BGRA, (CFDictionaryRef) options,
+                                          frameSize.height,  kCVPixelFormatType_32BGRA, (__bridge CFDictionaryRef) options,
                                           &pxbuffer);
     NSParameterAssert(status == kCVReturnSuccess && pxbuffer != NULL);
     
@@ -370,7 +334,7 @@
     CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = CGBitmapContextCreate(pxdata, frameSize.width,
                                                  frameSize.height, 8, CVPixelBufferGetBytesPerRow(pxbuffer), rgbColorSpace,
-                                                 kCGImageAlphaNoneSkipLast);
+                                                 kCGBitmapAlphaInfoMask /*kCGImageAlphaNoneSkipLast*/);
     
     CGContextDrawImage(context, CGRectMake(0, 0, CGImageGetWidth(image),
                                            CGImageGetHeight(image)), image);
@@ -389,39 +353,39 @@
     
     
 
-    UIImage *hudImage = [UIImage imageNamed:@"hud"];
-    CVImageBufferRef hudBuffer = [self pixelBufferFromCGImage:hudImage.CGImage];
-    
-    CVPixelBufferLockBaseAddress( hudBuffer, 0 );
-    int hudBufferWidth = CVPixelBufferGetWidth(hudBuffer);
-    int hudBufferHeight = CVPixelBufferGetHeight(hudBuffer);
-
-    size_t hudBufferSize = CVPixelBufferGetDataSize(hudBuffer);
-    NSLog(@"hudBufferSize: %ld", (long)hudBufferSize);
-    unsigned char *hudPixel = (unsigned char *)CVPixelBufferGetBaseAddress(hudBuffer);
+//    UIImage *hudImage = [UIImage imageNamed:@"hud"];
+//    CVImageBufferRef hudBuffer = [self pixelBufferFromCGImage:hudImage.CGImage];
+//    
+//    CVPixelBufferLockBaseAddress( hudBuffer, 0 );
+//    int hudBufferWidth = CVPixelBufferGetWidth(hudBuffer);
+//    int hudBufferHeight = CVPixelBufferGetHeight(hudBuffer);
+//
+//    size_t hudBufferSize = CVPixelBufferGetDataSize(hudBuffer);
+//    NSLog(@"hudBufferSize: %ld", (long)hudBufferSize);
+//    unsigned char *hudPixel = (unsigned char *)CVPixelBufferGetBaseAddress(hudBuffer);
 
     
     
     CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
     
-    int bufferWidth = CVPixelBufferGetWidth(pixelBuffer);
-    int bufferHeight = CVPixelBufferGetHeight(pixelBuffer);
+    int bufferWidth = (int)CVPixelBufferGetWidth(pixelBuffer);
+    int bufferHeight = (int)CVPixelBufferGetHeight(pixelBuffer);
     unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
     
     for( int row = 0; row < bufferHeight; row++ ) {
         for( int column = 0; column < bufferWidth; column++ ) {
-//            pixel[1] = 0; // De-green (second pixel in BGRA is green)
-            pixel[0] = MAX(hudPixel[0], pixel[0]);
-            pixel[1] = MAX(hudPixel[1], pixel[1]);
-            pixel[2] = MAX(hudPixel[2], pixel[2]);
-//            pixel[3] += hudPixel[3];
+            pixel[1] = 0; // De-green (second pixel in BGRA is green)
+//            pixel[0] = MAX(hudPixel[0], pixel[0]);
+//            pixel[1] = MAX(hudPixel[1], pixel[1]);
+//            pixel[2] = MAX(hudPixel[2], pixel[2]);
+
             pixel += BYTES_PER_PIXEL;
-            hudPixel += BYTES_PER_PIXEL;
+//            hudPixel += BYTES_PER_PIXEL;
         }
     }
     
     CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
-    CVPixelBufferUnlockBaseAddress( hudBuffer, 0 );
+//    CVPixelBufferUnlockBaseAddress( hudBuffer, 0 );
 }
 
 
@@ -574,14 +538,14 @@
 - (BOOL) setupCaptureSession 
 {
 	/*
-		Overview: RosyWriter uses separate GCD queues for audio and video capture.  If a single GCD queue
+		Overview: RCToolsVideo uses separate GCD queues for audio and video capture.  If a single GCD queue
 		is used to deliver both audio and video buffers, and our video processing consistently takes
 		too long, the delivery queue can back up, resulting in audio being dropped.
 		
-		When recording, RosyWriter creates a third GCD queue for calls to AVAssetWriter.  This ensures
+		When recording, RCToolsVideo creates a third GCD queue for calls to AVAssetWriter.  This ensures
 		that AVAssetWriter is not called to start or finish writing from multiple threads simultaneously.
 		
-		RosyWriter uses AVCaptureSession's default preset, AVCaptureSessionPresetHigh.
+		RCToolsVideo uses AVCaptureSession's default preset, AVCaptureSessionPresetHigh.
 	 */
 	 
     /*
@@ -595,16 +559,16 @@
     AVCaptureDeviceInput *audioIn = [[AVCaptureDeviceInput alloc] initWithDevice:[self audioDevice] error:nil];
     if ([captureSession canAddInput:audioIn])
         [captureSession addInput:audioIn];
-	[audioIn release];
+//	[audioIn release];
 	
 	AVCaptureAudioDataOutput *audioOut = [[AVCaptureAudioDataOutput alloc] init];
 	dispatch_queue_t audioCaptureQueue = dispatch_queue_create("Audio Capture Queue", DISPATCH_QUEUE_SERIAL);
 	[audioOut setSampleBufferDelegate:self queue:audioCaptureQueue];
-	dispatch_release(audioCaptureQueue);
+//	dispatch_release(audioCaptureQueue);
 	if ([captureSession canAddOutput:audioOut])
 		[captureSession addOutput:audioOut];
 	audioConnection = [audioOut connectionWithMediaType:AVMediaTypeAudio];
-	[audioOut release];
+//	[audioOut release];
     
 	/*
 	 * Create video connection
@@ -612,11 +576,11 @@
     AVCaptureDeviceInput *videoIn = [[AVCaptureDeviceInput alloc] initWithDevice:[self videoDeviceWithPosition:AVCaptureDevicePositionBack] error:nil];
     if ([captureSession canAddInput:videoIn])
         [captureSession addInput:videoIn];
-	[videoIn release];
+//	[videoIn release];
     
 	AVCaptureVideoDataOutput *videoOut = [[AVCaptureVideoDataOutput alloc] init];
 	/*
-		RosyWriter prefers to discard late video frames early in the capture pipeline, since its
+		RCToolsVideo prefers to discard late video frames early in the capture pipeline, since its
 		processing can take longer than real-time on some platforms (such as iPhone 3GS).
 		Clients whose image processing is faster than real-time should consider setting AVCaptureVideoDataOutput's
 		alwaysDiscardsLateVideoFrames property to NO. 
@@ -625,12 +589,12 @@
 	[videoOut setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
 	dispatch_queue_t videoCaptureQueue = dispatch_queue_create("Video Capture Queue", DISPATCH_QUEUE_SERIAL);
 	[videoOut setSampleBufferDelegate:self queue:videoCaptureQueue];
-	dispatch_release(videoCaptureQueue);
+//	dispatch_release(videoCaptureQueue);
 	if ([captureSession canAddOutput:videoOut])
 		[captureSession addOutput:videoOut];
 	videoConnection = [videoOut connectionWithMediaType:AVMediaTypeVideo];
 	self.videoOrientation = [videoConnection videoOrientation];
-	[videoOut release];
+//	[videoOut release];
     
 	return YES;
 }
@@ -680,14 +644,14 @@
     [captureSession stopRunning];
 	if (captureSession)
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:AVCaptureSessionDidStopRunningNotification object:captureSession];
-	[captureSession release];
+//	[captureSession release];
 	captureSession = nil;
 	if (previewBufferQueue) {
 		CFRelease(previewBufferQueue);
 		previewBufferQueue = NULL;	
 	}
 	if (movieWritingQueue) {
-		dispatch_release(movieWritingQueue);
+//		dispatch_release(movieWritingQueue);
 		movieWritingQueue = NULL;
 	}
 }
@@ -703,7 +667,7 @@
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
         [alertView show];
-        [alertView release];
+//        [alertView release];
     });
 }
 

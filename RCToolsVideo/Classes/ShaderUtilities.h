@@ -45,8 +45,8 @@
  
  */
 
-#ifndef RosyWriter_ShaderUtilities_h
-#define RosyWriter_ShaderUtilities_h
+#ifndef VWW_SHADER_UTILITIES_H
+#define VWW_SHADER_UTILITIES_H
     
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
