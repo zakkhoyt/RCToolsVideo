@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
+		CFB9ADB619CC151300247538 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB519CC151300247538 /* VWWHUDView.m */; };
 		CFCB901819CBB88D00D05317 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901719CBB88D00D05317 /* main.m */; };
 		CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901A19CBB88D00D05317 /* AppDelegate.m */; };
 		CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCB901F19CBB88D00D05317 /* Main.storyboard */; };
@@ -62,6 +63,8 @@
 
 /* Begin PBXFileReference section */
 		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CFB9ADB419CC151300247538 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
+		CFB9ADB519CC151300247538 /* VWWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDView.m; sourceTree = "<group>"; };
 		CFCB901219CBB88D00D05317 /* RCToolsVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCToolsVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCB901619CBB88D00D05317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCB901719CBB88D00D05317 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -387,6 +390,8 @@
 			children = (
 				CFCB904319CBB8FB00D05317 /* VWWPreviewView.h */,
 				CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */,
+				CFB9ADB419CC151300247538 /* VWWHUDView.h */,
+				CFB9ADB519CC151300247538 /* VWWHUDView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */,
 				CFCB901819CBB88D00D05317 /* main.m in Sources */,
 				CFD0989919CBCA3B00C88A76 /* VWWTableViewCell.m in Sources */,
+				CFB9ADB619CC151300247538 /* VWWHUDView.m in Sources */,
 				CFD0989D19CBCA3B00C88A76 /* VWWUtilities.m in Sources */,
 				CFCB905219CBB8FB00D05317 /* ShaderUtilities.c in Sources */,
 				CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */,

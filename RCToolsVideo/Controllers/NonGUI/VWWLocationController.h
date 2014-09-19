@@ -17,9 +17,9 @@
 +(VWWLocationController*)sharedInstance;
 -(void)start;
 -(void)stop;
--(void)reset;
--(void)getCurrentLocationWithCompletionBlock:(VWWCLLocationBlock)completionBlock;
-@property (nonatomic, strong) NSMutableArray *locations;
+//-(void)reset;
+//-(void)getCurrentLocationWithCompletionBlock:(VWWCLLocationBlock)completionBlock;
+//@property (nonatomic, strong) NSMutableArray *locations;
 @property (nonatomic, copy) CLHeading *heading;
 @property (nonatomic, copy) CLLocation *location;;
 

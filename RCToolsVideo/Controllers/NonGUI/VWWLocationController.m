@@ -46,33 +46,35 @@
     return self;
 }
 
-
-+(BOOL)serviceExists{
-    
-    VWW_LOG_TODO;
-    return YES;
-}
-
-+(BOOL)hasBeenPrompted{
-//    NSDate *date = [VWWUserDefaults coreLocationPermissionDate];
-//    return date != nil;
-    return YES;
-}
-
-
-+(void)displayPermissionPromptWithCompletionBlock:(VWWBoolBlock)completionBlock{
-    //    CLLocationManager *locationManager = [[CLLocationManager alloc]init];
-    //    _locationManager.delegate = self;
-    //
-    
-}
-
+//
+//+(BOOL)serviceExists{
+//    
+//    VWW_LOG_TODO;
+//    return YES;
+//}
+//
+//+(BOOL)hasBeenPrompted{
+////    NSDate *date = [VWWUserDefaults coreLocationPermissionDate];
+////    return date != nil;
+//    return YES;
+//}
+//
+//
+//+(void)displayPermissionPromptWithCompletionBlock:(VWWBoolBlock)completionBlock{
+//    //    CLLocationManager *locationManager = [[CLLocationManager alloc]init];
+//    //    _locationManager.delegate = self;
+//    //
+//    
+//}
+//
 
 
 -(void)start{
     if(self.isRunning) return;
     self.isRunning = YES;
     
+    
+
     //    [self.locationManager setDistanceFilter:kCLDistanceFilterNone];
     //    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
@@ -90,23 +92,26 @@
     //    [self.locationManager stopMonitoringSignificantLocationChanges];
     
 }
+//
+//-(void)reset{
+//    [self stop];
+//    [_locations removeAllObjects];
+//    self.heading = nil;
+//    self.location = nil;
+//}
 
--(void)reset{
-    [self stop];
-    [_locations removeAllObjects];
-    self.heading = nil;
-    self.location = nil;
-}
--(void)setLocationsUpdatedBlock:(VWWArrayBlock)locationsUpdatedBlock{
-    _locationsUpdatedBlock = locationsUpdatedBlock;
-}
+//
+//
+//-(void)setLocationsUpdatedBlock:(VWWArrayBlock)locationsUpdatedBlock{
+//    _locationsUpdatedBlock = locationsUpdatedBlock;
+//}
 
-
--(void)getCurrentLocationWithCompletionBlock:(VWWCLLocationBlock)completionBlock{
-    _currentLocationBlock = completionBlock;
-    [self start];
-}
-
+//
+//-(void)getCurrentLocationWithCompletionBlock:(VWWCLLocationBlock)completionBlock{
+//    _currentLocationBlock = completionBlock;
+//    [self start];
+//}
+//
 
 #pragma mark Private methods
 
@@ -118,13 +123,16 @@
 
 
 -(void)initializeClass{
-    _locations = [@[]mutableCopy];
+//    _locations = [@[]mutableCopy];
     _heading = [@[]mutableCopy];
     
     //    _queue = dispatch_queue_create("com.getsmileapp.smile.location", NULL);
     //    dispatch_async(self.queue, ^{
     _locationManager = [[CLLocationManager alloc]init];
     _locationManager.delegate = self;
+    [_locationManager requestWhenInUseAuthorization];
+    
+    
     //        _locationManager.distanceFilter = 1000;
     
 #ifdef __IPHONE_8_0
@@ -167,45 +175,21 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations{
     if(locations.count){
-        //        CLLocation *newLocation = locations[0];
-        //        CLLocation *oldLocation;
-        //        if(self.locations.count){
-        //            oldLocation = self.locations[0];
-        //        }
-        //
-        //        if(oldLocation){
-        //            // We only want to keep this if it's significantly different
-        //            CLLocationDistance meters = [newLocation distanceFromLocation:oldLocation];
-        //            if(meters > 1000){
-        //                [self addLocationToLocations:newLocation];
-        //            } else {
-        //                VWW_LOG_DEBUG(@"Discarding location update because it's not a big enough change");
-        //            }
-        //        } else {
-        //            [self addLocationToLocations:newLocation];
-        ////            if([SMUserDefaults autoUpdateLocation]){
-        ////                [self updateUserLocation:newLocation completionBlock:^{
-        ////
-        ////                }];
-        ////            }
-        //        }
-        
-        
-        [self addLocationToLocations:locations[0]];
+        self.location = locations[0];
     }
 }
 
--(void)addLocationToLocations:(CLLocation*)location{
-    //    VWW_LOG_DEBUG(@"location: %@", location);
-    // insert at the beginning of the set
-    [self.locations insertObject:location atIndex:0];
-    self.location = location;
-    if(self.currentLocationBlock){
-        self.currentLocationBlock(self.location);
-        _currentLocationBlock = nil;
-    }
-    
-}
+//-(void)addLocationToLocations:(CLLocation*)location{
+//    //    VWW_LOG_DEBUG(@"location: %@", location);
+//    // insert at the beginning of the set
+//    [self.locations insertObject:location atIndex:0];
+//    self.location = location;
+//    if(self.currentLocationBlock){
+//        self.currentLocationBlock(self.location);
+//        _currentLocationBlock = nil;
+//    }
+//    
+//}
 
 
 
