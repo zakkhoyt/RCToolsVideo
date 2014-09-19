@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
 		CFCB901819CBB88D00D05317 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901719CBB88D00D05317 /* main.m */; };
 		CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901A19CBB88D00D05317 /* AppDelegate.m */; };
 		CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCB901F19CBB88D00D05317 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */; };
 		CFD098BE19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */; };
 		CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */; };
+		CFD098C419CBD41900C88A76 /* VWWLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098C319CBD41900C88A76 /* VWWLocationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CFCB901219CBB88D00D05317 /* RCToolsVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCToolsVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCB901619CBB88D00D05317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCB901719CBB88D00D05317 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 		CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionOptionsTableViewController.m; sourceTree = "<group>"; };
 		CFD098BF19CBD2E600C88A76 /* VWWHUDPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDPreviewViewController.h; sourceTree = "<group>"; };
 		CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDPreviewViewController.m; sourceTree = "<group>"; };
+		CFD098C219CBD41900C88A76 /* VWWLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWLocationController.h; sourceTree = "<group>"; };
+		CFD098C319CBD41900C88A76 /* VWWLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWLocationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */,
 				CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */,
 				CFCB906419CBBAD900D05317 /* AssetsLibrary.framework in Frameworks */,
 				CFCB906219CBBAD400D05317 /* MobileCoreServices.framework in Frameworks */,
@@ -253,6 +259,7 @@
 		CFD0987B19CBBD8E00C88A76 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF49936219CBD45F00399675 /* CoreLocation.framework */,
 				CFCB906519CBBADE00D05317 /* QuartzCore.framework */,
 				CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */,
 				CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */,
@@ -283,6 +290,7 @@
 				CFD098A819CBCACF00C88A76 /* Video */,
 				CFD098A919CBCAD700C88A76 /* File */,
 				CFD098AA19CBCADC00C88A76 /* Motion */,
+				CFD098C519CBD42500C88A76 /* Location */,
 			);
 			path = NonGUI;
 			sourceTree = "<group>";
@@ -426,6 +434,15 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		CFD098C519CBD42500C88A76 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				CFD098C219CBD41900C88A76 /* VWWLocationController.h */,
+				CFD098C319CBD41900C88A76 /* VWWLocationController.m */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -539,6 +556,7 @@
 				CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */,
 				CFD0989A19CBCA3B00C88A76 /* VWWTableViewController.m in Sources */,
 				CFD098BE19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m in Sources */,
+				CFD098C419CBD41900C88A76 /* VWWLocationController.m in Sources */,
 				CFD0989C19CBCA3B00C88A76 /* VWWUserDefaults.m in Sources */,
 				CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */,
 				CFCB901819CBB88D00D05317 /* main.m in Sources */,
@@ -672,6 +690,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -682,6 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
