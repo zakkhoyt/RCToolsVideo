@@ -3,7 +3,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "VWWVideoProcessor.h"
-
+#import "VWW.h"
 #define BYTES_PER_PIXEL 4
 
 @interface VWWVideoProcessor ()
@@ -554,10 +554,15 @@
     captureSession = [[AVCaptureSession alloc] init];
     
     // Here are the fixed resolutions that are supported in iOS 7+
-    captureSession.sessionPreset = AVCaptureSessionPreset352x288;
-    captureSession.sessionPreset = AVCaptureSessionPreset640x480;
-    captureSession.sessionPreset = AVCaptureSessionPreset1280x720;
-    captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
+    if([VWWUserDefaults resolution] == 0){
+        captureSession.sessionPreset = AVCaptureSessionPreset352x288;
+    } else if([VWWUserDefaults resolution] == 1){
+        captureSession.sessionPreset = AVCaptureSessionPreset640x480;
+    } else if([VWWUserDefaults resolution] == 2){
+        captureSession.sessionPreset = AVCaptureSessionPreset1280x720;
+    } else if([VWWUserDefaults resolution] == 3){
+        captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
+    }
     
     /*
 	 * Create audio connection

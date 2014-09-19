@@ -21,11 +21,12 @@
     UILabel *headingLabel;
 
     // Motion related
+    UILabel *accelerometerCurrentLabel;
+    UILabel *gyroscopeCurrentLabel;
+
     UILabel *accelerometerLimitsLabel;
     UILabel *gyroscopeLimitsLabel;
 
-    UILabel *accelerometerCurrentLabel;
-    UILabel *gyroscopeCurrentLabel;
 }
 
 @end
@@ -37,6 +38,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         self.textColor = [UIColor whiteColor];
         self.labelColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
         self.renderDropShadows = YES;
@@ -115,8 +117,8 @@
         CGRect frame = CGRectMake(0, self.bounds.size.height - 3*kHeight - 2*kGutter, self.bounds.size.width, kHeight);
         distanceFromHomeLabel = [self labelWithFrame:frame];
     }
-    distanceFromHomeLabel.text = [NSString stringWithFormat:@"△ home: %fm",
-                                  [VWWLocationController sharedInstance].distanceFromHome];
+    distanceFromHomeLabel.text = [NSString stringWithFormat:@"△ home: %ldm",
+                                  (long)[VWWLocationController sharedInstance].distanceFromHome];
 
     
     
@@ -135,11 +137,39 @@
         headingLabel.text = @"n/a";
     }
     
+
+    // *************************************** Accelerometers *******************************************
+    if(accelerometerCurrentLabel == nil){
+        CGRect frame = CGRectMake(0, 0, self.bounds.size.width, 1*kHeight);
+        accelerometerCurrentLabel = [self labelWithFrame:frame];
+    }
     
+    if([VWWMotionMonitor sharedInstance].accelerometers){
+        CMAccelerometerData *acc = [VWWMotionMonitor sharedInstance].accelerometers;
+        accelerometerCurrentLabel.text = [NSString stringWithFormat:@"Acc x:%.2f y:%.2f z:%.2f",
+                                          acc.acceleration.x, acc.acceleration.y, acc.acceleration.z];
+    } else {
+        accelerometerCurrentLabel.text = @"n/a";
+    }
+    
+    // *************************************** Gyroscopes *******************************************
+    if(gyroscopeCurrentLabel == nil){
+        CGRect frame = CGRectMake(0, 1*kHeight + 1*kGutter, self.bounds.size.width, 1*kHeight);
+        gyroscopeCurrentLabel = [self labelWithFrame:frame];
+    }
+    
+    if([VWWMotionMonitor sharedInstance].gyroscopeLimits){
+        CMGyroData *gyro = [VWWMotionMonitor sharedInstance].gyroscopes;
+        gyroscopeCurrentLabel.text = [NSString stringWithFormat:@"Gyro.max x:%.2f y:%.2f z:%.2f",
+                                      gyro.rotationRate.x, gyro.rotationRate.y, gyro.rotationRate.z];
+    } else {
+        gyroscopeCurrentLabel.text = @"n/a";
+    }
+
     
     // *************************************** Accelerometer limits *******************************************
     if(accelerometerLimitsLabel == nil){
-        CGRect frame = CGRectMake(0, 0, self.bounds.size.width, 2*kHeight);
+        CGRect frame = CGRectMake(0, 2*kHeight + 2*kGutter, self.bounds.size.width, 2*kHeight);
         accelerometerLimitsLabel = [self labelWithFrame:frame];
     }
     
@@ -155,7 +185,7 @@
 
     // *************************************** Gyroscope limits *******************************************
     if(gyroscopeLimitsLabel == nil){
-        CGRect frame = CGRectMake(0, 2*kHeight, self.bounds.size.width, 2*kHeight);
+        CGRect frame = CGRectMake(0, 4*kHeight + 3*kGutter, self.bounds.size.width, 2*kHeight);
         gyroscopeLimitsLabel = [self labelWithFrame:frame];
     }
     

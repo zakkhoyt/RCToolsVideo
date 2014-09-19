@@ -9,9 +9,9 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 
 @interface VWWSessionViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *rButton;
-@property (weak, nonatomic) IBOutlet UIButton *sButton;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIView *toolbarView;
+@property (weak, nonatomic) IBOutlet UISwitch *statusSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *exitButton;
 
 @end
 
@@ -19,7 +19,7 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 @implementation VWWSessionViewController
 
 @synthesize previewView;
-@synthesize recordButton;
+
 
 - (void)applicationDidBecomeActive:(NSNotification*)notifcation
 {
@@ -62,18 +62,10 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     oglView.center = CGPointMake(previewView.bounds.size.width/2.0, previewView.bounds.size.height/2.0);
     
     // Set up labels
-    shouldShowStats = YES;
-    
-    frameRateLabel = [self labelWithText:@"" yPosition: (CGFloat) 10.0];
-    [previewView addSubview:frameRateLabel];
-    
-    dimensionsLabel = [self labelWithText:@"" yPosition: (CGFloat) 54.0];
-    [previewView addSubview:dimensionsLabel];
-    
-    typeLabel = [self labelWithText:@"" yPosition: (CGFloat) 98.0];
-    [previewView addSubview:typeLabel];
-    
-    [self.view bringSubviewToFront:self.toolbar];
+    shouldShowStats = NO;
+    self.statusSwitch.on = NO;
+ 
+
     [self.view bringSubviewToFront:self.toolbarView];
 
 }
@@ -120,22 +112,26 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     if(orientation == UIDeviceOrientationPortrait){
         [UIView animateWithDuration:0.2 animations:^{
             self.rButton.transform = CGAffineTransformIdentity;
-            self.sButton.transform = CGAffineTransformIdentity;
+            self.statusSwitch.transform = CGAffineTransformIdentity;
+            self.exitButton.transform = CGAffineTransformIdentity;
         }];
     } else if(orientation == UIDeviceOrientationPortraitUpsideDown){
         [UIView animateWithDuration:0.2 animations:^{
             self.rButton.transform = CGAffineTransformMakeRotation(M_PI);
-            self.sButton.transform = CGAffineTransformMakeRotation(M_PI);
+            self.statusSwitch.transform = CGAffineTransformMakeRotation(M_PI);
+            self.exitButton.transform = CGAffineTransformMakeRotation(M_PI);
         }];
     } else if(orientation == UIDeviceOrientationLandscapeLeft){
         [UIView animateWithDuration:0.2 animations:^{
             self.rButton.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
-            self.sButton.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
+            self.statusSwitch.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
+            self.exitButton.transform = CGAffineTransformMakeRotation(M_PI / 2.0);
         }];
     } else if(orientation == UIDeviceOrientationLandscapeRight){
         [UIView animateWithDuration:0.2 animations:^{
             self.rButton.transform = CGAffineTransformMakeRotation(-M_PI / 2.0);
-            self.sButton.transform = CGAffineTransformMakeRotation(-M_PI / 2.0);
+            self.statusSwitch.transform = CGAffineTransformMakeRotation(-M_PI / 2.0);
+            self.exitButton.transform = CGAffineTransformMakeRotation(-M_PI / 2.0);
         }];
     }
 }
@@ -171,6 +167,20 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 }
 - (void)updateLabels
 {
+    // Lazy loading
+    if(frameRateLabel == nil){
+        frameRateLabel = [self labelWithText:@"" yPosition: (CGFloat) 10.0];
+        [previewView addSubview:frameRateLabel];
+    }
+    if(dimensionsLabel == nil){
+        dimensionsLabel = [self labelWithText:@"" yPosition: (CGFloat) 54.0];
+        [previewView addSubview:dimensionsLabel];
+    }
+    if(typeLabel == nil){
+        typeLabel = [self labelWithText:@"" yPosition: (CGFloat) 98.0];
+        [previewView addSubview:typeLabel];
+    }
+    
 	if (shouldShowStats) {
 		NSString *frameRateString = [NSString stringWithFormat:@"%.2f FPS ", [videoProcessor videoFrameRate]];
  		frameRateLabel.text = frameRateString;
@@ -219,11 +229,20 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 }
 
 #pragma mark IBActions
+- (IBAction)exitButtonTouchUpInside:(UIButton *)sender {
+    [videoProcessor stopRecording];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (IBAction)statusSwitchValueChanged:(UISwitch*)sender {
+    shouldShowStats = sender.on;
+}
 
 - (IBAction)toggleRecording:(id)sender 
 {
 	// Wait for the recording to start/stop before re-enabling the record button.
-	[[self recordButton] setEnabled:NO];
+	[[self rButton] setEnabled:NO];
 	
 	if ( [videoProcessor isRecording] ) {
 		// The recordingWill/DidStop delegate methods will fire asynchronously in response to this call
@@ -246,8 +265,8 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 - (void)recordingWillStart
 {
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[[self recordButton] setEnabled:NO];	
-		[[self recordButton] setTitle:@"Stop"];
+		[[self rButton] setEnabled:NO];	
+		[[self rButton] setTitle:@"Stop" forState:UIControlStateNormal];
 
 		// Disable the idle timer while we are recording
 		[UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -261,7 +280,7 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 - (void)recordingDidStart
 {
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[[self recordButton] setEnabled:YES];
+		[[self rButton] setEnabled:YES];
 	});
 }
 
@@ -269,8 +288,8 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 {
 	dispatch_async(dispatch_get_main_queue(), ^{
 		// Disable until saving to the camera roll is complete
-		[[self recordButton] setTitle:@"Record"];
-		[[self recordButton] setEnabled:NO];
+		[[self rButton] setTitle:@"Record" forState:UIControlStateNormal];
+		[[self rButton] setEnabled:NO];
 		
 		// Pause the capture session so that saving will be as fast as possible.
 		// We resume the sesssion in recordingDidStop:
@@ -281,7 +300,7 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 - (void)recordingDidStop
 {
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[[self recordButton] setEnabled:YES];
+		[[self rButton] setEnabled:YES];
 		
 		[UIApplication sharedApplication].idleTimerDisabled = NO;
 

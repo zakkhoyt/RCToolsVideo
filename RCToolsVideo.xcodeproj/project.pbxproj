@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
+		CFB3E56219CCD89E00AB9B47 /* VWWButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */; };
 		CFB9ADB619CC151300247538 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB519CC151300247538 /* VWWHUDView.m */; };
 		CFB9ADBB19CCBD6500247538 /* VWWDeviceAxisLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB719CCBD6500247538 /* VWWDeviceAxisLimits.m */; };
 		CFB9ADBC19CCBD6500247538 /* VWWDeviceLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB819CCBD6500247538 /* VWWDeviceLimits.m */; };
+		CFB9ADBF19CCC6C800247538 /* VWWSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADBE19CCC6C800247538 /* VWWSwitchTableViewCell.m */; };
+		CFB9ADC219CCC70D00247538 /* VWWTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADC119CCC70D00247538 /* VWWTextTableViewCell.m */; };
 		CFCB901819CBB88D00D05317 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901719CBB88D00D05317 /* main.m */; };
 		CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901A19CBB88D00D05317 /* AppDelegate.m */; };
 		CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCB901F19CBB88D00D05317 /* Main.storyboard */; };
@@ -65,12 +68,18 @@
 
 /* Begin PBXFileReference section */
 		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CFB3E56019CCD89E00AB9B47 /* VWWButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWButtonTableViewCell.h; sourceTree = "<group>"; };
+		CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWButtonTableViewCell.m; sourceTree = "<group>"; };
 		CFB9ADB419CC151300247538 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
 		CFB9ADB519CC151300247538 /* VWWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDView.m; sourceTree = "<group>"; };
 		CFB9ADB719CCBD6500247538 /* VWWDeviceAxisLimits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWDeviceAxisLimits.m; sourceTree = "<group>"; };
 		CFB9ADB819CCBD6500247538 /* VWWDeviceLimits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWDeviceLimits.m; sourceTree = "<group>"; };
 		CFB9ADB919CCBD6500247538 /* VWWDeviceAxisLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWDeviceAxisLimits.h; sourceTree = "<group>"; };
 		CFB9ADBA19CCBD6500247538 /* VWWDeviceLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWDeviceLimits.h; sourceTree = "<group>"; };
+		CFB9ADBD19CCC6C800247538 /* VWWSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSwitchTableViewCell.h; sourceTree = "<group>"; };
+		CFB9ADBE19CCC6C800247538 /* VWWSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSwitchTableViewCell.m; sourceTree = "<group>"; };
+		CFB9ADC019CCC70D00247538 /* VWWTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTextTableViewCell.h; sourceTree = "<group>"; };
+		CFB9ADC119CCC70D00247538 /* VWWTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWTextTableViewCell.m; sourceTree = "<group>"; };
 		CFCB901219CBB88D00D05317 /* RCToolsVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCToolsVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCB901619CBB88D00D05317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCB901719CBB88D00D05317 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -178,6 +187,7 @@
 			children = (
 				CFD098BC19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.h */,
 				CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */,
+				CFB9ADC319CCC75400247538 /* Cell */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -189,6 +199,19 @@
 				CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */,
 			);
 			name = HUD;
+			sourceTree = "<group>";
+		};
+		CFB9ADC319CCC75400247538 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CFB9ADBD19CCC6C800247538 /* VWWSwitchTableViewCell.h */,
+				CFB9ADBE19CCC6C800247538 /* VWWSwitchTableViewCell.m */,
+				CFB9ADC019CCC70D00247538 /* VWWTextTableViewCell.h */,
+				CFB9ADC119CCC70D00247538 /* VWWTextTableViewCell.m */,
+				CFB3E56019CCD89E00AB9B47 /* VWWButtonTableViewCell.h */,
+				CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		CFCB900919CBB88D00D05317 = {
@@ -568,6 +591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFB9ADBF19CCC6C800247538 /* VWWSwitchTableViewCell.m in Sources */,
 				CFD0989819CBCA3B00C88A76 /* VWWSessionsViewController.m in Sources */,
 				CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */,
 				CFD098B919CBCB9B00C88A76 /* NSTimer+Blocks.m in Sources */,
@@ -579,9 +603,11 @@
 				CFCB905019CBB8FB00D05317 /* VWWVideoProcessor.m in Sources */,
 				CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */,
 				CFD0989A19CBCA3B00C88A76 /* VWWTableViewController.m in Sources */,
+				CFB3E56219CCD89E00AB9B47 /* VWWButtonTableViewCell.m in Sources */,
 				CFD098BE19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m in Sources */,
 				CFD098C419CBD41900C88A76 /* VWWLocationController.m in Sources */,
 				CFD0989C19CBCA3B00C88A76 /* VWWUserDefaults.m in Sources */,
+				CFB9ADC219CCC70D00247538 /* VWWTextTableViewCell.m in Sources */,
 				CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */,
 				CFCB901819CBB88D00D05317 /* main.m in Sources */,
 				CFD0989919CBCA3B00C88A76 /* VWWTableViewCell.m in Sources */,
