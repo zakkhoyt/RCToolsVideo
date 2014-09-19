@@ -17,10 +17,11 @@
 +(VWWLocationController*)sharedInstance;
 -(void)start;
 -(void)stop;
-//-(void)reset;
+-(void)resetStats;
 //-(void)getCurrentLocationWithCompletionBlock:(VWWCLLocationBlock)completionBlock;
 //@property (nonatomic, strong) NSMutableArray *locations;
 @property (nonatomic, copy) CLHeading *heading;
+@property (nonatomic) CLLocationSpeed maxSpeed;
 @property (nonatomic, copy) CLLocation *location;;
 
 @end

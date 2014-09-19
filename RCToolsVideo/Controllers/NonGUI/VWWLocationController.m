@@ -73,14 +73,11 @@
     if(self.isRunning) return;
     self.isRunning = YES;
     
-    
+    [self resetStats];
 
-    //    [self.locationManager setDistanceFilter:kCLDistanceFilterNone];
-    //    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [self.locationManager startUpdatingHeading];
     [self.locationManager startUpdatingLocation];
-    //    [self.locationManager startMonitoringSignificantLocationChanges];
 }
 -(void)stop{
     if(self.isRunning == NO) return;
@@ -88,17 +85,14 @@
     
     [self.locationManager stopUpdatingHeading];
     [self.locationManager stopUpdatingLocation];
-    [self.locationManager startUpdatingHeading];
-    //    [self.locationManager stopMonitoringSignificantLocationChanges];
     
 }
-//
-//-(void)reset{
-//    [self stop];
-//    [_locations removeAllObjects];
-//    self.heading = nil;
-//    self.location = nil;
-//}
+
+-(void)resetStats{
+    self.location = nil;
+    self.maxSpeed = 0;
+    self.heading = nil;
+}
 
 //
 //
@@ -123,8 +117,6 @@
 
 
 -(void)initializeClass{
-//    _locations = [@[]mutableCopy];
-    _heading = [@[]mutableCopy];
     
     //    _queue = dispatch_queue_create("com.getsmileapp.smile.location", NULL);
     //    dispatch_async(self.queue, ^{
@@ -175,23 +167,12 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations{
     if(locations.count){
-        self.location = locations[0];
+        CLLocation *location = locations[0];
+//        VWW_LOG_DEBUG(@"New location: %@", location.description);
+        self.location = location;
+        self.maxSpeed = MAX(self.maxSpeed, location.speed);
     }
 }
-
-//-(void)addLocationToLocations:(CLLocation*)location{
-//    //    VWW_LOG_DEBUG(@"location: %@", location);
-//    // insert at the beginning of the set
-//    [self.locations insertObject:location atIndex:0];
-//    self.location = location;
-//    if(self.currentLocationBlock){
-//        self.currentLocationBlock(self.location);
-//        _currentLocationBlock = nil;
-//    }
-//    
-//}
-
-
 
 /*
  *  locationManager:didUpdateHeading:
@@ -201,6 +182,7 @@
  */
 - (void)locationManager:(CLLocationManager *)manager
        didUpdateHeading:(CLHeading *)newHeading{
+    VWW_LOG_DEBUG(@"New heading: %@", newHeading.description);
     self.heading = newHeading;
 }
 
