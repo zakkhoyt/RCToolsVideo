@@ -28,9 +28,9 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     [videoProcessor resumeCaptureSession];
 }
 
--(BOOL)prefersStatusBarHidden {
-    return YES;
-}
+//-(BOOL)prefersStatusBarHidden {
+//    return YES;
+//}
 
 - (void)viewDidLoad
 {

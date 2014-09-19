@@ -65,6 +65,14 @@ static vm_size_t get_free_memory() {
 }
 
 
+//-(BOOL)prefersStatusBarHidden{
+//    return NO;
+//}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

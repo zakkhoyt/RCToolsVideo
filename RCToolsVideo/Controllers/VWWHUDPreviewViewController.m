@@ -16,13 +16,11 @@
 
 @implementation VWWHUDPreviewViewController
 
--(BOOL)prefersStatusBarHidden{
-    return YES;
-}
+//-(BOOL)prefersStatusBarHidden{
+//    return YES;
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
-    
     
     // Gesture recognizers
     UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapGestureHandler:)];
@@ -37,6 +35,12 @@
     NSUInteger index = arc4random() % 2;
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"field0%ld", (long)index]];
     self.fieldImageView.image = image;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+    [UIApplication sharedApplication].statusBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {

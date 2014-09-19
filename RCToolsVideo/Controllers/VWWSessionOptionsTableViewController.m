@@ -34,9 +34,9 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 
 @implementation VWWSessionOptionsTableViewController
 
--(BOOL)prefersStatusBarHidden{
-    return NO;
-}
+//-(BOOL)prefersStatusBarHidden{
+//    return NO;
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hudOptions = @[@{VWWSessionTableViewCellTitleKey : @"Accelermeters",
@@ -54,7 +54,9 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
                         @{VWWSessionTableViewCellTitleKey : @"Top Speed",
                           VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellSwitchType)},
                         @{VWWSessionTableViewCellTitleKey : @"Coordinates",
-                          VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellButtonType)}];
+                          VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellSwitchType)},
+                        @{VWWSessionTableViewCellTitleKey : @"Text Drop Shadow",
+                          VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellSwitchType)}];
     
     
     self.resolutionOptions = @[@{VWWSessionTableViewCellTitleKey : @"352x288",
@@ -72,6 +74,7 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+    [UIApplication sharedApplication].statusBarHidden = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -183,27 +186,77 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     }
     
     
-    NSInteger type = ((NSNumber*)dictionary[VWWSessionTableViewCellTypeType]).integerValue;
-    UITableViewCell *cell = nil;
-    if(type == VWWSessionTableViewCellTextType){
-        cell = [self textTableViewCellFromDictionary:dictionary];
-    } else if(type == VWWSessionTableViewCellSwitchType){
-        cell = [self switchTableViewCellFromDictionary:dictionary];
-    } else if(type == VWWSessionTableViewCellButtonType){
-        cell = [self buttonTableViewCellFromDictionary:dictionary];
-    }
+//    NSInteger type = ((NSNumber*)dictionary[VWWSessionTableViewCellTypeType]).integerValue;
+//    UITableViewCell *cell = nil;
+//    if(type == VWWSessionTableViewCellTextType){
+//        cell = [self textTableViewCellFromDictionary:dictionary];
+//    } else if(type == VWWSessionTableViewCellSwitchType){
+//        cell = [self switchTableViewCellFromDictionary:dictionary];
+//    } else if(type == VWWSessionTableViewCellButtonType){
+//        cell = [self buttonTableViewCellFromDictionary:dictionary];
+//    }
 
-    if(indexPath.section == 1){
+    if(indexPath.section == 0){
+        if(indexPath.row == 0){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderAccelerometers];
+            return cell;
+        } else if(indexPath.row == 1){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderGyroscopes];
+            return cell;
+        } else if(indexPath.row == 2){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderAccelerometerLimits];
+            return cell;
+        } else if(indexPath.row == 3){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderGyroscopeLimits];
+            return cell;
+        } else if(indexPath.row == 4){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderHeading];
+            return cell;
+        } else if(indexPath.row == 5){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderDistanceFromHome];
+            return cell;
+        } else if(indexPath.row == 6){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderSpeed];
+            return cell;
+        } else if(indexPath.row == 7){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderCoordinates];
+            return cell;
+        } else if(indexPath.row == 8){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderDropShadow];
+            return cell;
+        }
+//        else if(indexPath.row == 9){
+//            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+//            cell.optionSwitch.on = [VWWUserDefaults render];
+//            
+//        } else if(indexPath.row == 10){
+//            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+//            cell.optionSwitch.on = [VWWUserDefaults renderAccelerometers];
+//            
+//        }
+    } else if(indexPath.section == 1){
         if(indexPath.row == [VWWUserDefaults resolution]){
+            VWWTextTableViewCell *cell = [self textTableViewCellFromDictionary:dictionary];
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            return cell;
         } else {
+            VWWTextTableViewCell *cell = [self textTableViewCellFromDictionary:dictionary];
             cell.accessoryType = UITableViewCellAccessoryNone;
+            return cell;
         }
     }
     
-    
-    
-    return cell;
+    VWW_LOG_CRITICAL(@"Should never reach this default case");
+    return [[UITableViewCell alloc]init];
 }
 
 #pragma mark UITableViewDelegate
@@ -242,6 +295,28 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 #pragma mark  VWWSwitchTableViewCellDelegate
 -(void)switchTableViewCell:(VWWSwitchTableViewCell*)sender switchValueChanged:(BOOL)on{
     VWW_LOG_TRACE;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    if(indexPath.section == 0){
+        if(indexPath.row == 0){
+            [VWWUserDefaults setRenderAccelerometers:on];
+        } else if(indexPath.row == 1){
+            [VWWUserDefaults setRenderGyroscopes:on];
+        } else if(indexPath.row == 2){
+            [VWWUserDefaults setRenderAccelerometerLimits:on];
+        } else if(indexPath.row == 3){
+            [VWWUserDefaults setRenderGyroscopeLimits:on];
+        } else if(indexPath.row == 4){
+            [VWWUserDefaults setRenderHeading:on];
+        } else if(indexPath.row == 5){
+            [VWWUserDefaults setRenderDistanceFromHome:on];
+        } else if(indexPath.row == 6){
+            [VWWUserDefaults setRenderSpeed:on];
+        } else if(indexPath.row == 7){
+            [VWWUserDefaults setRenderCoordinates:on];
+        } else if(indexPath.row == 8){
+            [VWWUserDefaults setRenderDropShadow:on];
+        }
+    }
 }
 
 #pragma mark VWWButtonTableViewCellDelegate

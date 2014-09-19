@@ -28,6 +28,8 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
     // This notification is fired when VWWFileController is finished writing a file.
     [[NSNotificationCenter defaultCenter] addObserverForName:VWWFileControllerSessionsChanged object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
         [self loadSessions];
