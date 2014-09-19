@@ -10,9 +10,9 @@
 #import "VWWFileController.h"
 #import "MBProgressHUD.h"
 
-static NSString *VWWSegueSessionsToSession = @"VWWSegueSessionsToSession";
-static NSString *VWWSegueSessionsToVideo = @"VWWSegueSessionsToVideo";
-
+//static NSString *VWWSegueSessionsToSession = @"VWWSegueSessionsToSession";
+//static NSString *VWWSegueSessionsToVideo = @"VWWSegueSessionsToVideo";
+static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 @interface VWWSessionsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *sessionURLs;
@@ -37,7 +37,7 @@ static NSString *VWWSegueSessionsToVideo = @"VWWSegueSessionsToVideo";
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationItem.title = @"Balancing";
+    self.navigationItem.title = @"RC Videos";
     
     [self loadSessions];
 }
@@ -80,7 +80,7 @@ static NSString *VWWSegueSessionsToVideo = @"VWWSegueSessionsToVideo";
     self.tableView.editing = !self.tableView.editing;
 }
 - (IBAction)addButtonAction:(id)sender {
-    [self performSegueWithIdentifier:VWWSegueSessionsToSession sender:self];
+    [self performSegueWithIdentifier:VWWSegueSessionsToOptions sender:self];
 }
 
 

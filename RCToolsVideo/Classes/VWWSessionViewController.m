@@ -4,7 +4,8 @@
 #import "VWWSessionViewController.h"
 #import "VWWSessionOptionsTableViewController.h"
 //static inline double radians (double degrees) { return degrees * (M_PI / 180); }
-static NSString *VWWSegueSessionToOptions = @"VWWSegueSessionToOptions";
+static NSString *VWWSegueOptionsToSession = @"VWWSegueOptionsToSession";
+static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 
 @interface VWWSessionViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *rButton;
@@ -102,10 +103,10 @@ static NSString *VWWSegueSessionToOptions = @"VWWSegueSessionToOptions";
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:VWWSegueSessionToOptions]){
+//    if([segue.identifier isEqualToString:VWWSegueSessionToOptions]){
 //        VWWSessionOptionsTableViewController *vc = segue.destinationViewController;
-
-    }
+//
+//    }
 }
 
 // UIDeviceOrientationDidChangeNotification selector
@@ -235,9 +236,9 @@ static NSString *VWWSegueSessionToOptions = @"VWWSegueSessionToOptions";
 }
 
 
-- (IBAction)settingsButtonAction:(id)sender {
-    [self performSegueWithIdentifier:VWWSegueSessionToOptions sender:self];
-}
+//- (IBAction)settingsButtonAction:(id)sender {
+//    [self performSegueWithIdentifier:VWWSegueSession sender:self];
+//}
 
 
 #pragma mark VWWVideoProcessorDelegate

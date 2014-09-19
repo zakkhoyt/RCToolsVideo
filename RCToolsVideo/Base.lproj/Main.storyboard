@@ -82,12 +82,11 @@
                         <outlet property="sButton" destination="Dv7-AK-NCK" id="Wm5-rd-s5E"/>
                         <outlet property="toolbar" destination="11p-wm-dsh" id="hic-nb-b8X"/>
                         <outlet property="toolbarView" destination="4Qv-B7-kLv" id="7dJ-bT-cJV"/>
-                        <segue destination="TtC-Or-6pi" kind="show" identifier="VWWSegueSessionToOptions" id="qF9-oJ-3HT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-237" y="-1053"/>
+            <point key="canvasLocation" x="712" y="-1129"/>
         </scene>
         <!--Sessions View Controller-->
         <scene sceneID="01C-LX-W0m">
@@ -104,7 +103,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8DB-Ac-h6f">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="VWWSessionTableViewCell" rowHeight="44" id="KiH-bX-dct" customClass="VWWSessionTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="VWWSessionTableViewCell" rowHeight="44" id="KiH-bX-dct" customClass="VWWSessionTableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KiH-bX-dct" id="eff-xK-Yzd">
@@ -159,7 +158,7 @@
                     <connections>
                         <outlet property="editButton" destination="ncv-Ud-kiW" id="isP-nt-KLY"/>
                         <outlet property="tableView" destination="8DB-Ac-h6f" id="pQl-gH-cJr"/>
-                        <segue destination="vXZ-lx-hvc" kind="show" identifier="VWWSegueSessionsToSession" id="fJn-aP-0nm"/>
+                        <segue destination="TtC-Or-6pi" kind="show" identifier="VWWSegueSessionsToOptions" id="8y3-9S-PLQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNd-WL-vFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,7 +198,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cNX-aU-HKD">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Option" textLabel="M0d-S6-jwJ" rowHeight="44" style="IBUITableViewCellStyleDefault" id="llO-J0-wa0" customClass="VWWSessionTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Option" textLabel="M0d-S6-jwJ" rowHeight="44" style="IBUITableViewCellStyleDefault" id="llO-J0-wa0" customClass="VWWSessionTableViewCell">
                                         <rect key="frame" x="0.0" y="86" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="llO-J0-wa0" id="w1K-5X-Zrl">
@@ -235,20 +234,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2HZ-Y0-OyK">
-                        <barButtonItem key="rightBarButtonItem" title="Preview" id="x08-Sa-ivH">
+                        <barButtonItem key="rightBarButtonItem" title="Ready" id="MBC-7G-QY4">
                             <connections>
-                                <action selector="addButtonAction:" destination="TtC-Or-6pi" id="eMz-Wp-GuG"/>
-                                <segue destination="x2W-vm-Leh" kind="show" id="6Wq-Hb-2XG"/>
+                                <action selector="readyButtonAction:" destination="TtC-Or-6pi" id="2p8-nr-INp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="cNX-aU-HKD" id="rpJ-Hl-W4N"/>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="VWWSegueOptionsToSession" id="FA0-SV-kKz"/>
+                        <segue destination="x2W-vm-Leh" kind="show" identifier="VWWSegueOptionsToPreview" id="73U-He-X0f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Lq-co-Fzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="543" y="-1048"/>
+            <point key="canvasLocation" x="-247" y="-556"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="VIo-lq-Rl7">
@@ -262,7 +262,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qk3-fj-gh6">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qk3-fj-gh6">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -279,7 +279,8 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcu-V6-jUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422" y="-1053"/>
+            <point key="canvasLocation" x="712" y="-349"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.065601543580000005" green="0.67004024620000002" blue="0.002768738262" alpha="1" colorSpace="calibratedRGB"/>
 </document>

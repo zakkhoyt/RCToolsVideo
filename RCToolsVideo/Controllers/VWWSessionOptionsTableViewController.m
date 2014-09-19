@@ -7,20 +7,36 @@
 //
 
 #import "VWWSessionOptionsTableViewController.h"
+#import "VWWHUDPreviewViewController.h"
+#import "VWWSessionViewController.h"
+#import "VWW.h"
+
+static NSString *VWWSegueOptionsToSession = @"VWWSegueOptionsToSession";
+static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 
 @interface VWWSessionOptionsTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *options;
+@property (nonatomic, strong) NSArray *hudOptions;
+@property (nonatomic, strong) NSArray *resolutionOptions;
 @end
 
 @implementation VWWSessionOptionsTableViewController
 
 -(BOOL)prefersStatusBarHidden{
-    return YES;
+    return NO;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.options = [NSArray arrayWithObjects:@"HUD one", @"HUD two", @"HUD three", nil];
+    self.hudOptions = @[@"Distance From Home",
+                        @"Coordinates",
+                        @"Coordinates + Speed",
+                        @"Maximum Forces",
+                        @"Compass"];
+    
+    self.resolutionOptions = @[@"352x288",
+                               @"640x480",
+                               @"1280x720",
+                               @"1920x1080"];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -33,42 +49,99 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+    if([segue.identifier isEqualToString:VWWSegueOptionsToSession]){
 
+    } else if([segue.identifier isEqualToString:VWWSegueOptionsToPreview]){
+        
+    }
+}
+
+
+#pragma mark IBAction
+- (IBAction)readyButtonAction:(id)sender {
+//    [self performSegueWithIdentifier:VWWSegueOptionsToSession sender:self];
+    [self performSegueWithIdentifier:VWWSegueOptionsToPreview sender:self];
+}
 
 
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.options.count;
+    if(section == 0){
+        return self.hudOptions.count;
+    } else if(section == 1){
+        return self.resolutionOptions.count;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //    VWWSessionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VWWSessionTableViewCell" forIndexPath:indexPath];
-    //    NSURL *sessionURL = self.sessionURLs[indexPath.row];
-    //    cell.sessionURL = sessionURL;
-    //    return cell;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Option" forIndexPath:indexPath];
-    cell.textLabel.text = self.options[indexPath.row];
-    return cell;
+    if(indexPath.section == 0){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Option" forIndexPath:indexPath];
+        cell.textLabel.text = self.hudOptions[indexPath.row];
+        if(indexPath.row == [VWWUserDefaults hud]){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        return cell;
+    } else if(indexPath.section == 1){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Option" forIndexPath:indexPath];
+        cell.textLabel.text = self.resolutionOptions[indexPath.row];
+        if(indexPath.row == [VWWUserDefaults resolution]){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+
+        return cell;
+    }
+    return nil;
+}
+
+#pragma mark UITableViewDelegate
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if(section == 0){
+        return @"HUD Mode";
+    } else if(section == 1){
+        return @"Resolution";
+    }
+    return @"";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    
+    if(indexPath.section == 0){
+        for(NSUInteger index = 0; index < self.hudOptions.count; index++){
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:indexPath.section]];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [VWWUserDefaults setHUD:indexPath.row];
+    } else if(indexPath.section == 1){
+        for(NSUInteger index = 0; index < self.resolutionOptions.count; index++){
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:indexPath.section]];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [VWWUserDefaults setResolution:indexPath.row];
+    }
+//    [self performSegueWithIdentifier:VWWSegueOptionsToSession sender:self];
+//    [self performSegueWithIdentifier:VWWSegueOptionsToPreview sender:self];
+}
 
 @end

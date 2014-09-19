@@ -14,6 +14,9 @@
 
 @implementation VWWHUDPreviewViewController
 
+-(BOOL)prefersStatusBarHidden{
+    return YES;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;

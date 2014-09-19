@@ -553,6 +553,12 @@
 	 */
     captureSession = [[AVCaptureSession alloc] init];
     
+    // Here are the fixed resolutions that are supported in iOS 7+
+    captureSession.sessionPreset = AVCaptureSessionPreset352x288;
+    captureSession.sessionPreset = AVCaptureSessionPreset640x480;
+    captureSession.sessionPreset = AVCaptureSessionPreset1280x720;
+    captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
+    
     /*
 	 * Create audio connection
 	 */

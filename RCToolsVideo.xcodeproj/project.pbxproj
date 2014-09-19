@@ -164,6 +164,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF2F415519CC0C86008B68DD /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				CFD098BC19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.h */,
+				CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */,
+			);
+			name = Options;
+			sourceTree = "<group>";
+		};
+		CF2F415619CC0C8D008B68DD /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				CFD098BF19CBD2E600C88A76 /* VWWHUDPreviewViewController.h */,
+				CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */,
+			);
+			name = HUD;
+			sourceTree = "<group>";
+		};
 		CFCB900919CBB88D00D05317 = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				CFD098B219CBCB9B00C88A76 /* Categories */,
-				CFCB904019CBB8FB00D05317 /* Classes */,
 				CFD0987C19CBCA3B00C88A76 /* Controllers */,
 				CFD0987B19CBBD8E00C88A76 /* Frameworks */,
 				CFCB902219CBB88D00D05317 /* Images.xcassets */,
@@ -238,13 +255,6 @@
 				CFCB903F19CBB8FB00D05317 /* passThrough.vsh */,
 			);
 			path = Shaders;
-			sourceTree = "<group>";
-		};
-		CFCB904019CBB8FB00D05317 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		CFD0987A19CBBD5F00C88A76 /* UserInterface */ = {
@@ -316,10 +326,8 @@
 				CFD0989F19CBCA5400C88A76 /* Base */,
 				CFD098A519CBCAAA00C88A76 /* Session */,
 				CFD098A619CBCAAE00C88A76 /* Sessions */,
-				CFD098BC19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.h */,
-				CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */,
-				CFD098BF19CBD2E600C88A76 /* VWWHUDPreviewViewController.h */,
-				CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */,
+				CF2F415519CC0C86008B68DD /* Options */,
+				CF2F415619CC0C8D008B68DD /* HUD */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
