@@ -11,9 +11,14 @@
 #import "VWWLocationController.h"
 
 @interface VWWHUDView (){
+    // Location related
     UILabel *coordinateLabel;
     UILabel *topSpeedLabel;
+    UILabel *distanceFromHomeLabel;
+    
+    // Heading related
     UILabel *headingLabel;
+
 }
 
 @end
@@ -49,14 +54,14 @@
     if(coordinateLabel == nil){
         CGRect frame = CGRectMake(0, 0, self.bounds.size.width, kHeight);
         coordinateLabel = [[UILabel alloc]initWithFrame:frame];
-        coordinateLabel.center = CGPointMake(self.center.x, self.bounds.size.height - kHeight);
+        coordinateLabel.center = CGPointMake(self.center.x, self.bounds.size.height - 1*kHeight - 0*kGutter);
         coordinateLabel.textAlignment = NSTextAlignmentCenter;
 //        locationLabel.backgroundColor = [UIColor clearColor];
         coordinateLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         coordinateLabel.textColor = [UIColor whiteColor];
         [self addSubview:coordinateLabel];
     }
-    if([VWWLocationController sharedInstance].heading){
+    if([VWWLocationController sharedInstance].location){
         coordinateLabel.text = [NSString stringWithFormat:@"%f,%f",
                                 [VWWLocationController sharedInstance].location.coordinate.latitude,
                                 [VWWLocationController sharedInstance].location.coordinate.longitude];
@@ -81,6 +86,22 @@
     }
 
     
+    // *************************************** Distance from home *******************************************
+    if(distanceFromHomeLabel == nil){
+        CGRect frame = CGRectMake(0, 0, self.bounds.size.width, kHeight);
+        distanceFromHomeLabel = [[UILabel alloc]initWithFrame:frame];
+        distanceFromHomeLabel.center = CGPointMake(self.center.x, self.bounds.size.height - 3*kHeight - 2*kGutter);
+        distanceFromHomeLabel.textAlignment = NSTextAlignmentCenter;
+        //        locationLabel.backgroundColor = [UIColor clearColor];
+        distanceFromHomeLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        distanceFromHomeLabel.textColor = [UIColor whiteColor];
+        [self addSubview:distanceFromHomeLabel];
+    }
+    
+
+    distanceFromHomeLabel.text = [NSString stringWithFormat:@"△ home: %fm",
+                                  [VWWLocationController sharedInstance].distanceFromHome];
+
     
     
     
@@ -88,7 +109,7 @@
     if(headingLabel == nil){
         CGRect frame = CGRectMake(0, 0, self.bounds.size.width, kHeight);
         headingLabel = [[UILabel alloc]initWithFrame:frame];
-        headingLabel.center = CGPointMake(self.center.x, self.bounds.size.height - 3*kHeight - 2*kGutter);
+        headingLabel.center = CGPointMake(self.center.x, self.bounds.size.height - 4*kHeight - 3*kGutter);
         headingLabel.textAlignment = NSTextAlignmentCenter;
 //        locationLabel.backgroundColor = [UIColor clearColor];
         headingLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];

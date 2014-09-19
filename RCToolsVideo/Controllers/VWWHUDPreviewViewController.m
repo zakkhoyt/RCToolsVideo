@@ -7,6 +7,7 @@
 //
 
 #import "VWWHUDPreviewViewController.h"
+#import "VWWLocationController.h"
 
 @interface VWWHUDPreviewViewController ()
 
@@ -20,6 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
+    
+    
+    // Gesture recognizers
+    UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapGestureHandler:)];
+    [doubleTapGestureRecognizer setNumberOfTapsRequired:2];
+    [self.view addGestureRecognizer:doubleTapGestureRecognizer];
+    
+    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureHandler:)];
+    [singleTapGestureRecognizer setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:singleTapGestureRecognizer];
+    [singleTapGestureRecognizer requireGestureRecognizerToFail:doubleTapGestureRecognizer];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,8 +50,12 @@
 }
 */
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+
+-(void)singleTapGestureHandler:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)doubleTapGestureHandler:(id)sender{
+    [[VWWLocationController sharedInstance]resetStats];
 }
 
 @end

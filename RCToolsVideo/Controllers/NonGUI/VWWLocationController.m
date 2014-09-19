@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) CLLocation *lastUpdatedLocation;
 @property (nonatomic) BOOL isRunning;
+
+@property (nonatomic, strong) CLLocation *homeLocation;
 @end
 
 
@@ -92,6 +94,7 @@
     self.location = nil;
     self.maxSpeed = 0;
     self.heading = nil;
+    self.homeLocation = nil;
 }
 
 //
@@ -171,6 +174,12 @@
 //        VWW_LOG_DEBUG(@"New location: %@", location.description);
         self.location = location;
         self.maxSpeed = MAX(self.maxSpeed, location.speed);
+        
+        if(self.homeLocation == nil){
+            self.homeLocation = [location copy];
+        }
+        self.distanceFromHome = [location distanceFromLocation:self.homeLocation];
+        
     }
 }
 
