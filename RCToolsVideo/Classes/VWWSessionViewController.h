@@ -4,7 +4,7 @@
 #import "VWWPreviewView.h"
 #import "VWWVideoProcessor.h"
 
-@interface VWWViewController : UIViewController <VWWVideoProcessorDelegate>
+@interface VWWSessionViewController : UIViewController <VWWVideoProcessorDelegate>
 {
     VWWVideoProcessor *videoProcessor;
     

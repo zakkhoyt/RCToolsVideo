@@ -17,7 +17,7 @@
 		CFCB904D19CBB8FB00D05317 /* passThrough.vsh in Resources */ = {isa = PBXBuildFile; fileRef = CFCB903F19CBB8FB00D05317 /* passThrough.vsh */; };
 		CFCB904F19CBB8FB00D05317 /* VWWPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */; };
 		CFCB905019CBB8FB00D05317 /* VWWVideoProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904619CBB8FB00D05317 /* VWWVideoProcessor.m */; };
-		CFCB905119CBB8FB00D05317 /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904819CBB8FB00D05317 /* VWWViewController.m */; };
+		CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904819CBB8FB00D05317 /* VWWSessionViewController.m */; };
 		CFCB905219CBB8FB00D05317 /* ShaderUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904919CBB8FB00D05317 /* ShaderUtilities.c */; };
 		CFCB905419CBBAAD00D05317 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905319CBBAAD00D05317 /* OpenGLES.framework */; };
 		CFCB905619CBBAB200D05317 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905519CBBAB200D05317 /* Foundation.framework */; };
@@ -29,6 +29,23 @@
 		CFCB906219CBBAD400D05317 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */; };
 		CFCB906419CBBAD900D05317 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */; };
 		CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906519CBBADE00D05317 /* QuartzCore.framework */; };
+		CFD0989519CBCA3B00C88A76 /* VWWFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0987F19CBCA3B00C88A76 /* VWWFileController.m */; };
+		CFD0989619CBCA3B00C88A76 /* VWWMotionMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988119CBCA3B00C88A76 /* VWWMotionMonitor.m */; };
+		CFD0989719CBCA3B00C88A76 /* VWWCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988319CBCA3B00C88A76 /* VWWCollectionViewCell.m */; };
+		CFD0989819CBCA3B00C88A76 /* VWWSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988519CBCA3B00C88A76 /* VWWSessionsViewController.m */; };
+		CFD0989919CBCA3B00C88A76 /* VWWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988719CBCA3B00C88A76 /* VWWTableViewCell.m */; };
+		CFD0989A19CBCA3B00C88A76 /* VWWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988919CBCA3B00C88A76 /* VWWTableViewController.m */; };
+		CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988B19CBCA3B00C88A76 /* VWWViewController.m */; };
+		CFD0989C19CBCA3B00C88A76 /* VWWUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0989219CBCA3B00C88A76 /* VWWUserDefaults.m */; };
+		CFD0989D19CBCA3B00C88A76 /* VWWUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0989419CBCA3B00C88A76 /* VWWUtilities.m */; };
+		CFD098A419CBCA8000C88A76 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098A319CBCA8000C88A76 /* MBProgressHUD.m */; };
+		CFD098AE19CBCB1800C88A76 /* VWWSample.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098AD19CBCB1800C88A76 /* VWWSample.m */; };
+		CFD098B119CBCB2E00C88A76 /* VWWSampleAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B019CBCB2E00C88A76 /* VWWSampleAxis.m */; };
+		CFD098B919CBCB9B00C88A76 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B419CBCB9B00C88A76 /* NSTimer+Blocks.m */; };
+		CFD098BA19CBCB9B00C88A76 /* UIFont+VWW.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B619CBCB9B00C88A76 /* UIFont+VWW.m */; };
+		CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */; };
+		CFD098BE19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */; };
+		CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +72,12 @@
 		CFCB903119CBB88D00D05317 /* RCToolsVideoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCToolsVideoTests.m; sourceTree = "<group>"; };
 		CFCB903E19CBB8FB00D05317 /* passThrough.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.fsh; sourceTree = "<group>"; };
 		CFCB903F19CBB8FB00D05317 /* passThrough.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.vsh; sourceTree = "<group>"; };
-		CFCB904319CBB8FB00D05317 /* VWWPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWPreviewView.h; sourceTree = "<group>"; };
-		CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWPreviewView.m; sourceTree = "<group>"; };
-		CFCB904519CBB8FB00D05317 /* VWWVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWVideoProcessor.h; sourceTree = "<group>"; };
-		CFCB904619CBB8FB00D05317 /* VWWVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWVideoProcessor.m; sourceTree = "<group>"; };
-		CFCB904719CBB8FB00D05317 /* VWWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWViewController.h; sourceTree = "<group>"; };
-		CFCB904819CBB8FB00D05317 /* VWWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWViewController.m; sourceTree = "<group>"; };
+		CFCB904319CBB8FB00D05317 /* VWWPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWPreviewView.h; path = Classes/VWWPreviewView.h; sourceTree = "<group>"; };
+		CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWPreviewView.m; path = Classes/VWWPreviewView.m; sourceTree = "<group>"; };
+		CFCB904519CBB8FB00D05317 /* VWWVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWVideoProcessor.h; path = ../../Classes/VWWVideoProcessor.h; sourceTree = "<group>"; };
+		CFCB904619CBB8FB00D05317 /* VWWVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWVideoProcessor.m; path = ../../Classes/VWWVideoProcessor.m; sourceTree = "<group>"; };
+		CFCB904719CBB8FB00D05317 /* VWWSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWSessionViewController.h; path = ../Classes/VWWSessionViewController.h; sourceTree = "<group>"; };
+		CFCB904819CBB8FB00D05317 /* VWWSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWSessionViewController.m; path = ../Classes/VWWSessionViewController.m; sourceTree = "<group>"; };
 		CFCB904919CBB8FB00D05317 /* ShaderUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ShaderUtilities.c; path = ../Classes/ShaderUtilities.c; sourceTree = "<group>"; };
 		CFCB904A19CBB8FB00D05317 /* ShaderUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderUtilities.h; path = ../Classes/ShaderUtilities.h; sourceTree = "<group>"; };
 		CFCB905319CBBAAD00D05317 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -73,6 +90,44 @@
 		CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		CFCB906519CBBADE00D05317 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CFD0987E19CBCA3B00C88A76 /* VWWFileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWFileController.h; sourceTree = "<group>"; };
+		CFD0987F19CBCA3B00C88A76 /* VWWFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWFileController.m; sourceTree = "<group>"; };
+		CFD0988019CBCA3B00C88A76 /* VWWMotionMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWMotionMonitor.h; sourceTree = "<group>"; };
+		CFD0988119CBCA3B00C88A76 /* VWWMotionMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWMotionMonitor.m; sourceTree = "<group>"; };
+		CFD0988219CBCA3B00C88A76 /* VWWCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCollectionViewCell.h; sourceTree = "<group>"; };
+		CFD0988319CBCA3B00C88A76 /* VWWCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCollectionViewCell.m; sourceTree = "<group>"; };
+		CFD0988419CBCA3B00C88A76 /* VWWSessionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSessionsViewController.h; sourceTree = "<group>"; };
+		CFD0988519CBCA3B00C88A76 /* VWWSessionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionsViewController.m; sourceTree = "<group>"; };
+		CFD0988619CBCA3B00C88A76 /* VWWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTableViewCell.h; sourceTree = "<group>"; };
+		CFD0988719CBCA3B00C88A76 /* VWWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWTableViewCell.m; sourceTree = "<group>"; };
+		CFD0988819CBCA3B00C88A76 /* VWWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTableViewController.h; sourceTree = "<group>"; };
+		CFD0988919CBCA3B00C88A76 /* VWWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWTableViewController.m; sourceTree = "<group>"; };
+		CFD0988A19CBCA3B00C88A76 /* VWWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWViewController.h; sourceTree = "<group>"; };
+		CFD0988B19CBCA3B00C88A76 /* VWWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWViewController.m; sourceTree = "<group>"; };
+		CFD0988D19CBCA3B00C88A76 /* VWW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWW.h; sourceTree = "<group>"; };
+		CFD0988E19CBCA3B00C88A76 /* VWWBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWBlocks.h; sourceTree = "<group>"; };
+		CFD0988F19CBCA3B00C88A76 /* VWWDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWDefines.h; sourceTree = "<group>"; };
+		CFD0989019CBCA3B00C88A76 /* VWWTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTypes.h; sourceTree = "<group>"; };
+		CFD0989119CBCA3B00C88A76 /* VWWUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWUserDefaults.h; sourceTree = "<group>"; };
+		CFD0989219CBCA3B00C88A76 /* VWWUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUserDefaults.m; sourceTree = "<group>"; };
+		CFD0989319CBCA3B00C88A76 /* VWWUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWUtilities.h; sourceTree = "<group>"; };
+		CFD0989419CBCA3B00C88A76 /* VWWUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUtilities.m; sourceTree = "<group>"; };
+		CFD098A219CBCA8000C88A76 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		CFD098A319CBCA8000C88A76 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		CFD098AC19CBCB1800C88A76 /* VWWSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSample.h; sourceTree = "<group>"; };
+		CFD098AD19CBCB1800C88A76 /* VWWSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSample.m; sourceTree = "<group>"; };
+		CFD098AF19CBCB2E00C88A76 /* VWWSampleAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSampleAxis.h; sourceTree = "<group>"; };
+		CFD098B019CBCB2E00C88A76 /* VWWSampleAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSampleAxis.m; sourceTree = "<group>"; };
+		CFD098B319CBCB9B00C88A76 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
+		CFD098B419CBCB9B00C88A76 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
+		CFD098B519CBCB9B00C88A76 /* UIFont+VWW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+VWW.h"; sourceTree = "<group>"; };
+		CFD098B619CBCB9B00C88A76 /* UIFont+VWW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+VWW.m"; sourceTree = "<group>"; };
+		CFD098B719CBCB9B00C88A76 /* UIView+VWW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+VWW.h"; sourceTree = "<group>"; };
+		CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+VWW.m"; sourceTree = "<group>"; };
+		CFD098BC19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSessionOptionsTableViewController.h; sourceTree = "<group>"; };
+		CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionOptionsTableViewController.m; sourceTree = "<group>"; };
+		CFD098BF19CBD2E600C88A76 /* VWWHUDPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDPreviewViewController.h; sourceTree = "<group>"; };
+		CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDPreviewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +179,18 @@
 		CFCB901419CBB88D00D05317 /* RCToolsVideo */ = {
 			isa = PBXGroup;
 			children = (
+				CFD098B219CBCB9B00C88A76 /* Categories */,
 				CFCB904019CBB8FB00D05317 /* Classes */,
+				CFD0987C19CBCA3B00C88A76 /* Controllers */,
 				CFD0987B19CBBD8E00C88A76 /* Frameworks */,
 				CFCB902219CBB88D00D05317 /* Images.xcassets */,
+				CFD0988C19CBCA3B00C88A76 /* Include */,
+				CFD098AB19CBCB1800C88A76 /* Model */,
 				CFCB903D19CBB8FB00D05317 /* Shaders */,
 				CFCB901519CBB88D00D05317 /* Supporting Files */,
+				CFD098A019CBCA8000C88A76 /* ThirdParty */,
 				CFD0987A19CBBD5F00C88A76 /* UserInterface */,
+				CFD098A719CBCABF00C88A76 /* View */,
 			);
 			path = RCToolsVideo;
 			sourceTree = "<group>";
@@ -176,12 +237,6 @@
 		CFCB904019CBB8FB00D05317 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CFCB904319CBB8FB00D05317 /* VWWPreviewView.h */,
-				CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */,
-				CFCB904519CBB8FB00D05317 /* VWWVideoProcessor.h */,
-				CFCB904619CBB8FB00D05317 /* VWWVideoProcessor.m */,
-				CFCB904719CBB8FB00D05317 /* VWWViewController.h */,
-				CFCB904819CBB8FB00D05317 /* VWWViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -211,6 +266,164 @@
 			);
 			name = Frameworks;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		CFD0987C19CBCA3B00C88A76 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CFD0987D19CBCA3B00C88A76 /* NonGUI */,
+				CFD0989E19CBCA4B00C88A76 /* GUI */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CFD0987D19CBCA3B00C88A76 /* NonGUI */ = {
+			isa = PBXGroup;
+			children = (
+				CFD098A819CBCACF00C88A76 /* Video */,
+				CFD098A919CBCAD700C88A76 /* File */,
+				CFD098AA19CBCADC00C88A76 /* Motion */,
+			);
+			path = NonGUI;
+			sourceTree = "<group>";
+		};
+		CFD0988C19CBCA3B00C88A76 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				CFD0988D19CBCA3B00C88A76 /* VWW.h */,
+				CFD0988E19CBCA3B00C88A76 /* VWWBlocks.h */,
+				CFD0988F19CBCA3B00C88A76 /* VWWDefines.h */,
+				CFD0989019CBCA3B00C88A76 /* VWWTypes.h */,
+				CFD0989119CBCA3B00C88A76 /* VWWUserDefaults.h */,
+				CFD0989219CBCA3B00C88A76 /* VWWUserDefaults.m */,
+				CFD0989319CBCA3B00C88A76 /* VWWUtilities.h */,
+				CFD0989419CBCA3B00C88A76 /* VWWUtilities.m */,
+			);
+			path = Include;
+			sourceTree = "<group>";
+		};
+		CFD0989E19CBCA4B00C88A76 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				CFD0989F19CBCA5400C88A76 /* Base */,
+				CFD098A519CBCAAA00C88A76 /* Session */,
+				CFD098A619CBCAAE00C88A76 /* Sessions */,
+				CFD098BC19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.h */,
+				CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */,
+				CFD098BF19CBD2E600C88A76 /* VWWHUDPreviewViewController.h */,
+				CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
+		CFD0989F19CBCA5400C88A76 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CFD0988219CBCA3B00C88A76 /* VWWCollectionViewCell.h */,
+				CFD0988319CBCA3B00C88A76 /* VWWCollectionViewCell.m */,
+				CFD0988619CBCA3B00C88A76 /* VWWTableViewCell.h */,
+				CFD0988719CBCA3B00C88A76 /* VWWTableViewCell.m */,
+				CFD0988819CBCA3B00C88A76 /* VWWTableViewController.h */,
+				CFD0988919CBCA3B00C88A76 /* VWWTableViewController.m */,
+				CFD0988A19CBCA3B00C88A76 /* VWWViewController.h */,
+				CFD0988B19CBCA3B00C88A76 /* VWWViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		CFD098A019CBCA8000C88A76 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				CFD098A119CBCA8000C88A76 /* MBProgressHUD */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		CFD098A119CBCA8000C88A76 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				CFD098A219CBCA8000C88A76 /* MBProgressHUD.h */,
+				CFD098A319CBCA8000C88A76 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		CFD098A519CBCAAA00C88A76 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				CFCB904719CBB8FB00D05317 /* VWWSessionViewController.h */,
+				CFCB904819CBB8FB00D05317 /* VWWSessionViewController.m */,
+			);
+			name = Session;
+			sourceTree = "<group>";
+		};
+		CFD098A619CBCAAE00C88A76 /* Sessions */ = {
+			isa = PBXGroup;
+			children = (
+				CFD0988419CBCA3B00C88A76 /* VWWSessionsViewController.h */,
+				CFD0988519CBCA3B00C88A76 /* VWWSessionsViewController.m */,
+			);
+			name = Sessions;
+			sourceTree = "<group>";
+		};
+		CFD098A719CBCABF00C88A76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CFCB904319CBB8FB00D05317 /* VWWPreviewView.h */,
+				CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CFD098A819CBCACF00C88A76 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				CFCB904519CBB8FB00D05317 /* VWWVideoProcessor.h */,
+				CFCB904619CBB8FB00D05317 /* VWWVideoProcessor.m */,
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
+		CFD098A919CBCAD700C88A76 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				CFD0987E19CBCA3B00C88A76 /* VWWFileController.h */,
+				CFD0987F19CBCA3B00C88A76 /* VWWFileController.m */,
+			);
+			name = File;
+			sourceTree = "<group>";
+		};
+		CFD098AA19CBCADC00C88A76 /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				CFD0988019CBCA3B00C88A76 /* VWWMotionMonitor.h */,
+				CFD0988119CBCA3B00C88A76 /* VWWMotionMonitor.m */,
+			);
+			name = Motion;
+			sourceTree = "<group>";
+		};
+		CFD098AB19CBCB1800C88A76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFD098AF19CBCB2E00C88A76 /* VWWSampleAxis.h */,
+				CFD098B019CBCB2E00C88A76 /* VWWSampleAxis.m */,
+				CFD098AC19CBCB1800C88A76 /* VWWSample.h */,
+				CFD098AD19CBCB1800C88A76 /* VWWSample.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CFD098B219CBCB9B00C88A76 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CFD098B319CBCB9B00C88A76 /* NSTimer+Blocks.h */,
+				CFD098B419CBCB9B00C88A76 /* NSTimer+Blocks.m */,
+				CFD098B519CBCB9B00C88A76 /* UIFont+VWW.h */,
+				CFD098B619CBCB9B00C88A76 /* UIFont+VWW.m */,
+				CFD098B719CBCB9B00C88A76 /* UIView+VWW.h */,
+				CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,12 +528,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD0989819CBCA3B00C88A76 /* VWWSessionsViewController.m in Sources */,
+				CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */,
+				CFD098B919CBCB9B00C88A76 /* NSTimer+Blocks.m in Sources */,
+				CFD098B119CBCB2E00C88A76 /* VWWSampleAxis.m in Sources */,
+				CFD0989519CBCA3B00C88A76 /* VWWFileController.m in Sources */,
+				CFD0989719CBCA3B00C88A76 /* VWWCollectionViewCell.m in Sources */,
 				CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */,
 				CFCB905019CBB8FB00D05317 /* VWWVideoProcessor.m in Sources */,
-				CFCB905119CBB8FB00D05317 /* VWWViewController.m in Sources */,
+				CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */,
+				CFD0989A19CBCA3B00C88A76 /* VWWTableViewController.m in Sources */,
+				CFD098BE19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m in Sources */,
+				CFD0989C19CBCA3B00C88A76 /* VWWUserDefaults.m in Sources */,
+				CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */,
 				CFCB901819CBB88D00D05317 /* main.m in Sources */,
+				CFD0989919CBCA3B00C88A76 /* VWWTableViewCell.m in Sources */,
+				CFD0989D19CBCA3B00C88A76 /* VWWUtilities.m in Sources */,
 				CFCB905219CBB8FB00D05317 /* ShaderUtilities.c in Sources */,
+				CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */,
 				CFCB904F19CBB8FB00D05317 /* VWWPreviewView.m in Sources */,
+				CFD098AE19CBCB1800C88A76 /* VWWSample.m in Sources */,
+				CFD0989619CBCA3B00C88A76 /* VWWMotionMonitor.m in Sources */,
+				CFD098A419CBCA8000C88A76 /* MBProgressHUD.m in Sources */,
+				CFD098BA19CBCB9B00C88A76 /* UIFont+VWW.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
