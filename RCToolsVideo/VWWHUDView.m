@@ -99,17 +99,14 @@
     }
 
     
-    // *************************************** Top Speed *******************************************
+    // *************************************** Speed *******************************************
     if(topSpeedLabel == nil){
         CGRect frame = CGRectMake(0, self.bounds.size.height - 2*kHeight - 1*kGutter, self.bounds.size.width, kHeight);
         topSpeedLabel = [self labelWithFrame:frame];
     }
-    if([VWWLocationController sharedInstance].heading){
-        topSpeedLabel.text = [NSString stringWithFormat:@"Top Speed:%.f m/s",
-                             [VWWLocationController sharedInstance].maxSpeed];
-    } else {
-        topSpeedLabel.text = @"n/a";
-    }
+    topSpeedLabel.text = [NSString stringWithFormat:@"Speed:%.f Max:%.f m/s",
+                          [VWWLocationController sharedInstance].currentSpeed,
+                          [VWWLocationController sharedInstance].maxSpeed];
 
     
     // *************************************** Distance from home *******************************************
@@ -117,7 +114,7 @@
         CGRect frame = CGRectMake(0, self.bounds.size.height - 3*kHeight - 2*kGutter, self.bounds.size.width, kHeight);
         distanceFromHomeLabel = [self labelWithFrame:frame];
     }
-    distanceFromHomeLabel.text = [NSString stringWithFormat:@"△ home: %ldm",
+    distanceFromHomeLabel.text = [NSString stringWithFormat:@"△ Home: %ldm",
                                   (long)[VWWLocationController sharedInstance].distanceFromHome];
 
     
@@ -145,9 +142,9 @@
     }
     
     if([VWWMotionMonitor sharedInstance].accelerometers){
-        CMAccelerometerData *acc = [VWWMotionMonitor sharedInstance].accelerometers;
+        VWWSample *acc = [VWWMotionMonitor sharedInstance].accelerometers;
         accelerometerCurrentLabel.text = [NSString stringWithFormat:@"Acc x:%.2f y:%.2f z:%.2f",
-                                          acc.acceleration.x, acc.acceleration.y, acc.acceleration.z];
+                                          acc.x.value, acc.y.value, acc.z.value];
     } else {
         accelerometerCurrentLabel.text = @"n/a";
     }
@@ -159,9 +156,9 @@
     }
     
     if([VWWMotionMonitor sharedInstance].gyroscopeLimits){
-        CMGyroData *gyro = [VWWMotionMonitor sharedInstance].gyroscopes;
+        VWWSample *gyro = [VWWMotionMonitor sharedInstance].gyroscopes;
         gyroscopeCurrentLabel.text = [NSString stringWithFormat:@"Gyro.max x:%.2f y:%.2f z:%.2f",
-                                      gyro.rotationRate.x, gyro.rotationRate.y, gyro.rotationRate.z];
+                                      gyro.x.value, gyro.y.value, gyro.z.value];
     } else {
         gyroscopeCurrentLabel.text = @"n/a";
     }

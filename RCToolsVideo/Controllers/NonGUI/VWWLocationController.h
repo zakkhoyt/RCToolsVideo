@@ -24,6 +24,7 @@
 
 // In m/s
 @property (nonatomic) CLLocationSpeed maxSpeed;
+@property (nonatomic) CLLocationSpeed currentSpeed;
 
 // CLLocation
 @property (nonatomic, copy) CLLocation *location;

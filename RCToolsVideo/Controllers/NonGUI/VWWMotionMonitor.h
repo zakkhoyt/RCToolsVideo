@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreMotion/CoreMotion.h>
 #import "VWWDeviceLimits.h"
+#import "VWWSample.h"
 
 @interface VWWMotionMonitor : NSObject
 +(VWWMotionMonitor*)sharedInstance;
@@ -20,17 +21,17 @@
 -(void)startAccelerometer;
 -(void)stopAccelerometer;
 @property (nonatomic, strong) VWWDeviceLimits *accelerometerLimits;
-@property (nonatomic, strong) CMAccelerometerData *accelerometers;
+@property (nonatomic, strong) VWWSample *accelerometers;
 
 -(void)startGyroscope;
 -(void)stopGyroscope;
 @property (nonatomic, strong) VWWDeviceLimits *gyroscopeLimits;
-@property (nonatomic, strong) CMGyroData *gyroscopes;
+@property (nonatomic, strong) VWWSample *gyroscopes;
 
--(void)startMagnetometer;
--(void)stopMagnetometer;
-@property (nonatomic, strong) VWWDeviceLimits *magnetometerLimits;
-@property (nonatomic, strong) CMMagnetometerData *magnetometers;
+//-(void)startMagnetometer;
+//-(void)stopMagnetometer;
+//@property (nonatomic, strong) VWWDeviceLimits *magnetometerLimits;
+//@property (nonatomic, strong) CMMagnetometerData *magnetometers;
 
 -(void)startDevice;
 -(void)stopDevice;

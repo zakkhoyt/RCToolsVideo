@@ -34,8 +34,8 @@
     [self.view addGestureRecognizer:singleTapGestureRecognizer];
     [singleTapGestureRecognizer requireGestureRecognizerToFail:doubleTapGestureRecognizer];
 
-    NSUInteger index = arc4random() % 5;
-    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"field1%ld", (long)index]];
+    NSUInteger index = arc4random() % 2;
+    UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"field0%ld", (long)index]];
     self.fieldImageView.image = image;
 }
 

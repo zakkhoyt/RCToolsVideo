@@ -9,14 +9,20 @@
 #import "VWWMotionMonitor.h"
 #import "VWW.h"
 
+const NSUInteger kFilterSampleCount = 32;
+
 @interface VWWMotionMonitor ()
 @property (nonatomic, strong) CMMotionManager *motionManager;
 @property (nonatomic) NSTimeInterval updateInterval;
 
 @property (nonatomic) BOOL accelerometerRunning;
-@property (nonatomic) BOOL magnetometerRunning;
+//@property (nonatomic) BOOL magnetometerRunning;
 @property (nonatomic) BOOL gyrosRunning;
 @property (nonatomic) BOOL deviceRunning;
+
+@property (nonatomic, strong) NSMutableArray *accelerometersHistory;
+@property (nonatomic, strong) NSMutableArray *gyroscopesHistory;
+//@property (nonatomic, strong) NSMutableArray *magnetometersHistory;
 
 @end
 
@@ -35,7 +41,17 @@
 -(id)init{
     self = [super init];
     if(self){
-        [self initializeClass];
+        self.motionManager = [[CMMotionManager alloc]init];
+        self.updateInterval = 1/30.0f;
+        
+        self.accelerometerLimits = [[VWWDeviceLimits alloc]init];
+        self.gyroscopeLimits = [[VWWDeviceLimits alloc]init];
+//        self.magnetometerLimits = [[VWWDeviceLimits alloc]init];
+        
+        self.accelerometersHistory = [@[]mutableCopy];
+        self.gyroscopesHistory = [@[]mutableCopy];
+//        self.magnetometersHistory = [@[]mutableCopy];
+
     }
     return self;
 }
@@ -51,9 +67,9 @@
         self.motionManager.gyroUpdateInterval = self.updateInterval;
     }
     
-    if(self.magnetometerRunning){
-        self.motionManager.magnetometerUpdateInterval = self.updateInterval;
-    }
+//    if(self.magnetometerRunning){
+//        self.motionManager.magnetometerUpdateInterval = self.updateInterval;
+//    }
     
     if(self.deviceRunning){
         self.motionManager.deviceMotionUpdateInterval = self.updateInterval;
@@ -66,28 +82,19 @@
 
 #pragma mark Private methods
 
--(void)initializeClass{
-    self.motionManager = [[CMMotionManager alloc]init];
-    self.updateInterval = 1/30.0f;
-    
-    self.accelerometerLimits = [[VWWDeviceLimits alloc]init];
-    self.gyroscopeLimits = [[VWWDeviceLimits alloc]init];
-    self.magnetometerLimits = [[VWWDeviceLimits alloc]init];
-}
-
 
 
 #pragma mark Public methods
 -(void)startAll{
     [self startAccelerometer];
     [self startGyroscope];
-    [self startMagnetometer];
+//    [self startMagnetometer];
     [self startDevice];
 }
 -(void)stopAll{
     [self stopAccelerometer];
     [self stopGyroscope];
-    [self stopMagnetometer];
+//    [self stopMagnetometer];
     [self stopDevice];
 }
 -(void)resetStats{
@@ -97,9 +104,9 @@
     @synchronized(self.gyroscopeLimits){
         self.gyroscopeLimits = [[VWWDeviceLimits alloc]init];
     }
-    @synchronized(self.magnetometerLimits){
-        self.magnetometerLimits = [[VWWDeviceLimits alloc]init];
-    }
+//    @synchronized(self.magnetometerLimits){
+//        self.magnetometerLimits = [[VWWDeviceLimits alloc]init];
+//    }
 }
 
 #pragma mark Accelerometers
@@ -109,13 +116,50 @@
     NSOperationQueue* accelerometerQueue = [[NSOperationQueue alloc] init];
     [self.motionManager startAccelerometerUpdatesToQueue:accelerometerQueue withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
         @synchronized(self.accelerometerLimits){
-            self.accelerometers = [accelerometerData copy];
-            self.accelerometerLimits.x.max = MAX(self.accelerometerLimits.x.max, accelerometerData.acceleration.x);
-            self.accelerometerLimits.x.min = MIN(self.accelerometerLimits.x.min, accelerometerData.acceleration.x);
-            self.accelerometerLimits.y.max = MAX(self.accelerometerLimits.y.max, accelerometerData.acceleration.y);
-            self.accelerometerLimits.y.min = MIN(self.accelerometerLimits.y.min, accelerometerData.acceleration.y);
-            self.accelerometerLimits.z.max = MAX(self.accelerometerLimits.z.max, accelerometerData.acceleration.z);
-            self.accelerometerLimits.z.min = MIN(self.accelerometerLimits.z.min, accelerometerData.acceleration.z);
+            // Prepopulate the last kFilterSampleCount samples with the current reading
+            if(self.accelerometersHistory.count == 0){
+                for(NSUInteger index = 0; index < kFilterSampleCount; index++){
+                    VWWSample *sample = [[VWWSample alloc]init];
+                    sample.x.value = accelerometerData.acceleration.x;
+                    sample.y.value = accelerometerData.acceleration.y;
+                    sample.z.value = accelerometerData.acceleration.z;
+                    [self.accelerometersHistory addObject:sample];
+                }
+            }
+
+            
+            // Subtract the average of the last kFilterSampleCount samples
+            float xTotal = 0, yTotal = 0, zTotal = 0;
+            for(NSUInteger index = 0; index < kFilterSampleCount; index++){
+                VWWSample *sample = self.accelerometersHistory[index];
+                xTotal += sample.x.value;
+                yTotal += sample.y.value;
+                zTotal += sample.z.value;
+            }
+            
+            float xHPF = xTotal / (float)kFilterSampleCount;
+            float yHPF = yTotal / (float)kFilterSampleCount;
+            float zHPF = zTotal / (float)kFilterSampleCount;
+            
+            
+            
+            self.accelerometers = [[VWWSample alloc]init];
+            self.accelerometers.x.value = accelerometerData.acceleration.x - xHPF;
+            self.accelerometers.y.value = accelerometerData.acceleration.y - yHPF;
+            self.accelerometers.z.value = accelerometerData.acceleration.z - zHPF;
+            self.accelerometers.x.hpf = xHPF;
+            self.accelerometers.y.hpf = yHPF;
+            self.accelerometers.z.hpf = zHPF;
+            
+            
+            // Limits
+            self.accelerometerLimits.x.max = MAX(self.accelerometerLimits.x.max, self.accelerometers.x.value);
+            self.accelerometerLimits.x.min = MIN(self.accelerometerLimits.x.min, self.accelerometers.x.value);
+            self.accelerometerLimits.y.max = MAX(self.accelerometerLimits.y.max, self.accelerometers.y.value);
+            self.accelerometerLimits.y.min = MIN(self.accelerometerLimits.y.min, self.accelerometers.y.value);
+            self.accelerometerLimits.z.max = MAX(self.accelerometerLimits.z.max, self.accelerometers.z.value);
+            self.accelerometerLimits.z.min = MIN(self.accelerometerLimits.z.min, self.accelerometers.z.value);
+
         }
     }];
     self.accelerometerRunning = YES;
@@ -140,13 +184,18 @@
     NSOperationQueue* gyroQueue = [[NSOperationQueue alloc] init];
     [self.motionManager startGyroUpdatesToQueue:gyroQueue withHandler:^(CMGyroData *gyroData, NSError *error) {
         @synchronized(self.gyroscopeLimits){
-            self.gyroscopes = [gyroData copy];
-            self.gyroscopeLimits.x.max = MAX(self.gyroscopeLimits.x.max, gyroData.rotationRate.x);
-            self.gyroscopeLimits.x.min = MIN(self.gyroscopeLimits.x.min, gyroData.rotationRate.x);
-            self.gyroscopeLimits.y.max = MAX(self.gyroscopeLimits.y.max, gyroData.rotationRate.y);
-            self.gyroscopeLimits.y.min = MIN(self.gyroscopeLimits.y.min, gyroData.rotationRate.y);
-            self.gyroscopeLimits.z.max = MAX(self.gyroscopeLimits.z.max, gyroData.rotationRate.z);
-            self.gyroscopeLimits.z.min = MIN(self.gyroscopeLimits.z.min, gyroData.rotationRate.z);
+
+            self.gyroscopes = [[VWWSample alloc]init];
+            self.gyroscopes.x.value = gyroData.rotationRate.x;
+            self.gyroscopes.y.value = gyroData.rotationRate.y;
+            self.gyroscopes.z.value = gyroData.rotationRate.z;
+            
+            self.gyroscopeLimits.x.max = MAX(self.gyroscopeLimits.x.max, self.gyroscopes.x.value);
+            self.gyroscopeLimits.x.min = MIN(self.gyroscopeLimits.x.min, self.gyroscopes.x.value);
+            self.gyroscopeLimits.y.max = MAX(self.gyroscopeLimits.y.max, self.gyroscopes.y.value);
+            self.gyroscopeLimits.y.min = MIN(self.gyroscopeLimits.y.min, self.gyroscopes.y.value);
+            self.gyroscopeLimits.z.max = MAX(self.gyroscopeLimits.z.max, self.gyroscopes.z.value);
+            self.gyroscopeLimits.z.min = MIN(self.gyroscopeLimits.z.min, self.gyroscopes.z.value);
         }
     }];
     self.gyrosRunning = YES;
@@ -162,36 +211,36 @@
 }
 
 
-#pragma mark Magnetometers
-
-
--(void)startMagnetometer{
-    if(self.magnetometerRunning == YES) return;
-    self.motionManager.magnetometerUpdateInterval = self.updateInterval;
-    NSOperationQueue* magnetometerQueue = [[NSOperationQueue alloc] init];
-    [self.motionManager startMagnetometerUpdatesToQueue:magnetometerQueue withHandler:^(CMMagnetometerData *magnetometerData, NSError *error) {
-        @synchronized(self.magnetometerLimits){
-            self.magnetometers = [magnetometerData copy];
-            self.magnetometerLimits.x.max = MAX(self.magnetometerLimits.x.max, magnetometerData.magneticField.x);
-            self.magnetometerLimits.x.min = MIN(self.magnetometerLimits.x.min, magnetometerData.magneticField.x);
-            self.magnetometerLimits.y.max = MAX(self.magnetometerLimits.y.max, magnetometerData.magneticField.y);
-            self.magnetometerLimits.y.min = MIN(self.magnetometerLimits.y.min, magnetometerData.magneticField.y);
-            self.magnetometerLimits.z.max = MAX(self.magnetometerLimits.z.max, magnetometerData.magneticField.z);
-            self.magnetometerLimits.z.min = MIN(self.magnetometerLimits.z.min, magnetometerData.magneticField.z);
-        }
-    }];
-    
-    self.magnetometerRunning = YES;
-    VWW_LOG_DEBUG(@"Started Magnetometer");
-    
-}
--(void)stopMagnetometer{
-    if(self.magnetometerRunning == NO) return;
-    
-    [self.motionManager stopMagnetometerUpdates];
-    self.magnetometerRunning = NO;
-    VWW_LOG_DEBUG(@"Stopped Magnetometer");
-}
+//#pragma mark Magnetometers
+//
+//
+//-(void)startMagnetometer{
+//    if(self.magnetometerRunning == YES) return;
+//    self.motionManager.magnetometerUpdateInterval = self.updateInterval;
+//    NSOperationQueue* magnetometerQueue = [[NSOperationQueue alloc] init];
+//    [self.motionManager startMagnetometerUpdatesToQueue:magnetometerQueue withHandler:^(CMMagnetometerData *magnetometerData, NSError *error) {
+//        @synchronized(self.magnetometerLimits){
+//            self.magnetometers = [magnetometerData copy];
+//            self.magnetometerLimits.x.max = MAX(self.magnetometerLimits.x.max, magnetometerData.magneticField.x);
+//            self.magnetometerLimits.x.min = MIN(self.magnetometerLimits.x.min, magnetometerData.magneticField.x);
+//            self.magnetometerLimits.y.max = MAX(self.magnetometerLimits.y.max, magnetometerData.magneticField.y);
+//            self.magnetometerLimits.y.min = MIN(self.magnetometerLimits.y.min, magnetometerData.magneticField.y);
+//            self.magnetometerLimits.z.max = MAX(self.magnetometerLimits.z.max, magnetometerData.magneticField.z);
+//            self.magnetometerLimits.z.min = MIN(self.magnetometerLimits.z.min, magnetometerData.magneticField.z);
+//        }
+//    }];
+//    
+//    self.magnetometerRunning = YES;
+//    VWW_LOG_DEBUG(@"Started Magnetometer");
+//    
+//}
+//-(void)stopMagnetometer{
+//    if(self.magnetometerRunning == NO) return;
+//    
+//    [self.motionManager stopMagnetometerUpdates];
+//    self.magnetometerRunning = NO;
+//    VWW_LOG_DEBUG(@"Stopped Magnetometer");
+//}
 
 
 #pragma mark Attitude

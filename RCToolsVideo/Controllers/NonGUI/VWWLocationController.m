@@ -173,6 +173,7 @@
         CLLocation *location = locations[0];
 //        VWW_LOG_DEBUG(@"New location: %@", location.description);
         self.location = location;
+        self.currentSpeed = location.speed;
         self.maxSpeed = MAX(self.maxSpeed, location.speed);
         
         if(self.homeLocation == nil){
