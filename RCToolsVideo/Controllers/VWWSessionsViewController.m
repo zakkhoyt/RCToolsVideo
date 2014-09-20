@@ -11,12 +11,12 @@
 #import "MBProgressHUD.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "VWWSessionTableViewCell.h"
-#import "VWWVideoViewController.h"
+
 @import  MediaPlayer;
 @import CoreLocation;
 
 static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
-static NSString *VWWSegueSessionsToVideo = @"VWWSegueSessionsToVideo";
+
 
 @interface VWWSessionsViewController () < UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -62,10 +62,10 @@ static NSString *VWWSegueSessionsToVideo = @"VWWSegueSessionsToVideo";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:VWWSegueSessionsToVideo]){
-        VWWVideoViewController *vc = segue.destinationViewController;
-        vc.url = sender;
-    }
+//    if([segue.identifier isEqualToString:VWWSegueSessionsToVideo]){
+//        VWWVideoViewController *vc = segue.destinationViewController;
+//        vc.url = sender;
+//    }
 }
 
 
