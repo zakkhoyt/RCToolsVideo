@@ -16,6 +16,7 @@
 
 typedef void (^VWWA2PDataSetBlock)(VWWAP2DataController* dataSet);
 typedef void (^VWWArrayBlock)(NSArray *array);
+typedef void (^VWWAssetsLibraryControllerURLErrorBlock)(NSURL *assetURL, NSError *error);
 typedef void (^VWWBoolBlock)(BOOL success);
 typedef void (^VWWCLLocationBlock)(CLLocation *location);
 typedef void (^VWWDictionaryBlock)(NSDictionary *dictionary);

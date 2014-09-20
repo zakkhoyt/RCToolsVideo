@@ -16,13 +16,16 @@ static NSString *VWWUserDefaultsGyroscopesKey = @"gyroscopes";
 static NSString *VWWUserDefaultsAccelerometerLimitsKey = @"accelerometerLimits";
 static NSString *VWWUserDefaultsGyroscopeLimitsKey = @"gyroscopeLimits";
 static NSString *VWWUserDefaultsHeadingKey = @"heading";
+static NSString *VWWUserDefaultsAltitudeKey = @"altitude";
 static NSString *VWWUserDefaultsDistanceFromHomeKey = @"distanceFromHome";
 static NSString *VWWUserDefaultsSpeedKey = @"speed";
 static NSString *VWWUserDefaultsCoordinatesKey = @"coordinates";
 static NSString *VWWUserDefaultsDropShadowKey = @"dropShadow";
+static NSString *VWWUserDefaultsCompassIndicatorKey = @"compassIndicator";
+static NSString *VWWUserDefaultsAttitudeIndicatorKey = @"attitudeIndicator";
 static NSString *VWWUserDefaultsTextColorKey = @"textColor";
 static NSString *VWWUserDefaultsLabelColorKey = @"labelColor";
-
+static NSString *VWWUserDefaultsVersionKey = @"version";
 @implementation VWWUserDefaults
 
 
@@ -65,6 +68,7 @@ static NSString *VWWUserDefaultsLabelColorKey = @"labelColor";
 }
 
 
+
 // Heading
 +(BOOL)renderHeading{
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsHeadingKey];
@@ -73,6 +77,16 @@ static NSString *VWWUserDefaultsLabelColorKey = @"labelColor";
     [[NSUserDefaults standardUserDefaults] setBool:renderHeading forKey:VWWUserDefaultsHeadingKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+// Altitude
++(BOOL)renderAltitude{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsAltitudeKey];
+}
++(void)setRenderAltitude:(BOOL)renderAltitude{
+    [[NSUserDefaults standardUserDefaults] setBool:renderAltitude forKey:VWWUserDefaultsAltitudeKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 
 
 // DistanceFromHome
@@ -115,6 +129,25 @@ static NSString *VWWUserDefaultsLabelColorKey = @"labelColor";
 }
 
 
+// Compass Indiciator
++(BOOL)renderCompassIndicator{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsCompassIndicatorKey];
+}
++(void)setRenderCompassIndicator:(BOOL)renderCompassIndicator{
+    [[NSUserDefaults standardUserDefaults] setBool:renderCompassIndicator forKey:VWWUserDefaultsCompassIndicatorKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+// Attitude Indicator
++(BOOL)renderAttitudeIndicator{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsAttitudeIndicatorKey];
+}
++(void)setRenderAttitudeIndicator:(BOOL)renderAttitudeIndicator{
+    [[NSUserDefaults standardUserDefaults] setBool:renderAttitudeIndicator forKey:VWWUserDefaultsAttitudeIndicatorKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
 // TextColor
 +(UIColor*)textColor{
     return [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsTextColorKey];
@@ -131,6 +164,18 @@ static NSString *VWWUserDefaultsLabelColorKey = @"labelColor";
 }
 +(void)setLabelColor:(UIColor*)labelColor{
     [[NSUserDefaults standardUserDefaults] setObject:labelColor forKey:VWWUserDefaultsLabelColorKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+// Version
++(NSString*)version{
+    NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsVersionKey];
+    if(version == nil) version = @"";
+    return version;
+}
++(void)setVersion:(NSString*)version{
+    [[NSUserDefaults standardUserDefaults] setObject:version forKey:VWWUserDefaultsVersionKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

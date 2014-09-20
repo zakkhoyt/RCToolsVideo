@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UIFont+VWW.h"
+#import "VWW.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +18,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    [self setupDefaults];
     [self setupAppearance];
     return YES;
 }
@@ -44,6 +46,37 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+-(void)setupDefaults{
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    NSString *versionString = [NSString stringWithFormat:@"%@.%@", version, build];
+    
+    if([VWWUserDefaults version] == nil){
+        // First time running this app ever
+        VWW_LOG_INFO(@"First time running app. Setting up user defaults");
+        [VWWUserDefaults setVersion:versionString];
+        [VWWUserDefaults setResolution:1];
+        [VWWUserDefaults setRenderAccelerometers:YES];
+        [VWWUserDefaults setRenderGyroscopes:YES];
+        [VWWUserDefaults setRenderAccelerometerLimits:YES];
+        [VWWUserDefaults setRenderGyroscopeLimits:YES];
+        [VWWUserDefaults setRenderHeading:YES];
+        [VWWUserDefaults setRenderAltitude:YES];
+        [VWWUserDefaults setRenderDistanceFromHome:YES];
+        [VWWUserDefaults setRenderSpeed:YES];
+        [VWWUserDefaults setRenderCoordinates:YES];
+        [VWWUserDefaults setRenderDropShadow:YES];
+        [VWWUserDefaults setRenderCompassIndicator:NO];
+        [VWWUserDefaults setRenderAttitudeIndicator:NO];
+
+    } else if([versionString isEqualToString:[VWWUserDefaults version]] == NO){
+        // This is the first time a user has run an updated version
+        VWW_LOG_INFO(@"First time running verion %@ of this app. Setting up user defaults", versionString);
+        [VWWUserDefaults setVersion:versionString];
+    } else {
+        // Running as normal
+    }
+}
 
 -(void)setupAppearance{
     UIColor *color = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.2];

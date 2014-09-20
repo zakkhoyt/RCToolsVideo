@@ -120,22 +120,53 @@
 - (void)saveMovieToCameraRoll
 {
 	ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-	[library writeVideoAtPathToSavedPhotosAlbum:movieURL
-								completionBlock:^(NSURL *assetURL, NSError *error) {
-									if (error)
-										[self showError:error];
-									else
-										[self removeFile:movieURL];
-									
-									dispatch_async(movieWritingQueue, ^{
-										recordingWillBeStopped = NO;
-										self.recording = NO;
-										
-										[self.delegate recordingDidStop];
-									});
-								}];
-//	[library release];
+    NSString *albumName = @"RC Video";
+    
+    void (^saveVideoToGroupd)(ALAssetsGroup *group) = ^(ALAssetsGroup *group){
+        [library writeVideoAtPathToSavedPhotosAlbum:movieURL
+                                    completionBlock:^(NSURL *assetURL, NSError *error) {
+                                        if (error){
+                                            [self showError:error];
+                                        } else{
+                                            [self removeFile:movieURL];
+
+                                            if(group){
+                                                [library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+                                                    if(asset){
+                                                        [group addAsset:asset];
+                                                        VWW_LOG_INFO(@"Added video to %@", albumName);
+                                                    }
+                                                } failureBlock:^(NSError *error) {
+                                                    VWW_LOG_ERROR(@"Failed to add video to %@", albumName);
+                                                }];
+                                            }
+                                        }
+                                        
+                                        dispatch_async(movieWritingQueue, ^{
+                                            recordingWillBeStopped = NO;
+                                            self.recording = NO;
+                                            
+                                            [self.delegate recordingDidStop];
+                                        });
+                                    }];
+
+    };
+    
+
+    [library addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group) {
+        if(group){
+            NSLog(@"Created App Album. Group = %@", albumName);
+        } else{
+            NSLog(@"Could not create Album %@", albumName);
+        }
+        saveVideoToGroupd(group);
+    } failureBlock:^(NSError *error) {
+        VWW_LOG_ERROR(@"Failed to create album %@", albumName);
+        saveVideoToGroupd(nil);
+    }];
 }
+
+
 
 - (void) writeSampleBuffer:(CMSampleBufferRef)sampleBuffer ofType:(NSString *)mediaType
 {

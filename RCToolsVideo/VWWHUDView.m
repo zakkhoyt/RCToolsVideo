@@ -17,10 +17,12 @@
     UILabel *coordinateLabel;
     UILabel *topSpeedLabel;
     UILabel *distanceFromHomeLabel;
+    UILabel *altitudeLabel;
     
     // Heading related
     UILabel *headingLabel;
 
+    
     // Motion related
     UILabel *accelerometerCurrentLabel;
     UILabel *gyroscopeCurrentLabel;
@@ -139,6 +141,21 @@
         } else {
             headingLabel.text = @"n/a";
         }
+    }
+    
+    // *************************************** Altitude *******************************************
+    if([VWWUserDefaults renderAltitude]){
+        if(altitudeLabel == nil){
+            CGRect frame = CGRectMake(0, self.bounds.size.height - 5*kHeight - 4*kGutter, self.bounds.size.width, kHeight);
+            altitudeLabel = [self labelWithFrame:frame];
+        }
+//        if([VWWLocationController sharedInstance].heading){
+            altitudeLabel.text = [NSString stringWithFormat:@"Altitude: (A)%.0fm (R)%.0fm",
+                                 [VWWLocationController sharedInstance].altitude,
+                                 [VWWLocationController sharedInstance].relativeAltitude];
+//        } else {
+//            headingLabel.text = @"n/a";
+//        }
     }
     
 

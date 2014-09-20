@@ -175,11 +175,19 @@
         self.location = location;
         self.currentSpeed = location.speed;
         self.maxSpeed = MAX(self.maxSpeed, location.speed);
+
+        
+//        if(self.altitude == 0){
+//            self.
+//        }
+        self.altitude = location.altitude;
         
         if(self.homeLocation == nil){
             self.homeLocation = [location copy];
         }
         self.distanceFromHome = [location distanceFromLocation:self.homeLocation];
+
+        
         
     }
 }

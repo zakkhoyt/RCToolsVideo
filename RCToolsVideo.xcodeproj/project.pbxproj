@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
+		CFABE2F319CD084200586577 /* VWWAssetsLibraryController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABE2F219CD084200586577 /* VWWAssetsLibraryController.m */; };
 		CFB3E56219CCD89E00AB9B47 /* VWWButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */; };
 		CFB9ADB619CC151300247538 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB519CC151300247538 /* VWWHUDView.m */; };
 		CFB9ADBB19CCBD6500247538 /* VWWDeviceAxisLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB719CCBD6500247538 /* VWWDeviceAxisLimits.m */; };
@@ -68,6 +69,8 @@
 
 /* Begin PBXFileReference section */
 		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CFABE2F119CD084200586577 /* VWWAssetsLibraryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAssetsLibraryController.h; sourceTree = "<group>"; };
+		CFABE2F219CD084200586577 /* VWWAssetsLibraryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAssetsLibraryController.m; sourceTree = "<group>"; };
 		CFB3E56019CCD89E00AB9B47 /* VWWButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWButtonTableViewCell.h; sourceTree = "<group>"; };
 		CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWButtonTableViewCell.m; sourceTree = "<group>"; };
 		CFB9ADB419CC151300247538 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 		CFD0987D19CBCA3B00C88A76 /* NonGUI */ = {
 			isa = PBXGroup;
 			children = (
+				CFABE2F119CD084200586577 /* VWWAssetsLibraryController.h */,
+				CFABE2F219CD084200586577 /* VWWAssetsLibraryController.m */,
 				CFD098A919CBCAD700C88A76 /* File */,
 				CFD098C519CBD42500C88A76 /* Location */,
 				CFD098AA19CBCADC00C88A76 /* Motion */,
@@ -593,6 +598,7 @@
 			files = (
 				CFB9ADBF19CCC6C800247538 /* VWWSwitchTableViewCell.m in Sources */,
 				CFD0989819CBCA3B00C88A76 /* VWWSessionsViewController.m in Sources */,
+				CFABE2F319CD084200586577 /* VWWAssetsLibraryController.m in Sources */,
 				CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */,
 				CFD098B919CBCB9B00C88A76 /* NSTimer+Blocks.m in Sources */,
 				CFD098B119CBCB2E00C88A76 /* VWWSampleAxis.m in Sources */,
@@ -746,7 +752,7 @@
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb0b2197-3274-4abb-95af-066a74117e70";
+				PROVISIONING_PROFILE = "cddbf03e-ab67-48c6-a319-4668261c644f";
 			};
 			name = Debug;
 		};
@@ -758,7 +764,7 @@
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "eb0b2197-3274-4abb-95af-066a74117e70";
+				PROVISIONING_PROFILE = "cddbf03e-ab67-48c6-a319-4668261c644f";
 			};
 			name = Release;
 		};

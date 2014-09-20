@@ -39,6 +39,11 @@
 +(BOOL)renderHeading;
 +(void)setRenderHeading:(BOOL)renderHeading;
 
+// Altitude
++(BOOL)renderAltitude;
++(void)setRenderAltitude:(BOOL)renderAltitude;
+
+
 // DistanceFromHome
 +(BOOL)renderDistanceFromHome;
 +(void)setRenderDistanceFromHome:(BOOL)renderDistanceFromHome;
@@ -55,6 +60,16 @@
 +(BOOL)renderDropShadow;
 +(void)setRenderDropShadow:(BOOL)renderDropShadow;
 
+// Compass Indiciator
++(BOOL)renderCompassIndicator;
++(void)setRenderCompassIndicator:(BOOL)renderCompassIndicator;
+
+// Attitude Indicator
++(BOOL)renderAttitudeIndicator;
++(void)setRenderAttitudeIndicator:(BOOL)renderAttitudeIndicator;
+
+
+
 // TextColor
 +(UIColor*)textColor;
 +(void)setTextColor:(UIColor*)textColor;
@@ -63,6 +78,9 @@
 +(UIColor*)labelColor;
 +(void)setLabelColor:(UIColor*)labelColor;
 
+// Version
++(NSString*)version;
++(void)setVersion:(NSString*)version;
 
 
 @end

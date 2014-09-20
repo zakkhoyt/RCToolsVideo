@@ -31,4 +31,8 @@
 
 // In meters
 @property (nonatomic) CLLocationDistance distanceFromHome;
+
+// Altitude
+@property (nonatomic) CLLocationDistance altitude;
+@property (nonatomic) CLLocationDistance relativeAltitude;
 @end

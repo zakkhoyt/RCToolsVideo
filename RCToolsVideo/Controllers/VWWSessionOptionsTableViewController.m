@@ -48,7 +48,9 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
                         @{VWWSessionTableViewCellTitleKey : @"Gyrosope Min/Max",
                           VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellSwitchType)},
                         @{VWWSessionTableViewCellTitleKey : @"Heading",
-                         VWWSessionTableViewCellTypeType: @(VWWSessionTableViewCellSwitchType)},
+                          VWWSessionTableViewCellTypeType: @(VWWSessionTableViewCellSwitchType)},
+                        @{VWWSessionTableViewCellTitleKey : @"Altitude",
+                          VWWSessionTableViewCellTypeType: @(VWWSessionTableViewCellSwitchType)},
                         @{VWWSessionTableViewCellTitleKey : @"Distance From Home",
                           VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellSwitchType)},
                         @{VWWSessionTableViewCellTitleKey : @"Top Speed",
@@ -56,6 +58,10 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
                         @{VWWSessionTableViewCellTitleKey : @"Coordinates",
                           VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellSwitchType)},
                         @{VWWSessionTableViewCellTitleKey : @"Text Drop Shadow",
+                          VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellSwitchType)},
+                        @{VWWSessionTableViewCellTitleKey : @"Compass Indicator",
+                          VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellSwitchType)},
+                        @{VWWSessionTableViewCellTitleKey : @"Attitude Indicator",
                           VWWSessionTableViewCellTypeType : @(VWWSessionTableViewCellSwitchType)}];
     
     
@@ -219,30 +225,33 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
             return cell;
         } else if(indexPath.row == 5){
             VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
-            cell.optionSwitch.on = [VWWUserDefaults renderDistanceFromHome];
+            cell.optionSwitch.on = [VWWUserDefaults renderAltitude];
             return cell;
         } else if(indexPath.row == 6){
             VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
-            cell.optionSwitch.on = [VWWUserDefaults renderSpeed];
+            cell.optionSwitch.on = [VWWUserDefaults renderDistanceFromHome];
             return cell;
         } else if(indexPath.row == 7){
             VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
-            cell.optionSwitch.on = [VWWUserDefaults renderCoordinates];
+            cell.optionSwitch.on = [VWWUserDefaults renderSpeed];
             return cell;
         } else if(indexPath.row == 8){
             VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderCoordinates];
+            return cell;
+        } else if(indexPath.row == 9){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
             cell.optionSwitch.on = [VWWUserDefaults renderDropShadow];
             return cell;
+        } else if(indexPath.row == 10){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderCompassIndicator];
+            return cell;
+        } else if(indexPath.row == 11){
+            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
+            cell.optionSwitch.on = [VWWUserDefaults renderAttitudeIndicator];
+            return cell;
         }
-//        else if(indexPath.row == 9){
-//            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
-//            cell.optionSwitch.on = [VWWUserDefaults render];
-//            
-//        } else if(indexPath.row == 10){
-//            VWWSwitchTableViewCell *cell = [self switchTableViewCellFromDictionary:dictionary];
-//            cell.optionSwitch.on = [VWWUserDefaults renderAccelerometers];
-//            
-//        }
     } else if(indexPath.section == 1){
         if(indexPath.row == [VWWUserDefaults resolution]){
             VWWTextTableViewCell *cell = [self textTableViewCellFromDictionary:dictionary];
@@ -308,13 +317,19 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
         } else if(indexPath.row == 4){
             [VWWUserDefaults setRenderHeading:on];
         } else if(indexPath.row == 5){
-            [VWWUserDefaults setRenderDistanceFromHome:on];
+            [VWWUserDefaults setRenderAltitude:on];
         } else if(indexPath.row == 6){
-            [VWWUserDefaults setRenderSpeed:on];
+            [VWWUserDefaults setRenderDistanceFromHome:on];
         } else if(indexPath.row == 7){
-            [VWWUserDefaults setRenderCoordinates:on];
+            [VWWUserDefaults setRenderSpeed:on];
         } else if(indexPath.row == 8){
+            [VWWUserDefaults setRenderCoordinates:on];
+        } else if(indexPath.row == 9){
             [VWWUserDefaults setRenderDropShadow:on];
+        } else if(indexPath.row == 10){
+            [VWWUserDefaults setRenderCompassIndicator:on];
+        } else if(indexPath.row == 11){
+            [VWWUserDefaults setRenderAttitudeIndicator:on];
         }
     }
 }
