@@ -11,6 +11,8 @@
 
 #define VWW_DEBUG 1
 
+#define VWW_ALBUM_NAME @"RC Video"
+
 //******************************************************************************
 // Trace defines ***********************************************************
 #define VWW_LOG(...) NSLog(@"%@", [NSString stringWithFormat:__VA_ARGS__]);

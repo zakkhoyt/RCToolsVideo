@@ -9,8 +9,12 @@
 #import "VWWHUDPreviewViewController.h"
 #import "VWWLocationController.h"
 #import "VWWMotionMonitor.h"
+#import "UIView+ParallaxMotion.h"
+#import "VWWHUDView.h"
+
 @interface VWWHUDPreviewViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *fieldImageView;
+@property (weak, nonatomic) IBOutlet VWWHUDView *hudView;
 
 @end
 
@@ -35,6 +39,8 @@
     NSUInteger index = arc4random() % 2;
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"field0%ld", (long)index]];
     self.fieldImageView.image = image;
+    
+    self.hudView.parallaxIntensity = 40;
 }
 
 -(void)viewWillAppear:(BOOL)animated{

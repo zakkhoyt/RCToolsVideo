@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VWW.h"
 @class CLLocation;
 @class CLHeading;
 
@@ -30,4 +31,10 @@
 +(NSString*)jsonRepresentationOfArray:(NSArray*)array prettyPrint:(BOOL)prettyPrint;
 +(NSString*)jsonStringFromDictionary:(NSDictionary*)dictionary prettyPrint:(BOOL)prettyPrint;
 
+@end
+
+@interface VWWUtilities (Location)
++(void)stringFromLatitude:(double)latitude longitude:(double)longitude completionBlock:(VWWStringBlock)completionBlock;
++(void)stringLocalityFromLatitude:(double)latitude longitude:(double)longitude completionBlock:(VWWStringBlock)completionBlock;
++(void)stringThoroughfareFromLatitude:(double)latitude longitude:(double)longitude completionBlock:(VWWStringBlock)completionBlock;
 @end

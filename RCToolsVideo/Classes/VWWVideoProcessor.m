@@ -6,6 +6,8 @@
 #import "VWW.h"
 #define BYTES_PER_PIXEL 4
 
+
+
 @interface VWWVideoProcessor ()
 
 // Redeclared as readwrite so that we can write to the property and still be atomic with external readers.
@@ -16,7 +18,8 @@
 @property (readwrite, getter=isRecording) BOOL recording;
 
 @property (readwrite) AVCaptureVideoOrientation videoOrientation;
-
+@property (nonatomic, strong) ALAssetsLibrary *library;
+@property (nonatomic, strong) ALAssetsGroup *appAlbumGroup;
 @end
 
 @implementation VWWVideoProcessor
@@ -119,25 +122,27 @@
 
 - (void)saveMovieToCameraRoll
 {
-	ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    NSString *albumName = @"RC Video";
+    if(self.library == nil){
+        self.library = [[ALAssetsLibrary alloc] init];
+    }
+
     
-    void (^saveVideoToGroupd)(ALAssetsGroup *group) = ^(ALAssetsGroup *group){
-        [library writeVideoAtPathToSavedPhotosAlbum:movieURL
+    void (^saveVideo)(void) = ^(void){
+        [self.library writeVideoAtPathToSavedPhotosAlbum:movieURL
                                     completionBlock:^(NSURL *assetURL, NSError *error) {
                                         if (error){
                                             [self showError:error];
                                         } else{
                                             [self removeFile:movieURL];
 
-                                            if(group){
-                                                [library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+                                            if(self.appAlbumGroup){
+                                                [self.library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
                                                     if(asset){
-                                                        [group addAsset:asset];
-                                                        VWW_LOG_INFO(@"Added video to %@", albumName);
+                                                        [self.appAlbumGroup addAsset:asset];
+                                                        VWW_LOG_INFO(@"Added video to %@", VWW_ALBUM_NAME);
                                                     }
                                                 } failureBlock:^(NSError *error) {
-                                                    VWW_LOG_ERROR(@"Failed to add video to %@", albumName);
+                                                    VWW_LOG_ERROR(@"Failed to add video to %@", VWW_ALBUM_NAME);
                                                 }];
                                             }
                                         }
@@ -152,20 +157,45 @@
 
     };
     
-
-    [library addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group) {
-        if(group){
-            NSLog(@"Created App Album. Group = %@", albumName);
-        } else{
-            NSLog(@"Could not create Album %@", albumName);
-        }
-        saveVideoToGroupd(group);
-    } failureBlock:^(NSError *error) {
-        VWW_LOG_ERROR(@"Failed to create album %@", albumName);
-        saveVideoToGroupd(nil);
+    [self ensureAppAlbumExistsWithCompletionBlock:^{
+        saveVideo();
     }];
 }
 
+
+-(void)ensureAppAlbumExistsWithCompletionBlock:(VWWEmptyBlock)completionBlock{
+
+    // Iterate the asset groups to find app album and record the URL. If it doesn't exist, create it.
+    __weak VWWVideoProcessor *weakSelf = self;
+    [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        NSString *groupName = [group valueForProperty:ALAssetsGroupPropertyName];
+        if([groupName isEqualToString:VWW_ALBUM_NAME]){
+            weakSelf.appAlbumGroup = group;
+            NSLog(@"Found App Album. Group = %@", weakSelf.appAlbumGroup);
+            *stop = YES;
+            return completionBlock();
+        }
+        
+        if(group == nil && weakSelf.appAlbumGroup == nil){
+            [self.library addAssetsGroupAlbumWithName:VWW_ALBUM_NAME resultBlock:^(ALAssetsGroup *group) {
+                if(group){
+                    weakSelf.appAlbumGroup = group;
+                    NSLog(@"Created App Album. Group = %@", weakSelf.appAlbumGroup);
+                }
+                return completionBlock();
+            } failureBlock:^(NSError *error) {
+                weakSelf.appAlbumGroup = nil;
+                NSLog(@"***** ERROR! Failed to create App Album Group");
+                return completionBlock();
+            }];
+            
+        }
+        
+    } failureBlock:^(NSError *error) {
+        NSLog(@"***** ERROR! Failed to create App Album because of access permissions");
+        return completionBlock();
+    }];
+}
 
 
 - (void) writeSampleBuffer:(CMSampleBufferRef)sampleBuffer ofType:(NSString *)mediaType

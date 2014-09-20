@@ -30,6 +30,7 @@
     UILabel *accelerometerLimitsLabel;
     UILabel *gyroscopeLimitsLabel;
 
+    NSTimer *timer;
 }
 
 @end
@@ -50,7 +51,7 @@
         [[VWWLocationController sharedInstance] start];
         [[VWWMotionMonitor sharedInstance] startAll];
         
-        [NSTimer scheduledTimerWithTimeInterval:0.2 block:^{
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.2 block:^{
 //            [self setNeedsDisplay];
             [self updateContent];
         } repeats:YES];
@@ -58,7 +59,10 @@
     return self;
 }
 
+
 -(void)dealloc{
+    [timer invalidate];
+    timer = nil;
     [[VWWLocationController sharedInstance] stop];
     [[VWWMotionMonitor sharedInstance] stopDevice];
 }

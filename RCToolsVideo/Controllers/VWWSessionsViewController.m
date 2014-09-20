@@ -9,15 +9,18 @@
 #import "VWWSessionsViewController.h"
 #import "VWWFileController.h"
 #import "MBProgressHUD.h"
-
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "VWWSessionTableViewCell.h"
+@import CoreLocation;
 //static NSString *VWWSegueSessionsToSession = @"VWWSegueSessionsToSession";
 //static NSString *VWWSegueSessionsToVideo = @"VWWSegueSessionsToVideo";
 static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 @interface VWWSessionsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *sessionURLs;
+@property (nonatomic, strong) NSMutableArray *sessions;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (nonatomic, strong) NSIndexPath *compareIndexPath;
+@property (nonatomic, strong) ALAssetsLibrary *library;
 @end
 
 @implementation VWWSessionsViewController
@@ -28,12 +31,15 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    
     [UIApplication sharedApplication].statusBarHidden = NO;
     
-    // This notification is fired when VWWFileController is finished writing a file.
-    [[NSNotificationCenter defaultCenter] addObserverForName:VWWFileControllerSessionsChanged object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-        [self loadSessions];
-    }];
+    self.library = [[ALAssetsLibrary alloc]init];
+    
+//    // This notification is fired when VWWFileController is finished writing a file.
+//    [[NSNotificationCenter defaultCenter] addObserverForName:VWWFileControllerSessionsChanged object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+//        [self loadSessions];
+//    }];
 
 }
 
@@ -63,18 +69,48 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 #pragma mark Private
 
 -(void)loadSessions{
-//    self.sessionURLs = [[VWWFileController urlsForSessions] mutableCopy];
+//
+//    [self.tableView reloadData];
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+            NSString *groupName = [group valueForProperty:ALAssetsGroupPropertyName];
+            if([groupName isEqualToString:VWW_ALBUM_NAME]){
+                self.sessions = [@[]mutableCopy];
+                [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                    if(result){
+                        [self.sessions addObject:result];
+                    }
+                }];
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+                group = nil;
+                *stop = YES;
+            }
+        } failureBlock:^(NSError *error) {
+            VWW_LOG_ERROR(@"Failed to load videos");
+        }];
+    });
+    
+
     [self.tableView reloadData];
     
 }
 
 -(void)deleteSessionAtIndexPath:(NSIndexPath*)indexPath{
-    NSURL *sessionURL = self.sessionURLs[indexPath.row];
-    [VWWFileController deleteFileAtURL:sessionURL];
-    [self.sessionURLs removeObjectAtIndex:indexPath.row];
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    ALAsset *session = self.sessions[indexPath.row];
+//    [self.sessions removeObjectAtIndex:indexPath.row];
+//    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
 }
+
+
+
 #pragma mark IBActions
 
 
@@ -93,20 +129,31 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.sessionURLs.count;
+    return self.sessions.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    VWWSessionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VWWSessionTableViewCell" forIndexPath:indexPath];
-//    NSURL *sessionURL = self.sessionURLs[indexPath.row];
-//    cell.sessionURL = sessionURL;
-//    return cell;
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    VWWSessionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VWWSessionTableViewCell" forIndexPath:indexPath];
+    ALAsset *asset = self.sessions[indexPath.row];
+    cell.thumbnailImageView.image = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+    
+    NSDate *date = [asset valueForProperty:ALAssetPropertyDate];
+    CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
+    NSNumber *duration = [asset valueForProperty:ALAssetPropertyDuration];
+    
+    cell.locationLabel.text = @"";
+    cell.dateLabel.text = [VWWUtilities stringFromDateAndTime:date];
+    cell.durationLabel.text = [NSString stringWithFormat:@"%lds", (long)duration.integerValue];
+    [VWWUtilities stringThoroughfareFromLatitude:location.coordinate.latitude longitude:location.coordinate.longitude completionBlock:^(NSString *string) {
+        cell.locationLabel.text =string;
+    }];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    ALAsset *asset = self.sessions[indexPath.row];
+    CGFloat height = self.view.bounds.size.width * asset.defaultRepresentation.dimensions.height / asset.defaultRepresentation.dimensions.width;
+    return height;
 }
 
 
@@ -124,8 +171,6 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 
 #ifdef __IPHONE_8_0
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
     UITableViewRowAction *deleteRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         VWW_LOG_DEBUG(@"Delete Action");
         [self deleteSessionAtIndexPath:indexPath];
@@ -134,21 +179,6 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
     }];
     deleteRowAction.backgroundColor = [UIColor redColor];
     return @[deleteRowAction];
-//    UITableViewRowAction *compareRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Compare" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
-//        VWW_LOG_DEBUG(@"Compare Action");
-//        
-//        // Mark as ready for compare
-//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//        self.compareIndexPath = indexPath;
-//        self.tableView.editing = NO;
-//        
-//    }];
-//    compareRowAction.backgroundColor = [UIColor greenColor];
-//
-//    
-//    return @[deleteRowAction, compareRowAction];
-
 }
 #endif
 
@@ -167,21 +197,7 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
     
 
     
-//    if(self.compareIndexPath == nil){
-//        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//        NSURL *sessionURL = self.sessionURLs[indexPath.row];
-//        [VWWFileController sessionFromURL:sessionURL completionBlock:^(VWWSession *session) {
-//            [MBProgressHUD hideHUDForView:self.view animated:YES];
-//            [self performSegueWithIdentifier:VWWSegueSessionsToReview sender:session];
-//        }];
-//    } else {
-//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//        self.compareIndexPath = indexPath;
-//        self.tableView.editing = NO;
-//
-//        VWW_LOG_DEBUG(@"Compare session at %ld an %ld", (long)self.compareIndexPath.row, indexPath.row);
-//    }
+
     
 }
 
