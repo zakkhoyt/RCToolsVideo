@@ -11,11 +11,14 @@
 #import "MBProgressHUD.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "VWWSessionTableViewCell.h"
+#import "VWWVideoViewController.h"
+@import  MediaPlayer;
 @import CoreLocation;
-//static NSString *VWWSegueSessionsToSession = @"VWWSegueSessionsToSession";
-//static NSString *VWWSegueSessionsToVideo = @"VWWSegueSessionsToVideo";
+
 static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
-@interface VWWSessionsViewController ()
+static NSString *VWWSegueSessionsToVideo = @"VWWSegueSessionsToVideo";
+
+@interface VWWSessionsViewController () < UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *sessions;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
@@ -59,10 +62,10 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-//    if([segue.identifier isEqualToString:VWWSegueSessionsToReview]){
-//        VWWSessionReviewViewController *vc = segue.destinationViewController;
-//        vc.session = sender;
-//    }
+    if([segue.identifier isEqualToString:VWWSegueSessionsToVideo]){
+        VWWVideoViewController *vc = segue.destinationViewController;
+        vc.url = sender;
+    }
 }
 
 
@@ -106,7 +109,7 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 //    ALAsset *session = self.sessions[indexPath.row];
 //    [self.sessions removeObjectAtIndex:indexPath.row];
 //    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
+    [[[UIAlertView alloc]initWithTitle:@"How to delete" message:@"To delete a video, open the Photos app, navigate to RC Video and then press the trash can icon" delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil]show];
 }
 
 
@@ -194,13 +197,19 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ALAsset *asset = self.sessions[indexPath.row];
+//    [self performSegueWithIdentifier:VWWSegueSessionsToVideo sender:asset.defaultRepresentation.url];
     
-
-    
-
-    
+    MPMoviePlayerViewController *playerVC = [[MPMoviePlayerViewController alloc] initWithContentURL:asset.defaultRepresentation.url];
+    [self presentMoviePlayerViewControllerAnimated:playerVC];
+    [playerVC.moviePlayer play];
 }
 
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    [self.tableView setEditing:NO animated:YES];
+}
 
 
 

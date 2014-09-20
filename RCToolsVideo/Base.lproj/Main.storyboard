@@ -94,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712" y="-1129"/>
+            <point key="canvasLocation" x="856" y="-985"/>
         </scene>
         <!--Sessions View Controller-->
         <scene sceneID="01C-LX-W0m">
@@ -110,6 +110,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="141" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8DB-Ac-h6f">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSessionTableViewCell" rowHeight="130" id="KiH-bX-dct" customClass="VWWSessionTableViewCell">
@@ -205,11 +206,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1ZG-SU-BQY">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="ncv-Ud-kiW">
-                            <connections>
-                                <action selector="deleteButtonAction:" destination="evR-ux-aXi" id="Vws-dQ-Ei1"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rha-R2-sPF">
                             <connections>
                                 <action selector="addButtonAction:" destination="evR-ux-aXi" id="u7F-gp-r4o"/>
@@ -217,14 +213,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editButton" destination="ncv-Ud-kiW" id="isP-nt-KLY"/>
                         <outlet property="tableView" destination="8DB-Ac-h6f" id="pQl-gH-cJr"/>
                         <segue destination="TtC-Or-6pi" kind="show" identifier="VWWSegueSessionsToOptions" id="8y3-9S-PLQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNd-WL-vFG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1017" y="-568"/>
+            <point key="canvasLocation" x="-1409" y="-552"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eFL-CH-eSR">
@@ -242,7 +237,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8N-vz-ddI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2071" y="-547"/>
+            <point key="canvasLocation" x="-2463" y="-531"/>
         </scene>
         <!--Session Options Table View Controller-->
         <scene sceneID="OeP-Ka-vYe">
@@ -433,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcu-V6-jUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712" y="-349"/>
+            <point key="canvasLocation" x="868" y="-105"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.065601543580000005" green="0.67004024620000002" blue="0.002768738262" alpha="1" colorSpace="calibratedRGB"/>
