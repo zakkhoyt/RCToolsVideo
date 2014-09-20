@@ -147,8 +147,21 @@
                                                             <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyX-RZ-C5c">
-                                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                                            <rect key="frame" x="8" y="8" width="476" height="21"/>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYd-8S-Pd4">
+                                                            <rect key="frame" x="492" y="8" width="100" height="21"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="7Ai-Tj-Ziw"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="pZq-NL-MUN"/>
+                                                                <constraint firstAttribute="height" constant="21" id="urL-4M-Ac0"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -158,18 +171,20 @@
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="pJL-YP-2Cr" firstAttribute="leading" secondItem="HDd-cQ-Fdb" secondAttribute="trailing" constant="8" id="0RV-1h-HGA"/>
+                                                        <constraint firstItem="cyX-RZ-C5c" firstAttribute="top" secondItem="Blb-Fg-cH0" secondAttribute="top" constant="8" id="1iW-m5-Z4J"/>
                                                         <constraint firstAttribute="bottom" secondItem="pJL-YP-2Cr" secondAttribute="bottom" constant="8" id="980-kJ-WgP"/>
-                                                        <constraint firstItem="HDd-cQ-Fdb" firstAttribute="top" secondItem="cyX-RZ-C5c" secondAttribute="bottom" constant="9" id="9yR-W2-FOP"/>
                                                         <constraint firstItem="HDd-cQ-Fdb" firstAttribute="leading" secondItem="Blb-Fg-cH0" secondAttribute="leading" constant="8" id="CDX-dE-79l"/>
-                                                        <constraint firstItem="cyX-RZ-C5c" firstAttribute="top" secondItem="Blb-Fg-cH0" secondAttribute="top" constant="8" id="Fdt-5D-zee"/>
+                                                        <constraint firstItem="CYd-8S-Pd4" firstAttribute="leading" secondItem="cyX-RZ-C5c" secondAttribute="trailing" constant="8" id="Dxd-hW-w0K"/>
+                                                        <constraint firstItem="pJL-YP-2Cr" firstAttribute="top" secondItem="CYd-8S-Pd4" secondAttribute="bottom" constant="9" id="Gae-9N-Nxv"/>
                                                         <constraint firstItem="pJL-YP-2Cr" firstAttribute="leading" secondItem="HDd-cQ-Fdb" secondAttribute="trailing" constant="8" id="J4Y-Ph-dGf"/>
-                                                        <constraint firstItem="cyX-RZ-C5c" firstAttribute="leading" secondItem="Blb-Fg-cH0" secondAttribute="leading" constant="8" id="Mxt-Gf-EFv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="CYd-8S-Pd4" secondAttribute="trailing" constant="8" id="O9S-gs-nu9"/>
                                                         <constraint firstAttribute="height" constant="67" id="QPJ-a2-bIa"/>
+                                                        <constraint firstItem="HDd-cQ-Fdb" firstAttribute="top" secondItem="cyX-RZ-C5c" secondAttribute="bottom" constant="9" id="XJz-ab-Fwy"/>
                                                         <constraint firstAttribute="bottom" secondItem="HDd-cQ-Fdb" secondAttribute="bottom" constant="8" id="aB9-Kj-cAD"/>
                                                         <constraint firstAttribute="trailing" secondItem="pJL-YP-2Cr" secondAttribute="trailing" constant="8" id="cii-WQ-bQU"/>
-                                                        <constraint firstAttribute="trailing" secondItem="cyX-RZ-C5c" secondAttribute="trailing" constant="8" id="eqp-EM-p9C"/>
-                                                        <constraint firstItem="HDd-cQ-Fdb" firstAttribute="top" secondItem="cyX-RZ-C5c" secondAttribute="bottom" constant="9" id="gnS-fG-pN3"/>
-                                                        <constraint firstItem="pJL-YP-2Cr" firstAttribute="top" secondItem="cyX-RZ-C5c" secondAttribute="bottom" constant="9" id="v6R-e5-vmp"/>
+                                                        <constraint firstItem="CYd-8S-Pd4" firstAttribute="top" secondItem="Blb-Fg-cH0" secondAttribute="top" constant="8" id="eSc-9p-Lgt"/>
+                                                        <constraint firstItem="CYd-8S-Pd4" firstAttribute="leading" secondItem="cyX-RZ-C5c" secondAttribute="trailing" constant="8" id="iiL-ky-xJe"/>
+                                                        <constraint firstItem="cyX-RZ-C5c" firstAttribute="leading" secondItem="Blb-Fg-cH0" secondAttribute="leading" constant="8" id="yya-3F-19R"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -187,6 +202,7 @@
                                             <outlet property="dateLabel" destination="pJL-YP-2Cr" id="Fr2-2z-Svo"/>
                                             <outlet property="durationLabel" destination="HDd-cQ-Fdb" id="Ziz-dw-f0U"/>
                                             <outlet property="locationLabel" destination="cyX-RZ-C5c" id="Ay7-Wc-KtK"/>
+                                            <outlet property="resolutionLabel" destination="CYd-8S-Pd4" id="iur-nS-l3T"/>
                                             <outlet property="thumbnailImageView" destination="Od7-u0-Yqq" id="fsf-h0-HHJ"/>
                                         </connections>
                                     </tableViewCell>

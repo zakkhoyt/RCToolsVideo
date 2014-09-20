@@ -39,18 +39,14 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
     
     self.library = [[ALAssetsLibrary alloc]init];
     
-//    // This notification is fired when VWWFileController is finished writing a file.
-//    [[NSNotificationCenter defaultCenter] addObserverForName:VWWFileControllerSessionsChanged object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-//        [self loadSessions];
-//    }];
-
+    [self loadSessions];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationItem.title = @"RC Videos";
     
-    [self loadSessions];
+    
 }
 
 
@@ -144,11 +140,12 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
     CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
     NSNumber *duration = [asset valueForProperty:ALAssetPropertyDuration];
     
+    cell.resolutionLabel.text = [NSString stringWithFormat:@"%ldx%ld", (long)asset.defaultRepresentation.dimensions.width, (long)asset.defaultRepresentation.dimensions.height];
     cell.locationLabel.text = @"";
     cell.dateLabel.text = [VWWUtilities stringFromDateAndTime:date];
     cell.durationLabel.text = [NSString stringWithFormat:@"%lds", (long)duration.integerValue];
     [VWWUtilities stringThoroughfareFromLatitude:location.coordinate.latitude longitude:location.coordinate.longitude completionBlock:^(NSString *string) {
-        cell.locationLabel.text =string;
+        cell.locationLabel.text = string;
     }];
     return cell;
 }
