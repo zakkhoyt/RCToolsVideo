@@ -199,6 +199,7 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
     
     MPMoviePlayerViewController *playerVC = [[MPMoviePlayerViewController alloc] initWithContentURL:asset.defaultRepresentation.url];
     [self presentMoviePlayerViewControllerAnimated:playerVC];
+    playerVC.moviePlayer.controlStyle = MPMovieControlStyleFullscreen;
     [playerVC.moviePlayer play];
 }
 
