@@ -32,7 +32,7 @@
 
     NSTimer *timer;
 }
-
+@property (nonatomic, strong, readwrite) UIImage *image;
 @end
 
 @implementation VWWHUDView
@@ -52,12 +52,31 @@
         [[VWWMotionMonitor sharedInstance] startAll];
         
         timer = [NSTimer scheduledTimerWithTimeInterval:0.2 block:^{
-//            [self setNeedsDisplay];
             [self updateContent];
-        } repeats:YES];
+        } repeats:NO];
     }
     return self;
 }
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        self.textColor = [UIColor whiteColor];
+        self.labelColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+        self.renderDropShadows = YES;
+        self.textAlignment = NSTextAlignmentCenter;
+        
+        [[VWWLocationController sharedInstance] start];
+        [[VWWMotionMonitor sharedInstance] startAll];
+        
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.2 block:^{
+            [self updateContent];
+        } repeats:NO];
+    }
+    return self;
+}
+
 
 
 -(void)dealloc{
@@ -227,6 +246,26 @@
         } else {
             gyroscopeLimitsLabel.text = @"n/a";
         }
+    }
+    
+    [self updateSnapshot];
+}
+
+-(void)updateSnapshot{
+    @synchronized(self){
+        CGRect rect = [self bounds];
+        UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [self.layer renderInContext:context];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        self.image = image;
+        UIGraphicsEndImageContext();
+    }
+}
+
+-(UIImage*)image{
+    @synchronized(self){
+        return _image;
     }
     
 }

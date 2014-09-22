@@ -14,6 +14,7 @@
 	UILabel *frameRateLabel;
 	UILabel *dimensionsLabel;
 	UILabel *typeLabel;
+    UILabel *memoryLabel;
  
     NSTimer *timer;
     

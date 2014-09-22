@@ -14,4 +14,5 @@
 @property (nonatomic, strong) UIColor *labelColor;
 @property (nonatomic, strong) UIColor *hudColor;
 @property (nonatomic) NSTextAlignment textAlignment;
+@property (nonatomic, strong, readonly) UIImage *image;
 @end

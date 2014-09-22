@@ -99,18 +99,8 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 
 #pragma mark Private methods
 -(void)addGestureRecognizers{
-//    UIView *myTransparentGestureView = [[UIView alloc] initWithFrame:CGRectMake(0,0,20,20)];
-//    UILabel *nextLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,0,40,30)];
-//    nextLabel.text = @"Ready";
-//    nextLabel.backgroundColor = [UIColor redColor];
-//    nextLabel.textColor = self.view.tintColor;
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressHandler:)];
     [self.navigationController.navigationBar addGestureRecognizer:longPressGesture];
-//    [myTransparentGestureView addGestureRecognizer:longPressGesture];
-//
-//    [self.navigationItem.rightBarButtonItem setCustomView:myTransparentGestureView];
-//    // Or you could set it like this
-//    // self.navigationItem.backBarButtonItem.customView = myTransparentGestureView;
 }
 
 #pragma mark IBAction
@@ -134,14 +124,16 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
         
         // if the long press point in the rectangle then do whatever
         if (CGRectContainsPoint(rect, longPressPoint)){
-            [self performSegueWithIdentifier:VWWSegueOptionsToSession sender:self];
+//            [self performSegueWithIdentifier:VWWSegueOptionsToSession sender:self];
+            [self performSegueWithIdentifier:VWWSegueOptionsToPreview sender:self];
         }
             
     }
 }
 - (IBAction)readyButtonAction:(id)sender {
 //
-    [self performSegueWithIdentifier:VWWSegueOptionsToPreview sender:self];
+//    [self performSegueWithIdentifier:VWWSegueOptionsToPreview sender:self];
+    [self performSegueWithIdentifier:VWWSegueOptionsToSession sender:self];
 }
 
 

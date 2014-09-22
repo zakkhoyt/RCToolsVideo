@@ -200,7 +200,7 @@
  */
 - (void)locationManager:(CLLocationManager *)manager
        didUpdateHeading:(CLHeading *)newHeading{
-    VWW_LOG_DEBUG(@"New heading: %@", newHeading.description);
+//    VWW_LOG_DEBUG(@"New heading: %@", newHeading.description);
     self.heading = newHeading;
 }
 

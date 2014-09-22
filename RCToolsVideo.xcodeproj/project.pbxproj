@@ -219,8 +219,8 @@
 		CFABE30319CD2AD700586577 /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				CFABE30019CD2AD400586577 /* VWWVideoProcessor.m */,
 				CFABE30119CD2AD400586577 /* VWWVideoProcessor.h */,
+				CFABE30019CD2AD400586577 /* VWWVideoProcessor.m */,
 			);
 			name = Video;
 			sourceTree = "<group>";

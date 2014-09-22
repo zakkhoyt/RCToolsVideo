@@ -11,6 +11,7 @@
 
 #define VWW_DEBUG 1
 
+//#define VWW_USE_FRONT 1
 #define VWW_ALBUM_NAME @"RC Video"
 
 //******************************************************************************

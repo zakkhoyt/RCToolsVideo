@@ -15,7 +15,6 @@
 @interface VWWHUDPreviewViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *fieldImageView;
 @property (weak, nonatomic) IBOutlet VWWHUDView *hudView;
-
 @end
 
 @implementation VWWHUDPreviewViewController

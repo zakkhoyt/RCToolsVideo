@@ -4,6 +4,8 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "VWWVideoProcessor.h"
 #import "VWW.h"
+#import "VWWHUDView.h"
+
 #define BYTES_PER_PIXEL 4
 
 
@@ -20,6 +22,11 @@
 @property (readwrite) AVCaptureVideoOrientation videoOrientation;
 @property (nonatomic, strong) ALAssetsLibrary *library;
 @property (nonatomic, strong) ALAssetsGroup *appAlbumGroup;
+@property (nonatomic, strong) VWWHUDView *hudView;
+
+// Temporary image until hud is rendering
+@property (nonatomic, strong) UIImage *hudImage;
+@property (nonatomic) CVImageBufferRef hudBuffer;
 @end
 
 @implementation VWWVideoProcessor
@@ -374,7 +381,39 @@
 
 #pragma mark Processing
 
-- (CVImageBufferRef) pixelBufferFromCGImage: (CGImageRef) image
+//- (CVImageBufferRef) pixelBufferFromCGImage: (CGImageRef) image
+//{
+//    
+//    CGSize frameSize = CGSizeMake(CGImageGetWidth(image), CGImageGetHeight(image));
+//    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+//                             [NSNumber numberWithBool:NO], kCVPixelBufferCGImageCompatibilityKey,
+//                             [NSNumber numberWithBool:NO], kCVPixelBufferCGBitmapContextCompatibilityKey,
+//                             nil];
+//    CVImageBufferRef pxbuffer = NULL;
+//    CVReturn status = CVPixelBufferCreate(kCFAllocatorDefault, frameSize.width,
+//                                          frameSize.height,  kCVPixelFormatType_32BGRA, (__bridge CFDictionaryRef) options,
+//                                          &pxbuffer);
+//    NSParameterAssert(status == kCVReturnSuccess && pxbuffer != NULL);
+//    
+//    CVPixelBufferLockBaseAddress(pxbuffer, 0);
+//    void *pxdata = CVPixelBufferGetBaseAddress(pxbuffer);
+//    
+//    
+//    CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
+//    CGContextRef context = CGBitmapContextCreate(pxdata, frameSize.width,
+//                                                 frameSize.height, 8, CVPixelBufferGetBytesPerRow(pxbuffer), rgbColorSpace,
+//                                                 kCGBitmapAlphaInfoMask /*kCGImageAlphaNoneSkipLast*/);
+//    
+//    CGContextDrawImage(context, CGRectMake(0, 0, CGImageGetWidth(image),
+//                                           CGImageGetHeight(image)), image);
+//    CGColorSpaceRelease(rgbColorSpace);
+//    CGContextRelease(context);
+//    
+//    CVPixelBufferUnlockBaseAddress(pxbuffer, 0);
+//    
+//    return pxbuffer;
+//}
+- (CVPixelBufferRef) pixelBufferFromCGImage: (CGImageRef) image
 {
     
     CGSize frameSize = CGSizeMake(CGImageGetWidth(image), CGImageGetHeight(image));
@@ -382,9 +421,9 @@
                              [NSNumber numberWithBool:NO], kCVPixelBufferCGImageCompatibilityKey,
                              [NSNumber numberWithBool:NO], kCVPixelBufferCGBitmapContextCompatibilityKey,
                              nil];
-    CVImageBufferRef pxbuffer = NULL;
+    CVPixelBufferRef pxbuffer = NULL;
     CVReturn status = CVPixelBufferCreate(kCFAllocatorDefault, frameSize.width,
-                                          frameSize.height,  kCVPixelFormatType_32BGRA, (__bridge CFDictionaryRef) options,
+                                          frameSize.height,  kCVPixelFormatType_32ARGB, (CFDictionaryRef) CFBridgingRetain(options),
                                           &pxbuffer);
     NSParameterAssert(status == kCVReturnSuccess && pxbuffer != NULL);
     
@@ -395,7 +434,7 @@
     CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef context = CGBitmapContextCreate(pxdata, frameSize.width,
                                                  frameSize.height, 8, CVPixelBufferGetBytesPerRow(pxbuffer), rgbColorSpace,
-                                                 kCGBitmapAlphaInfoMask /*kCGImageAlphaNoneSkipLast*/);
+                                                 kCGImageAlphaNoneSkipLast);
     
     CGContextDrawImage(context, CGRectMake(0, 0, CGImageGetWidth(image),
                                            CGImageGetHeight(image)), image);
@@ -410,21 +449,33 @@
 
 - (void)processPixelBuffer: (CVImageBufferRef)pixelBuffer
 {
-    
-    
-    
 
-//    UIImage *hudImage = [UIImage imageNamed:@"hud"];
-//    CVImageBufferRef hudBuffer = [self pixelBufferFromCGImage:hudImage.CGImage];
-//    
-//    CVPixelBufferLockBaseAddress( hudBuffer, 0 );
-//    int hudBufferWidth = CVPixelBufferGetWidth(hudBuffer);
-//    int hudBufferHeight = CVPixelBufferGetHeight(hudBuffer);
-//
-//    size_t hudBufferSize = CVPixelBufferGetDataSize(hudBuffer);
-//    NSLog(@"hudBufferSize: %ld", (long)hudBufferSize);
-//    unsigned char *hudPixel = (unsigned char *)CVPixelBufferGetBaseAddress(hudBuffer);
-
+    
+        
+        
+//    if(self.hudImage == nil){
+//        self.hudImage = [UIImage imageNamed:@"hud"];
+//    if(self.hudImage == nil){
+        if(self.hudView.image){
+            UIImage *image = self.hudView.image;
+            self.hudImage = image;
+        } else {
+            self.hudImage = [UIImage imageNamed:@"hud"];
+        }
+//        self.hudImage = self.hudView.image ? self.hudView.image : [UIImage imageNamed:@"hud"];
+    
+//    }
+//    }
+    
+    self.hudBuffer = [self pixelBufferFromCGImage:self.hudImage.CGImage];
+    
+    CVPixelBufferLockBaseAddress(self.hudBuffer, 0 );
+    int hudBufferWidth = (int)CVPixelBufferGetWidth(self.hudBuffer);
+    int hudBufferHeight = (int)CVPixelBufferGetHeight(self.hudBuffer);
+    size_t hudBufferSize = CVPixelBufferGetDataSize(self.hudBuffer);
+    NSLog(@"hudBufferSize: %ld w:%ld h:%ld", (long)hudBufferSize, (long)hudBufferWidth, (long)hudBufferHeight);
+    unsigned char *hudPixel = (unsigned char *)CVPixelBufferGetBaseAddress(self.hudBuffer);
+    
     
     
     CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
@@ -435,70 +486,69 @@
     
     for( int row = 0; row < bufferHeight; row++ ) {
         for( int column = 0; column < bufferWidth; column++ ) {
-            pixel[1] = 0; // De-green (second pixel in BGRA is green)
-//            pixel[0] = MAX(hudPixel[0], pixel[0]);
-//            pixel[1] = MAX(hudPixel[1], pixel[1]);
-//            pixel[2] = MAX(hudPixel[2], pixel[2]);
+//            pixel[1] = 0; // De-green (second pixel in BGRA is green)
+            
+            pixel[0] = MAX(hudPixel[0], pixel[0]);
+            pixel[1] = MAX(hudPixel[1], pixel[1]);
+            pixel[2] = MAX(hudPixel[2], pixel[2]);
+            
+//            pixel[0] = hudPixel[0];
+//            pixel[1] = hudPixel[1];
+//            pixel[2] = hudPixel[2];
 
             pixel += BYTES_PER_PIXEL;
-//            hudPixel += BYTES_PER_PIXEL;
+            hudPixel += BYTES_PER_PIXEL;
         }
     }
-    
+
     CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
-//    CVPixelBufferUnlockBaseAddress( hudBuffer, 0 );
+    CVPixelBufferUnlockBaseAddress( self.hudBuffer, 0 );
+    self.hudBuffer = nil;
 }
 
 
-//- (void)processPixelBuffer: (CVImageBufferRef)pixelBuffer 
+//- (void)processPixelBuffer: (CVImageBufferRef)pixelBuffer
 //{
-////    CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
-////    UIImage *hudImage = [UIImage imageNamed:@"hud"];
-////    
-////    CVImageBufferRef hudBuffer = [self pixelBufferFromCGImage:hudImage.CGImage];
-////    int hudBufferWidth = CVPixelBufferGetWidth(hudBuffer);
-////    int hudBufferHeight = CVPixelBufferGetHeight(hudBuffer);
-////    
-////    size_t hudBufferSize = CVPixelBufferGetDataSize(hudBuffer);
-////    NSLog(@"hudBufferSize: %ld", (long)hudBufferSize);
-////    unsigned char *hudPixel = (unsigned char *)CVPixelBufferGetBaseAddress(hudBuffer);
-////    
 //
+//    if(self.hudImage == nil){
+//        self.hudImage = [UIImage imageNamed:@"hud"];
+//        self.hudBuffer = [self pixelBufferFromCGImage:self.hudImage.CGImage];
+//    }
+//    
+//    CVPixelBufferLockBaseAddress(self.hudBuffer, 0 );
+//    int hudBufferWidth = (int)CVPixelBufferGetWidth(self.hudBuffer);
+//    int hudBufferHeight = (int)CVPixelBufferGetHeight(self.hudBuffer);
+//    size_t hudBufferSize = CVPixelBufferGetDataSize(self.hudBuffer);
+//    NSLog(@"hudBufferSize: %ld w:%ld h:%ld", (long)hudBufferSize, (long)hudBufferWidth, (long)hudBufferHeight);
+//    unsigned char *hudPixel = (unsigned char *)CVPixelBufferGetBaseAddress(self.hudBuffer);
 //    
 //    
 //    
-//	
-//	
-//	int bufferWidth = CVPixelBufferGetWidth(pixelBuffer);
-//	int bufferHeight = CVPixelBufferGetHeight(pixelBuffer);
-//	unsigned char *buffer = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
-//
-////    if(hudBufferWidth != bufferWidth ||
-////       hudBufferHeight != bufferHeight){
-////        NSLog(@"Sizes do not match");
-////    }
+//    CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
 //    
+//    int bufferWidth = (int)CVPixelBufferGetWidth(pixelBuffer);
+//    int bufferHeight = (int)CVPixelBufferGetHeight(pixelBuffer);
+//    unsigned char *pixel = (unsigned char *)CVPixelBufferGetBaseAddress(pixelBuffer);
 //    
-//	for( int row = 0; row < bufferHeight; row++ ) {		
-//		for( int column = 0; column < bufferWidth; column++ ) {
-////            if(row % 50 < 20){
-//                buffer[1] = 0; // De-green (second pixel in BGRA is green)
-////                buffer[0] = hudPixel[0];
-////                buffer[1] = hudPixel[1];
-////                buffer[2] = hudPixel[2];
-////            }
-//			
-//			buffer += BYTES_PER_PIXEL;
-//		}
-//	}
-//	
-//	CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
-////    CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
+//    for( int row = 0; row < bufferHeight; row++ ) {
+//        for( int column = 0; column < bufferWidth; column++ ) {
+//            //            pixel[1] = 0; // De-green (second pixel in BGRA is green)
+//            pixel[0] = MAX(hudPixel[0], pixel[0]);
+//            pixel[1] = MAX(hudPixel[1], pixel[1]);
+//            pixel[2] = MAX(hudPixel[2], pixel[2]);
+//            
+//            pixel += BYTES_PER_PIXEL;
+//            hudPixel += BYTES_PER_PIXEL;
+//        }
+//    }
+//    
+//    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0 );
+//    CVPixelBufferUnlockBaseAddress(self.hudBuffer, 0 );
 //}
 
 #pragma mark Capture
 
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection 
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {	
 	CMFormatDescriptionRef formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer);
     
@@ -617,12 +667,16 @@
     // Here are the fixed resolutions that are supported in iOS 7+
     if([VWWUserDefaults resolution] == 0){
         captureSession.sessionPreset = AVCaptureSessionPreset352x288;
+        self.hudView = [[VWWHUDView alloc]initWithFrame:CGRectMake(0, 0, 352 / [UIScreen mainScreen].scale, 288 / [UIScreen mainScreen].scale)];
     } else if([VWWUserDefaults resolution] == 1){
         captureSession.sessionPreset = AVCaptureSessionPreset640x480;
+        self.hudView = [[VWWHUDView alloc]initWithFrame:CGRectMake(0, 0, 640 / [UIScreen mainScreen].scale, 480 / [UIScreen mainScreen].scale)];
     } else if([VWWUserDefaults resolution] == 2){
         captureSession.sessionPreset = AVCaptureSessionPreset1280x720;
+        self.hudView = [[VWWHUDView alloc]initWithFrame:CGRectMake(0, 0, 1280 / [UIScreen mainScreen].scale, 720 / [UIScreen mainScreen].scale)];
     } else if([VWWUserDefaults resolution] == 3){
         captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
+        self.hudView = [[VWWHUDView alloc]initWithFrame:CGRectMake(0, 0, 1920 / [UIScreen mainScreen].scale, 1080 / [UIScreen mainScreen].scale)];
     }
     
     /*
@@ -645,7 +699,11 @@
 	/*
 	 * Create video connection
 	 */
+#if defined(VWW_USE_FRONT)
+    AVCaptureDeviceInput *videoIn = [[AVCaptureDeviceInput alloc] initWithDevice:[self videoDeviceWithPosition:AVCaptureDevicePositionFront] error:nil];
+#else
     AVCaptureDeviceInput *videoIn = [[AVCaptureDeviceInput alloc] initWithDevice:[self videoDeviceWithPosition:AVCaptureDevicePositionBack] error:nil];
+#endif
     if ([captureSession canAddInput:videoIn])
         [captureSession addInput:videoIn];
 //	[videoIn release];
@@ -726,6 +784,8 @@
 //		dispatch_release(movieWritingQueue);
 		movieWritingQueue = NULL;
 	}
+    
+    self.hudView = nil;
 }
 
 #pragma mark Error Handling

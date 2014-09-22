@@ -3,9 +3,30 @@
 #import <QuartzCore/QuartzCore.h>
 #import "VWWSessionViewController.h"
 #import "VWWSessionOptionsTableViewController.h"
+#import "VWW.h"
+
+#import <mach/mach.h>
+#import <mach/mach_host.h>
+
+static vm_size_t get_free_memory() {
+    mach_port_t host_port = mach_host_self();
+    mach_msg_type_number_t host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
+    vm_size_t pagesize;
+    host_page_size(host_port, &pagesize);
+    
+    vm_statistics_data_t vm_stat;
+    if (host_statistics(host_port, HOST_VM_INFO, (host_info_t)&vm_stat, &host_size) != KERN_SUCCESS) {
+        VWW_LOG_ERROR(@"Failed to fetch vm statistics");
+        return 0;
+    }
+    
+    return vm_stat.free_count * pagesize;
+}
+
 //static inline double radians (double degrees) { return degrees * (M_PI / 180); }
 static NSString *VWWSegueOptionsToSession = @"VWWSegueOptionsToSession";
 static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
+
 
 @interface VWWSessionViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *rButton;
@@ -62,9 +83,14 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     oglView.center = CGPointMake(previewView.bounds.size.width/2.0, previewView.bounds.size.height/2.0);
     
     // Set up labels
-    shouldShowStats = NO;
-    self.statusSwitch.on = NO;
- 
+#if defined(VWW_DEBUG)
+    shouldShowStats = YES;
+    self.statusSwitch.on = YES;
+#else
+    shouldShowStats = YES;
+    self.statusSwitch.on = YES;
+    
+#endif
 
     [self.view bringSubviewToFront:self.toolbarView];
 
@@ -180,6 +206,10 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
         typeLabel = [self labelWithText:@"" yPosition: (CGFloat) 98.0];
         [previewView addSubview:typeLabel];
     }
+    if(memoryLabel == nil){
+        memoryLabel = [self labelWithText:@"" yPosition: (CGFloat) 142.0];
+        [previewView addSubview:memoryLabel];
+    }
     
 	if (shouldShowStats) {
 		NSString *frameRateString = [NSString stringWithFormat:@"%.2f FPS ", [videoProcessor videoFrameRate]];
@@ -195,6 +225,8 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
  		NSString *typeString = [NSString stringWithFormat:@"%.4s ", (char*)&type];
  		typeLabel.text = typeString;
  		[typeLabel setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.25]];
+        
+        [memoryLabel setText:[NSString stringWithFormat:@"%ldkb free", (long)get_free_memory() / 1000]];
  	}
  	else {
  		frameRateLabel.text = @"";
