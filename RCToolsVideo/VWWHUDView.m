@@ -11,6 +11,29 @@
 #import "VWWLocationController.h"
 #import "VWWMotionMonitor.h"
 #import "VWW.h"
+@import CoreMotion;
+
+
+
+
+
+//accelerometers        current|max
+//gyros                 current|max
+//heading               true | magnetic
+//altitude              agl | asl
+//distance from home    meters | feet
+//speed                 current|max
+//coordinates           current
+
+// HUD type
+//accelerometers        graph
+//gyros                 graph
+//heading               graph
+//compass indicator     arrow
+//attitude indicator    graphics
+
+
+
 
 @interface VWWHUDView (){
     // Location related
@@ -21,19 +44,29 @@
     
     // Heading related
     UILabel *headingLabel;
-
+    
     
     // Motion related
     UILabel *accelerometerCurrentLabel;
     UILabel *gyroscopeCurrentLabel;
-
+    
     UILabel *accelerometerLimitsLabel;
     UILabel *gyroscopeLimitsLabel;
-
+    
     NSTimer *timer;
 }
-
+@property (nonatomic, strong) CMAltimeter *altimeter;
+@property (nonatomic, strong) NSNumber *startAltitude;
+@property (nonatomic, strong) NSNumber *currentAltitude;
 @end
+
+@interface VWWHUDView (Altimeter)
+-(void)startAltimeter;
+@end
+
+
+
+
 
 @implementation VWWHUDView
 
@@ -60,6 +93,12 @@
     self.renderDropShadows = YES;
     self.textAlignment = NSTextAlignmentCenter;
     
+    
+    if([CMAltimeter isRelativeAltitudeAvailable]){
+        [self startAltimeter];
+    } else {
+        
+    }
     [[VWWLocationController sharedInstance] start];
     [[VWWMotionMonitor sharedInstance] startAll];
     
@@ -93,13 +132,13 @@
     [self addSubview:label];
     
     return label;
-   
+    
 }
 
 -(void)updateContent{
     const CGFloat kHeight = 30.0;
     const CGFloat kGutter = 8.0;
-
+    
     
     // *************************************** Coordinate *******************************************
     if([VWWUserDefaults renderCoordinates]){
@@ -115,7 +154,7 @@
             coordinateLabel.text = @"n/a";
         }
     }
-
+    
     
     // *************************************** Speed *******************************************
     if([VWWUserDefaults renderSpeed]){
@@ -131,16 +170,16 @@
     
     // *************************************** Distance from home *******************************************
     if([VWWUserDefaults renderDistanceFromHome]){
-    if(distanceFromHomeLabel == nil){
-        CGRect frame = CGRectMake(0, self.bounds.size.height - 3*kHeight - 2*kGutter, self.bounds.size.width, kHeight);
-        distanceFromHomeLabel = [self labelWithFrame:frame];
-    }
-    distanceFromHomeLabel.text = [NSString stringWithFormat:@"△ Home: %ldm",
-                                  (long)[VWWLocationController sharedInstance].distanceFromHome];
+        if(distanceFromHomeLabel == nil){
+            CGRect frame = CGRectMake(0, self.bounds.size.height - 3*kHeight - 2*kGutter, self.bounds.size.width, kHeight);
+            distanceFromHomeLabel = [self labelWithFrame:frame];
+        }
+        distanceFromHomeLabel.text = [NSString stringWithFormat:@"△ Home: %ldm",
+                                      (long)[VWWLocationController sharedInstance].distanceFromHome];
     }
     
     
-
+    
     // *************************************** Heading *******************************************
     if([VWWUserDefaults renderHeading]){
         if(headingLabel == nil){
@@ -162,22 +201,28 @@
             CGRect frame = CGRectMake(0, self.bounds.size.height - 5*kHeight - 4*kGutter, self.bounds.size.width, kHeight);
             altitudeLabel = [self labelWithFrame:frame];
         }
-//        if([VWWLocationController sharedInstance].heading){
-            altitudeLabel.text = [NSString stringWithFormat:@"Altitude: (A)%.0fm (R)%.0fm",
-                                 [VWWLocationController sharedInstance].altitude,
-                                 [VWWLocationController sharedInstance].relativeAltitude];
-//        } else {
-//            headingLabel.text = @"n/a";
-//        }
+        
+        if(self.altimeter){
+            if(self.startAltitude == nil){
+                altitudeLabel.text = @"n/a";
+            } else {
+                altitudeLabel.text = [NSString stringWithFormat:@"Altitude: (AGL)%.1f",
+                                      self.currentAltitude.floatValue];
+            }
+        } else {
+            VWW_LOG_TODO;
+        }
     }
     
-
+    
     // *************************************** Accelerometers *******************************************
     if([VWWUserDefaults renderAccelerometers]){
         if(accelerometerCurrentLabel == nil){
             CGRect frame = CGRectMake(0, 0, self.bounds.size.width, 1*kHeight);
             accelerometerCurrentLabel = [self labelWithFrame:frame];
         }
+        
+        
         if([VWWMotionMonitor sharedInstance].accelerometers){
             VWWSample *acc = [VWWMotionMonitor sharedInstance].accelerometers;
             accelerometerCurrentLabel.text = [NSString stringWithFormat:@"Acc x:%.2f y:%.2f z:%.2f",
@@ -219,7 +264,7 @@
             accelerometerLimitsLabel.text = @"n/a";
         }
     }
-
+    
     // *************************************** Gyroscope limits *******************************************
     if([VWWUserDefaults renderGyroscopeLimits]){
         if(gyroscopeLimitsLabel == nil){
@@ -241,3 +286,18 @@
 }
 
 @end
+
+
+@implementation VWWHUDView (Altimeter)
+
+-(void)startAltimeter{
+    self.altimeter = [[CMAltimeter alloc]init];
+    [self.altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMAltitudeData *altitudeData, NSError *error) {
+        if(self.startAltitude == nil){
+            self.startAltitude = [altitudeData.relativeAltitude copy];
+        }
+        self.currentAltitude = [altitudeData.relativeAltitude copy];
+    }];
+}
+@end
+

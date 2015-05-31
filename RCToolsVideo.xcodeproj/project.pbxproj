@@ -13,7 +13,6 @@
 		CF555E751B1AB5220094BFCD /* UIView+RenderToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E731B1AB5220094BFCD /* UIView+RenderToImage.m */; };
 		CFABE2F619CD109900586577 /* VWWSessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABE2F519CD109900586577 /* VWWSessionTableViewCell.m */; };
 		CFABE2FB19CD1E7400586577 /* UIView+ParallaxMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABE2FA19CD1E7400586577 /* UIView+ParallaxMotion.m */; };
-		CFABE30219CD2AD400586577 /* VWWVideoProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABE30019CD2AD400586577 /* VWWVideoProcessor.m */; };
 		CFB3E56219CCD89E00AB9B47 /* VWWButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */; };
 		CFB9ADB619CC151300247538 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB519CC151300247538 /* VWWHUDView.m */; };
 		CFB9ADBB19CCBD6500247538 /* VWWDeviceAxisLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB719CCBD6500247538 /* VWWDeviceAxisLimits.m */; };
@@ -26,11 +25,7 @@
 		CFCB902319CBB88D00D05317 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFCB902219CBB88D00D05317 /* Images.xcassets */; };
 		CFCB902619CBB88D00D05317 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFCB902419CBB88D00D05317 /* LaunchScreen.xib */; };
 		CFCB903219CBB88D00D05317 /* RCToolsVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB903119CBB88D00D05317 /* RCToolsVideoTests.m */; };
-		CFCB904C19CBB8FB00D05317 /* passThrough.fsh in Resources */ = {isa = PBXBuildFile; fileRef = CFCB903E19CBB8FB00D05317 /* passThrough.fsh */; };
-		CFCB904D19CBB8FB00D05317 /* passThrough.vsh in Resources */ = {isa = PBXBuildFile; fileRef = CFCB903F19CBB8FB00D05317 /* passThrough.vsh */; };
-		CFCB904F19CBB8FB00D05317 /* VWWPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */; };
 		CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904819CBB8FB00D05317 /* VWWSessionViewController.m */; };
-		CFCB905219CBB8FB00D05317 /* ShaderUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = CFCB904919CBB8FB00D05317 /* ShaderUtilities.c */; };
 		CFCB905419CBBAAD00D05317 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905319CBBAAD00D05317 /* OpenGLES.framework */; };
 		CFCB905619CBBAB200D05317 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905519CBBAB200D05317 /* Foundation.framework */; };
 		CFCB905819CBBAB800D05317 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB905719CBBAB800D05317 /* UIKit.framework */; };
@@ -41,7 +36,6 @@
 		CFCB906219CBBAD400D05317 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */; };
 		CFCB906419CBBAD900D05317 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */; };
 		CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906519CBBADE00D05317 /* QuartzCore.framework */; };
-		CFD0989519CBCA3B00C88A76 /* VWWFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0987F19CBCA3B00C88A76 /* VWWFileController.m */; };
 		CFD0989619CBCA3B00C88A76 /* VWWMotionMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988119CBCA3B00C88A76 /* VWWMotionMonitor.m */; };
 		CFD0989719CBCA3B00C88A76 /* VWWCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988319CBCA3B00C88A76 /* VWWCollectionViewCell.m */; };
 		CFD0989819CBCA3B00C88A76 /* VWWSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988519CBCA3B00C88A76 /* VWWSessionsViewController.m */; };
@@ -103,8 +97,6 @@
 		CFABE2F519CD109900586577 /* VWWSessionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionTableViewCell.m; sourceTree = "<group>"; };
 		CFABE2F919CD1E7400586577 /* UIView+ParallaxMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ParallaxMotion.h"; sourceTree = "<group>"; };
 		CFABE2FA19CD1E7400586577 /* UIView+ParallaxMotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ParallaxMotion.m"; sourceTree = "<group>"; };
-		CFABE30019CD2AD400586577 /* VWWVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWVideoProcessor.m; path = RCToolsVideo/Classes/VWWVideoProcessor.m; sourceTree = SOURCE_ROOT; };
-		CFABE30119CD2AD400586577 /* VWWVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWVideoProcessor.h; path = RCToolsVideo/Classes/VWWVideoProcessor.h; sourceTree = SOURCE_ROOT; };
 		CFB3E56019CCD89E00AB9B47 /* VWWButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWButtonTableViewCell.h; sourceTree = "<group>"; };
 		CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWButtonTableViewCell.m; sourceTree = "<group>"; };
 		CFB9ADB419CC151300247538 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
@@ -128,14 +120,8 @@
 		CFCB902B19CBB88D00D05317 /* RCToolsVideoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RCToolsVideoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCB903019CBB88D00D05317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCB903119CBB88D00D05317 /* RCToolsVideoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCToolsVideoTests.m; sourceTree = "<group>"; };
-		CFCB903E19CBB8FB00D05317 /* passThrough.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.fsh; sourceTree = "<group>"; };
-		CFCB903F19CBB8FB00D05317 /* passThrough.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = passThrough.vsh; sourceTree = "<group>"; };
-		CFCB904319CBB8FB00D05317 /* VWWPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWPreviewView.h; path = Classes/VWWPreviewView.h; sourceTree = "<group>"; };
-		CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWPreviewView.m; path = Classes/VWWPreviewView.m; sourceTree = "<group>"; };
 		CFCB904719CBB8FB00D05317 /* VWWSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VWWSessionViewController.h; path = ../Classes/VWWSessionViewController.h; sourceTree = "<group>"; };
 		CFCB904819CBB8FB00D05317 /* VWWSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VWWSessionViewController.m; path = ../Classes/VWWSessionViewController.m; sourceTree = "<group>"; };
-		CFCB904919CBB8FB00D05317 /* ShaderUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ShaderUtilities.c; path = ../Classes/ShaderUtilities.c; sourceTree = "<group>"; };
-		CFCB904A19CBB8FB00D05317 /* ShaderUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderUtilities.h; path = ../Classes/ShaderUtilities.h; sourceTree = "<group>"; };
 		CFCB905319CBBAAD00D05317 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		CFCB905519CBBAB200D05317 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CFCB905719CBBAB800D05317 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -146,8 +132,6 @@
 		CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		CFCB906519CBBADE00D05317 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		CFD0987E19CBCA3B00C88A76 /* VWWFileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWFileController.h; sourceTree = "<group>"; };
-		CFD0987F19CBCA3B00C88A76 /* VWWFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWFileController.m; sourceTree = "<group>"; };
 		CFD0988019CBCA3B00C88A76 /* VWWMotionMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWMotionMonitor.h; sourceTree = "<group>"; };
 		CFD0988119CBCA3B00C88A76 /* VWWMotionMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWMotionMonitor.m; sourceTree = "<group>"; };
 		CFD0988219CBCA3B00C88A76 /* VWWCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCollectionViewCell.h; sourceTree = "<group>"; };
@@ -255,15 +239,6 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
-		CFABE30319CD2AD700586577 /* Video */ = {
-			isa = PBXGroup;
-			children = (
-				CFABE30019CD2AD400586577 /* VWWVideoProcessor.m */,
-				CFABE30119CD2AD400586577 /* VWWVideoProcessor.h */,
-			);
-			name = Video;
-			sourceTree = "<group>";
-		};
 		CFB9ADC319CCC75400247538 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,7 +280,6 @@
 				CFCB902219CBB88D00D05317 /* Images.xcassets */,
 				CFD0988C19CBCA3B00C88A76 /* Include */,
 				CFD098AB19CBCB1800C88A76 /* Model */,
-				CFCB903D19CBB8FB00D05317 /* Shaders */,
 				CFCB901519CBB88D00D05317 /* Supporting Files */,
 				CFD098A019CBCA8000C88A76 /* ThirdParty */,
 				CFD0987A19CBBD5F00C88A76 /* UserInterface */,
@@ -340,17 +314,6 @@
 				CFCB903019CBB88D00D05317 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CFCB903D19CBB8FB00D05317 /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-				CFCB904919CBB8FB00D05317 /* ShaderUtilities.c */,
-				CFCB904A19CBB8FB00D05317 /* ShaderUtilities.h */,
-				CFCB903E19CBB8FB00D05317 /* passThrough.fsh */,
-				CFCB903F19CBB8FB00D05317 /* passThrough.vsh */,
-			);
-			path = Shaders;
 			sourceTree = "<group>";
 		};
 		CFD0987A19CBBD5F00C88A76 /* UserInterface */ = {
@@ -393,10 +356,8 @@
 		CFD0987D19CBCA3B00C88A76 /* NonGUI */ = {
 			isa = PBXGroup;
 			children = (
-				CFD098A919CBCAD700C88A76 /* File */,
 				CFD098C519CBD42500C88A76 /* Location */,
 				CFD098AA19CBCADC00C88A76 /* Motion */,
-				CFABE30319CD2AD700586577 /* Video */,
 			);
 			path = NonGUI;
 			sourceTree = "<group>";
@@ -484,21 +445,10 @@
 		CFD098A719CBCABF00C88A76 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CFCB904319CBB8FB00D05317 /* VWWPreviewView.h */,
-				CFCB904419CBB8FB00D05317 /* VWWPreviewView.m */,
 				CFB9ADB419CC151300247538 /* VWWHUDView.h */,
 				CFB9ADB519CC151300247538 /* VWWHUDView.m */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		CFD098A919CBCAD700C88A76 /* File */ = {
-			isa = PBXGroup;
-			children = (
-				CFD0987E19CBCA3B00C88A76 /* VWWFileController.h */,
-				CFD0987F19CBCA3B00C88A76 /* VWWFileController.m */,
-			);
-			name = File;
 			sourceTree = "<group>";
 		};
 		CFD098AA19CBCADC00C88A76 /* Motion */ = {
@@ -656,10 +606,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFCB904D19CBB8FB00D05317 /* passThrough.vsh in Resources */,
 				CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */,
 				CFCB902619CBB88D00D05317 /* LaunchScreen.xib in Resources */,
-				CFCB904C19CBB8FB00D05317 /* passThrough.fsh in Resources */,
 				CFCB902319CBB88D00D05317 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,10 +632,8 @@
 				CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */,
 				CFD098B919CBCB9B00C88A76 /* NSTimer+Blocks.m in Sources */,
 				CFD098B119CBCB2E00C88A76 /* VWWSampleAxis.m in Sources */,
-				CFD0989519CBCA3B00C88A76 /* VWWFileController.m in Sources */,
 				CFD0989719CBCA3B00C88A76 /* VWWCollectionViewCell.m in Sources */,
 				CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */,
-				CFABE30219CD2AD400586577 /* VWWVideoProcessor.m in Sources */,
 				CFB9ADBB19CCBD6500247538 /* VWWDeviceAxisLimits.m in Sources */,
 				CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */,
 				CFABE2F619CD109900586577 /* VWWSessionTableViewCell.m in Sources */,
@@ -704,9 +650,7 @@
 				CFD0989919CBCA3B00C88A76 /* VWWTableViewCell.m in Sources */,
 				CFB9ADB619CC151300247538 /* VWWHUDView.m in Sources */,
 				CFD0989D19CBCA3B00C88A76 /* VWWUtilities.m in Sources */,
-				CFCB905219CBB8FB00D05317 /* ShaderUtilities.c in Sources */,
 				CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */,
-				CFCB904F19CBB8FB00D05317 /* VWWPreviewView.m in Sources */,
 				CFD098AE19CBCB1800C88A76 /* VWWSample.m in Sources */,
 				CFD0989619CBCA3B00C88A76 /* VWWMotionMonitor.m in Sources */,
 				CFB9ADBC19CCBD6500247538 /* VWWDeviceLimits.m in Sources */,

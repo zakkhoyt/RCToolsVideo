@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/Controllers/NonGUI/VWWLocationController.m"
-            timestampString = "432856749.2298"
+            timestampString = "454738097.208167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/Controllers/NonGUI/VWWLocationController.m"
-            timestampString = "432864953.900585"
+            timestampString = "454738097.208167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-locationManager:didUpdateHeading:"
             landmarkType = "5">
          </BreakpointContent>
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/Controllers/NonGUI/VWWLocationController.m"
-            timestampString = "432864953.900585"
+            timestampString = "454738097.208167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "-locationManager:didUpdateHeading:"
             landmarkType = "5">
          </BreakpointContent>
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/Controllers/NonGUI/VWWLocationController.m"
-            timestampString = "432864660.725335"
+            timestampString = "454738097.208167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
             <Locations>
@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "454735977.416654"
+            timestampString = "454738097.208167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-updateContent"
             landmarkType = "5">
          </BreakpointContent>
@@ -267,6 +267,20 @@
             endingLineNumber = "101"
             landmarkName = "-updateText"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RCToolsVideo/VWWHUDView+Altimeter.m"
+            timestampString = "454737636.586014"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
