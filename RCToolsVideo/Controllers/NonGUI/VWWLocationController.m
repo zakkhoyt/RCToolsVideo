@@ -170,25 +170,20 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations{
     if(locations.count){
+        
         CLLocation *location = locations[0];
-//        VWW_LOG_DEBUG(@"New location: %@", location.description);
-        self.location = location;
-        self.currentSpeed = location.speed;
-        self.maxSpeed = MAX(self.maxSpeed, location.speed);
-
-        
-//        if(self.altitude == 0){
-//            self.
-//        }
-        self.altitude = location.altitude;
-        
-        if(self.homeLocation == nil){
-            self.homeLocation = [location copy];
+        if(location.horizontalAccuracy < 10){
+            //        VWW_LOG_DEBUG(@"New location: %@", location.description);
+            self.location = location;
+            self.currentSpeed = location.speed;
+            self.maxSpeed = MAX(self.maxSpeed, location.speed);
+            self.altitude = location.altitude;
+            
+            if(self.homeLocation == nil){
+                self.homeLocation = [location copy];
+            }
+            self.distanceFromHome = [location distanceFromLocation:self.homeLocation];
         }
-        self.distanceFromHome = [location distanceFromLocation:self.homeLocation];
-
-        
-        
     }
 }
 

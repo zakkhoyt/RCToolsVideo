@@ -139,9 +139,19 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
             
     }
 }
+
 - (IBAction)readyButtonAction:(id)sender {
-//
-    [self performSegueWithIdentifier:VWWSegueOptionsToPreview sender:self];
+    
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [ac addAction:[UIAlertAction actionWithTitle:@"Preview" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self performSegueWithIdentifier:VWWSegueOptionsToPreview sender:self];
+    }]];
+    [ac addAction:[UIAlertAction actionWithTitle:@"Video" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self performSegueWithIdentifier:VWWSegueOptionsToSession sender:self];
+    }]];
+    
+    [self presentViewController:ac animated:YES completion:NULL];
+
 }
 
 

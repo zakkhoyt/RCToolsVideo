@@ -37,28 +37,37 @@
 
 @implementation VWWHUDView
 
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
-        self.textColor = [UIColor whiteColor];
-        self.labelColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-        self.renderDropShadows = YES;
-        self.textAlignment = NSTextAlignmentCenter;
-        
-        [[VWWLocationController sharedInstance] start];
-        [[VWWMotionMonitor sharedInstance] startAll];
-        
-        timer = [NSTimer scheduledTimerWithTimeInterval:0.2 block:^{
-//            [self setNeedsDisplay];
-            [self updateContent];
-        } repeats:YES];
+        [self commonInit];
     }
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+-(void)commonInit{
+    self.backgroundColor = [UIColor clearColor];
+    self.textColor = [UIColor whiteColor];
+    self.labelColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+    self.renderDropShadows = YES;
+    self.textAlignment = NSTextAlignmentCenter;
+    
+    [[VWWLocationController sharedInstance] start];
+    [[VWWMotionMonitor sharedInstance] startAll];
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.2 block:^{
+        //            [self setNeedsDisplay];
+        [self updateContent];
+    } repeats:YES];
+}
 
 -(void)dealloc{
     [timer invalidate];

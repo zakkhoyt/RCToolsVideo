@@ -35,76 +35,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RCToolsVideo/Classes/VWWSessionViewController.m"
-            timestampString = "432854012.536964"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "-updateLabels"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RCToolsVideo/Classes/VWWSessionViewController.m"
-            timestampString = "432854012.536964"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "-labelWithText:yPosition:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RCToolsVideo/Classes/VWWSessionViewController.m"
-            timestampString = "432854012.536964"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "-labelWithText:yPosition:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RCToolsVideo/Classes/VWWSessionViewController.m"
-            timestampString = "432854012.536964"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "-labelWithText:yPosition:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/Controllers/VWWSessionOptionsTableViewController.m"
-            timestampString = "432865054.783888"
+            timestampString = "454736528.613872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "-textTableViewCellFromDictionary:"
             landmarkType = "5">
          </BreakpointContent>
@@ -242,6 +178,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[VWWLocationController locationManager:didUpdateLocations:]"
                   moduleName = "RCToolsVideo"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zacharyhoyt/Code/repositories/vww/RCToolsVideo/RCToolsVideo/Controllers/NonGUI/VWWLocationController.m"
                   timestampString = "432865054.837845"
                   startingColumnNumber = "9223372036854775807"
@@ -256,6 +193,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "-[VWWLocationController locationManager:didUpdateLocations:]"
                   moduleName = "RCToolsVideo"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zacharyhoyt/Code/repositories/vww/RCToolsVideo/RCToolsVideo/Controllers/NonGUI/VWWLocationController.m"
                   timestampString = "432865054.838009"
                   startingColumnNumber = "9223372036854775807"
@@ -265,22 +203,6 @@
                   offsetFromSymbolStart = "268">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "432870278.011066"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-dealloc"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -312,6 +234,38 @@
             startingLineNumber = "205"
             endingLineNumber = "205"
             landmarkName = "+stringThoroughfareFromLatitude:longitude:completionBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RCToolsVideo/VWWHUDView.m"
+            timestampString = "454735977.416654"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-updateContent"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RCToolsVideo/Classes/VWWSessionViewController.m"
+            timestampString = "454736992.689668"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-updateText"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
