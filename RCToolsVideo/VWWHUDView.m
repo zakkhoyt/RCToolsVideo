@@ -258,8 +258,9 @@
         self.homeLabel.text = [NSString stringWithFormat:@"Home: %.2fm", [self.currentLocation distanceFromLocation:self.baseLocation]];
     }
     
-    
-    self.dateLabel.text = [NSDate date].description;
+    // TODO: Use date formatter
+    NSString *date = [NSDate date].description;
+    self.dateLabel.text = [date stringByReplacingOccurrencesOfString:@"+0000" withString:@""];
     
     self.watermarkLabel.text = @"RCToolsVideo by VaporWarewolf";
     
