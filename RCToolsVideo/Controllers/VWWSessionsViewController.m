@@ -7,10 +7,10 @@
 //
 
 #import "VWWSessionsViewController.h"
-#import "VWWFileController.h"
 #import "MBProgressHUD.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "VWWSessionTableViewCell.h"
+#import "VWWUtilities.h"
 
 @import  MediaPlayer;
 @import CoreLocation;
@@ -74,26 +74,26 @@ static NSString *VWWSegueSessionsToOptions = @"VWWSegueSessionsToOptions";
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-            NSString *groupName = [group valueForProperty:ALAssetsGroupPropertyName];
-            if([groupName isEqualToString:VWW_ALBUM_NAME]){
-                self.sessions = [@[]mutableCopy];
-                [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
-                    if(result){
-                        [self.sessions addObject:result];
-                    }
-                }];
-                
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.tableView reloadData];
-                });
-                group = nil;
-                *stop = YES;
-            }
-        } failureBlock:^(NSError *error) {
-            VWW_LOG_ERROR(@"Failed to load videos");
-        }];
+//        [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+//            NSString *groupName = [group valueForProperty:ALAssetsGroupPropertyName];
+//            if([groupName isEqualToString:VWW_ALBUM_NAME]){
+//                self.sessions = [@[]mutableCopy];
+//                [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+//                    if(result){
+//                        [self.sessions addObject:result];
+//                    }
+//                }];
+//                
+//                
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [self.tableView reloadData];
+//                });
+//                group = nil;
+//                *stop = YES;
+//            }
+//        } failureBlock:^(NSError *error) {
+//            VWW_LOG_ERROR(@"Failed to load videos");
+//        }];
     });
     
 

@@ -56,6 +56,10 @@
 +(BOOL)renderCoordinates;
 +(void)setRenderCoordinates:(BOOL)renderCoordinates;
 
+// Date
++(BOOL)renderDate;
++(void)setRenderDate:(BOOL)renderDate;
+
 // DropShadow
 +(BOOL)renderDropShadow;
 +(void)setRenderDropShadow:(BOOL)renderDropShadow;
