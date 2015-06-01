@@ -20,6 +20,7 @@ static NSString *VWWUserDefaultsAltitudeKey = @"altitude";
 static NSString *VWWUserDefaultsDistanceFromHomeKey = @"distanceFromHome";
 static NSString *VWWUserDefaultsSpeedKey = @"speed";
 static NSString *VWWUserDefaultsCoordinatesKey = @"coordinates";
+static NSString *VWWUserDefaultsDateKey = @"VWWUserDefaultsDateKey";
 static NSString *VWWUserDefaultsDropShadowKey = @"dropShadow";
 static NSString *VWWUserDefaultsCompassIndicatorKey = @"compassIndicator";
 static NSString *VWWUserDefaultsAttitudeIndicatorKey = @"attitudeIndicator";
@@ -115,6 +116,15 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 }
 +(void)setRenderCoordinates:(BOOL)renderCoordinates{
     [[NSUserDefaults standardUserDefaults] setBool:renderCoordinates forKey:VWWUserDefaultsCoordinatesKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+// date
++(BOOL)renderDate{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsDateKey];
+}
++(void)setRenderDate:(BOOL)renderDate{
+    [[NSUserDefaults standardUserDefaults] setBool:renderDate forKey:VWWUserDefaultsDateKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

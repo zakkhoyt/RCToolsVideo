@@ -57,7 +57,13 @@
     [self.gpuImageView addSubview:self.toolsView];
 
     self.videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
-    self.videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
+    
+    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
+    if(deviceOrientation == UIDeviceOrientationLandscapeRight){
+        self.videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
+    } else {
+        self.videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
+    }
     
     [self setupFilters];
     
@@ -163,7 +169,7 @@
             [PHAsset saveVideoAtURL:self.movieURL location:nil completionBlock:^(PHAsset *asset, BOOL success) {
                 if(success){
                     NSLog(@"Success adding video to Photos");
-                    [asset saveToAlbum:@"LaserDot" completionBlock:^(BOOL success) {
+                    [asset saveToAlbum:@"RC Video" completionBlock:^(BOOL success) {
                         if(success){
                             NSLog(@"Success adding video to App Album");
                         } else {

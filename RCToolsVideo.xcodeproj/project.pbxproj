@@ -11,6 +11,8 @@
 		CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */; };
 		CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */; };
 		CF555E751B1AB5220094BFCD /* UIView+RenderToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E731B1AB5220094BFCD /* UIView+RenderToImage.m */; };
+		CF652B6E1B1AC8B9000D0B58 /* VWWStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B6D1B1AC8B9000D0B58 /* VWWStatusViewController.m */; };
+		CF652B711B1ACA81000D0B58 /* VWWStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B701B1ACA81000D0B58 /* VWWStatusTableViewCell.m */; };
 		CFABE2F619CD109900586577 /* VWWSessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABE2F519CD109900586577 /* VWWSessionTableViewCell.m */; };
 		CFABE2FB19CD1E7400586577 /* UIView+ParallaxMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABE2FA19CD1E7400586577 /* UIView+ParallaxMotion.m */; };
 		CFB3E56219CCD89E00AB9B47 /* VWWButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */; };
@@ -93,6 +95,10 @@
 		CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+Utility.m"; sourceTree = "<group>"; };
 		CF555E721B1AB5220094BFCD /* UIView+RenderToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RenderToImage.h"; sourceTree = "<group>"; };
 		CF555E731B1AB5220094BFCD /* UIView+RenderToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RenderToImage.m"; sourceTree = "<group>"; };
+		CF652B6C1B1AC8B9000D0B58 /* VWWStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWStatusViewController.h; sourceTree = "<group>"; };
+		CF652B6D1B1AC8B9000D0B58 /* VWWStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWStatusViewController.m; sourceTree = "<group>"; };
+		CF652B6F1B1ACA81000D0B58 /* VWWStatusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWStatusTableViewCell.h; sourceTree = "<group>"; };
+		CF652B701B1ACA81000D0B58 /* VWWStatusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWStatusTableViewCell.m; sourceTree = "<group>"; };
 		CFABE2F419CD109900586577 /* VWWSessionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSessionTableViewCell.h; sourceTree = "<group>"; };
 		CFABE2F519CD109900586577 /* VWWSessionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionTableViewCell.m; sourceTree = "<group>"; };
 		CFABE2F919CD1E7400586577 /* UIView+ParallaxMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ParallaxMotion.h"; sourceTree = "<group>"; };
@@ -385,6 +391,10 @@
 				CFD098A619CBCAAE00C88A76 /* Sessions */,
 				CF2F415519CC0C86008B68DD /* Options */,
 				CF2F415619CC0C8D008B68DD /* Preview */,
+				CF652B6C1B1AC8B9000D0B58 /* VWWStatusViewController.h */,
+				CF652B6D1B1AC8B9000D0B58 /* VWWStatusViewController.m */,
+				CF652B6F1B1ACA81000D0B58 /* VWWStatusTableViewCell.h */,
+				CF652B701B1ACA81000D0B58 /* VWWStatusTableViewCell.m */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -652,9 +662,11 @@
 				CFD0989D19CBCA3B00C88A76 /* VWWUtilities.m in Sources */,
 				CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */,
 				CFD098AE19CBCB1800C88A76 /* VWWSample.m in Sources */,
+				CF652B6E1B1AC8B9000D0B58 /* VWWStatusViewController.m in Sources */,
 				CFD0989619CBCA3B00C88A76 /* VWWMotionMonitor.m in Sources */,
 				CFB9ADBC19CCBD6500247538 /* VWWDeviceLimits.m in Sources */,
 				CFD098A419CBCA8000C88A76 /* MBProgressHUD.m in Sources */,
+				CF652B711B1ACA81000D0B58 /* VWWStatusTableViewCell.m in Sources */,
 				CFD098BA19CBCB9B00C88A76 /* UIFont+VWW.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

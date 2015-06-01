@@ -35,22 +35,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RCToolsVideo/Controllers/VWWSessionOptionsTableViewController.m"
-            timestampString = "454736528.613872"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "-textTableViewCellFromDictionary:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/Controllers/NonGUI/VWWLocationController.m"
             timestampString = "454738097.208167"
             startingColumnNumber = "9223372036854775807"
@@ -249,8 +233,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
             endingLineNumber = "117"
-            landmarkName = "-updateContent"
-            landmarkType = "5">
+            landmarkName = "@implementation VWWHUDView"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -260,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/Classes/VWWSessionViewController.m"
-            timestampString = "454736992.689668"
+            timestampString = "454739731.630249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-updateText"
             landmarkType = "5">
          </BreakpointContent>
