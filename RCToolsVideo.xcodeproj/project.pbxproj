@@ -11,12 +11,20 @@
 		CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */; };
 		CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */; };
 		CF555E751B1AB5220094BFCD /* UIView+RenderToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E731B1AB5220094BFCD /* UIView+RenderToImage.m */; };
-		CF652B6E1B1AC8B9000D0B58 /* VWWStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B6D1B1AC8B9000D0B58 /* VWWStatusViewController.m */; };
-		CF652B711B1ACA81000D0B58 /* VWWStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B701B1ACA81000D0B58 /* VWWStatusTableViewCell.m */; };
+		CF652B7A1B1C1930000D0B58 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B791B1C1930000D0B58 /* VWWHUDView.m */; };
+		CF652B7D1B1C1E47000D0B58 /* VWWHUDSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B7C1B1C1E47000D0B58 /* VWWHUDSpeedView.m */; };
+		CF652B801B1C1E58000D0B58 /* VWWHUDCoordinateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B7F1B1C1E58000D0B58 /* VWWHUDCoordinateView.m */; };
+		CF652B831B1C1E69000D0B58 /* VWWHUDHeadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B821B1C1E69000D0B58 /* VWWHUDHeadingView.m */; };
+		CF652B861B1C1E7D000D0B58 /* VWWHUDHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B851B1C1E7D000D0B58 /* VWWHUDHomeView.m */; };
+		CF652B891B1C1E8E000D0B58 /* VWWHUDAltitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B881B1C1E8E000D0B58 /* VWWHUDAltitudeView.m */; };
+		CF652B8C1B1C1EE8000D0B58 /* VWWHUDDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B8B1B1C1EE8000D0B58 /* VWWHUDDateView.m */; };
+		CF652B8F1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B8E1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m */; };
+		CF652B911B1C2CDB000D0B58 /* VWWHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF652B901B1C2CDB000D0B58 /* VWWHUDView.xib */; };
+		CF652B951B1C394C000D0B58 /* VWWHUDAttitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */; };
+		CF652B981B1C396D000D0B58 /* VWWHUDForcesView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */; };
 		CFABE2F619CD109900586577 /* VWWSessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABE2F519CD109900586577 /* VWWSessionTableViewCell.m */; };
 		CFABE2FB19CD1E7400586577 /* UIView+ParallaxMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABE2FA19CD1E7400586577 /* UIView+ParallaxMotion.m */; };
 		CFB3E56219CCD89E00AB9B47 /* VWWButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */; };
-		CFB9ADB619CC151300247538 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB519CC151300247538 /* VWWHUDView.m */; };
 		CFB9ADBB19CCBD6500247538 /* VWWDeviceAxisLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB719CCBD6500247538 /* VWWDeviceAxisLimits.m */; };
 		CFB9ADBC19CCBD6500247538 /* VWWDeviceLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADB819CCBD6500247538 /* VWWDeviceLimits.m */; };
 		CFB9ADBF19CCC6C800247538 /* VWWSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9ADBE19CCC6C800247538 /* VWWSwitchTableViewCell.m */; };
@@ -54,7 +62,6 @@
 		CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */; };
 		CFD098BE19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */; };
 		CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */; };
-		CFD098C419CBD41900C88A76 /* VWWLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098C319CBD41900C88A76 /* VWWLocationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,18 +102,33 @@
 		CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+Utility.m"; sourceTree = "<group>"; };
 		CF555E721B1AB5220094BFCD /* UIView+RenderToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RenderToImage.h"; sourceTree = "<group>"; };
 		CF555E731B1AB5220094BFCD /* UIView+RenderToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RenderToImage.m"; sourceTree = "<group>"; };
-		CF652B6C1B1AC8B9000D0B58 /* VWWStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWStatusViewController.h; sourceTree = "<group>"; };
-		CF652B6D1B1AC8B9000D0B58 /* VWWStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWStatusViewController.m; sourceTree = "<group>"; };
-		CF652B6F1B1ACA81000D0B58 /* VWWStatusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWStatusTableViewCell.h; sourceTree = "<group>"; };
-		CF652B701B1ACA81000D0B58 /* VWWStatusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWStatusTableViewCell.m; sourceTree = "<group>"; };
+		CF652B781B1C1930000D0B58 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
+		CF652B791B1C1930000D0B58 /* VWWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDView.m; sourceTree = "<group>"; };
+		CF652B7B1B1C1E47000D0B58 /* VWWHUDSpeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDSpeedView.h; sourceTree = "<group>"; };
+		CF652B7C1B1C1E47000D0B58 /* VWWHUDSpeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDSpeedView.m; sourceTree = "<group>"; };
+		CF652B7E1B1C1E58000D0B58 /* VWWHUDCoordinateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDCoordinateView.h; sourceTree = "<group>"; };
+		CF652B7F1B1C1E58000D0B58 /* VWWHUDCoordinateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDCoordinateView.m; sourceTree = "<group>"; };
+		CF652B811B1C1E69000D0B58 /* VWWHUDHeadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDHeadingView.h; sourceTree = "<group>"; };
+		CF652B821B1C1E69000D0B58 /* VWWHUDHeadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDHeadingView.m; sourceTree = "<group>"; };
+		CF652B841B1C1E7D000D0B58 /* VWWHUDHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDHomeView.h; sourceTree = "<group>"; };
+		CF652B851B1C1E7D000D0B58 /* VWWHUDHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDHomeView.m; sourceTree = "<group>"; };
+		CF652B871B1C1E8E000D0B58 /* VWWHUDAltitudeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDAltitudeView.h; sourceTree = "<group>"; };
+		CF652B881B1C1E8E000D0B58 /* VWWHUDAltitudeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDAltitudeView.m; sourceTree = "<group>"; };
+		CF652B8A1B1C1EE8000D0B58 /* VWWHUDDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDDateView.h; sourceTree = "<group>"; };
+		CF652B8B1B1C1EE8000D0B58 /* VWWHUDDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDDateView.m; sourceTree = "<group>"; };
+		CF652B8D1B1C1EF6000D0B58 /* VWWHUDWatermarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDWatermarkView.h; sourceTree = "<group>"; };
+		CF652B8E1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDWatermarkView.m; sourceTree = "<group>"; };
+		CF652B901B1C2CDB000D0B58 /* VWWHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VWWHUDView.xib; sourceTree = "<group>"; };
+		CF652B931B1C394C000D0B58 /* VWWHUDAttitudeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDAttitudeView.h; sourceTree = "<group>"; };
+		CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDAttitudeView.m; sourceTree = "<group>"; };
+		CF652B961B1C396D000D0B58 /* VWWHUDForcesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDForcesView.h; sourceTree = "<group>"; };
+		CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDForcesView.m; sourceTree = "<group>"; };
 		CFABE2F419CD109900586577 /* VWWSessionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSessionTableViewCell.h; sourceTree = "<group>"; };
 		CFABE2F519CD109900586577 /* VWWSessionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionTableViewCell.m; sourceTree = "<group>"; };
 		CFABE2F919CD1E7400586577 /* UIView+ParallaxMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ParallaxMotion.h"; sourceTree = "<group>"; };
 		CFABE2FA19CD1E7400586577 /* UIView+ParallaxMotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ParallaxMotion.m"; sourceTree = "<group>"; };
 		CFB3E56019CCD89E00AB9B47 /* VWWButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWButtonTableViewCell.h; sourceTree = "<group>"; };
 		CFB3E56119CCD89E00AB9B47 /* VWWButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWButtonTableViewCell.m; sourceTree = "<group>"; };
-		CFB9ADB419CC151300247538 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
-		CFB9ADB519CC151300247538 /* VWWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDView.m; sourceTree = "<group>"; };
 		CFB9ADB719CCBD6500247538 /* VWWDeviceAxisLimits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWDeviceAxisLimits.m; sourceTree = "<group>"; };
 		CFB9ADB819CCBD6500247538 /* VWWDeviceLimits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWDeviceLimits.m; sourceTree = "<group>"; };
 		CFB9ADB919CCBD6500247538 /* VWWDeviceAxisLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWDeviceAxisLimits.h; sourceTree = "<group>"; };
@@ -174,8 +196,6 @@
 		CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionOptionsTableViewController.m; sourceTree = "<group>"; };
 		CFD098BF19CBD2E600C88A76 /* VWWHUDPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDPreviewViewController.h; sourceTree = "<group>"; };
 		CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDPreviewViewController.m; sourceTree = "<group>"; };
-		CFD098C219CBD41900C88A76 /* VWWLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWLocationController.h; sourceTree = "<group>"; };
-		CFD098C319CBD41900C88A76 /* VWWLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWLocationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +254,31 @@
 				CF555E6C1B1AB4A50094BFCD /* GPUImage.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CF652B921B1C344F000D0B58 /* SubHUDs */ = {
+			isa = PBXGroup;
+			children = (
+				CF652B7B1B1C1E47000D0B58 /* VWWHUDSpeedView.h */,
+				CF652B7C1B1C1E47000D0B58 /* VWWHUDSpeedView.m */,
+				CF652B7E1B1C1E58000D0B58 /* VWWHUDCoordinateView.h */,
+				CF652B7F1B1C1E58000D0B58 /* VWWHUDCoordinateView.m */,
+				CF652B811B1C1E69000D0B58 /* VWWHUDHeadingView.h */,
+				CF652B821B1C1E69000D0B58 /* VWWHUDHeadingView.m */,
+				CF652B841B1C1E7D000D0B58 /* VWWHUDHomeView.h */,
+				CF652B851B1C1E7D000D0B58 /* VWWHUDHomeView.m */,
+				CF652B871B1C1E8E000D0B58 /* VWWHUDAltitudeView.h */,
+				CF652B881B1C1E8E000D0B58 /* VWWHUDAltitudeView.m */,
+				CF652B8A1B1C1EE8000D0B58 /* VWWHUDDateView.h */,
+				CF652B8B1B1C1EE8000D0B58 /* VWWHUDDateView.m */,
+				CF652B8D1B1C1EF6000D0B58 /* VWWHUDWatermarkView.h */,
+				CF652B8E1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m */,
+				CF652B931B1C394C000D0B58 /* VWWHUDAttitudeView.h */,
+				CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */,
+				CF652B961B1C396D000D0B58 /* VWWHUDForcesView.h */,
+				CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */,
+			);
+			name = SubHUDs;
 			sourceTree = "<group>";
 		};
 		CFABE2F719CD162700586577 /* Cell */ = {
@@ -362,7 +407,6 @@
 		CFD0987D19CBCA3B00C88A76 /* NonGUI */ = {
 			isa = PBXGroup;
 			children = (
-				CFD098C519CBD42500C88A76 /* Location */,
 				CFD098AA19CBCADC00C88A76 /* Motion */,
 			);
 			path = NonGUI;
@@ -391,10 +435,6 @@
 				CFD098A619CBCAAE00C88A76 /* Sessions */,
 				CF2F415519CC0C86008B68DD /* Options */,
 				CF2F415619CC0C8D008B68DD /* Preview */,
-				CF652B6C1B1AC8B9000D0B58 /* VWWStatusViewController.h */,
-				CF652B6D1B1AC8B9000D0B58 /* VWWStatusViewController.m */,
-				CF652B6F1B1ACA81000D0B58 /* VWWStatusTableViewCell.h */,
-				CF652B701B1ACA81000D0B58 /* VWWStatusTableViewCell.m */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -455,8 +495,10 @@
 		CFD098A719CBCABF00C88A76 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CFB9ADB419CC151300247538 /* VWWHUDView.h */,
-				CFB9ADB519CC151300247538 /* VWWHUDView.m */,
+				CF652B781B1C1930000D0B58 /* VWWHUDView.h */,
+				CF652B791B1C1930000D0B58 /* VWWHUDView.m */,
+				CF652B901B1C2CDB000D0B58 /* VWWHUDView.xib */,
+				CF652B921B1C344F000D0B58 /* SubHUDs */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -500,15 +542,6 @@
 				CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		CFD098C519CBD42500C88A76 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				CFD098C219CBD41900C88A76 /* VWWLocationController.h */,
-				CFD098C319CBD41900C88A76 /* VWWLocationController.m */,
-			);
-			name = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -618,6 +651,7 @@
 			files = (
 				CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */,
 				CFCB902619CBB88D00D05317 /* LaunchScreen.xib in Resources */,
+				CF652B911B1C2CDB000D0B58 /* VWWHUDView.xib in Resources */,
 				CFCB902319CBB88D00D05317 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,10 +673,12 @@
 				CFB9ADBF19CCC6C800247538 /* VWWSwitchTableViewCell.m in Sources */,
 				CFABE2FB19CD1E7400586577 /* UIView+ParallaxMotion.m in Sources */,
 				CFD0989819CBCA3B00C88A76 /* VWWSessionsViewController.m in Sources */,
+				CF652B831B1C1E69000D0B58 /* VWWHUDHeadingView.m in Sources */,
 				CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */,
 				CFD098B919CBCB9B00C88A76 /* NSTimer+Blocks.m in Sources */,
 				CFD098B119CBCB2E00C88A76 /* VWWSampleAxis.m in Sources */,
 				CFD0989719CBCA3B00C88A76 /* VWWCollectionViewCell.m in Sources */,
+				CF652B8F1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m in Sources */,
 				CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */,
 				CFB9ADBB19CCBD6500247538 /* VWWDeviceAxisLimits.m in Sources */,
 				CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */,
@@ -652,21 +688,25 @@
 				CF555E751B1AB5220094BFCD /* UIView+RenderToImage.m in Sources */,
 				CFD098BE19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m in Sources */,
 				CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */,
-				CFD098C419CBD41900C88A76 /* VWWLocationController.m in Sources */,
 				CFD0989C19CBCA3B00C88A76 /* VWWUserDefaults.m in Sources */,
 				CFB9ADC219CCC70D00247538 /* VWWTextTableViewCell.m in Sources */,
 				CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */,
+				CF652B7A1B1C1930000D0B58 /* VWWHUDView.m in Sources */,
+				CF652B7D1B1C1E47000D0B58 /* VWWHUDSpeedView.m in Sources */,
+				CF652B951B1C394C000D0B58 /* VWWHUDAttitudeView.m in Sources */,
 				CFCB901819CBB88D00D05317 /* main.m in Sources */,
+				CF652B891B1C1E8E000D0B58 /* VWWHUDAltitudeView.m in Sources */,
+				CF652B801B1C1E58000D0B58 /* VWWHUDCoordinateView.m in Sources */,
 				CFD0989919CBCA3B00C88A76 /* VWWTableViewCell.m in Sources */,
-				CFB9ADB619CC151300247538 /* VWWHUDView.m in Sources */,
 				CFD0989D19CBCA3B00C88A76 /* VWWUtilities.m in Sources */,
 				CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */,
 				CFD098AE19CBCB1800C88A76 /* VWWSample.m in Sources */,
-				CF652B6E1B1AC8B9000D0B58 /* VWWStatusViewController.m in Sources */,
+				CF652B981B1C396D000D0B58 /* VWWHUDForcesView.m in Sources */,
 				CFD0989619CBCA3B00C88A76 /* VWWMotionMonitor.m in Sources */,
+				CF652B8C1B1C1EE8000D0B58 /* VWWHUDDateView.m in Sources */,
+				CF652B861B1C1E7D000D0B58 /* VWWHUDHomeView.m in Sources */,
 				CFB9ADBC19CCBD6500247538 /* VWWDeviceLimits.m in Sources */,
 				CFD098A419CBCA8000C88A76 /* MBProgressHUD.m in Sources */,
-				CF652B711B1ACA81000D0B58 /* VWWStatusTableViewCell.m in Sources */,
 				CFD098BA19CBCB9B00C88A76 /* UIFont+VWW.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,8 +12,10 @@
 
 //static NSString *UIFontSmileFontRegular = @"HelveticaNeue-UltraLight";
 //static NSString *UIFontSmileFontRegular = @"HelveticaNeue-Light";
-static NSString *UIFontSmileFontRegular = @"HelveticaNeue-Thin";
-static NSString *UIFontSmileFontBold = @"HelveticaNeue-Light";
+//static NSString *UIFontSmileFontRegular = @"HelveticaNeue-Thin";
+//static NSString *UIFontSmileFontBold = @"HelveticaNeue-Light";
+static NSString *UIFontSmileFontRegular = @"HelveticaNeue";
+static NSString *UIFontSmileFontBold = @"HelveticaNeue";
 
 
 @interface UIFont(VWW)

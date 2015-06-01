@@ -17,9 +17,8 @@
 
 static NSString *VWWSegueOptionsToSession = @"VWWSegueOptionsToSession";
 static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
-
+static NSString *VWWSegueOptionsToHUD = @"VWWSegueOptionsToHUD";
 @interface VWWSessionOptionsTableViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISwitch *headingSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *altitudeSeitch;
 @property (weak, nonatomic) IBOutlet UISwitch *distanceHomeSwitch;
@@ -43,7 +42,7 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 }
 
 
-- (void)readyButtonAction:(id)sender {
+- (IBAction)readyButtonAction:(id)sender {
     
     [VWWUserDefaults setRenderHeading:self.headingSwitch.on];
     [VWWUserDefaults setRenderAltitude:self.altitudeSeitch.on];
@@ -53,29 +52,18 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     [VWWUserDefaults setRenderDate:self.dateSwitch.on];
     
     
-    UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
     [ac addAction:[UIAlertAction actionWithTitle:@"Preview" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self performSegueWithIdentifier:VWWSegueOptionsToPreview sender:self];
     }]];
     [ac addAction:[UIAlertAction actionWithTitle:@"Video" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self performSegueWithIdentifier:VWWSegueOptionsToSession sender:self];
     }]];
+    [ac addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+ 
+    }]];
     
     [self presentViewController:ac animated:YES completion:NULL];
-
-}
-
-- (IBAction)headingSwitchValueChanged:(id)sender {
-}
-- (IBAction)altitudeSwitchValueChanged:(id)sender {
-}
-- (IBAction)distanceHomeSwitchValueChanged:(id)sender {
-}
-- (IBAction)speedSwitchValueChanged:(id)sender {
-}
-- (IBAction)coordinatesSwitchValueChanged:(id)sender {
-}
-- (IBAction)dateSwitch:(id)sender {
 }
 
 @end

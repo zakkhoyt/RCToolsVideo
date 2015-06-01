@@ -2,20 +2,10 @@
 //  VWWHUDView.m
 //  RCToolsVideo
 //
-//  Created by Zakk Hoyt on 9/19/14.
-//  Copyright (c) 2014 Zakk Hoyt. All rights reserved.
+//  Created by Zakk Hoyt on 5/31/15.
+//  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
-
-#import "VWWHUDView.h"
-#import "NSTimer+Blocks.h"
-#import "VWWLocationController.h"
-#import "VWWMotionMonitor.h"
-#import "VWW.h"
-@import CoreMotion;
-
-
-
-
+// Exampel image here: http://hobbywireless.com/images/STORM%20OSD%20kit_01.jpg
 
 //accelerometers        current|max
 //gyros                 current|max
@@ -33,39 +23,91 @@
 //attitude indicator    graphics
 
 
+#import "VWWHUDView.h"
+#import "VWW.h"
+#import "NSTimer+Blocks.h"
+#import "UIView+RenderToImage.h"
 
 
-@interface VWWHUDView (){
-    // Location related
-    UILabel *coordinateLabel;
-    UILabel *topSpeedLabel;
-    UILabel *distanceFromHomeLabel;
-    UILabel *altitudeLabel;
-    
-    // Heading related
-    UILabel *headingLabel;
-    
-    
-    // Motion related
-    UILabel *accelerometerCurrentLabel;
-    UILabel *gyroscopeCurrentLabel;
-    
-    UILabel *accelerometerLimitsLabel;
-    UILabel *gyroscopeLimitsLabel;
-    
-    NSTimer *timer;
-}
+#import "VWWHUDCoordinateView.h"
+#import "VWWHUDHeadingView.h"
+#import "VWWHUDSpeedView.h"
+#import "VWWHUDHomeView.h"
+#import "VWWHUDAltitudeView.h"
+#import "VWWHUDDateView.h"
+#import "VWWHUDWatermarkView.h"
+#import "VWWHUDAttitudeView.h"
+#import "VWWHUDForcesView.h"
+
+
+@import CoreMotion;
+@import CoreLocation;
+
+
+@interface VWWHUDView () <CLLocationManagerDelegate>
+
+// Callback block
+@property (nonatomic, strong) VWWHUDViewImageBlock imageBlock;
+
+// UI
+@property (nonatomic, strong) NSTimer *timer;
+@property (weak, nonatomic) IBOutlet VWWHUDCoordinateView *coordinateView;
+@property (weak, nonatomic) IBOutlet VWWHUDHeadingView *headingView;
+@property (weak, nonatomic) IBOutlet VWWHUDSpeedView *speedView;
+@property (weak, nonatomic) IBOutlet VWWHUDHomeView *homeView;
+@property (weak, nonatomic) IBOutlet VWWHUDAltitudeView *altitudeView;
+@property (weak, nonatomic) IBOutlet VWWHUDDateView *dateView;
+@property (weak, nonatomic) IBOutlet VWWHUDWatermarkView *watermarkView;
+@property (weak, nonatomic) IBOutlet VWWHUDAttitudeView *attitudeView;
+@property (weak, nonatomic) IBOutlet VWWHUDForcesView *forcesView;
+
+@property (weak, nonatomic) IBOutlet UILabel *coordinateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *headingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *speedLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *altitudeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *watermarkLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *attitudeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *forcesLabel;
+
+// Sensors
 @property (nonatomic, strong) CMAltimeter *altimeter;
-@property (nonatomic, strong) NSNumber *startAltitude;
+@property (nonatomic, strong) CMMotionManager *motionManager;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
+// Variables for the sensors
+
 @property (nonatomic, strong) NSNumber *currentAltitude;
+@property (nonatomic, strong) CMDeviceMotion *currentMotion;
+@property (nonatomic, strong) CLHeading *currentHeading;
+@property (nonatomic, strong) CLLocation *currentLocation;
+
+@property (nonatomic, strong) NSNumber *baseAltitude;
+@property (nonatomic, strong) CMDeviceMotion *baseMotion;
+@property (nonatomic, strong) CLHeading *baseHeading;
+@property (nonatomic, strong) CLLocation *baseLocation;
+
+@property (nonatomic) CGFloat maxForce;
+//@property (nonatomic) CGFloat maxAltitude;
+//@property (nonatomic) CGFloat maxSpeed;;
 @end
 
-@interface VWWHUDView (Altimeter)
+
+@interface VWWHUDView (CoreMotion)
 -(void)startAltimeter;
+-(void)stopAltimeter;
+-(void)setupCoreMotion;
+-(void)startDeviceMotion;
+-(void)stopDeviceMotion;
 @end
-
-
-
+@interface VWWHUDView (CoreLocation)
+-(void)setupCoreLocation;
+-(void)startHeading;
+-(void)stopHeading;
+-(void)startLocations;
+-(void)stopLocations;
+@end
 
 
 @implementation VWWHUDView
@@ -78,226 +120,242 @@
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder{
-    self = [super initWithCoder:aDecoder];
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
     if (self) {
         [self commonInit];
     }
     return self;
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    [self customizeView:self];
+}
+
+-(void)customizeView:(UIView*)view{
+    [view.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if([obj isKindOfClass:[UILabel class]]){
+            UILabel *label = obj;
+            label.textColor = [UIColor whiteColor];
+            label.shadowColor = [UIColor blackColor];
+            label.shadowOffset = CGSizeMake(-2, -2);
+            
+        } else if([obj isKindOfClass:[UIView class]]){
+            UIView *view = obj;
+            view.backgroundColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.2];
+        }
+        
+        UIView *view = obj;
+        [self customizeView:view];
+    }];
+    
+}
+
 -(void)commonInit{
     self.backgroundColor = [UIColor clearColor];
-    self.textColor = [UIColor whiteColor];
-    self.labelColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-    self.renderDropShadows = YES;
-    self.textAlignment = NSTextAlignmentCenter;
+    
+    // Only show what the user wants to see
+    self.coordinateView.hidden = ![VWWUserDefaults renderCoordinates];
+    self.headingView.hidden = ![VWWUserDefaults renderHeading];
+    self.speedView.hidden = ![VWWUserDefaults renderSpeed];
+    self.homeView.hidden = ![VWWUserDefaults renderDistanceFromHome];
+    self.altitudeView.hidden = ![VWWUserDefaults renderAltitude];
+    self.dateView.hidden = ![VWWUserDefaults renderDate];
+    self.watermarkView.hidden = NO;
     
     
-    if([CMAltimeter isRelativeAltitudeAvailable]){
-        [self startAltimeter];
-    } else {
+    
+    [self startSensors];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
+        [self update];
         
-    }
-    [[VWWLocationController sharedInstance] start];
-    [[VWWMotionMonitor sharedInstance] startAll];
-    
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.2 block:^{
-        //            [self setNeedsDisplay];
-        [self updateContent];
+        if(_imageBlock){
+            UIImage *image = [self imageRepresentation];
+            _imageBlock(image);
+        }
     } repeats:YES];
+
 }
 
 -(void)dealloc{
-    [timer invalidate];
-    timer = nil;
-    [[VWWLocationController sharedInstance] stop];
-    [[VWWMotionMonitor sharedInstance] stopDevice];
-}
-
-//- (void)drawRect:(CGRect)rect {
-//
-//}
-
--(UILabel*)labelWithFrame:(CGRect)frame{
-    UILabel *label = [[UILabel alloc]initWithFrame:frame];
-    if(self.renderDropShadows){
-        label.shadowColor = [UIColor blackColor];
-        label.shadowOffset = CGSizeMake(-1, -1);
-    }
-    label.textAlignment = self.textAlignment;
-    label.backgroundColor = self.labelColor;
-    label.textColor = self.textColor;
-    label.numberOfLines = 0;
-    [self addSubview:label];
-    
-    return label;
+    [self.timer invalidate];
+    _timer = nil;
+    [self stopSensors];
     
 }
 
--(void)updateContent{
-    const CGFloat kHeight = 30.0;
-    const CGFloat kGutter = 8.0;
+
+
+-(void)startSensors{
     
-    
-    // *************************************** Coordinate *******************************************
-    if([VWWUserDefaults renderCoordinates]){
-        if(coordinateLabel == nil){
-            CGRect frame = CGRectMake(0, self.bounds.size.height - 1*kHeight - 0*kGutter, self.bounds.size.width, kHeight);
-            coordinateLabel = [self labelWithFrame:frame];
-        }
-        if([VWWLocationController sharedInstance].location){
-            coordinateLabel.text = [NSString stringWithFormat:@"%f,%f",
-                                    [VWWLocationController sharedInstance].location.coordinate.latitude,
-                                    [VWWLocationController sharedInstance].location.coordinate.longitude];
-        } else {
-            coordinateLabel.text = @"n/a";
-        }
+    // Core Motino
+    if([CMAltimeter isRelativeAltitudeAvailable]){
+        [self startAltimeter];
     }
     
+    [self setupCoreMotion];
+    [self startDeviceMotion];
     
-    // *************************************** Speed *******************************************
-    if([VWWUserDefaults renderSpeed]){
-        if(topSpeedLabel == nil){
-            CGRect frame = CGRectMake(0, self.bounds.size.height - 2*kHeight - 1*kGutter, self.bounds.size.width, kHeight);
-            topSpeedLabel = [self labelWithFrame:frame];
-        }
-        topSpeedLabel.text = [NSString stringWithFormat:@"Speed:%.f Max:%.f m/s",
-                              [VWWLocationController sharedInstance].currentSpeed,
-                              [VWWLocationController sharedInstance].maxSpeed];
+    
+    // Core location
+    [self setupCoreLocation];
+    
+    if([CLLocationManager headingAvailable]){
+        [self startHeading];
     }
     
-    
-    // *************************************** Distance from home *******************************************
-    if([VWWUserDefaults renderDistanceFromHome]){
-        if(distanceFromHomeLabel == nil){
-            CGRect frame = CGRectMake(0, self.bounds.size.height - 3*kHeight - 2*kGutter, self.bounds.size.width, kHeight);
-            distanceFromHomeLabel = [self labelWithFrame:frame];
-        }
-        distanceFromHomeLabel.text = [NSString stringWithFormat:@"△ Home: %ldm",
-                                      (long)[VWWLocationController sharedInstance].distanceFromHome];
+    if([CLLocationManager locationServicesEnabled]){
+        [self startLocations];
     }
-    
-    
-    
-    // *************************************** Heading *******************************************
-    if([VWWUserDefaults renderHeading]){
-        if(headingLabel == nil){
-            CGRect frame = CGRectMake(0, self.bounds.size.height - 4*kHeight - 3*kGutter, self.bounds.size.width, kHeight);
-            headingLabel = [self labelWithFrame:frame];
-        }
-        if([VWWLocationController sharedInstance].heading){
-            headingLabel.text = [NSString stringWithFormat:@"Heading: (T)%.2f (M)%.2f",
-                                 [VWWLocationController sharedInstance].heading.trueHeading,
-                                 [VWWLocationController sharedInstance].heading.magneticHeading];
-        } else {
-            headingLabel.text = @"n/a";
-        }
-    }
-    
-    // *************************************** Altitude *******************************************
-    if([VWWUserDefaults renderAltitude]){
-        if(altitudeLabel == nil){
-            CGRect frame = CGRectMake(0, self.bounds.size.height - 5*kHeight - 4*kGutter, self.bounds.size.width, kHeight);
-            altitudeLabel = [self labelWithFrame:frame];
-        }
-        
-        if(self.altimeter){
-            if(self.startAltitude == nil){
-                altitudeLabel.text = @"n/a";
-            } else {
-                altitudeLabel.text = [NSString stringWithFormat:@"Altitude: (AGL)%.1f",
-                                      self.currentAltitude.floatValue];
-            }
-        } else {
-            VWW_LOG_TODO;
-        }
-    }
-    
-    
-    // *************************************** Accelerometers *******************************************
-    if([VWWUserDefaults renderAccelerometers]){
-        if(accelerometerCurrentLabel == nil){
-            CGRect frame = CGRectMake(0, 0, self.bounds.size.width, 1*kHeight);
-            accelerometerCurrentLabel = [self labelWithFrame:frame];
-        }
-        
-        
-        if([VWWMotionMonitor sharedInstance].accelerometers){
-            VWWSample *acc = [VWWMotionMonitor sharedInstance].accelerometers;
-            accelerometerCurrentLabel.text = [NSString stringWithFormat:@"Acc x:%.2f y:%.2f z:%.2f",
-                                              acc.x.value, acc.y.value, acc.z.value];
-        } else {
-            accelerometerCurrentLabel.text = @"n/a";
-        }
-    }
-    
-    // *************************************** Gyroscopes *******************************************
-    if([VWWUserDefaults renderGyroscopes]){
-        if(gyroscopeCurrentLabel == nil){
-            CGRect frame = CGRectMake(0, 1*kHeight + 1*kGutter, self.bounds.size.width, 1*kHeight);
-            gyroscopeCurrentLabel = [self labelWithFrame:frame];
-        }
-        
-        if([VWWMotionMonitor sharedInstance].gyroscopeLimits){
-            VWWSample *gyro = [VWWMotionMonitor sharedInstance].gyroscopes;
-            gyroscopeCurrentLabel.text = [NSString stringWithFormat:@"Gyro.max x:%.2f y:%.2f z:%.2f",
-                                          gyro.x.value, gyro.y.value, gyro.z.value];
-        } else {
-            gyroscopeCurrentLabel.text = @"n/a";
-        }
-    }
-    
-    // *************************************** Accelerometer limits *******************************************
-    if([VWWUserDefaults renderAccelerometerLimits]){
-        if(accelerometerLimitsLabel == nil){
-            CGRect frame = CGRectMake(0, 2*kHeight + 2*kGutter, self.bounds.size.width, 2*kHeight);
-            accelerometerLimitsLabel = [self labelWithFrame:frame];
-        }
-        if([VWWMotionMonitor sharedInstance].accelerometerLimits){
-            VWWDeviceLimits *aLimits = [VWWMotionMonitor sharedInstance].accelerometerLimits;
-            accelerometerLimitsLabel.text = [NSString stringWithFormat:@"Acc.max x:%.2f y:%.2f z:%.2f\n"
-                                             @"Acc.min x:%.2f y:%.2f z:%.2f",
-                                             aLimits.x.max, aLimits.y.max, aLimits.z.max,
-                                             aLimits.x.min, aLimits.y.min, aLimits.z.min];
-        } else {
-            accelerometerLimitsLabel.text = @"n/a";
-        }
-    }
-    
-    // *************************************** Gyroscope limits *******************************************
-    if([VWWUserDefaults renderGyroscopeLimits]){
-        if(gyroscopeLimitsLabel == nil){
-            CGRect frame = CGRectMake(0, 4*kHeight + 3*kGutter, self.bounds.size.width, 2*kHeight);
-            gyroscopeLimitsLabel = [self labelWithFrame:frame];
-        }
-        
-        if([VWWMotionMonitor sharedInstance].gyroscopeLimits){
-            VWWDeviceLimits *aLimits = [VWWMotionMonitor sharedInstance].gyroscopeLimits;
-            gyroscopeLimitsLabel.text = [NSString stringWithFormat:@"Gyro.max x:%.2f y:%.2f z:%.2f\n"
-                                         @"Gyro.min x:%.2f y:%.2f z:%.2f",
-                                         aLimits.x.max, aLimits.y.max, aLimits.z.max,
-                                         aLimits.x.min, aLimits.y.min, aLimits.z.min];
-        } else {
-            gyroscopeLimitsLabel.text = @"n/a";
-        }
-    }
-    
 }
 
+-(void)stopSensors{
+    [self stopAltimeter];
+    [self stopDeviceMotion];
+    [self stopHeading];
+    [self stopLocations];
+}
+
+-(void)update{
+    // Calculate before rendering
+    self.maxForce = MAX(self.maxForce, self.currentMotion.userAcceleration.x);
+    self.maxForce = MAX(self.maxForce, self.currentMotion.userAcceleration.y);
+    self.maxForce = MAX(self.maxForce, self.currentMotion.userAcceleration.z);
+    
+    
+    
+    if(self.currentAltitude == nil){
+        self.altitudeLabel.text = @"n/a";
+    } else {
+        self.altitudeLabel.text = [NSString stringWithFormat:@"%.2fm (AGL)", self.currentAltitude.floatValue];
+    }
+    
+    
+    if(self.currentHeading == nil){
+        self.headingLabel.text = @"n/a";
+    } else {
+        self.headingLabel.text = [NSString stringWithFormat:@"Heading: %.2f +/-%lu",
+                                  self.currentHeading.magneticHeading,
+                                  (unsigned long)self.currentHeading.headingAccuracy];
+    }
+    
+    if(self.currentLocation == nil){
+        self.coordinateLabel.text = @"n/a";
+        self.speedLabel.text = @"n/a";
+        self.homeLabel.text = @"n/a";
+    } else {
+        self.coordinateLabel.text = [NSString stringWithFormat:@"%.5f,%.5f +/- %lum",
+                                     self.currentLocation.coordinate.latitude,
+                                     self.currentLocation.coordinate.longitude,
+                                     (unsigned long)self.currentLocation.horizontalAccuracy];
+        self.speedLabel.text = [NSString stringWithFormat:@"Speed: %.2fmps", self.currentLocation.speed];
+        self.homeLabel.text = [NSString stringWithFormat:@"Home: %.2fm", [self.currentLocation distanceFromLocation:self.baseLocation]];
+    }
+    
+    
+    self.dateLabel.text = [NSDate date].description;
+    
+    self.watermarkLabel.text = @"RCToolsVideo by VaporWarewolf";
+    
+    // For Right landscape, pitch and roll are reversed disregarding sign
+    self.attitudeLabel.text = [NSString stringWithFormat:@"r:%.1f\n"
+                               @"p:%.1f\n"
+                               @"y:%.1f\n"
+                               @"(radians)",
+                               self.currentMotion.attitude.roll,
+                               self.currentMotion.attitude.pitch,
+                               self.currentMotion.attitude.yaw];
+    
+    self.forcesLabel.text = [NSString stringWithFormat:@"Max Force: %.2fg", self.maxForce];
+}
+
+
+-(void)setImageBlock:(VWWHUDViewImageBlock)imageBlock{
+    _imageBlock = imageBlock;
+}
+@end
+
+@implementation VWWHUDView (CoreLocation)
+
+-(void)setupCoreLocation{
+    _locationManager = [[CLLocationManager alloc]init];
+    _locationManager.delegate = self;
+    [_locationManager requestWhenInUseAuthorization];
+    
+}
+-(void)startHeading{
+    [self.locationManager startUpdatingHeading];
+}
+
+-(void)stopHeading{
+    [self.locationManager stopUpdatingHeading];
+}
+
+-(void)stopLocations{
+    [self.locationManager stopUpdatingLocation];
+}
+
+-(void)startLocations{
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [self.locationManager startUpdatingLocation];
+}
+
+#pragma mark CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager
+       didUpdateHeading:(CLHeading *)newHeading{
+    self.currentHeading = [newHeading copy];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations{
+    if(locations.count){
+        CLLocation *location = [locations firstObject];
+        if(self.baseLocation == nil){
+            self.baseLocation = [location copy];
+        } else {
+            self.currentLocation = [location copy];
+        }
+    }
+}
 @end
 
 
-@implementation VWWHUDView (Altimeter)
+@implementation VWWHUDView (CoreMotion)
 
+-(void)setupCoreMotion{
+    self.motionManager = [[CMMotionManager alloc]init];
+    self.motionManager.showsDeviceMovementDisplay = YES;
+}
 -(void)startAltimeter{
     self.altimeter = [[CMAltimeter alloc]init];
     [self.altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMAltitudeData *altitudeData, NSError *error) {
-        if(self.startAltitude == nil){
-            self.startAltitude = [altitudeData.relativeAltitude copy];
+        if(self.baseAltitude == nil){
+            self.baseAltitude = [altitudeData.relativeAltitude copy];
+        } else {
+            self.currentAltitude = [altitudeData.relativeAltitude copy];
         }
-        self.currentAltitude = [altitudeData.relativeAltitude copy];
     }];
 }
-@end
 
+-(void)stopAltimeter{
+    [self.altimeter stopRelativeAltitudeUpdates];
+}
+
+-(void)startDeviceMotion{
+    [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMDeviceMotion *motion, NSError *error) {
+        if(self.baseMotion == nil){
+            self.baseMotion = [motion copy];
+        }
+        self.currentMotion = [motion copy];
+    }];
+}
+-(void)stopDeviceMotion{
+    [self.motionManager stopDeviceMotionUpdates];
+}
+
+
+@end
