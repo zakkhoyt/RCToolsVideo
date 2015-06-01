@@ -164,7 +164,8 @@
     self.altitudeView.hidden = ![VWWUserDefaults renderAltitude];
     self.dateView.hidden = ![VWWUserDefaults renderDate];
     self.watermarkView.hidden = NO;
-    
+    self.attitudeView.hidden = ![VWWUserDefaults renderAttitudeIndicator];
+    self.forcesView.hidden = ![VWWUserDefaults renderAccelerometers];
     
     
     [self startSensors];

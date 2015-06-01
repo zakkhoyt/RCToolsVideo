@@ -7,7 +7,6 @@
 //
 
 #import "VWWHUDPreviewViewController.h"
-#import "UIView+ParallaxMotion.h"
 #import "VWWHUDView.h"
 
 @interface VWWHUDPreviewViewController ()

@@ -246,7 +246,7 @@
                         <sections>
                             <tableViewSection id="TJq-zS-XD3">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="b5f-Ok-K36" customClass="VWWSwitchTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="b5f-Ok-K36">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b5f-Ok-K36" id="fL6-Q8-3Dp">
@@ -272,7 +272,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="Eiu-Jh-6YA" customClass="VWWSwitchTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="Eiu-Jh-6YA">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Eiu-Jh-6YA" id="pGg-Db-uro">
@@ -298,7 +298,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="6G4-HE-XQd" customClass="VWWSwitchTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="6G4-HE-XQd">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6G4-HE-XQd" id="dhm-v2-M4t">
@@ -323,11 +323,8 @@
                                                 <constraint firstItem="kgA-aw-AXk" firstAttribute="trailing" secondItem="dhm-v2-M4t" secondAttribute="trailingMargin" id="sln-8f-ASh"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="igW-Jx-HX4" id="jgq-pF-AKX"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="gOt-VB-wq9" customClass="VWWSwitchTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="gOt-VB-wq9">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gOt-VB-wq9" id="kV4-Ab-FAe">
@@ -352,11 +349,8 @@
                                                 <constraint firstItem="a6N-sh-iOl" firstAttribute="leading" secondItem="Fay-pf-Usl" secondAttribute="trailing" constant="8" symbolic="YES" id="sC9-va-5b9"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="Fay-pf-Usl" id="XY2-E0-SE8"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="6rM-vf-txW" customClass="VWWSwitchTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="6rM-vf-txW">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6rM-vf-txW" id="tqg-1s-lix">
@@ -381,11 +375,8 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="IXK-Iq-bkM" secondAttribute="bottom" constant="3" id="p20-y9-vCx"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="IXK-Iq-bkM" id="6cX-pk-5ZU"/>
-                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="7oe-7D-7DD" customClass="VWWSwitchTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="7oe-7D-7DD">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7oe-7D-7DD" id="4wB-7K-Cwp">
@@ -411,6 +402,58 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="sQc-fG-499">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sQc-fG-499" id="Jcd-dI-5zQ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpV-0a-oF8">
+                                                    <rect key="frame" x="8" y="12" width="527" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u2g-eU-9Nh">
+                                                    <rect key="frame" x="543" y="7" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="u2g-eU-9Nh" firstAttribute="trailing" secondItem="Jcd-dI-5zQ" secondAttribute="trailingMargin" id="3hu-9l-Ncs"/>
+                                                <constraint firstItem="DpV-0a-oF8" firstAttribute="top" secondItem="Jcd-dI-5zQ" secondAttribute="topMargin" constant="4" id="OCR-X8-CBK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="DpV-0a-oF8" secondAttribute="bottom" constant="3" id="XjP-9h-G2A"/>
+                                                <constraint firstItem="DpV-0a-oF8" firstAttribute="leading" secondItem="Jcd-dI-5zQ" secondAttribute="leadingMargin" id="efZ-mR-gQm"/>
+                                                <constraint firstItem="u2g-eU-9Nh" firstAttribute="centerY" secondItem="DpV-0a-oF8" secondAttribute="centerY" id="mCu-bb-Fe5"/>
+                                                <constraint firstItem="u2g-eU-9Nh" firstAttribute="leading" secondItem="DpV-0a-oF8" secondAttribute="trailing" constant="8" symbolic="YES" id="tbU-va-4nf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="iXb-sa-Mcg">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iXb-sa-Mcg" id="Zee-Db-Q6s">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forces" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-uU-Z7q">
+                                                    <rect key="frame" x="8" y="12" width="527" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FhI-lb-dcc">
+                                                    <rect key="frame" x="543" y="7" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="FhI-lb-dcc" firstAttribute="leading" secondItem="JR1-uU-Z7q" secondAttribute="trailing" constant="8" symbolic="YES" id="32g-44-WVu"/>
+                                                <constraint firstItem="FhI-lb-dcc" firstAttribute="trailing" secondItem="Zee-Db-Q6s" secondAttribute="trailingMargin" id="GuC-b3-6JY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JR1-uU-Z7q" secondAttribute="bottom" constant="3" id="Ygo-vs-3gw"/>
+                                                <constraint firstItem="JR1-uU-Z7q" firstAttribute="top" secondItem="Zee-Db-Q6s" secondAttribute="topMargin" constant="4" id="h7q-pF-l32"/>
+                                                <constraint firstItem="FhI-lb-dcc" firstAttribute="centerY" secondItem="JR1-uU-Z7q" secondAttribute="centerY" id="kid-dj-eqB"/>
+                                                <constraint firstItem="JR1-uU-Z7q" firstAttribute="leading" secondItem="Zee-Db-Q6s" secondAttribute="leadingMargin" id="vvV-P8-3kd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -423,9 +466,11 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="altitudeSeitch" destination="a6N-sh-iOl" id="wvl-ou-XH1"/>
+                        <outlet property="attitudeSwitch" destination="u2g-eU-9Nh" id="QJF-tE-HN6"/>
                         <outlet property="coordinateSwitch" destination="TOL-Fp-tcR" id="gUY-Xf-Zqw"/>
                         <outlet property="dateSwitch" destination="pQU-jX-Puz" id="vIK-Vb-fdM"/>
                         <outlet property="distanceHomeSwitch" destination="iSA-23-k9U" id="auq-mp-XdX"/>
+                        <outlet property="forcesSwitch" destination="FhI-lb-dcc" id="i2V-cc-nXI"/>
                         <outlet property="headingSwitch" destination="kgA-aw-AXk" id="1kn-Dd-MQi"/>
                         <outlet property="speedSwitch" destination="5yg-vY-pCR" id="kxJ-6K-UhA"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="VWWSegueOptionsToSession" id="YRM-2s-2Er"/>

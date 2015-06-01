@@ -10,14 +10,11 @@
 #import "VWWHUDPreviewViewController.h"
 #import "VWWSessionViewController.h"
 #import "VWW.h"
-#import "VWWSwitchTableViewCell.h"
-#import "VWWTextTableViewCell.h"
-#import "VWWButtonTableViewCell.h"
 
 
 static NSString *VWWSegueOptionsToSession = @"VWWSegueOptionsToSession";
 static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
-static NSString *VWWSegueOptionsToHUD = @"VWWSegueOptionsToHUD";
+
 @interface VWWSessionOptionsTableViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *headingSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *altitudeSeitch;
@@ -25,6 +22,8 @@ static NSString *VWWSegueOptionsToHUD = @"VWWSegueOptionsToHUD";
 @property (weak, nonatomic) IBOutlet UISwitch *speedSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *coordinateSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *dateSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *attitudeSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *forcesSwitch;
 @end
 
 @implementation VWWSessionOptionsTableViewController
@@ -50,7 +49,8 @@ static NSString *VWWSegueOptionsToHUD = @"VWWSegueOptionsToHUD";
     [VWWUserDefaults setRenderSpeed:self.speedSwitch.on];
     [VWWUserDefaults setRenderCoordinates:self.coordinateSwitch.on];
     [VWWUserDefaults setRenderDate:self.dateSwitch.on];
-    
+    [VWWUserDefaults setRenderAttitudeIndicator:self.attitudeSwitch.on];
+    [VWWUserDefaults setRenderAccelerometers:self.forcesSwitch];
     
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
     [ac addAction:[UIAlertAction actionWithTitle:@"Preview" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
