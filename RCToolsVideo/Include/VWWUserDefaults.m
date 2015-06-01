@@ -102,7 +102,9 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // Speed
 +(BOOL)renderSpeed{
-    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsSpeedKey];
+    BOOL r = [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsSpeedKey];;
+    return r;
+//    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsSpeedKey];
 }
 +(void)setRenderSpeed:(BOOL)renderSpeed{
     [[NSUserDefaults standardUserDefaults] setBool:renderSpeed forKey:VWWUserDefaultsSpeedKey];

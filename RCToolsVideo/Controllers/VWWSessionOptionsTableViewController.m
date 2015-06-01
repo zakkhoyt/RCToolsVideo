@@ -38,10 +38,19 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     [UIApplication sharedApplication].statusBarHidden = NO;
+    
+    self.headingSwitch.on = [VWWUserDefaults renderHeading];
+    self.altitudeSeitch.on = [VWWUserDefaults renderAltitude];
+    self.distanceHomeSwitch.on = [VWWUserDefaults renderDistanceFromHome];
+    self.speedSwitch.on = [VWWUserDefaults renderSpeed];
+    self.coordinateSwitch.on = [VWWUserDefaults renderCoordinates];
+    self.dateSwitch.on = [VWWUserDefaults renderDate];
+    self.attitudeSwitch.on = [VWWUserDefaults renderAttitudeIndicator];
+    self.forcesSwitch.on = [VWWUserDefaults renderAccelerometers];
 }
 
 
-- (IBAction)readyButtonAction:(id)sender {
+- (void)readyButtonAction:(id)sender {
     
     [VWWUserDefaults setRenderHeading:self.headingSwitch.on];
     [VWWUserDefaults setRenderAltitude:self.altitudeSeitch.on];

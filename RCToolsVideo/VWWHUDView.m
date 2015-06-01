@@ -135,6 +135,20 @@
 }
 
 -(void)customizeView:(UIView*)view{
+    self.backgroundColor = [UIColor clearColor];
+    
+    // Only show what the user wants to see
+    self.coordinateView.hidden = !(BOOL)[VWWUserDefaults renderCoordinates];
+    self.headingView.hidden = !(BOOL)[VWWUserDefaults renderHeading];
+    self.speedView.hidden = !(BOOL)[VWWUserDefaults renderSpeed];
+    self.homeView.hidden = !(BOOL)[VWWUserDefaults renderDistanceFromHome];
+    self.altitudeView.hidden = !(BOOL)[VWWUserDefaults renderAltitude];
+    self.dateView.hidden = !(BOOL)[VWWUserDefaults renderDate];
+    self.watermarkView.hidden = NO;
+    self.attitudeView.hidden = !(BOOL)[VWWUserDefaults renderAttitudeIndicator];
+    self.forcesView.hidden = !(BOOL)[VWWUserDefaults renderAccelerometers];
+
+    
     [view.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if([obj isKindOfClass:[UILabel class]]){
             UILabel *label = obj;
@@ -154,18 +168,6 @@
 }
 
 -(void)commonInit{
-    self.backgroundColor = [UIColor clearColor];
-    
-    // Only show what the user wants to see
-    self.coordinateView.hidden = ![VWWUserDefaults renderCoordinates];
-    self.headingView.hidden = ![VWWUserDefaults renderHeading];
-    self.speedView.hidden = ![VWWUserDefaults renderSpeed];
-    self.homeView.hidden = ![VWWUserDefaults renderDistanceFromHome];
-    self.altitudeView.hidden = ![VWWUserDefaults renderAltitude];
-    self.dateView.hidden = ![VWWUserDefaults renderDate];
-    self.watermarkView.hidden = NO;
-    self.attitudeView.hidden = ![VWWUserDefaults renderAttitudeIndicator];
-    self.forcesView.hidden = ![VWWUserDefaults renderAccelerometers];
     
     
     [self startSensors];
