@@ -122,6 +122,8 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
 @property (nonatomic) CGFloat maxAltitudeASL;
 @property (nonatomic) CGFloat maxAltitudeAGL;
 @property (nonatomic) CGFloat maxSpeed;
+
+@property (nonatomic, strong) NSMutableArray *measurements;
 @end
 
 
@@ -218,7 +220,7 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
 
 -(void)commonInit{
     
-    
+    self.measurements = [NSMutableArray new];
     [self startSensors];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
@@ -390,7 +392,11 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     self.forcesLabel.text = [NSString stringWithFormat:@"Max Force: %.2fg", self.maxForce];
 }
 
-
+-(NSArray*)data{
+    @synchronized(self){
+        return [NSArray arrayWithArray:self.measurements];
+    }
+}
 
 -(void)setImageBlock:(VWWHUDViewImageBlock)imageBlock{
     _imageBlock = imageBlock;

@@ -9,6 +9,7 @@
 #import "VWWPreviewViewController.h"
 #import "VWWHUDView.h"
 #import "UIView+ParallaxMotion.h"
+#import "VWWChartViewController.h"
 
 @interface VWWPreviewViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *fieldImageView;
@@ -53,12 +54,22 @@
     }];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"SeguePreviewToChart"]){
+        VWWChartViewController *vc = segue.destinationViewController;
+        vc.data = self.hudView.data;
+    }
+}
+
 - (IBAction)calibrateButtonTouchUpInside:(id)sender {
     [self.hudView calibrate];
 }
 - (IBAction)exitButtonTouchUpInside:(id)sender {
     self.view.clipsToBounds = YES;
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)chartButtonTouchUpInside:(id)sender {
+    [self performSegueWithIdentifier:@"SeguePreviewToChart" sender:self];
 }
 
 @end

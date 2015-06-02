@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aXC-Lm-F9s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aXC-Lm-F9s">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -156,6 +156,89 @@ Contact: vaporwarewolf@gmail.com
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="857" y="-846"/>
+        </scene>
+        <!--Chart View Controller-->
+        <scene sceneID="nyy-Gz-1za">
+            <objects>
+                <viewController id="q40-Fx-3H6" customClass="VWWChartViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d4d-KT-dKB"/>
+                        <viewControllerLayoutGuide type="bottom" id="mZJ-vy-VIB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E80-v3-fZ5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjr-D6-wMh" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="OQc-Sp-5DB">
+                                        <rect key="frame" x="6" y="562" width="518" height="31"/>
+                                        <connections>
+                                            <action selector="slidersValueChanged:" destination="q40-Fx-3H6" eventType="valueChanged" id="PtN-gn-Nbx"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="FJY-HP-E75">
+                                        <rect key="frame" x="6" y="524" width="518" height="31"/>
+                                        <connections>
+                                            <action selector="slidersValueChanged:" destination="q40-Fx-3H6" eventType="valueChanged" id="3m1-NY-r7M"/>
+                                        </connections>
+                                    </slider>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="500" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yNx-PJ-CGx">
+                                        <rect key="frame" x="530" y="562" width="70" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="8pG-a0-VmH"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="Qt2-OA-0s8"/>
+                                            <constraint firstAttribute="width" constant="70" id="ZWJ-Y8-Jzf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="500" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbL-xj-Z5c">
+                                        <rect key="frame" x="530" y="524" width="70" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="B8n-e7-cSL"/>
+                                            <constraint firstAttribute="height" constant="30" id="QZr-fL-7KH"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="XFc-eI-Tcr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="OQc-Sp-5DB" firstAttribute="leading" secondItem="kjr-D6-wMh" secondAttribute="leading" constant="8" id="0c5-o4-ai1"/>
+                                    <constraint firstAttribute="trailing" secondItem="yNx-PJ-CGx" secondAttribute="trailing" id="8Pn-AU-7WL"/>
+                                    <constraint firstAttribute="bottom" secondItem="yNx-PJ-CGx" secondAttribute="bottom" constant="8" id="8n7-h1-5Cq"/>
+                                    <constraint firstItem="vbL-xj-Z5c" firstAttribute="leading" secondItem="FJY-HP-E75" secondAttribute="trailing" constant="8" id="E0J-19-GJ4"/>
+                                    <constraint firstAttribute="trailing" secondItem="vbL-xj-Z5c" secondAttribute="trailing" id="Ik1-ZY-F6n"/>
+                                    <constraint firstItem="OQc-Sp-5DB" firstAttribute="top" secondItem="FJY-HP-E75" secondAttribute="bottom" constant="8" id="SFl-Ss-Ka8"/>
+                                    <constraint firstItem="FJY-HP-E75" firstAttribute="leading" secondItem="kjr-D6-wMh" secondAttribute="leading" constant="8" id="Zbk-Ua-DPq"/>
+                                    <constraint firstItem="yNx-PJ-CGx" firstAttribute="leading" secondItem="OQc-Sp-5DB" secondAttribute="trailing" constant="8" id="bEO-gt-ZdH"/>
+                                    <constraint firstItem="yNx-PJ-CGx" firstAttribute="top" secondItem="vbL-xj-Z5c" secondAttribute="bottom" constant="8" id="uAp-kW-eyT"/>
+                                    <constraint firstAttribute="bottom" secondItem="OQc-Sp-5DB" secondAttribute="bottom" constant="8" id="yev-31-K9J"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mZJ-vy-VIB" firstAttribute="top" secondItem="kjr-D6-wMh" secondAttribute="bottom" id="GiI-tO-5vv"/>
+                            <constraint firstAttribute="trailing" secondItem="kjr-D6-wMh" secondAttribute="trailing" id="VKx-ct-QWz"/>
+                            <constraint firstItem="kjr-D6-wMh" firstAttribute="top" secondItem="E80-v3-fZ5" secondAttribute="top" id="VYN-sL-YcY"/>
+                            <constraint firstItem="kjr-D6-wMh" firstAttribute="leading" secondItem="E80-v3-fZ5" secondAttribute="leading" id="fug-ja-SkD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chartView" destination="kjr-D6-wMh" id="yJL-X8-mc5"/>
+                        <outlet property="sliderTextX" destination="vbL-xj-Z5c" id="Y7k-r0-rrE"/>
+                        <outlet property="sliderTextY" destination="yNx-PJ-CGx" id="2Dh-9n-Hid"/>
+                        <outlet property="sliderX" destination="FJY-HP-E75" id="6KQ-BY-hCo"/>
+                        <outlet property="sliderY" destination="OQc-Sp-5DB" id="sgi-5x-8IV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aBT-kW-Dw9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1671" y="-105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eFL-CH-eSR">
@@ -465,6 +548,20 @@ Contact: vaporwarewolf@gmail.com
                                             <action selector="calibrateButtonTouchUpInside:" destination="x2W-vm-Leh" eventType="touchUpInside" id="JZg-Jx-PIm"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zio-aO-m4D">
+                                        <rect key="frame" x="530" y="10" width="62" height="62"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="62" id="C4W-UH-zSc"/>
+                                            <constraint firstAttribute="height" constant="62" id="T90-eW-nnz"/>
+                                        </constraints>
+                                        <state key="normal" title="Chart">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chartButtonTouchUpInside:" destination="x2W-vm-Leh" eventType="touchUpInside" id="E2e-nG-7xb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="0.23000000000000001" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -472,7 +569,9 @@ Contact: vaporwarewolf@gmail.com
                                     <constraint firstAttribute="centerX" secondItem="VqD-UC-fh4" secondAttribute="centerX" id="CjR-ka-KFg"/>
                                     <constraint firstItem="Ups-Yj-qzl" firstAttribute="leading" secondItem="v3S-hJ-UVf" secondAttribute="leading" constant="8" id="FNm-dh-bKz"/>
                                     <constraint firstAttribute="centerY" secondItem="VqD-UC-fh4" secondAttribute="centerY" id="G8W-hc-LPv"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zio-aO-m4D" secondAttribute="trailing" constant="8" id="h9a-69-9KI"/>
                                     <constraint firstItem="Ups-Yj-qzl" firstAttribute="top" secondItem="v3S-hJ-UVf" secondAttribute="top" constant="10" id="ltE-q8-4zA"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zio-aO-m4D" secondAttribute="bottom" constant="8" id="oZz-jn-3ou"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -493,6 +592,7 @@ Contact: vaporwarewolf@gmail.com
                         <outlet property="exitButton" destination="Ups-Yj-qzl" id="iOS-kE-5Ta"/>
                         <outlet property="fieldImageView" destination="Owt-zi-IrO" id="E74-nz-Z5g"/>
                         <outlet property="toolView" destination="v3S-hJ-UVf" id="3vz-MK-VCT"/>
+                        <segue destination="q40-Fx-3H6" kind="show" identifier="SeguePreviewToChart" id="PN8-j4-dOV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcu-V6-jUk" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -9,5 +9,5 @@
 #import "VWWViewController.h"
 
 @interface VWWChartViewController : VWWViewController
-
+@property (nonatomic, strong) NSArray *data;
 @end

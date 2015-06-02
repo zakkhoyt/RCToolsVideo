@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C6FAB75C1B1E591E005C8513 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FAB7591B1E590B005C8513 /* Charts.framework */; };
+		C6FAB75F1B1E5990005C8513 /* VWWChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6FAB75E1B1E5990005C8513 /* VWWChartViewController.m */; };
+		C6FAB7611B1E5C08005C8513 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FAB7591B1E590B005C8513 /* Charts.framework */; };
+		C6FAB7621B1E5C08005C8513 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C6FAB7591B1E590B005C8513 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
 		CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */; };
 		CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */; };
@@ -71,6 +73,13 @@
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
 			remoteInfo = Charts;
 		};
+		C6FAB7631B1E5C08005C8513 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6FAB7541B1E590B005C8513 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
 		CF555E691B1AB4A50094BFCD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */;
@@ -101,8 +110,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C6FAB7651B1E5C09005C8513 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C6FAB7621B1E5C08005C8513 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		C6FAB7541B1E590B005C8513 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = iOSCharts/Charts.xcodeproj; sourceTree = "<group>"; };
+		C6FAB75D1B1E5990005C8513 /* VWWChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWChartViewController.h; sourceTree = "<group>"; };
+		C6FAB75E1B1E5990005C8513 /* VWWChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWChartViewController.m; sourceTree = "<group>"; };
+		C6FAB7671B1E5DB9005C8513 /* RCToolsVideo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "RCToolsVideo-Bridging-Header.h"; path = "Controllers/RCToolsVideo-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		CF555E701B1AB5220094BFCD /* PHAsset+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+Utility.h"; sourceTree = "<group>"; };
@@ -191,9 +217,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6FAB75C1B1E591E005C8513 /* Charts.framework in Frameworks */,
 				CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */,
 				CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */,
+				C6FAB7611B1E5C08005C8513 /* Charts.framework in Frameworks */,
 				CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */,
 				CFCB906419CBBAD900D05317 /* AssetsLibrary.framework in Frameworks */,
 				CFCB906219CBBAD400D05317 /* MobileCoreServices.framework in Frameworks */,
@@ -223,6 +249,15 @@
 				C6FAB7591B1E590B005C8513 /* Charts.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C6FAB7601B1E5995005C8513 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				C6FAB75D1B1E5990005C8513 /* VWWChartViewController.h */,
+				C6FAB75E1B1E5990005C8513 /* VWWChartViewController.m */,
+			);
+			name = Chart;
 			sourceTree = "<group>";
 		};
 		CF2F415519CC0C86008B68DD /* Options */ = {
@@ -338,6 +373,7 @@
 				CFCB901A19CBB88D00D05317 /* AppDelegate.m */,
 				CFCB901619CBB88D00D05317 /* Info.plist */,
 				CFCB901719CBB88D00D05317 /* main.m */,
+				C6FAB7671B1E5DB9005C8513 /* RCToolsVideo-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -395,6 +431,7 @@
 				CF2F415519CC0C86008B68DD /* Options */,
 				CF2F415619CC0C8D008B68DD /* Preview */,
 				CFD098A519CBCAAA00C88A76 /* Session */,
+				C6FAB7601B1E5995005C8513 /* Chart */,
 			);
 			name = ViewControllers;
 			path = Controllers;
@@ -494,12 +531,14 @@
 				CFCB900E19CBB88D00D05317 /* Sources */,
 				CFCB900F19CBB88D00D05317 /* Frameworks */,
 				CFCB901019CBB88D00D05317 /* Resources */,
+				C6FAB7651B1E5C09005C8513 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				C6FAB75B1B1E5918005C8513 /* PBXTargetDependency */,
 				CF555E6E1B1AB4AE0094BFCD /* PBXTargetDependency */,
+				C6FAB7641B1E5C08005C8513 /* PBXTargetDependency */,
 			);
 			name = RCToolsVideo;
 			productName = RCToolsVideo;
@@ -631,6 +670,7 @@
 				CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */,
 				CFD0989A19CBCA3B00C88A76 /* VWWTableViewController.m in Sources */,
 				CF555E751B1AB5220094BFCD /* UIView+RenderToImage.m in Sources */,
+				C6FAB75F1B1E5990005C8513 /* VWWChartViewController.m in Sources */,
 				CF555E801B1D4EEF0094BFCD /* VWWAboutViewController.m in Sources */,
 				CFD098BE19CBCF0A00C88A76 /* VWWOptionsTableViewController.m in Sources */,
 				CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */,
@@ -669,6 +709,11 @@
 			isa = PBXTargetDependency;
 			name = Charts;
 			targetProxy = C6FAB75A1B1E5918005C8513 /* PBXContainerItemProxy */;
+		};
+		C6FAB7641B1E5C08005C8513 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = C6FAB7631B1E5C08005C8513 /* PBXContainerItemProxy */;
 		};
 		CF555E6E1B1AB4AE0094BFCD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -786,8 +831,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -799,6 +846,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "RCToolsVideo/Controllers/RCToolsVideo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -806,8 +855,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -819,6 +870,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "RCToolsVideo/Controllers/RCToolsVideo-Bridging-Header.h";
 			};
 			name = Release;
 		};
