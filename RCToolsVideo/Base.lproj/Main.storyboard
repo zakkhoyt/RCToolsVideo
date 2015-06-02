@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aXC-Lm-F9s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aXC-Lm-F9s">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -110,13 +110,31 @@ Contact: vaporwarewolf@gmail.com
                                             <action selector="exitButtonTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sMq-6D-vuN"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz6-XC-NCl">
+                                        <rect key="frame" x="269" y="9" width="62" height="62"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="62" id="2A2-KO-cKe"/>
+                                            <constraint firstAttribute="height" constant="62" id="Vpn-Qe-EWH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Calibrate">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="calibrateButtonTouchUpInsde:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="VIB-6j-QO6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.23000000000000001" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="2qJ-D0-k5o"/>
+                                    <constraint firstAttribute="centerY" secondItem="bz6-XC-NCl" secondAttribute="centerY" id="GpG-EX-dLH"/>
                                     <constraint firstItem="joG-Mv-iP0" firstAttribute="leading" secondItem="3G2-EM-Tvr" secondAttribute="leading" constant="8" id="NP9-iP-RMT"/>
                                     <constraint firstAttribute="trailing" secondItem="xS1-df-bTa" secondAttribute="trailing" constant="8" id="VKk-Jc-kLh"/>
                                     <constraint firstAttribute="bottom" secondItem="xS1-df-bTa" secondAttribute="bottom" constant="8" id="emt-JB-fZY"/>
+                                    <constraint firstAttribute="centerX" secondItem="bz6-XC-NCl" secondAttribute="centerX" id="f8b-r0-FnT"/>
                                     <constraint firstAttribute="bottom" secondItem="joG-Mv-iP0" secondAttribute="bottom" constant="8" id="jJK-A0-Tub"/>
                                 </constraints>
                             </view>
@@ -129,6 +147,7 @@ Contact: vaporwarewolf@gmail.com
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="calibrateButton" destination="bz6-XC-NCl" id="126-Qz-PCw"/>
                         <outlet property="exitButton" destination="joG-Mv-iP0" id="h4p-ee-gYF"/>
                         <outlet property="recordButton" destination="xS1-df-bTa" id="Awf-n9-xCm"/>
                         <outlet property="toolsView" destination="3G2-EM-Tvr" id="umi-6n-Bk9"/>
@@ -411,7 +430,7 @@ Contact: vaporwarewolf@gmail.com
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Owt-zi-IrO">
                                 <rect key="frame" x="-100" y="-100" width="800" height="800"/>
                             </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3S-hJ-UVf">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3S-hJ-UVf">
                                 <rect key="frame" x="0.0" y="520" width="600" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ups-Yj-qzl">
@@ -427,16 +446,32 @@ Contact: vaporwarewolf@gmail.com
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="exitButtonTouchUpInside:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2aa-0Y-c1b"/>
-                                            <action selector="exitButtonTouchUpInside:" destination="x2W-vm-Leh" eventType="touchUpInside" id="5ep-E1-IeG"/>
-                                            <action selector="test:" destination="x2W-vm-Leh" eventType="touchUpInside" id="sr9-mZ-IMf"/>
+                                            <action selector="exitButtonTouchUpInside:" destination="x2W-vm-Leh" eventType="touchUpInside" id="6T7-fh-YGw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqD-UC-fh4">
+                                        <rect key="frame" x="269" y="9" width="62" height="62"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="62" id="1sD-pW-WCB"/>
+                                            <constraint firstAttribute="width" constant="62" id="G92-RW-sF3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Calibrate">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="calibrateButtonTouchUpInside:" destination="x2W-vm-Leh" eventType="touchUpInside" id="JZg-Jx-PIm"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="0.23000000000000001" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Ups-Yj-qzl" secondAttribute="bottom" constant="8" id="5qD-Z1-cUn"/>
+                                    <constraint firstAttribute="centerX" secondItem="VqD-UC-fh4" secondAttribute="centerX" id="CjR-ka-KFg"/>
                                     <constraint firstItem="Ups-Yj-qzl" firstAttribute="leading" secondItem="v3S-hJ-UVf" secondAttribute="leading" constant="8" id="FNm-dh-bKz"/>
+                                    <constraint firstAttribute="centerY" secondItem="VqD-UC-fh4" secondAttribute="centerY" id="G8W-hc-LPv"/>
                                     <constraint firstItem="Ups-Yj-qzl" firstAttribute="top" secondItem="v3S-hJ-UVf" secondAttribute="top" constant="10" id="ltE-q8-4zA"/>
                                 </constraints>
                             </view>
@@ -456,6 +491,7 @@ Contact: vaporwarewolf@gmail.com
                     <connections>
                         <outlet property="exitButton" destination="Ups-Yj-qzl" id="iOS-kE-5Ta"/>
                         <outlet property="fieldImageView" destination="Owt-zi-IrO" id="E74-nz-Z5g"/>
+                        <outlet property="toolView" destination="v3S-hJ-UVf" id="3vz-MK-VCT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcu-V6-jUk" userLabel="First Responder" sceneMemberID="firstResponder"/>

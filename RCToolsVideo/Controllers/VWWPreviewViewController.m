@@ -14,16 +14,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *fieldImageView;
 @property (nonatomic, strong) VWWHUDView *hudView;
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
+@property (weak, nonatomic) IBOutlet UIView *toolView;
 @end
 
 @implementation VWWPreviewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UITapGestureRecognizer *singleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureHandler:)];
-    [singleTapGestureRecognizer setNumberOfTapsRequired:1];
-    [self.view addGestureRecognizer:singleTapGestureRecognizer];
 
     NSUInteger index = arc4random() % 7;
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"field0%ld", (long)index]];
@@ -35,6 +32,9 @@
     [hudView setNeedsDisplay];
     self.hudView = hudView;
     [self.view addSubview:self.hudView];
+    
+
+    [self.view bringSubviewToFront:self.toolView];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -50,7 +50,10 @@
     }];
 }
 
--(void)singleTapGestureHandler:(id)sender{
+- (IBAction)calibrateButtonTouchUpInside:(id)sender {
+    [self.hudView calibrate];
+}
+- (IBAction)exitButtonTouchUpInside:(id)sender {
     self.view.clipsToBounds = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }

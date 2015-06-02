@@ -23,6 +23,7 @@
 @property (nonatomic, strong) PHPhotoLibrary *photos;
 @property (nonatomic, strong) NSURL *movieURL;
 @property (nonatomic, strong) VWWHUDView *hudView;
+@property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
 @end
 
 
@@ -61,6 +62,7 @@
     self.gpuImageView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     self.toolsView.backgroundColor = [UIColor clearColor];
     self.recordButton.layer.cornerRadius = self.recordButton.frame.size.height / 2.0;
+    self.calibrateButton.layer.cornerRadius = self.calibrateButton.frame.size.height / 2.0;
     self.exitButton.layer.cornerRadius = self.exitButton.frame.size.height / 2.0;
     
     
@@ -144,6 +146,9 @@
         [sender setTitle:@"Record" forState:UIControlStateNormal];
         [self stopRecording];
     }
+}
+- (IBAction)calibrateButtonTouchUpInsde:(id)sender {
+    [self.hudView calibrate];
 }
 
 - (IBAction)exitButtonTouchUpInside:(id)sender {

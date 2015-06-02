@@ -271,7 +271,10 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     [self stopLocations];
 }
 
+
 -(void)update{
+    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
+    
     // Calculate before rendering
     self.maxForce = MAX(self.maxForce, self.currentMotion.userAcceleration.x);
     self.maxForce = MAX(self.maxForce, self.currentMotion.userAcceleration.y);
@@ -296,8 +299,22 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     if(self.currentHeading == nil){
         self.headingLabel.text = @"n/a";
     } else {
+
+        float heading = 0;
+        if(deviceOrientation == UIDeviceOrientationLandscapeRight){
+            heading = self.currentHeading.magneticHeading - 90;
+            if(heading < 0){
+                heading += 360;
+            }
+        } else {
+            heading = self.currentHeading.magneticHeading + 90;
+            if(heading > 360){
+                heading -= 360;
+            }
+        }
+
         self.headingLabel.text = [NSString stringWithFormat:@"Heading: %.2f +/-%lu",
-                                  self.currentHeading.magneticHeading,
+                                  heading,
                                   (unsigned long)self.currentHeading.headingAccuracy];
     }
     
@@ -335,14 +352,46 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     
     self.watermarkLabel.text = @"RCToolsVideo by VaporWarewolf";
     
+    
+    
     // For Right landscape, pitch and roll are reversed disregarding sign
-    self.attitudeLabel.text = [NSString stringWithFormat:@"Roll:%.1f\n"
-                               @"Pitch:%.1f\n"
-                               @"Yaw:%.1f\n"
+    
+    float roll = 0;
+    float pitch = 0;
+    float yaw = 0;
+    if(deviceOrientation == UIDeviceOrientationLandscapeRight){
+        pitch = self.currentMotion.attitude.roll - self.baseMotion.attitude.roll;
+        if(pitch > M_PI){
+            pitch -= 2*M_PI;
+        }
+        if(pitch < -M_PI){
+            pitch += 2*M_PI;
+        }
+        roll = self.currentMotion.attitude.pitch - self.baseMotion.attitude.pitch;
+        roll *= -1;
+        yaw = self.currentMotion.attitude.yaw - self.baseMotion.attitude.yaw;
+        yaw *= -1;
+    } else {
+        pitch = self.currentMotion.attitude.roll - self.baseMotion.attitude.roll;
+        pitch *= -1;
+        if(pitch > M_PI){
+            pitch -= 2*M_PI;
+        }
+        if(pitch < -M_PI){
+            pitch += 2*M_PI;
+        }
+        roll = self.currentMotion.attitude.pitch - self.baseMotion.attitude.pitch;
+        yaw = -self.currentMotion.attitude.yaw - self.baseMotion.attitude.yaw;
+    }
+
+    
+    
+    
+    self.attitudeLabel.text = [NSString stringWithFormat:@"Roll:%.2f\n"
+                               @"Pitch:%.2f\n"
+                               @"Yaw:%.2f\n"
                                @"(radians)",
-                               self.currentMotion.attitude.roll,
-                               self.currentMotion.attitude.pitch,
-                               self.currentMotion.attitude.yaw];
+                               roll, pitch, yaw];
     
     self.forcesLabel.text = [NSString stringWithFormat:@"Max Force: %.2fg", self.maxForce];
 }
@@ -354,10 +403,16 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
 }
 
 -(void)calibrate{
+    self.maxAltitudeAGL = 0;
+    self.maxAltitudeASL = 0;
+    self.maxForce = 0;
+    self.maxSpeed = 0;
+    
     self.baseAltitude = nil;
     self.baseHeading = nil;
     self.baseLocation = nil;
     self.baseMotion = nil;
+    
     [self update];
 }
 @end
