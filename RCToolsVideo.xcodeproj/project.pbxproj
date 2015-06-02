@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6FAB75C1B1E591E005C8513 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FAB7591B1E590B005C8513 /* Charts.framework */; };
 		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
 		CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */; };
 		CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */; };
@@ -56,6 +57,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C6FAB7581B1E590B005C8513 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6FAB7541B1E590B005C8513 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
+		C6FAB75A1B1E5918005C8513 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6FAB7541B1E590B005C8513 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = Charts;
+		};
 		CF555E691B1AB4A50094BFCD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */;
@@ -87,6 +102,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C6FAB7541B1E590B005C8513 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = iOSCharts/Charts.xcodeproj; sourceTree = "<group>"; };
 		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		CF555E701B1AB5220094BFCD /* PHAsset+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+Utility.h"; sourceTree = "<group>"; };
@@ -175,6 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FAB75C1B1E591E005C8513 /* Charts.framework in Frameworks */,
 				CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */,
 				CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */,
 				CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */,
@@ -200,6 +217,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6FAB7551B1E590B005C8513 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C6FAB7591B1E590B005C8513 /* Charts.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CF2F415519CC0C86008B68DD /* Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +297,7 @@
 		CFCB900919CBB88D00D05317 = {
 			isa = PBXGroup;
 			children = (
+				C6FAB7541B1E590B005C8513 /* Charts.xcodeproj */,
 				CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */,
 				CFCB901419CBB88D00D05317 /* RCToolsVideo */,
 				CFCB902E19CBB88D00D05317 /* RCToolsVideoTests */,
@@ -472,6 +498,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C6FAB75B1B1E5918005C8513 /* PBXTargetDependency */,
 				CF555E6E1B1AB4AE0094BFCD /* PBXTargetDependency */,
 			);
 			name = RCToolsVideo;
@@ -529,6 +556,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = C6FAB7551B1E590B005C8513 /* Products */;
+					ProjectRef = C6FAB7541B1E590B005C8513 /* Charts.xcodeproj */;
+				},
+				{
 					ProductGroup = CF555E641B1AB4A50094BFCD /* Products */;
 					ProjectRef = CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */;
 				},
@@ -542,6 +573,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		C6FAB7591B1E590B005C8513 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = C6FAB7581B1E590B005C8513 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -627,6 +665,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C6FAB75B1B1E5918005C8513 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = C6FAB75A1B1E5918005C8513 /* PBXContainerItemProxy */;
+		};
 		CF555E6E1B1AB4AE0094BFCD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GPUImage;
@@ -743,18 +786,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"GPUImage/**",
+					"iOSCharts/**",
 				);
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -762,18 +806,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"GPUImage/**",
+					"iOSCharts/**",
 				);
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

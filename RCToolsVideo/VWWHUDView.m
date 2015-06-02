@@ -297,7 +297,7 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     
     
     if(self.currentHeading == nil){
-        self.headingLabel.text = @"n/a";
+        self.headingLabel.text = @"Heading: n/a";
     } else {
 
         float heading = 0;
@@ -320,9 +320,9 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     
     NSMutableString *speed = [NSMutableString new];
     if(self.currentLocation == nil){
-        self.coordinateLabel.text = @"n/a";
-        [speed appendString:@"n/a"];;
-        self.homeLabel.text = @"n/a";
+        self.coordinateLabel.text = @"Coordinates: n/a";
+        [speed appendString:@"Speed: n/a"];;
+        self.homeLabel.text = @"Home: n/a";
         [altitude appendFormat:@"\nn/a (ASL)"];
     } else {
         self.coordinateLabel.text = [NSString stringWithFormat:@"%.5f,%.5f +/- %lum",
@@ -354,19 +354,12 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     
     
     
-    // For Right landscape, pitch and roll are reversed disregarding sign
-    
+    // Since we are using a landscape orientation, some axis are swapped and/or negative
     float roll = 0;
     float pitch = 0;
     float yaw = 0;
     if(deviceOrientation == UIDeviceOrientationLandscapeRight){
         pitch = self.currentMotion.attitude.roll - self.baseMotion.attitude.roll;
-        if(pitch > M_PI){
-            pitch -= 2*M_PI;
-        }
-        if(pitch < -M_PI){
-            pitch += 2*M_PI;
-        }
         roll = self.currentMotion.attitude.pitch - self.baseMotion.attitude.pitch;
         roll *= -1;
         yaw = self.currentMotion.attitude.yaw - self.baseMotion.attitude.yaw;
@@ -374,16 +367,17 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     } else {
         pitch = self.currentMotion.attitude.roll - self.baseMotion.attitude.roll;
         pitch *= -1;
-        if(pitch > M_PI){
-            pitch -= 2*M_PI;
-        }
-        if(pitch < -M_PI){
-            pitch += 2*M_PI;
-        }
         roll = self.currentMotion.attitude.pitch - self.baseMotion.attitude.pitch;
         yaw = -self.currentMotion.attitude.yaw - self.baseMotion.attitude.yaw;
     }
 
+    // Clip from -M_PI .. M_PI
+    if(pitch > M_PI){
+        pitch -= 2*M_PI;
+    }
+    if(pitch < -M_PI){
+        pitch += 2*M_PI;
+    }
     
     
     
@@ -425,8 +419,14 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     [_locationManager requestWhenInUseAuthorization];
     
 }
+
 -(void)startHeading{
-    [self.locationManager startUpdatingHeading];
+    if([CLLocationManager headingAvailable]){
+        
+        [self.locationManager startUpdatingHeading];
+    } else {
+        NSLog(@"Heading not available");
+    }
 }
 
 -(void)stopHeading{
@@ -460,6 +460,10 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
         }
     }
 }
+- (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager{
+    return NO;
+}
+
 @end
 
 
@@ -473,9 +477,9 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     self.altimeter = [[CMAltimeter alloc]init];
     [self.altimeter startRelativeAltitudeUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMAltitudeData *altitudeData, NSError *error) {
         if(self.baseAltitude == nil){
-            self.baseAltitude = [altitudeData.relativeAltitude copy];
+            self.baseAltitude = altitudeData.relativeAltitude;
         } else {
-            self.currentAltitude = [altitudeData.relativeAltitude copy];
+            self.currentAltitude = altitudeData.relativeAltitude;
         }
     }];
 }
@@ -487,9 +491,9 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
 -(void)startDeviceMotion{
     [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue new] withHandler:^(CMDeviceMotion *motion, NSError *error) {
         if(self.baseMotion == nil){
-            self.baseMotion = [motion copy];
+            self.baseMotion = motion;
         }
-        self.currentMotion = [motion copy];
+        self.currentMotion = motion;
     }];
 }
 -(void)stopDeviceMotion{
