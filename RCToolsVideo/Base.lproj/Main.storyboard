@@ -489,6 +489,7 @@ Contact: vaporwarewolf@gmail.com
                     </view>
                     <navigationItem key="navigationItem" id="ses-ci-stM"/>
                     <connections>
+                        <outlet property="calibrateButton" destination="VqD-UC-fh4" id="IDC-4Z-Dle"/>
                         <outlet property="exitButton" destination="Ups-Yj-qzl" id="iOS-kE-5Ta"/>
                         <outlet property="fieldImageView" destination="Owt-zi-IrO" id="E74-nz-Z5g"/>
                         <outlet property="toolView" destination="v3S-hJ-UVf" id="3vz-MK-VCT"/>
@@ -496,7 +497,7 @@ Contact: vaporwarewolf@gmail.com
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcu-V6-jUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="-105"/>
+            <point key="canvasLocation" x="857" y="-105"/>
         </scene>
     </scenes>
     <resources>

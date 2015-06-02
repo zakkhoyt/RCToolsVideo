@@ -15,13 +15,17 @@
 @property (nonatomic, strong) VWWHUDView *hudView;
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
+@property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
 @end
 
 @implementation VWWPreviewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    self.exitButton.layer.cornerRadius = self.exitButton.frame.size.width / 2.0;
+    self.calibrateButton.layer.cornerRadius = self.calibrateButton.frame.size.width / 2.0;
+    
     NSUInteger index = arc4random() % 7;
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"field0%ld", (long)index]];
     self.fieldImageView.image = image;
@@ -33,7 +37,6 @@
     self.hudView = hudView;
     [self.view addSubview:self.hudView];
     
-
     [self.view bringSubviewToFront:self.toolView];
 }
 
