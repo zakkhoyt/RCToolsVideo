@@ -23,6 +23,7 @@
 @property (nonatomic, strong) PHPhotoLibrary *photos;
 @property (nonatomic, strong) NSURL *movieURL;
 @property (nonatomic, strong) VWWHUDView *hudView;
+@property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
 @end
 
 
@@ -51,9 +52,7 @@
             [welf.sourcePicture processImageWithCompletionHandler:^{
                 [welf.sourcePicture addTarget:welf.filter];
             }];
-            
         } else {
-            
             [welf.sourcePicture updateCGImage:image.CGImage smoothlyScaleOutput:YES];
             [welf.sourcePicture processImage];
         }
@@ -63,6 +62,7 @@
     self.gpuImageView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     self.toolsView.backgroundColor = [UIColor clearColor];
     self.recordButton.layer.cornerRadius = self.recordButton.frame.size.height / 2.0;
+    self.calibrateButton.layer.cornerRadius = self.calibrateButton.frame.size.height / 2.0;
     self.exitButton.layer.cornerRadius = self.exitButton.frame.size.height / 2.0;
     
     
@@ -90,7 +90,7 @@
 -(void)setupFilters{
     
     self.filter = [[GPUImageOverlayBlendFilter alloc] init];
-    [(GPUImageFilter*)self.filter setBackgroundColorRed:0.0 green:1.0 blue:0.0 alpha:1.0];
+    [(GPUImageFilter*)self.filter setBackgroundColorRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     [self.videoCamera addTarget:self.filter];
     
     UIImage *image = [self.hudView imageRepresentation];
@@ -147,6 +147,9 @@
         [self stopRecording];
     }
 }
+- (IBAction)calibrateButtonTouchUpInsde:(id)sender {
+    [self.hudView calibrate];
+}
 
 - (IBAction)exitButtonTouchUpInside:(id)sender {
     //[self stopRecording];
@@ -176,7 +179,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        hud.labelText = @"Writing video...";
+        hud.labelText = @"Encoding video...";
         [self.filter removeTarget:self.movieWriter];
         self.videoCamera.audioEncodingTarget = nil;
         [self.movieWriter finishRecording];
@@ -186,7 +189,7 @@
             [PHAsset saveVideoAtURL:self.movieURL location:nil completionBlock:^(PHAsset *asset, BOOL success) {
                 if(success){
                     NSLog(@"Success adding video to Photos");
-                    hud.labelText = @"Saving to album...";
+                    hud.labelText = @"Writing video...";
                     [asset saveToAlbum:@"RC Video" completionBlock:^(BOOL success) {
                         if(success){
                             NSLog(@"Success adding video to App Album");

@@ -13,7 +13,7 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    [self setVWWFonts];
+//    [self setVWWFonts];
 }
 
 @end

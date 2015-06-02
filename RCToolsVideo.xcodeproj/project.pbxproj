@@ -11,6 +11,9 @@
 		CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */; };
 		CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */; };
 		CF555E751B1AB5220094BFCD /* UIView+RenderToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E731B1AB5220094BFCD /* UIView+RenderToImage.m */; };
+		CF555E7B1B1D40310094BFCD /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = CF555E7A1B1D40310094BFCD /* TODO */; };
+		CF555E801B1D4EEF0094BFCD /* VWWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E7F1B1D4EEF0094BFCD /* VWWAboutViewController.m */; };
+		CF555E861B1D53B20094BFCD /* UIView+ParallaxMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E851B1D53B20094BFCD /* UIView+ParallaxMotion.m */; };
 		CF652B7A1B1C1930000D0B58 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B791B1C1930000D0B58 /* VWWHUDView.m */; };
 		CF652B7D1B1C1E47000D0B58 /* VWWHUDSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B7C1B1C1E47000D0B58 /* VWWHUDSpeedView.m */; };
 		CF652B801B1C1E58000D0B58 /* VWWHUDCoordinateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B7F1B1C1E58000D0B58 /* VWWHUDCoordinateView.m */; };
@@ -22,7 +25,6 @@
 		CF652B911B1C2CDB000D0B58 /* VWWHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF652B901B1C2CDB000D0B58 /* VWWHUDView.xib */; };
 		CF652B951B1C394C000D0B58 /* VWWHUDAttitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */; };
 		CF652B981B1C396D000D0B58 /* VWWHUDForcesView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */; };
-		CFABE2F619CD109900586577 /* VWWSessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFABE2F519CD109900586577 /* VWWSessionTableViewCell.m */; };
 		CFCB901819CBB88D00D05317 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901719CBB88D00D05317 /* main.m */; };
 		CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901A19CBB88D00D05317 /* AppDelegate.m */; };
 		CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCB901F19CBB88D00D05317 /* Main.storyboard */; };
@@ -40,8 +42,6 @@
 		CFCB906219CBBAD400D05317 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */; };
 		CFCB906419CBBAD900D05317 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */; };
 		CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFCB906519CBBADE00D05317 /* QuartzCore.framework */; };
-		CFD0989719CBCA3B00C88A76 /* VWWCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988319CBCA3B00C88A76 /* VWWCollectionViewCell.m */; };
-		CFD0989819CBCA3B00C88A76 /* VWWSessionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988519CBCA3B00C88A76 /* VWWSessionsViewController.m */; };
 		CFD0989919CBCA3B00C88A76 /* VWWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988719CBCA3B00C88A76 /* VWWTableViewCell.m */; };
 		CFD0989A19CBCA3B00C88A76 /* VWWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988919CBCA3B00C88A76 /* VWWTableViewController.m */; };
 		CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988B19CBCA3B00C88A76 /* VWWViewController.m */; };
@@ -51,8 +51,8 @@
 		CFD098B919CBCB9B00C88A76 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B419CBCB9B00C88A76 /* NSTimer+Blocks.m */; };
 		CFD098BA19CBCB9B00C88A76 /* UIFont+VWW.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B619CBCB9B00C88A76 /* UIFont+VWW.m */; };
 		CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */; };
-		CFD098BE19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */; };
-		CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */; };
+		CFD098BE19CBCF0A00C88A76 /* VWWOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098BD19CBCF0A00C88A76 /* VWWOptionsTableViewController.m */; };
+		CFD098C119CBD2E600C88A76 /* VWWPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098C019CBD2E600C88A76 /* VWWPreviewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +93,11 @@
 		CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+Utility.m"; sourceTree = "<group>"; };
 		CF555E721B1AB5220094BFCD /* UIView+RenderToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RenderToImage.h"; sourceTree = "<group>"; };
 		CF555E731B1AB5220094BFCD /* UIView+RenderToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RenderToImage.m"; sourceTree = "<group>"; };
+		CF555E7A1B1D40310094BFCD /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		CF555E7E1B1D4EEF0094BFCD /* VWWAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWAboutViewController.h; sourceTree = "<group>"; };
+		CF555E7F1B1D4EEF0094BFCD /* VWWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAboutViewController.m; sourceTree = "<group>"; };
+		CF555E841B1D53B20094BFCD /* UIView+ParallaxMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ParallaxMotion.h"; sourceTree = "<group>"; };
+		CF555E851B1D53B20094BFCD /* UIView+ParallaxMotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ParallaxMotion.m"; sourceTree = "<group>"; };
 		CF652B781B1C1930000D0B58 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
 		CF652B791B1C1930000D0B58 /* VWWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDView.m; sourceTree = "<group>"; };
 		CF652B7B1B1C1E47000D0B58 /* VWWHUDSpeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDSpeedView.h; sourceTree = "<group>"; };
@@ -114,8 +119,6 @@
 		CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDAttitudeView.m; sourceTree = "<group>"; };
 		CF652B961B1C396D000D0B58 /* VWWHUDForcesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDForcesView.h; sourceTree = "<group>"; };
 		CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDForcesView.m; sourceTree = "<group>"; };
-		CFABE2F419CD109900586577 /* VWWSessionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSessionTableViewCell.h; sourceTree = "<group>"; };
-		CFABE2F519CD109900586577 /* VWWSessionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionTableViewCell.m; sourceTree = "<group>"; };
 		CFCB901219CBB88D00D05317 /* RCToolsVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCToolsVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCB901619CBB88D00D05317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCB901719CBB88D00D05317 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -139,10 +142,6 @@
 		CFCB906119CBBAD400D05317 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		CFCB906319CBBAD900D05317 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		CFCB906519CBBADE00D05317 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		CFD0988219CBCA3B00C88A76 /* VWWCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWCollectionViewCell.h; sourceTree = "<group>"; };
-		CFD0988319CBCA3B00C88A76 /* VWWCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWCollectionViewCell.m; sourceTree = "<group>"; };
-		CFD0988419CBCA3B00C88A76 /* VWWSessionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSessionsViewController.h; sourceTree = "<group>"; };
-		CFD0988519CBCA3B00C88A76 /* VWWSessionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionsViewController.m; sourceTree = "<group>"; };
 		CFD0988619CBCA3B00C88A76 /* VWWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTableViewCell.h; sourceTree = "<group>"; };
 		CFD0988719CBCA3B00C88A76 /* VWWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWTableViewCell.m; sourceTree = "<group>"; };
 		CFD0988819CBCA3B00C88A76 /* VWWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWTableViewController.h; sourceTree = "<group>"; };
@@ -165,10 +164,10 @@
 		CFD098B619CBCB9B00C88A76 /* UIFont+VWW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+VWW.m"; sourceTree = "<group>"; };
 		CFD098B719CBCB9B00C88A76 /* UIView+VWW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+VWW.h"; sourceTree = "<group>"; };
 		CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+VWW.m"; sourceTree = "<group>"; };
-		CFD098BC19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWSessionOptionsTableViewController.h; sourceTree = "<group>"; };
-		CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWSessionOptionsTableViewController.m; sourceTree = "<group>"; };
-		CFD098BF19CBD2E600C88A76 /* VWWHUDPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDPreviewViewController.h; sourceTree = "<group>"; };
-		CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDPreviewViewController.m; sourceTree = "<group>"; };
+		CFD098BC19CBCF0A00C88A76 /* VWWOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWOptionsTableViewController.h; sourceTree = "<group>"; };
+		CFD098BD19CBCF0A00C88A76 /* VWWOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWOptionsTableViewController.m; sourceTree = "<group>"; };
+		CFD098BF19CBD2E600C88A76 /* VWWPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWPreviewViewController.h; sourceTree = "<group>"; };
+		CFD098C019CBD2E600C88A76 /* VWWPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWPreviewViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,8 +203,8 @@
 		CF2F415519CC0C86008B68DD /* Options */ = {
 			isa = PBXGroup;
 			children = (
-				CFD098BC19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.h */,
-				CFD098BD19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m */,
+				CFD098BC19CBCF0A00C88A76 /* VWWOptionsTableViewController.h */,
+				CFD098BD19CBCF0A00C88A76 /* VWWOptionsTableViewController.m */,
 			);
 			name = Options;
 			sourceTree = "<group>";
@@ -213,8 +212,8 @@
 		CF2F415619CC0C8D008B68DD /* Preview */ = {
 			isa = PBXGroup;
 			children = (
-				CFD098BF19CBD2E600C88A76 /* VWWHUDPreviewViewController.h */,
-				CFD098C019CBD2E600C88A76 /* VWWHUDPreviewViewController.m */,
+				CFD098BF19CBD2E600C88A76 /* VWWPreviewViewController.h */,
+				CFD098C019CBD2E600C88A76 /* VWWPreviewViewController.m */,
 			);
 			name = Preview;
 			sourceTree = "<group>";
@@ -226,6 +225,23 @@
 				CF555E6C1B1AB4A50094BFCD /* GPUImage.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CF555E871B1D55520094BFCD /* About */ = {
+			isa = PBXGroup;
+			children = (
+				CF555E7E1B1D4EEF0094BFCD /* VWWAboutViewController.h */,
+				CF555E7F1B1D4EEF0094BFCD /* VWWAboutViewController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		CF555E881B1D556C0094BFCD /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				CF555E7A1B1D40310094BFCD /* TODO */,
+			);
+			name = Documents;
 			sourceTree = "<group>";
 		};
 		CF652B921B1C344F000D0B58 /* SubHUDs */ = {
@@ -253,15 +269,6 @@
 			name = SubHUDs;
 			sourceTree = "<group>";
 		};
-		CFABE2F719CD162700586577 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				CFABE2F419CD109900586577 /* VWWSessionTableViewCell.h */,
-				CFABE2F519CD109900586577 /* VWWSessionTableViewCell.m */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
 		CFCB900919CBB88D00D05317 = {
 			isa = PBXGroup;
 			children = (
@@ -285,7 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD098B219CBCB9B00C88A76 /* Categories */,
-				CFD0987C19CBCA3B00C88A76 /* Controllers */,
+				CF555E881B1D556C0094BFCD /* Documents */,
 				CFD0987B19CBBD8E00C88A76 /* Frameworks */,
 				CFCB902219CBB88D00D05317 /* Images.xcassets */,
 				CFD0988C19CBCA3B00C88A76 /* Include */,
@@ -293,6 +300,7 @@
 				CFD098A019CBCA8000C88A76 /* ThirdParty */,
 				CFD0987A19CBBD5F00C88A76 /* UserInterface */,
 				CFD098A719CBCABF00C88A76 /* View */,
+				CFD0987C19CBCA3B00C88A76 /* ViewControllers */,
 			);
 			path = RCToolsVideo;
 			sourceTree = "<group>";
@@ -353,11 +361,16 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		CFD0987C19CBCA3B00C88A76 /* Controllers */ = {
+		CFD0987C19CBCA3B00C88A76 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CFD0989E19CBCA4B00C88A76 /* GUI */,
+				CF555E871B1D55520094BFCD /* About */,
+				CFD0989F19CBCA5400C88A76 /* Base */,
+				CF2F415519CC0C86008B68DD /* Options */,
+				CF2F415619CC0C8D008B68DD /* Preview */,
+				CFD098A519CBCAAA00C88A76 /* Session */,
 			);
+			name = ViewControllers;
 			path = Controllers;
 			sourceTree = "<group>";
 		};
@@ -376,23 +389,9 @@
 			path = Include;
 			sourceTree = "<group>";
 		};
-		CFD0989E19CBCA4B00C88A76 /* GUI */ = {
-			isa = PBXGroup;
-			children = (
-				CFD0989F19CBCA5400C88A76 /* Base */,
-				CFD098A519CBCAAA00C88A76 /* Session */,
-				CFD098A619CBCAAE00C88A76 /* Sessions */,
-				CF2F415519CC0C86008B68DD /* Options */,
-				CF2F415619CC0C8D008B68DD /* Preview */,
-			);
-			name = GUI;
-			sourceTree = "<group>";
-		};
 		CFD0989F19CBCA5400C88A76 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				CFD0988219CBCA3B00C88A76 /* VWWCollectionViewCell.h */,
-				CFD0988319CBCA3B00C88A76 /* VWWCollectionViewCell.m */,
 				CFD0988619CBCA3B00C88A76 /* VWWTableViewCell.h */,
 				CFD0988719CBCA3B00C88A76 /* VWWTableViewCell.m */,
 				CFD0988819CBCA3B00C88A76 /* VWWTableViewController.h */,
@@ -429,16 +428,6 @@
 			name = Session;
 			sourceTree = "<group>";
 		};
-		CFD098A619CBCAAE00C88A76 /* Sessions */ = {
-			isa = PBXGroup;
-			children = (
-				CFD0988419CBCA3B00C88A76 /* VWWSessionsViewController.h */,
-				CFD0988519CBCA3B00C88A76 /* VWWSessionsViewController.m */,
-				CFABE2F719CD162700586577 /* Cell */,
-			);
-			name = Sessions;
-			sourceTree = "<group>";
-		};
 		CFD098A719CBCABF00C88A76 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +452,8 @@
 				CFD098B619CBCB9B00C88A76 /* UIFont+VWW.m */,
 				CFD098B719CBCB9B00C88A76 /* UIView+VWW.h */,
 				CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */,
+				CF555E841B1D53B20094BFCD /* UIView+ParallaxMotion.h */,
+				CF555E851B1D53B20094BFCD /* UIView+ParallaxMotion.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -573,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */,
+				CF555E7B1B1D40310094BFCD /* TODO in Resources */,
 				CFCB902619CBB88D00D05317 /* LaunchScreen.xib in Resources */,
 				CF652B911B1C2CDB000D0B58 /* VWWHUDView.xib in Resources */,
 				CFCB902319CBB88D00D05317 /* Images.xcassets in Resources */,
@@ -593,18 +585,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFD0989819CBCA3B00C88A76 /* VWWSessionsViewController.m in Sources */,
 				CF652B831B1C1E69000D0B58 /* VWWHUDHeadingView.m in Sources */,
 				CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */,
 				CFD098B919CBCB9B00C88A76 /* NSTimer+Blocks.m in Sources */,
-				CFD0989719CBCA3B00C88A76 /* VWWCollectionViewCell.m in Sources */,
 				CF652B8F1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m in Sources */,
 				CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */,
 				CFCB905119CBB8FB00D05317 /* VWWSessionViewController.m in Sources */,
-				CFABE2F619CD109900586577 /* VWWSessionTableViewCell.m in Sources */,
 				CFD0989A19CBCA3B00C88A76 /* VWWTableViewController.m in Sources */,
 				CF555E751B1AB5220094BFCD /* UIView+RenderToImage.m in Sources */,
-				CFD098BE19CBCF0A00C88A76 /* VWWSessionOptionsTableViewController.m in Sources */,
+				CF555E801B1D4EEF0094BFCD /* VWWAboutViewController.m in Sources */,
+				CFD098BE19CBCF0A00C88A76 /* VWWOptionsTableViewController.m in Sources */,
 				CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */,
 				CFD0989C19CBCA3B00C88A76 /* VWWUserDefaults.m in Sources */,
 				CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */,
@@ -616,11 +606,12 @@
 				CF652B801B1C1E58000D0B58 /* VWWHUDCoordinateView.m in Sources */,
 				CFD0989919CBCA3B00C88A76 /* VWWTableViewCell.m in Sources */,
 				CFD0989D19CBCA3B00C88A76 /* VWWUtilities.m in Sources */,
-				CFD098C119CBD2E600C88A76 /* VWWHUDPreviewViewController.m in Sources */,
+				CFD098C119CBD2E600C88A76 /* VWWPreviewViewController.m in Sources */,
 				CF652B981B1C396D000D0B58 /* VWWHUDForcesView.m in Sources */,
 				CF652B8C1B1C1EE8000D0B58 /* VWWHUDDateView.m in Sources */,
 				CF652B861B1C1E7D000D0B58 /* VWWHUDHomeView.m in Sources */,
 				CFD098A419CBCA8000C88A76 /* MBProgressHUD.m in Sources */,
+				CF555E861B1D53B20094BFCD /* UIView+ParallaxMotion.m in Sources */,
 				CFD098BA19CBCB9B00C88A76 /* UIFont+VWW.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,7 +676,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -705,6 +697,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -726,7 +719,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -739,6 +733,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -748,17 +743,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"GPUImage/**",
 				);
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
 			};
 			name = Debug;
 		};
@@ -766,17 +762,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"GPUImage/**",
 				);
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
 			};
 			name = Release;
 		};
@@ -784,6 +781,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -795,6 +793,7 @@
 				INFOPLIST_FILE = RCToolsVideoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RCToolsVideo.app/RCToolsVideo";
 			};
 			name = Debug;
@@ -803,6 +802,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -810,6 +811,7 @@
 				INFOPLIST_FILE = RCToolsVideoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RCToolsVideo.app/RCToolsVideo";
 			};
 			name = Release;

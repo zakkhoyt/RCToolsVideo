@@ -48,7 +48,7 @@ static vm_size_t get_free_memory() {
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    [self.view setVWWFonts];
+//    [self.view setVWWFonts];
     [self.view layoutSubviews];
 }
 

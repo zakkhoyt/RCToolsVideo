@@ -12,4 +12,5 @@ typedef void (^VWWHUDViewImageBlock)(UIImage* image);
 
 @interface VWWHUDView : UIView
 -(void)setImageBlock:(VWWHUDViewImageBlock)imageBlock;
+-(void)calibrate;
 @end
