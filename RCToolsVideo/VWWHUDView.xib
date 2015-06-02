@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -50,8 +50,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hH1-AT-9Uk" customClass="VWWHUDAltitudeView">
                     <rect key="frame" x="450" y="90" width="150" height="465"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4By-7P-N5q">
-                            <rect key="frame" x="0.0" y="222" width="150" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4By-7P-N5q">
+                            <rect key="frame" x="0.0" y="0.0" width="150" height="465"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -59,16 +59,17 @@
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="4By-7P-N5q" firstAttribute="leading" secondItem="hH1-AT-9Uk" secondAttribute="leading" id="IgW-3i-BnP"/>
-                        <constraint firstAttribute="trailing" secondItem="4By-7P-N5q" secondAttribute="trailing" id="W1n-W2-HYl"/>
-                        <constraint firstAttribute="centerY" secondItem="4By-7P-N5q" secondAttribute="centerY" id="eXs-x5-OWJ"/>
+                        <constraint firstAttribute="trailing" secondItem="4By-7P-N5q" secondAttribute="trailing" id="YZs-yb-K6f"/>
+                        <constraint firstAttribute="bottom" secondItem="4By-7P-N5q" secondAttribute="bottom" id="lQR-da-N2M"/>
+                        <constraint firstItem="4By-7P-N5q" firstAttribute="leading" secondItem="hH1-AT-9Uk" secondAttribute="leading" id="n7m-4f-yLy"/>
+                        <constraint firstItem="4By-7P-N5q" firstAttribute="top" secondItem="hH1-AT-9Uk" secondAttribute="top" id="xaz-ZT-dDs"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWZ-jk-yjV" customClass="VWWHUDSpeedView">
                     <rect key="frame" x="0.0" y="90" width="150" height="465"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-KF-3Mo">
-                            <rect key="frame" x="0.0" y="222" width="150" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-KF-3Mo">
+                            <rect key="frame" x="0.0" y="0.0" width="150" height="465"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -76,9 +77,10 @@
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="2Pf-KF-3Mo" firstAttribute="leading" secondItem="pWZ-jk-yjV" secondAttribute="leading" id="X47-RG-vgQ"/>
-                        <constraint firstAttribute="trailing" secondItem="2Pf-KF-3Mo" secondAttribute="trailing" id="gIO-Hf-vd6"/>
-                        <constraint firstAttribute="centerY" secondItem="2Pf-KF-3Mo" secondAttribute="centerY" id="qEE-6p-DF1"/>
+                        <constraint firstItem="2Pf-KF-3Mo" firstAttribute="leading" secondItem="pWZ-jk-yjV" secondAttribute="leading" id="0bh-dp-uw9"/>
+                        <constraint firstAttribute="bottom" secondItem="2Pf-KF-3Mo" secondAttribute="bottom" id="beB-LM-PqN"/>
+                        <constraint firstItem="2Pf-KF-3Mo" firstAttribute="top" secondItem="pWZ-jk-yjV" secondAttribute="top" id="p56-DW-oAS"/>
+                        <constraint firstAttribute="trailing" secondItem="2Pf-KF-3Mo" secondAttribute="trailing" id="qN6-6i-qCg"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qW-jU-IMD" customClass="VWWHUDAttitudeView">
@@ -96,8 +98,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Bd-gd-L1B" customClass="VWWHUDHomeView">
                     <rect key="frame" x="158" y="90" width="284" height="465"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance from home + arrow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ri-c9-GVM">
-                            <rect key="frame" x="33" y="222" width="218" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance from home + arrow" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ri-c9-GVM">
+                            <rect key="frame" x="0.0" y="0.0" width="284" height="465"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -105,8 +107,10 @@
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="centerX" secondItem="4ri-c9-GVM" secondAttribute="centerX" id="1Cc-a1-0ym"/>
-                        <constraint firstAttribute="centerY" secondItem="4ri-c9-GVM" secondAttribute="centerY" id="eYl-Fs-Rg4"/>
+                        <constraint firstAttribute="trailing" secondItem="4ri-c9-GVM" secondAttribute="trailing" id="5pk-7y-AXP"/>
+                        <constraint firstItem="4ri-c9-GVM" firstAttribute="top" secondItem="7Bd-gd-L1B" secondAttribute="top" id="QNa-bs-m0d"/>
+                        <constraint firstItem="4ri-c9-GVM" firstAttribute="leading" secondItem="7Bd-gd-L1B" secondAttribute="leading" id="Te6-We-Rkw"/>
+                        <constraint firstAttribute="bottom" secondItem="4ri-c9-GVM" secondAttribute="bottom" id="cES-Mn-n4z"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRP-qO-RAo" customClass="VWWHUDWatermarkView">

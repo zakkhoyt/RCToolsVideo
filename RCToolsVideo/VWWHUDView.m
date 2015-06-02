@@ -44,6 +44,36 @@
 @import CoreLocation;
 
 
+
+/*-------------------------------------------------------------------------
+ * Given two lat/lon points on earth, calculates the heading
+ * from lat1/lon1 to lat2/lon2.
+ *
+ * lat/lon params in radians
+ * result in radians
+ *-------------------------------------------------------------------------*/
+double headingInRadians(double lat1, double lon1, double lat2, double lon2)
+{
+    //-------------------------------------------------------------------------
+    // Algorithm found at http://www.movable-type.co.uk/scripts/latlong.html
+    //
+    // Spherical Law of Cosines
+    //
+    // Formula: θ = atan2( 	sin(Δlon) * cos(lat2),
+    //						cos(lat1) * sin(lat2) − sin(lat1) * cos(lat2) * cos(Δlon) )
+    // JavaScript:
+    //
+    //	var y = Math.sin(dLon) * Math.cos(lat2);
+    //	var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+    //	var brng = Math.atan2(y, x).toDeg();
+    //-------------------------------------------------------------------------
+    double dLon = lon2 - lon1;
+    double y = sin(dLon) * cos(lat2);
+    double x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon);
+    
+    return atan2(y, x);
+}
+
 @interface VWWHUDView () <CLLocationManagerDelegate>
 
 // Callback block
@@ -89,8 +119,9 @@
 @property (nonatomic, strong) CLLocation *baseLocation;
 
 @property (nonatomic) CGFloat maxForce;
-//@property (nonatomic) CGFloat maxAltitude;
-//@property (nonatomic) CGFloat maxSpeed;;
+@property (nonatomic) CGFloat maxAltitudeASL;
+@property (nonatomic) CGFloat maxAltitudeAGL;
+@property (nonatomic) CGFloat maxSpeed;
 @end
 
 
@@ -137,6 +168,18 @@
 -(void)customizeView:(UIView*)view{
     self.backgroundColor = [UIColor clearColor];
     
+    // Clear UI
+    self.coordinateLabel.text = nil;
+    self.headingLabel.text = nil;
+    self.speedLabel.text = nil;
+    self.homeLabel.text = nil;
+    self.altitudeLabel.text = nil;
+    self.dateLabel.text = nil;
+    self.watermarkLabel.text = nil;
+    self.attitudeLabel.text = nil;
+    self.forcesLabel.text = nil;
+    
+    
     // Only show what the user wants to see
     self.coordinateView.hidden = !(BOOL)[VWWUserDefaults renderCoordinates];
     self.headingView.hidden = !(BOOL)[VWWUserDefaults renderHeading];
@@ -152,13 +195,19 @@
     [view.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if([obj isKindOfClass:[UILabel class]]){
             UILabel *label = obj;
+            label.font = [UIFont boldSystemFontOfSize:label.font.pointSize];
             label.textColor = [UIColor whiteColor];
             label.shadowColor = [UIColor blackColor];
-            label.shadowOffset = CGSizeMake(-2, -2);
+            label.shadowOffset = CGSizeMake(1, 1);
             
         } else if([obj isKindOfClass:[UIView class]]){
             UIView *view = obj;
+#if defined(DEBUG)
             view.backgroundColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.2];
+#else
+            view.backgroundColor = [UIColor clearColor];
+#endif
+            
         }
         
         UIView *view = obj;
@@ -228,12 +277,19 @@
     self.maxForce = MAX(self.maxForce, self.currentMotion.userAcceleration.y);
     self.maxForce = MAX(self.maxForce, self.currentMotion.userAcceleration.z);
     
+    self.maxSpeed = MAX(self.maxSpeed, self.currentLocation.speed);
+    
+    self.maxAltitudeAGL = MAX(self.maxAltitudeAGL, self.currentAltitude.floatValue);
+    self.maxAltitudeASL = MAX(self.maxAltitudeASL, self.currentLocation.altitude);
     
     
+    
+    NSMutableString *altitude = [NSMutableString new];
     if(self.currentAltitude == nil){
-        self.altitudeLabel.text = @"n/a";
+        [altitude appendString:@"n/a (AGL)"];
+        
     } else {
-        self.altitudeLabel.text = [NSString stringWithFormat:@"%.2fm (AGL)", self.currentAltitude.floatValue];
+        [altitude appendFormat:@"%.2fm (AGL)", self.currentAltitude.floatValue];
     }
     
     
@@ -245,18 +301,33 @@
                                   (unsigned long)self.currentHeading.headingAccuracy];
     }
     
+    NSMutableString *speed = [NSMutableString new];
     if(self.currentLocation == nil){
         self.coordinateLabel.text = @"n/a";
-        self.speedLabel.text = @"n/a";
+        [speed appendString:@"n/a"];;
         self.homeLabel.text = @"n/a";
+        [altitude appendFormat:@"\nn/a (ASL)"];
     } else {
         self.coordinateLabel.text = [NSString stringWithFormat:@"%.5f,%.5f +/- %lum",
                                      self.currentLocation.coordinate.latitude,
                                      self.currentLocation.coordinate.longitude,
                                      (unsigned long)self.currentLocation.horizontalAccuracy];
-        self.speedLabel.text = [NSString stringWithFormat:@"Speed: %.2fmps", self.currentLocation.speed];
-        self.homeLabel.text = [NSString stringWithFormat:@"Home: %.2fm", [self.currentLocation distanceFromLocation:self.baseLocation]];
+        [speed appendFormat:@"Speed: %.2fmps", self.currentLocation.speed];
+        [speed appendFormat:@"\nMax: %.2fmps", self.maxSpeed];
+        
+        float angleHome = headingInRadians(self.currentLocation.coordinate.latitude,
+                                           self.currentLocation.coordinate.longitude,
+                                           self.baseLocation.coordinate.latitude,
+                                           self.baseLocation.coordinate.longitude);
+        self.homeLabel.text = [NSString stringWithFormat:@"Home: %.2fm\nAngle: %.2f",
+                               [self.currentLocation distanceFromLocation:self.baseLocation],
+                               angleHome];
+        [altitude appendFormat:@"\n%.2fm (ASL)\n+/-%lum",
+         self.currentLocation.altitude,
+         (unsigned long)self.currentLocation.verticalAccuracy];
     }
+    self.speedLabel.text = speed;
+    self.altitudeLabel.text = altitude;
     
     // TODO: Use date formatter
     NSString *date = [NSDate date].description;
@@ -265,9 +336,9 @@
     self.watermarkLabel.text = @"RCToolsVideo by VaporWarewolf";
     
     // For Right landscape, pitch and roll are reversed disregarding sign
-    self.attitudeLabel.text = [NSString stringWithFormat:@"r:%.1f\n"
-                               @"p:%.1f\n"
-                               @"y:%.1f\n"
+    self.attitudeLabel.text = [NSString stringWithFormat:@"Roll:%.1f\n"
+                               @"Pitch:%.1f\n"
+                               @"Yaw:%.1f\n"
                                @"(radians)",
                                self.currentMotion.attitude.roll,
                                self.currentMotion.attitude.pitch,
@@ -277,8 +348,17 @@
 }
 
 
+
 -(void)setImageBlock:(VWWHUDViewImageBlock)imageBlock{
     _imageBlock = imageBlock;
+}
+
+-(void)calibrate{
+    self.baseAltitude = nil;
+    self.baseHeading = nil;
+    self.baseLocation = nil;
+    self.baseMotion = nil;
+    [self update];
 }
 @end
 

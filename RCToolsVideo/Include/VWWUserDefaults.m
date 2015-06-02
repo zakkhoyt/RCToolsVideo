@@ -32,6 +32,10 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // Acc
 +(BOOL)renderAccelerometers{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsAccelerometersKey] == nil){
+        return YES;
+    }
+
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsAccelerometersKey];
 }
 +(void)setRenderAccelerometers:(BOOL)renderAccelerometers{
@@ -41,6 +45,10 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // Gyro
 +(BOOL)renderGyroscopes{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsGyroscopesKey] == nil){
+        return YES;
+    }
+
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsGyroscopesKey];
 }
 +(void)setRenderGyroscopes:(BOOL)renderGyroscopes{
@@ -51,6 +59,10 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // AccMax
 +(BOOL)renderAccelerometerLimits{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsAccelerometerLimitsKey] == nil){
+        return YES;
+    }
+
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsAccelerometerLimitsKey];
 }
 +(void)setRenderAccelerometerLimits:(BOOL)renderAccelerometerLimits{
@@ -61,6 +73,9 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // GyroMax
 +(BOOL)renderGyroscopeLimits{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsGyroscopeLimitsKey] == nil){
+        return YES;
+    }
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsGyroscopeLimitsKey];
 }
 +(void)setRenderGyroscopeLimits:(BOOL)renderGyroscopeLimits{
@@ -72,6 +87,10 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // Heading
 +(BOOL)renderHeading{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsHeadingKey] == nil){
+        return YES;
+    }
+
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsHeadingKey];
 }
 +(void)setRenderHeading:(BOOL)renderHeading{
@@ -81,6 +100,9 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // Altitude
 +(BOOL)renderAltitude{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsAltitudeKey] == nil){
+        return YES;
+    }
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsAltitudeKey];
 }
 +(void)setRenderAltitude:(BOOL)renderAltitude{
@@ -92,6 +114,9 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // DistanceFromHome
 +(BOOL)renderDistanceFromHome{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsDistanceFromHomeKey] == nil){
+        return YES;
+    }
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsDistanceFromHomeKey];
 }
 +(void)setRenderDistanceFromHome:(BOOL)renderDistanceFromHome{
@@ -102,9 +127,10 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // Speed
 +(BOOL)renderSpeed{
-    BOOL r = [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsSpeedKey];;
-    return r;
-//    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsSpeedKey];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsSpeedKey] == nil){
+        return YES;
+    }
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsSpeedKey];
 }
 +(void)setRenderSpeed:(BOOL)renderSpeed{
     [[NSUserDefaults standardUserDefaults] setBool:renderSpeed forKey:VWWUserDefaultsSpeedKey];
@@ -114,6 +140,9 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // Coordinates
 +(BOOL)renderCoordinates{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsCoordinatesKey] == nil){
+        return YES;
+    }
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsCoordinatesKey];
 }
 +(void)setRenderCoordinates:(BOOL)renderCoordinates{
@@ -123,6 +152,9 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // date
 +(BOOL)renderDate{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsDateKey] == nil){
+        return YES;
+    }
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsDateKey];
 }
 +(void)setRenderDate:(BOOL)renderDate{
@@ -133,6 +165,9 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // DropShadow
 +(BOOL)renderDropShadow{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsDropShadowKey] == nil){
+        return YES;
+    }
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsDropShadowKey];
 }
 +(void)setRenderDropShadow:(BOOL)renderDropShadow{
@@ -143,6 +178,9 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // Compass Indiciator
 +(BOOL)renderCompassIndicator{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsCompassIndicatorKey] == nil){
+        return YES;
+    }
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsCompassIndicatorKey];
 }
 +(void)setRenderCompassIndicator:(BOOL)renderCompassIndicator{
@@ -152,6 +190,9 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
 
 // Attitude Indicator
 +(BOOL)renderAttitudeIndicator{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsAttitudeIndicatorKey] == nil){
+        return YES;
+    }
     return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsAttitudeIndicatorKey];
 }
 +(void)setRenderAttitudeIndicator:(BOOL)renderAttitudeIndicator{
