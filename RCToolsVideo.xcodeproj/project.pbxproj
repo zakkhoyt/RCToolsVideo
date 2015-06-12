@@ -25,6 +25,7 @@
 		CF652B911B1C2CDB000D0B58 /* VWWHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF652B901B1C2CDB000D0B58 /* VWWHUDView.xib */; };
 		CF652B951B1C394C000D0B58 /* VWWHUDAttitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */; };
 		CF652B981B1C396D000D0B58 /* VWWHUDForcesView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */; };
+		CF83874E1B2B8C01007A3C30 /* VWWHeadingGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF83874D1B2B8C01007A3C30 /* VWWHeadingGridView.m */; };
 		CFCB901819CBB88D00D05317 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901719CBB88D00D05317 /* main.m */; };
 		CFCB901B19CBB88D00D05317 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB901A19CBB88D00D05317 /* AppDelegate.m */; };
 		CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFCB901F19CBB88D00D05317 /* Main.storyboard */; };
@@ -119,6 +120,8 @@
 		CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDAttitudeView.m; sourceTree = "<group>"; };
 		CF652B961B1C396D000D0B58 /* VWWHUDForcesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDForcesView.h; sourceTree = "<group>"; };
 		CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDForcesView.m; sourceTree = "<group>"; };
+		CF83874C1B2B8C01007A3C30 /* VWWHeadingGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHeadingGridView.h; sourceTree = "<group>"; };
+		CF83874D1B2B8C01007A3C30 /* VWWHeadingGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHeadingGridView.m; sourceTree = "<group>"; };
 		CFCB901219CBB88D00D05317 /* RCToolsVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCToolsVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFCB901619CBB88D00D05317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFCB901719CBB88D00D05317 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -251,8 +254,7 @@
 				CF652B7C1B1C1E47000D0B58 /* VWWHUDSpeedView.m */,
 				CF652B7E1B1C1E58000D0B58 /* VWWHUDCoordinateView.h */,
 				CF652B7F1B1C1E58000D0B58 /* VWWHUDCoordinateView.m */,
-				CF652B811B1C1E69000D0B58 /* VWWHUDHeadingView.h */,
-				CF652B821B1C1E69000D0B58 /* VWWHUDHeadingView.m */,
+				CF83874F1B2B8C06007A3C30 /* Heading */,
 				CF652B841B1C1E7D000D0B58 /* VWWHUDHomeView.h */,
 				CF652B851B1C1E7D000D0B58 /* VWWHUDHomeView.m */,
 				CF652B871B1C1E8E000D0B58 /* VWWHUDAltitudeView.h */,
@@ -267,6 +269,17 @@
 				CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */,
 			);
 			name = SubHUDs;
+			sourceTree = "<group>";
+		};
+		CF83874F1B2B8C06007A3C30 /* Heading */ = {
+			isa = PBXGroup;
+			children = (
+				CF652B811B1C1E69000D0B58 /* VWWHUDHeadingView.h */,
+				CF652B821B1C1E69000D0B58 /* VWWHUDHeadingView.m */,
+				CF83874C1B2B8C01007A3C30 /* VWWHeadingGridView.h */,
+				CF83874D1B2B8C01007A3C30 /* VWWHeadingGridView.m */,
+			);
+			name = Heading;
 			sourceTree = "<group>";
 		};
 		CFCB900919CBB88D00D05317 = {
@@ -597,6 +610,7 @@
 				CFD098BE19CBCF0A00C88A76 /* VWWOptionsTableViewController.m in Sources */,
 				CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */,
 				CFD0989C19CBCA3B00C88A76 /* VWWUserDefaults.m in Sources */,
+				CF83874E1B2B8C01007A3C30 /* VWWHeadingGridView.m in Sources */,
 				CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */,
 				CF652B7A1B1C1930000D0B58 /* VWWHUDView.m in Sources */,
 				CF652B7D1B1C1E47000D0B58 /* VWWHUDSpeedView.m in Sources */,
@@ -743,8 +757,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -754,7 +768,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -762,8 +776,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -773,7 +787,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
