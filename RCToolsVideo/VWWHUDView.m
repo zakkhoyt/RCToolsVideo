@@ -447,6 +447,7 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
 - (void)locationManager:(CLLocationManager *)manager
        didUpdateHeading:(CLHeading *)newHeading{
     self.currentHeading = [newHeading copy];
+    self.headingView.heading = [newHeading copy];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
