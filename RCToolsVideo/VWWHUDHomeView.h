@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+@import CoreLocation;
 
 @interface VWWHUDHomeView : UIView
-
+@property (nonatomic, strong) CLLocation *homeLocation;
+@property (nonatomic, strong) CLLocation *currentLocation;
 @end

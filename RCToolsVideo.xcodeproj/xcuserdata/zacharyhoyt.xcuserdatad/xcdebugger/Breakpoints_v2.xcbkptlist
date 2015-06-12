@@ -242,11 +242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "454898623.73601"
+            timestampString = "455842012.418823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "-initWithFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -288,11 +288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "454911690.02583"
+            timestampString = "455843212.06515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "-update"
             landmarkType = "5">
          </BreakpointContent>
@@ -304,11 +304,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "454908067.671249"
+            timestampString = "455842056.348181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "-customizeView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -320,11 +320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "454908067.671249"
+            timestampString = "455842056.348181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "-customizeView:"
             landmarkType = "5">
          </BreakpointContent>

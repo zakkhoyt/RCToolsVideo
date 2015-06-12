@@ -52,27 +52,6 @@
  * lat/lon params in radians
  * result in radians
  *-------------------------------------------------------------------------*/
-double headingInRadians(double lat1, double lon1, double lat2, double lon2)
-{
-    //-------------------------------------------------------------------------
-    // Algorithm found at http://www.movable-type.co.uk/scripts/latlong.html
-    //
-    // Spherical Law of Cosines
-    //
-    // Formula: θ = atan2( 	sin(Δlon) * cos(lat2),
-    //						cos(lat1) * sin(lat2) − sin(lat1) * cos(lat2) * cos(Δlon) )
-    // JavaScript:
-    //
-    //	var y = Math.sin(dLon) * Math.cos(lat2);
-    //	var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
-    //	var brng = Math.atan2(y, x).toDeg();
-    //-------------------------------------------------------------------------
-    double dLon = lon2 - lon1;
-    double y = sin(dLon) * cos(lat2);
-    double x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon);
-    
-    return atan2(y, x);
-}
 
 @interface VWWHUDView () <CLLocationManagerDelegate>
 
@@ -92,9 +71,7 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
 @property (weak, nonatomic) IBOutlet VWWHUDForcesView *forcesView;
 
 @property (weak, nonatomic) IBOutlet UILabel *coordinateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *headingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *speedLabel;
-@property (weak, nonatomic) IBOutlet UILabel *homeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *altitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *watermarkLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -170,9 +147,7 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     
     // Clear UI
     self.coordinateLabel.text = nil;
-    self.headingLabel.text = nil;
     self.speedLabel.text = nil;
-    self.homeLabel.text = nil;
     self.altitudeLabel.text = nil;
     self.dateLabel.text = nil;
     self.watermarkLabel.text = nil;
@@ -296,33 +271,10 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
     }
     
     
-    if(self.currentHeading == nil){
-        self.headingLabel.text = @"n/a";
-    } else {
-
-        float heading = 0;
-        if(deviceOrientation == UIDeviceOrientationLandscapeRight){
-            heading = self.currentHeading.magneticHeading - 90;
-            if(heading < 0){
-                heading += 360;
-            }
-        } else {
-            heading = self.currentHeading.magneticHeading + 90;
-            if(heading > 360){
-                heading -= 360;
-            }
-        }
-
-        self.headingLabel.text = [NSString stringWithFormat:@"Heading: %.2f +/-%lu",
-                                  heading,
-                                  (unsigned long)self.currentHeading.headingAccuracy];
-    }
-    
     NSMutableString *speed = [NSMutableString new];
     if(self.currentLocation == nil){
         self.coordinateLabel.text = @"n/a";
         [speed appendString:@"n/a"];;
-        self.homeLabel.text = @"n/a";
         [altitude appendFormat:@"\nn/a (ASL)"];
     } else {
         self.coordinateLabel.text = [NSString stringWithFormat:@"%.5f,%.5f +/- %lum",
@@ -332,13 +284,11 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
         [speed appendFormat:@"Speed: %.2fmps", self.currentLocation.speed];
         [speed appendFormat:@"\nMax: %.2fmps", self.maxSpeed];
         
-        float angleHome = headingInRadians(self.currentLocation.coordinate.latitude,
-                                           self.currentLocation.coordinate.longitude,
-                                           self.baseLocation.coordinate.latitude,
-                                           self.baseLocation.coordinate.longitude);
-        self.homeLabel.text = [NSString stringWithFormat:@"Home: %.2fm\nAngle: %.2f",
-                               [self.currentLocation distanceFromLocation:self.baseLocation],
-                               angleHome];
+        self.homeView.homeLocation = self.baseLocation;
+        self.homeView.currentLocation = self.currentLocation;
+        
+        
+        
         [altitude appendFormat:@"\n%.2fm (ASL)\n+/-%lum",
          self.currentLocation.altitude,
          (unsigned long)self.currentLocation.verticalAccuracy];
