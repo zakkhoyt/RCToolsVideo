@@ -95,10 +95,12 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGPoint start = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height - 12);
-    CGPoint end = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height);
-    [self drawSolidLineUsingContext:context fromPoint:start toPoint:end width:6 color:[UIColor whiteColor]];
+    if(self.heading) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGPoint start = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height - 12);
+        CGPoint end = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height);
+        [self drawSolidLineUsingContext:context fromPoint:start toPoint:end width:6 color:[UIColor whiteColor]];
+    }
 }
 
 
