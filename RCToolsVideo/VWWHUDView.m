@@ -28,7 +28,6 @@
 #import "NSTimer+Blocks.h"
 #import "UIView+RenderToImage.h"
 
-
 #import "VWWHUDCoordinateView.h"
 #import "VWWHUDHeadingView.h"
 #import "VWWHUDSpeedView.h"
@@ -42,8 +41,6 @@
 
 @import CoreMotion;
 @import CoreLocation;
-
-
 
 /*-------------------------------------------------------------------------
  * Given two lat/lon points on earth, calculates the heading

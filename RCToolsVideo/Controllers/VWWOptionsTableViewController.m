@@ -10,6 +10,7 @@
 #import "VWWPreviewViewController.h"
 #import "VWWSessionViewController.h"
 #import "VWW.h"
+#import "VWWPermissionKit.h"
 
 
 static NSString *VWWSegueOptionsToSession = @"VWWSegueOptionsToSession";
@@ -30,6 +31,11 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+
+    
+    
     [UIApplication sharedApplication].statusBarHidden = YES;
     UIBarButtonItem *readyButton = [[UIBarButtonItem alloc]initWithTitle:@"Ready" style:UIBarButtonItemStylePlain target:self action:@selector(readyButtonAction:)];
     self.navigationItem.rightBarButtonItem = readyButton;
@@ -52,6 +58,28 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     self.dateSwitch.on = [VWWUserDefaults renderDate];
     self.attitudeSwitch.on = [VWWUserDefaults renderAttitudeIndicator];
     self.forcesSwitch.on = [VWWUserDefaults renderAccelerometers];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSArray *permissions = @[
+                             [VWWCameraPermission permissionWithLabelText:@"We need to access your camera to record video."],
+                             [VWWMicrophonePermission permissionWithLabelText:@"We need to access your microphone to add audio to videos"],
+                             [VWWCoreLocationAlwaysPermission permissionWithLabelText:@"For rendering your heading, altitude, speed, distance home, etc..."],
+                             [VWWPhotosPermission permissionWithLabelText:@"To save your videos to your Photos library."],
+                             ];
+    
+    [VWWPermissionsManager requirePermissions:permissions
+                                        title:@"We'll need some things from you before we get started."
+                           fromViewController:self
+                                 resultsBlock:^(NSArray *permissions) {
+                                     [permissions enumerateObjectsUsingBlock:^(VWWPermission *permission, NSUInteger idx, BOOL *stop) {
+                                         NSLog(@"%@ - %@", permission.type, [permission stringForStatus]);
+                                     }];
+                                 }];
+    
+
 }
 
 
