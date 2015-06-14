@@ -288,11 +288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "455928643.537613"
+            timestampString = "456018027.497064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-update"
             landmarkType = "5">
          </BreakpointContent>
@@ -304,11 +304,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "455928643.537613"
+            timestampString = "456018027.497064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "-customizeView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -320,11 +320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "455928643.537613"
+            timestampString = "456018027.497064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-customizeView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -512,11 +512,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "455944436.774091"
+            timestampString = "456018027.497064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-startSensors"
             landmarkType = "5">
          </BreakpointContent>
@@ -528,11 +528,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "455944437.895065"
+            timestampString = "456018027.497064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "-startSensors"
             landmarkType = "5">
          </BreakpointContent>
@@ -544,11 +544,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "455944446.578152"
+            timestampString = "456018027.497064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "-startLocations"
             landmarkType = "5">
          </BreakpointContent>
@@ -560,11 +560,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "455944603.657367"
+            timestampString = "456018027.497064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "403"
+            endingLineNumber = "403"
             landmarkName = "-locationManager:didUpdateHeading:"
             landmarkType = "5">
          </BreakpointContent>
@@ -576,11 +576,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "455944606.437676"
+            timestampString = "456018027.497064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "403"
-            endingLineNumber = "403"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -592,11 +592,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RCToolsVideo/VWWHUDView.m"
-            timestampString = "455944624.585354"
+            timestampString = "456018027.497064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "-setupCoreLocation"
             landmarkType = "5">
          </BreakpointContent>

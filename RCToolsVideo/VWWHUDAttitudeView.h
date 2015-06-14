@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface VWWHUDAttitudeView : UIView
-
+-(void)setPitch:(CGFloat)pitch roll:(CGFloat)roll yaw:(CGFloat)yaw;
 @end

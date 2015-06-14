@@ -25,6 +25,8 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 @property (weak, nonatomic) IBOutlet UISwitch *dateSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *attitudeSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *forcesSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *bordersSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *timeElapsedSwitch;
 @end
 
 @implementation VWWOptionsTableViewController
@@ -32,17 +34,12 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-
-    
-    
     [UIApplication sharedApplication].statusBarHidden = YES;
     UIBarButtonItem *readyButton = [[UIBarButtonItem alloc]initWithTitle:@"Ready" style:UIBarButtonItemStylePlain target:self action:@selector(readyButtonAction:)];
     self.navigationItem.rightBarButtonItem = readyButton;
     
     UIBarButtonItem *aboutButton = [[UIBarButtonItem alloc]initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(aboutButtonAction:)];
     self.navigationItem.leftBarButtonItem = aboutButton;
-
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -58,6 +55,8 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     self.dateSwitch.on = [VWWUserDefaults renderDate];
     self.attitudeSwitch.on = [VWWUserDefaults renderAttitudeIndicator];
     self.forcesSwitch.on = [VWWUserDefaults renderAccelerometers];
+    self.bordersSwitch.on = [VWWUserDefaults renderBorders];
+    self.timeElapsedSwitch.on = [VWWUserDefaults renderTimeElapsed];
 }
 
 
@@ -73,7 +72,7 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     
     
     [VWWPermissionsManager requirePermissions:permissions
-                                        title:@"We'll need some things from you before we get started."
+                                        title:@"Welcome to FPV! Before we can record videos, we'll need access to a few things."
                            fromViewController:self
                                  resultsBlock:^(NSArray *permissions) {
                                      [permissions enumerateObjectsUsingBlock:^(VWWPermission *permission, NSUInteger idx, BOOL *stop) {
@@ -94,6 +93,8 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     [VWWUserDefaults setRenderDate:self.dateSwitch.on];
     [VWWUserDefaults setRenderAttitudeIndicator:self.attitudeSwitch.on];
     [VWWUserDefaults setRenderAccelerometers:self.forcesSwitch.on];
+    [VWWUserDefaults setRenderBorders:self.bordersSwitch.on];
+    [VWWUserDefaults setRenderTimeElapsed:self.timeElapsedSwitch.on];
     
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
     [ac addAction:[UIAlertAction actionWithTitle:@"Preview" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

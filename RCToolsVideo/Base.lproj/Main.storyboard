@@ -195,7 +195,7 @@ Contact: vaporwarewolf@gmail.com
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection id="TJq-zS-XD3">
+                            <tableViewSection headerTitle="Sensors" id="TJq-zS-XD3">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="b5f-Ok-K36">
                                         <rect key="frame" x="0.0" y="64" width="600" height="44"/>
@@ -347,36 +347,6 @@ Contact: vaporwarewolf@gmail.com
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="7oe-7D-7DD">
-                                        <rect key="frame" x="0.0" y="284" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7oe-7D-7DD" id="4wB-7K-Cwp">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbl-Vb-Lje">
-                                                    <rect key="frame" x="8" y="11" width="527" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQU-jX-Puz">
-                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
-                                                    <animations/>
-                                                </switch>
-                                            </subviews>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstItem="pQU-jX-Puz" firstAttribute="trailing" secondItem="4wB-7K-Cwp" secondAttribute="trailingMargin" id="K5x-cw-Oqg"/>
-                                                <constraint firstItem="Fbl-Vb-Lje" firstAttribute="leading" secondItem="4wB-7K-Cwp" secondAttribute="leadingMargin" id="LIi-FP-38g"/>
-                                                <constraint firstAttribute="centerY" secondItem="pQU-jX-Puz" secondAttribute="centerY" id="Vsh-yj-9Mh"/>
-                                                <constraint firstAttribute="centerY" secondItem="Fbl-Vb-Lje" secondAttribute="centerY" id="dfW-gL-axJ"/>
-                                                <constraint firstItem="pQU-jX-Puz" firstAttribute="leading" secondItem="Fbl-Vb-Lje" secondAttribute="trailing" constant="8" id="eeH-Rz-6qd"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="sQc-fG-499">
                                         <rect key="frame" x="0.0" y="328" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -439,6 +409,88 @@ Contact: vaporwarewolf@gmail.com
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Other" id="ifl-Z6-Crl">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="EmB-an-aYf">
+                                        <rect key="frame" x="0.0" y="284" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EmB-an-aYf" id="NdL-nS-iHP">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kg3-Uy-AzP">
+                                                    <rect key="frame" x="8" y="11" width="527" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqB-3q-Xbw">
+                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nqB-3q-Xbw" firstAttribute="leading" secondItem="Kg3-Uy-AzP" secondAttribute="trailing" constant="8" id="AwA-Rm-4rI"/>
+                                                <constraint firstItem="nqB-3q-Xbw" firstAttribute="trailing" secondItem="NdL-nS-iHP" secondAttribute="trailingMargin" id="Zws-Sq-UOt"/>
+                                                <constraint firstItem="Kg3-Uy-AzP" firstAttribute="leading" secondItem="NdL-nS-iHP" secondAttribute="leadingMargin" id="k9A-eu-9F3"/>
+                                                <constraint firstAttribute="centerY" secondItem="nqB-3q-Xbw" secondAttribute="centerY" id="l4Q-fX-fsc"/>
+                                                <constraint firstAttribute="centerY" secondItem="Kg3-Uy-AzP" secondAttribute="centerY" id="qzD-S8-C4F"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="WXD-z0-oSA">
+                                        <rect key="frame" x="0.0" y="284" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WXD-z0-oSA" id="FtT-s5-KoR">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Elapsed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BP2-RC-nks">
+                                                    <rect key="frame" x="8" y="11" width="527" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lah-FN-hBe">
+                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="lah-FN-hBe" secondAttribute="centerY" id="2TB-Og-UrB"/>
+                                                <constraint firstItem="lah-FN-hBe" firstAttribute="leading" secondItem="BP2-RC-nks" secondAttribute="trailing" constant="8" id="8zp-tb-fyn"/>
+                                                <constraint firstItem="BP2-RC-nks" firstAttribute="leading" secondItem="FtT-s5-KoR" secondAttribute="leadingMargin" id="RLB-da-eX8"/>
+                                                <constraint firstItem="lah-FN-hBe" firstAttribute="trailing" secondItem="FtT-s5-KoR" secondAttribute="trailingMargin" id="WQ2-Ro-4y0"/>
+                                                <constraint firstAttribute="centerY" secondItem="BP2-RC-nks" secondAttribute="centerY" id="kRs-1x-P8R"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VWWSwitchTableViewCell" rowHeight="44" id="9Op-vC-VqW">
+                                        <rect key="frame" x="0.0" y="372" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Op-vC-VqW" id="0Wf-Ts-RaZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Borders" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pT5-mw-7bP">
+                                                    <rect key="frame" x="8" y="11" width="527" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d7Q-rv-LFg">
+                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="pT5-mw-7bP" secondAttribute="centerY" id="1W0-WB-x7V"/>
+                                                <constraint firstItem="pT5-mw-7bP" firstAttribute="leading" secondItem="0Wf-Ts-RaZ" secondAttribute="leadingMargin" id="EKe-IP-0Me"/>
+                                                <constraint firstItem="d7Q-rv-LFg" firstAttribute="trailing" secondItem="0Wf-Ts-RaZ" secondAttribute="trailingMargin" id="Xsk-fa-Crj"/>
+                                                <constraint firstItem="d7Q-rv-LFg" firstAttribute="leading" secondItem="pT5-mw-7bP" secondAttribute="trailing" constant="8" id="mZ1-aP-D0d"/>
+                                                <constraint firstAttribute="centerY" secondItem="d7Q-rv-LFg" secondAttribute="centerY" id="sm9-ze-fRM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="cib-Pd-gxo" id="tVR-pJ-CnL"/>
@@ -451,12 +503,14 @@ Contact: vaporwarewolf@gmail.com
                     <connections>
                         <outlet property="altitudeSeitch" destination="a6N-sh-iOl" id="wvl-ou-XH1"/>
                         <outlet property="attitudeSwitch" destination="u2g-eU-9Nh" id="QJF-tE-HN6"/>
+                        <outlet property="bordersSwitch" destination="d7Q-rv-LFg" id="rFv-NS-HJB"/>
                         <outlet property="coordinateSwitch" destination="TOL-Fp-tcR" id="gUY-Xf-Zqw"/>
-                        <outlet property="dateSwitch" destination="pQU-jX-Puz" id="vIK-Vb-fdM"/>
+                        <outlet property="dateSwitch" destination="nqB-3q-Xbw" id="ptd-V9-9oO"/>
                         <outlet property="distanceHomeSwitch" destination="iSA-23-k9U" id="auq-mp-XdX"/>
                         <outlet property="forcesSwitch" destination="FhI-lb-dcc" id="i2V-cc-nXI"/>
                         <outlet property="headingSwitch" destination="kgA-aw-AXk" id="1kn-Dd-MQi"/>
                         <outlet property="speedSwitch" destination="5yg-vY-pCR" id="kxJ-6K-UhA"/>
+                        <outlet property="timeElapsedSwitch" destination="lah-FN-hBe" id="rG2-x7-QDn"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="VWWSegueOptionsToSession" id="YRM-2s-2Er"/>
                         <segue destination="x2W-vm-Leh" kind="show" identifier="VWWSegueOptionsToPreview" id="03Y-44-fIT"/>
                         <segue destination="hjQ-jg-vTo" kind="show" identifier="SegueOptionsToAbout" id="7XS-nG-wMq"/>

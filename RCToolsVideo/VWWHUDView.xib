@@ -39,8 +39,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hH1-AT-9Uk" customClass="VWWHUDAltitudeView">
                     <rect key="frame" x="450" y="113" width="150" height="442"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4By-7P-N5q">
-                            <rect key="frame" x="0.0" y="0.0" width="150" height="442"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4By-7P-N5q">
+                            <rect key="frame" x="0.0" y="0.0" width="142" height="442"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="4By-7P-N5q" secondAttribute="trailing" id="YZs-yb-K6f"/>
+                        <constraint firstAttribute="trailing" secondItem="4By-7P-N5q" secondAttribute="trailing" constant="8" id="YZs-yb-K6f"/>
                         <constraint firstAttribute="bottom" secondItem="4By-7P-N5q" secondAttribute="bottom" id="lQR-da-N2M"/>
                         <constraint firstItem="4By-7P-N5q" firstAttribute="leading" secondItem="hH1-AT-9Uk" secondAttribute="leading" id="n7m-4f-yLy"/>
                         <constraint firstItem="4By-7P-N5q" firstAttribute="top" secondItem="hH1-AT-9Uk" secondAttribute="top" id="xaz-ZT-dDs"/>
@@ -57,8 +57,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWZ-jk-yjV" customClass="VWWHUDSpeedView">
                     <rect key="frame" x="0.0" y="113" width="150" height="442"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-KF-3Mo">
-                            <rect key="frame" x="0.0" y="0.0" width="150" height="442"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pf-KF-3Mo">
+                            <rect key="frame" x="8" y="0.0" width="142" height="442"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -66,38 +66,20 @@
                     </subviews>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="2Pf-KF-3Mo" firstAttribute="leading" secondItem="pWZ-jk-yjV" secondAttribute="leading" id="0bh-dp-uw9"/>
+                        <constraint firstItem="2Pf-KF-3Mo" firstAttribute="leading" secondItem="pWZ-jk-yjV" secondAttribute="leading" constant="8" id="0bh-dp-uw9"/>
                         <constraint firstAttribute="bottom" secondItem="2Pf-KF-3Mo" secondAttribute="bottom" id="beB-LM-PqN"/>
                         <constraint firstItem="2Pf-KF-3Mo" firstAttribute="top" secondItem="pWZ-jk-yjV" secondAttribute="top" id="p56-DW-oAS"/>
                         <constraint firstAttribute="trailing" secondItem="2Pf-KF-3Mo" secondAttribute="trailing" id="qN6-6i-qCg"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qW-jU-IMD" customClass="VWWHUDAttitudeView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8qW-jU-IMD" customClass="VWWHUDHomeView">
                     <rect key="frame" x="0.0" y="0.0" width="150" height="105"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attitude" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoO-bd-oro">
-                            <rect key="frame" x="0.0" y="0.0" width="150" height="105"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="zoO-bd-oro" firstAttribute="leading" secondItem="8qW-jU-IMD" secondAttribute="leading" id="3zw-bL-Jxm"/>
-                        <constraint firstAttribute="bottom" secondItem="zoO-bd-oro" secondAttribute="bottom" id="Bn4-Sk-xq6"/>
-                        <constraint firstAttribute="trailing" secondItem="zoO-bd-oro" secondAttribute="trailing" id="Qhy-mc-XKc"/>
-                        <constraint firstItem="zoO-bd-oro" firstAttribute="top" secondItem="8qW-jU-IMD" secondAttribute="top" id="SSu-M9-KoG"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Bd-gd-L1B" customClass="VWWHUDHomeView">
-                    <rect key="frame" x="158" y="113" width="284" height="442"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRP-qO-RAo" customClass="VWWHUDWatermarkView">
                     <rect key="frame" x="0.0" y="563" width="296" height="37"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watermark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUs-6f-MCM">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watermark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUs-6f-MCM">
                             <rect key="frame" x="8" y="8" width="280" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -115,7 +97,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwA-Ah-54X" customClass="VWWHUDDateView">
                     <rect key="frame" x="304" y="563" width="296" height="37"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dh0-Zy-03W">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dh0-Zy-03W">
                             <rect key="frame" x="8" y="8" width="280" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -133,8 +115,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cdU-HD-MkL" customClass="VWWHUDForcesView">
                     <rect key="frame" x="450" y="0.0" width="150" height="105"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forces" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sk-gT-i5O">
-                            <rect key="frame" x="0.0" y="0.0" width="150" height="105"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forces" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sk-gT-i5O">
+                            <rect key="frame" x="0.0" y="0.0" width="142" height="105"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -144,9 +126,13 @@
                     <constraints>
                         <constraint firstItem="0Sk-gT-i5O" firstAttribute="leading" secondItem="cdU-HD-MkL" secondAttribute="leading" id="0JR-2C-PEk"/>
                         <constraint firstItem="0Sk-gT-i5O" firstAttribute="top" secondItem="cdU-HD-MkL" secondAttribute="top" id="6AA-Tv-Pn4"/>
-                        <constraint firstAttribute="trailing" secondItem="0Sk-gT-i5O" secondAttribute="trailing" id="qcr-3G-AzV"/>
+                        <constraint firstAttribute="trailing" secondItem="0Sk-gT-i5O" secondAttribute="trailing" constant="8" id="qcr-3G-AzV"/>
                         <constraint firstAttribute="bottom" secondItem="0Sk-gT-i5O" secondAttribute="bottom" id="yLd-89-m9h"/>
                     </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Bd-gd-L1B" customClass="VWWHUDAttitudeView">
+                    <rect key="frame" x="158" y="113" width="284" height="442"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -191,8 +177,7 @@
             <connections>
                 <outlet property="altitudeLabel" destination="4By-7P-N5q" id="ZrJ-QD-zeI"/>
                 <outlet property="altitudeView" destination="hH1-AT-9Uk" id="Kio-2Z-e3M"/>
-                <outlet property="attitudeLabel" destination="zoO-bd-oro" id="zYM-ZM-EGy"/>
-                <outlet property="attitudeView" destination="8qW-jU-IMD" id="xXQ-Ae-oKX"/>
+                <outlet property="attitudeView" destination="7Bd-gd-L1B" id="ijs-Xx-xex"/>
                 <outlet property="coordinateLabel" destination="o6j-Nt-mpR" id="wlS-NJ-i0b"/>
                 <outlet property="coordinateView" destination="8VE-ut-JBy" id="iWz-BX-LVY"/>
                 <outlet property="dateLabel" destination="Dh0-Zy-03W" id="kQm-7p-VdY"/>
@@ -200,7 +185,7 @@
                 <outlet property="forcesLabel" destination="0Sk-gT-i5O" id="wVA-ej-cLd"/>
                 <outlet property="forcesView" destination="cdU-HD-MkL" id="9df-N5-UVY"/>
                 <outlet property="headingView" destination="V9s-kd-1Aq" id="tQf-rI-alE"/>
-                <outlet property="homeView" destination="7Bd-gd-L1B" id="x69-6y-jKr"/>
+                <outlet property="homeView" destination="8qW-jU-IMD" id="MBN-ip-dJe"/>
                 <outlet property="speedLabel" destination="2Pf-KF-3Mo" id="kTM-lM-yC4"/>
                 <outlet property="speedView" destination="pWZ-jk-yjV" id="lr0-tb-3XN"/>
                 <outlet property="watermarkLabel" destination="KUs-6f-MCM" id="wvp-0H-JKK"/>

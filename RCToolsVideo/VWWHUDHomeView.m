@@ -64,10 +64,11 @@ double headingInRadians(double lat1, double lon1, double lat2, double lon2)
 -(void)setLabel{
     if(self.homeLabel == nil){
         const CGFloat kHeight = 42;
-        CGRect frame = CGRectMake(0, self.bounds.size.height - kHeight, self.bounds.size.width, kHeight);
+        const CGFloat kBorder = 8;
+        CGRect frame = CGRectMake(kBorder, self.bounds.size.height - kHeight, self.bounds.size.width - 2*kBorder, kHeight);
         self.homeLabel = [[UILabel alloc]initWithFrame:frame];
         self.homeLabel.textColor = [UIColor whiteColor];
-        self.homeLabel.textAlignment = NSTextAlignmentCenter;
+        self.homeLabel.textAlignment = NSTextAlignmentLeft;
         self.homeLabel.numberOfLines = 0;
         self.homeLabel.shadowOffset = CGSizeMake(1, 1);
         self.homeLabel.shadowColor = [UIColor blackColor];

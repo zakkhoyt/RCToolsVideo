@@ -242,6 +242,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF22CDEF1B2E3E2800082634 /* Attitude */ = {
+			isa = PBXGroup;
+			children = (
+				CF652B931B1C394C000D0B58 /* VWWHUDAttitudeView.h */,
+				CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */,
+			);
+			name = Attitude;
+			sourceTree = "<group>";
+		};
 		CF2F415519CC0C86008B68DD /* Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,14 +313,13 @@
 				CF652B7F1B1C1E58000D0B58 /* VWWHUDCoordinateView.m */,
 				CF83874F1B2B8C06007A3C30 /* Heading */,
 				CF8387531B2B9DB8007A3C30 /* Home */,
-				CF652B871B1C1E8E000D0B58 /* VWWHUDAltitudeView.h */,
-				CF652B881B1C1E8E000D0B58 /* VWWHUDAltitudeView.m */,
+				CF22CDEF1B2E3E2800082634 /* Attitude */,
 				CF652B8A1B1C1EE8000D0B58 /* VWWHUDDateView.h */,
 				CF652B8B1B1C1EE8000D0B58 /* VWWHUDDateView.m */,
+				CF652B871B1C1E8E000D0B58 /* VWWHUDAltitudeView.h */,
+				CF652B881B1C1E8E000D0B58 /* VWWHUDAltitudeView.m */,
 				CF652B8D1B1C1EF6000D0B58 /* VWWHUDWatermarkView.h */,
 				CF652B8E1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m */,
-				CF652B931B1C394C000D0B58 /* VWWHUDAttitudeView.h */,
-				CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */,
 				CF652B961B1C396D000D0B58 /* VWWHUDForcesView.h */,
 				CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */,
 			);

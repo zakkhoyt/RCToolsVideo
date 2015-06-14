@@ -200,6 +200,37 @@ static NSString *VWWUserDefaultsVersionKey = @"version";
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+// Borders
+static NSString *VWWUserDefaultsBordersKey = @"borders";
++(BOOL)renderBorders{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsBordersKey] == nil){
+        return YES;
+    }
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsBordersKey];
+}
+
++(void)setRenderBorders:(BOOL)renderBorders{
+    [[NSUserDefaults standardUserDefaults] setBool:renderBorders forKey:VWWUserDefaultsBordersKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+// TimeElapsed
+static NSString *VWWUserDefaultsTimeElapsedKey = @"timeElapsed";
++(BOOL)renderTimeElapsed{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:VWWUserDefaultsTimeElapsedKey] == nil){
+        return YES;
+    }
+    return [[NSUserDefaults standardUserDefaults] boolForKey:VWWUserDefaultsTimeElapsedKey];
+}
++(void)setRenderTimeElapsed:(BOOL)timeElapsed{
+    [[NSUserDefaults standardUserDefaults] setBool:timeElapsed forKey:VWWUserDefaultsTimeElapsedKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+
+
 
 // TextColor
 +(UIColor*)textColor{

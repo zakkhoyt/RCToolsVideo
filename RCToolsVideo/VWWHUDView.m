@@ -162,6 +162,7 @@
     self.watermarkView.hidden = NO;
     self.attitudeView.hidden = !(BOOL)[VWWUserDefaults renderAttitudeIndicator];
     self.forcesView.hidden = !(BOOL)[VWWUserDefaults renderAccelerometers];
+    BOOL borders = !(BOOL)[VWWUserDefaults renderBorders];
 
     
     [view.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -174,6 +175,16 @@
             
         } else if([obj isKindOfClass:[UIView class]]){
             UIView *view = obj;
+            
+            if(borders){
+                view.layer.borderColor = [UIColor whiteColor].CGColor;
+                view.layer.borderWidth = 1.0;
+            } else {
+                view.layer.borderColor = [UIColor clearColor].CGColor;
+                view.layer.borderWidth = 0.0;
+            }
+            
+            
 #if defined(DEBUG)
             view.backgroundColor = [[UIColor darkGrayColor] colorWithAlphaComponent:0.2];
 #else
@@ -334,11 +345,7 @@
     
     
     
-    self.attitudeLabel.text = [NSString stringWithFormat:@"Roll:%.2f\n"
-                               @"Pitch:%.2f\n"
-                               @"Yaw:%.2f\n"
-                               @"(radians)",
-                               roll, pitch, yaw];
+    [self.attitudeView setPitch:pitch roll:roll yaw:yaw];
     
     self.forcesLabel.text = [NSString stringWithFormat:@"Max Force: %.2fg", self.maxForce];
 }
