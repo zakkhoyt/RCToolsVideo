@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "VWWHUDView.h"
 
-@interface VWWHUDAltitudeView : UIView
+@interface VWWHUDAltitudeView : VWWHUDView
 
 @end

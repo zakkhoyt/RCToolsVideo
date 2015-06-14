@@ -19,26 +19,6 @@
     return self;
 }
 
--(void)drawSolidLineUsingContext:(CGContextRef)context
-                       fromPoint:(CGPoint)fromPoint
-                         toPoint:(CGPoint)toPoint
-                           width:(CGFloat)width
-                           color:(UIColor*)color{
-    CGContextSetStrokeColorWithColor(context, color.CGColor);
-    CGContextSetLineWidth(context, width);
-    CGContextMoveToPoint(context, fromPoint.x, fromPoint.y);
-    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
-    CGContextStrokePath(context);
-    
-}
-
--(void)drawNameUsingContext:(CGContextRef)context text:(NSString*)text point:(CGPoint)point color:(UIColor*)color{
-    NSDictionary* stringAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:20],
-                                       NSForegroundColorAttributeName: color};
-    
-    NSAttributedString* attrStr = [[NSAttributedString alloc] initWithString:text attributes:stringAttributes];
-    [attrStr drawAtPoint:point];
-}
 
 
 
@@ -90,7 +70,7 @@
             }
             if(text){
                 CGPoint point = CGPointMake(x-7, self.bounds.size.height - kLargeTickHeight - 25);
-                [self drawNameUsingContext:context text:text point:point color:[UIColor whiteColor]];
+                [self drawStringUsingContext:context text:text point:point color:[UIColor whiteColor]];
             }
             
         } else {

@@ -8,7 +8,7 @@
 #import "NSTimer+Blocks.h"
 #import "GPUImage.h"
 #import "MBProgressHUD.h"
-#import "VWWHUDView.h"
+#import "VWWHUDContainerView.h"
 
 @interface VWWSessionViewController ()
 @property (strong, nonatomic) GPUImageVideoCamera *videoCamera;
@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
 @property (nonatomic, strong) PHPhotoLibrary *photos;
 @property (nonatomic, strong) NSURL *movieURL;
-@property (nonatomic, strong) VWWHUDView *hudView;
+@property (nonatomic, strong) VWWHUDContainerView *hudView;
 @property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
 @end
 
@@ -37,7 +37,7 @@
     self.navigationController.navigationBarHidden = YES;
     
     __weak VWWSessionViewController *welf = self;
-    VWWHUDView *hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
+    VWWHUDContainerView *hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
     hudView.frame = self.view.bounds;
     [hudView setNeedsDisplay];
     self.hudView = hudView;

@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
-@interface VWWHUDSpeedView : UIView
+
+#import "VWWHUDView.h"
+
+@interface VWWHUDSpeedView : VWWHUDView
 
 @end

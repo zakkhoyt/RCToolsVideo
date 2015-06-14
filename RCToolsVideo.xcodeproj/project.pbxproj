@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF22CDF51B2E4A5C00082634 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF22CDF41B2E4A5C00082634 /* VWWHUDView.m */; };
 		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
 		CF4E0ED21B2E24D900A523B2 /* VWWPermissionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4E0ECF1B2E24D000A523B2 /* VWWPermissionKit.framework */; };
 		CF4E0ED31B2E24D900A523B2 /* VWWPermissionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF4E0ECF1B2E24D000A523B2 /* VWWPermissionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -16,7 +17,7 @@
 		CF555E7B1B1D40310094BFCD /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = CF555E7A1B1D40310094BFCD /* TODO */; };
 		CF555E801B1D4EEF0094BFCD /* VWWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E7F1B1D4EEF0094BFCD /* VWWAboutViewController.m */; };
 		CF555E861B1D53B20094BFCD /* UIView+ParallaxMotion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E851B1D53B20094BFCD /* UIView+ParallaxMotion.m */; };
-		CF652B7A1B1C1930000D0B58 /* VWWHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B791B1C1930000D0B58 /* VWWHUDView.m */; };
+		CF652B7A1B1C1930000D0B58 /* VWWHUDContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B791B1C1930000D0B58 /* VWWHUDContainerView.m */; };
 		CF652B7D1B1C1E47000D0B58 /* VWWHUDSpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B7C1B1C1E47000D0B58 /* VWWHUDSpeedView.m */; };
 		CF652B801B1C1E58000D0B58 /* VWWHUDCoordinateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B7F1B1C1E58000D0B58 /* VWWHUDCoordinateView.m */; };
 		CF652B831B1C1E69000D0B58 /* VWWHUDHeadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B821B1C1E69000D0B58 /* VWWHUDHeadingView.m */; };
@@ -24,7 +25,7 @@
 		CF652B891B1C1E8E000D0B58 /* VWWHUDAltitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B881B1C1E8E000D0B58 /* VWWHUDAltitudeView.m */; };
 		CF652B8C1B1C1EE8000D0B58 /* VWWHUDDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B8B1B1C1EE8000D0B58 /* VWWHUDDateView.m */; };
 		CF652B8F1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B8E1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m */; };
-		CF652B911B1C2CDB000D0B58 /* VWWHUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF652B901B1C2CDB000D0B58 /* VWWHUDView.xib */; };
+		CF652B911B1C2CDB000D0B58 /* VWWHUDContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF652B901B1C2CDB000D0B58 /* VWWHUDContainerView.xib */; };
 		CF652B951B1C394C000D0B58 /* VWWHUDAttitudeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */; };
 		CF652B981B1C396D000D0B58 /* VWWHUDForcesView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF652B971B1C396D000D0B58 /* VWWHUDForcesView.m */; };
 		CF83874E1B2B8C01007A3C30 /* VWWHeadingGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF83874D1B2B8C01007A3C30 /* VWWHeadingGridView.m */; };
@@ -125,6 +126,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CF22CDF31B2E4A5C00082634 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
+		CF22CDF41B2E4A5C00082634 /* VWWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDView.m; sourceTree = "<group>"; };
 		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CF4E0EC91B2E24D000A523B2 /* VWWPermissionKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VWWPermissionKit.xcodeproj; path = VWWPermissionKit/VWWPermissionKit.xcodeproj; sourceTree = "<group>"; };
 		CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/GPUImage.xcodeproj; sourceTree = "<group>"; };
@@ -137,8 +140,8 @@
 		CF555E7F1B1D4EEF0094BFCD /* VWWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWAboutViewController.m; sourceTree = "<group>"; };
 		CF555E841B1D53B20094BFCD /* UIView+ParallaxMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ParallaxMotion.h"; sourceTree = "<group>"; };
 		CF555E851B1D53B20094BFCD /* UIView+ParallaxMotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ParallaxMotion.m"; sourceTree = "<group>"; };
-		CF652B781B1C1930000D0B58 /* VWWHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDView.h; sourceTree = "<group>"; };
-		CF652B791B1C1930000D0B58 /* VWWHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDView.m; sourceTree = "<group>"; };
+		CF652B781B1C1930000D0B58 /* VWWHUDContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDContainerView.h; sourceTree = "<group>"; };
+		CF652B791B1C1930000D0B58 /* VWWHUDContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDContainerView.m; sourceTree = "<group>"; };
 		CF652B7B1B1C1E47000D0B58 /* VWWHUDSpeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDSpeedView.h; sourceTree = "<group>"; };
 		CF652B7C1B1C1E47000D0B58 /* VWWHUDSpeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDSpeedView.m; sourceTree = "<group>"; };
 		CF652B7E1B1C1E58000D0B58 /* VWWHUDCoordinateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDCoordinateView.h; sourceTree = "<group>"; };
@@ -153,7 +156,7 @@
 		CF652B8B1B1C1EE8000D0B58 /* VWWHUDDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDDateView.m; sourceTree = "<group>"; };
 		CF652B8D1B1C1EF6000D0B58 /* VWWHUDWatermarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDWatermarkView.h; sourceTree = "<group>"; };
 		CF652B8E1B1C1EF6000D0B58 /* VWWHUDWatermarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDWatermarkView.m; sourceTree = "<group>"; };
-		CF652B901B1C2CDB000D0B58 /* VWWHUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VWWHUDView.xib; sourceTree = "<group>"; };
+		CF652B901B1C2CDB000D0B58 /* VWWHUDContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VWWHUDContainerView.xib; sourceTree = "<group>"; };
 		CF652B931B1C394C000D0B58 /* VWWHUDAttitudeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDAttitudeView.h; sourceTree = "<group>"; };
 		CF652B941B1C394C000D0B58 /* VWWHUDAttitudeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWHUDAttitudeView.m; sourceTree = "<group>"; };
 		CF652B961B1C396D000D0B58 /* VWWHUDForcesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWHUDForcesView.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 		CF652B921B1C344F000D0B58 /* SubHUDs */ = {
 			isa = PBXGroup;
 			children = (
+				CF22CDF31B2E4A5C00082634 /* VWWHUDView.h */,
+				CF22CDF41B2E4A5C00082634 /* VWWHUDView.m */,
 				CF652B7B1B1C1E47000D0B58 /* VWWHUDSpeedView.h */,
 				CF652B7C1B1C1E47000D0B58 /* VWWHUDSpeedView.m */,
 				CF652B7E1B1C1E58000D0B58 /* VWWHUDCoordinateView.h */,
@@ -509,9 +514,9 @@
 		CFD098A719CBCABF00C88A76 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CF652B781B1C1930000D0B58 /* VWWHUDView.h */,
-				CF652B791B1C1930000D0B58 /* VWWHUDView.m */,
-				CF652B901B1C2CDB000D0B58 /* VWWHUDView.xib */,
+				CF652B781B1C1930000D0B58 /* VWWHUDContainerView.h */,
+				CF652B791B1C1930000D0B58 /* VWWHUDContainerView.m */,
+				CF652B901B1C2CDB000D0B58 /* VWWHUDContainerView.xib */,
 				CF652B921B1C344F000D0B58 /* SubHUDs */,
 			);
 			name = View;
@@ -664,7 +669,7 @@
 				CFCB902119CBB88D00D05317 /* Main.storyboard in Resources */,
 				CF555E7B1B1D40310094BFCD /* TODO in Resources */,
 				CFCB902619CBB88D00D05317 /* LaunchScreen.xib in Resources */,
-				CF652B911B1C2CDB000D0B58 /* VWWHUDView.xib in Resources */,
+				CF652B911B1C2CDB000D0B58 /* VWWHUDContainerView.xib in Resources */,
 				CFCB902319CBB88D00D05317 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,10 +699,11 @@
 				CF555E801B1D4EEF0094BFCD /* VWWAboutViewController.m in Sources */,
 				CFD098BE19CBCF0A00C88A76 /* VWWOptionsTableViewController.m in Sources */,
 				CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */,
+				CF22CDF51B2E4A5C00082634 /* VWWHUDView.m in Sources */,
 				CFD0989C19CBCA3B00C88A76 /* VWWUserDefaults.m in Sources */,
 				CF83874E1B2B8C01007A3C30 /* VWWHeadingGridView.m in Sources */,
 				CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */,
-				CF652B7A1B1C1930000D0B58 /* VWWHUDView.m in Sources */,
+				CF652B7A1B1C1930000D0B58 /* VWWHUDContainerView.m in Sources */,
 				CF652B7D1B1C1E47000D0B58 /* VWWHUDSpeedView.m in Sources */,
 				CF652B951B1C394C000D0B58 /* VWWHUDAttitudeView.m in Sources */,
 				CFCB901819CBB88D00D05317 /* main.m in Sources */,

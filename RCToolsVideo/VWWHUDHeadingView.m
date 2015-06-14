@@ -81,18 +81,6 @@
 }
 
 
--(void)drawSolidLineUsingContext:(CGContextRef)context
-                       fromPoint:(CGPoint)fromPoint
-                         toPoint:(CGPoint)toPoint
-                           width:(CGFloat)width
-                           color:(UIColor*)color{
-    CGContextSetStrokeColorWithColor(context, color.CGColor);
-    CGContextSetLineWidth(context, width);
-    CGContextMoveToPoint(context, fromPoint.x, fromPoint.y);
-    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
-    CGContextStrokePath(context);
-    
-}
 
 - (void)drawRect:(CGRect)rect {
     if(self.heading) {

@@ -19,7 +19,6 @@
 @property (nonatomic, strong) UIView *pitchView;
 @property (nonatomic, strong) UIView *rollView;
 @property (nonatomic, strong) UILabel *attitudeLabel;
-
 @end
 
 @implementation VWWHUDAttitudeView
@@ -34,24 +33,6 @@
 }
 
 -(void)renderAttitude{
-    //    if(self.rollLayer == nil){
-    //        self.rollLayer = [CAShapeLayer layer];
-    //        UIBezierPath *linePath = [UIBezierPath bezierPath];
-    //        CGPoint leftPoint = CGPointMake(0, self.bounds.size.height / 2.0);
-    //        CGPoint rightPoint = CGPointMake(self.bounds.size.width, self.bounds.size.height / 2.0);
-    //        [linePath moveToPoint:leftPoint];
-    //        [linePath addLineToPoint:rightPoint];
-    //        self.rollLayer.path = linePath.CGPath;
-    //        self.rollLayer.fillColor = [UIColor redColor].CGColor;
-    //        self.rollLayer.opacity = 1.0;
-    //        self.rollLayer.strokeColor = [UIColor whiteColor].CGColor;
-    //        self.rollLayer.lineWidth = 1.0;
-    ////        self.rollLayer.anchorPoint = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height / 2.0);
-    //        self.rollLayer.anchorPoint = CGPointMake(0.5, 0.5);
-    //        [self.layer addSublayer:self.rollLayer];
-    //    }
-    //
-    //    self.rollLayer.transform = CATransform3DMakeRotation(-(self.roll), 0, 0, 1);
     
     if(self.rollView == nil){
         CGRect frame = CGRectMake(0,
@@ -129,24 +110,7 @@
 }
 
 -(void)renderText{
-    
-//    if(self.attitudeLabel == nil){
-//        const CGFloat kHeight = 85;
-//        CGRect frame = CGRectMake(0, self.bounds.size.height - kHeight, self.bounds.size.width, kHeight);
-//        self.attitudeLabel = [[UILabel alloc]initWithFrame:frame];
-//        self.attitudeLabel.numberOfLines = 4;
-//        self.attitudeLabel.textColor = [UIColor whiteColor];
-//        self.attitudeLabel.textAlignment = NSTextAlignmentLeft;
-//        self.attitudeLabel.shadowOffset = CGSizeMake(0, -1);
-//        self.attitudeLabel.shadowColor = [UIColor blackColor];
-//        [self addSubview:self.attitudeLabel];
-//    }
-//
-//    self.attitudeLabel.text = [NSString stringWithFormat:@"Roll: %.2frad\n"
-//                               @"Pitch: %.2frad\n"
-//                               @"Yaw: %.2frad\n",
-//                               self.roll, self.pitch, self.yaw];
-    if(self.attitudeLabel == nil){
+        if(self.attitudeLabel == nil){
         const CGFloat kHeight = 21;
         CGRect frame = CGRectMake(0, self.bounds.size.height - kHeight, self.bounds.size.width, kHeight);
         self.attitudeLabel = [[UILabel alloc]initWithFrame:frame];
@@ -155,7 +119,7 @@
         self.attitudeLabel.textAlignment = NSTextAlignmentCenter;
         self.attitudeLabel.shadowOffset = CGSizeMake(0, -1);
         self.attitudeLabel.shadowColor = [UIColor blackColor];
-        self.attitudeLabel.minimumScaleFactor
+
         [self addSubview:self.attitudeLabel];
     }
     
@@ -165,32 +129,6 @@
                                self.roll, self.pitch, self.yaw];
     
 }
-
-
-//-(void)drawSolidLineUsingContext:(CGContextRef)context
-//                       fromPoint:(CGPoint)fromPoint
-//                         toPoint:(CGPoint)toPoint
-//                           width:(CGFloat)width
-//                           color:(UIColor*)color{
-//    CGContextSetStrokeColorWithColor(context, color.CGColor);
-//    CGContextSetLineWidth(context, width);
-//    CGContextMoveToPoint(context, fromPoint.x, fromPoint.y);
-//    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
-//    CGContextStrokePath(context);
-//
-//}
-
-//- (void)drawRect:(CGRect)rect {
-//    if(self.heading) {
-//        CGContextRef context = UIGraphicsGetCurrentContext();
-//        CGPoint start = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height - 12);
-//        CGPoint end = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height);
-//        [self drawSolidLineUsingContext:context fromPoint:start toPoint:end width:6 color:[UIColor whiteColor]];
-//    }
-//}
-
-
-
 
 
 @end

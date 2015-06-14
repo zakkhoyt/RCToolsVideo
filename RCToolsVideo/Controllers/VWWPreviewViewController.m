@@ -7,12 +7,12 @@
 //
 
 #import "VWWPreviewViewController.h"
-#import "VWWHUDView.h"
+#import "VWWHUDContainerView.h"
 #import "UIView+ParallaxMotion.h"
 
 @interface VWWPreviewViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *fieldImageView;
-@property (nonatomic, strong) VWWHUDView *hudView;
+@property (nonatomic, strong) VWWHUDContainerView *hudView;
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
 @property (weak, nonatomic) IBOutlet UIView *toolView;
 @property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
@@ -31,7 +31,7 @@
     self.fieldImageView.image = image;
     self.fieldImageView.parallaxIntensity = 100;
     
-    VWWHUDView *hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
+    VWWHUDContainerView *hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
     hudView.frame = self.view.bounds;
     [hudView setNeedsDisplay];
     self.hudView = hudView;
