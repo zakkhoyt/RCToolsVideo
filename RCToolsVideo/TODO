@@ -22,3 +22,28 @@ Make videos as though you were flying your vehicle with FPV.
 Written by Zakk Hoyt 2015
 Github: https://github.com/zakkhoyt
 Contact: vaporwarewolf@gmail.com
+
+
+
+// See RosyWriter:
+https://developer.apple.com/library/prerelease/ios/samplecode/RosyWriter/Introduction/Intro.html
+
+
+// SEE CIFunHouse here:
+https://developer.apple.com/library/ios/samplecode/CIFunHouse/Listings/CIFunHouse_FilterListController_h.html
+
+
+
+http://stackoverflow.com/questions/21753926/avfoundation-add-text-to-the-cmsamplebufferref-video-frame
+http://stackoverflow.com/questions/21753926/avfoundation-add-text-to-the-cmsamplebufferref-video-frame
+
+
+
+
+
+http://stackoverflow.com/questions/12702062/how-to-add-text-on-video-in-iphone
+http://stackoverflow.com/questions/22557584/how-to-add-text-in-a-video
+
+
+
+http://stackoverflow.com/questions/4149963/this-code-to-write-videoaudio-through-avassetwriter-and-avassetwriterinputs-is
