@@ -1,21 +1,27 @@
-* Get screen shots
-* Make a flight video using foamie
+
+
+Update permission text
+Add Attitude HUD
+Remove Home HUD
+new screenshots
+video?
+Handle missing sensors properly
 
 
 
-* HUD
-    * Home
-    * Heading
-    * Attitude
-    * Altitude
-* Calibrate button
-
-
-* Test on all devices
-* Handle missing sensors properly
 
 
 
+
+
+
+
+
+///////////////////// *notes for v2
+* Record sensor data to database
+* record plain video
+* render after the fact
+* render graphs of flight
 
 FPV
 Make videos as though you were flying your vehicle with FPV.
