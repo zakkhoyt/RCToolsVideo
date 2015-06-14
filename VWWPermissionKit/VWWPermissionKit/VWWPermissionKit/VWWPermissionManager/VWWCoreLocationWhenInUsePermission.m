@@ -42,19 +42,17 @@
 -(void)presentSystemPromtWithCompletionBlock:(VWWPermissionEmptyBlock)completionBlock{
     self.locationStatusChangeBlock = completionBlock;
     if(self.locationManager == nil){
-        self.locationManager = [CLLocationManager new];
+        self.locationManager = [[CLLocationManager alloc]init];
         self.locationManager.delegate = self;
     }
     
-    [self.locationManager requestWhenInUseAuthorization];
     
+    [self.locationManager requestWhenInUseAuthorization];
 }
 
 #pragma mark CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
-    if(status == kCLAuthorizationStatusAuthorizedWhenInUse){
-        self.locationStatusChangeBlock();
-    }
+    self.locationStatusChangeBlock();
 }
 
 

@@ -22,7 +22,7 @@
 		<key>858397D44628BCD6B4D561AA7E6A3564134BD955</key>
 		<string>../..</string>
 		<key>A9788885F6902694E4A8AFC66ED4851D59409038</key>
-		<string>../../VWWPermissionKit/</string>
+		<string>../../VWWPermissionKit</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:zakkhoyt/RCToolsVideo.git</string>

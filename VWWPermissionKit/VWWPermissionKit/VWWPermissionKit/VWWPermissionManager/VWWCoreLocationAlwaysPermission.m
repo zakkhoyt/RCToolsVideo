@@ -46,15 +46,20 @@
     }
     
     [self.locationManager requestAlwaysAuthorization];
-    
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [self.locationManager startUpdatingHeading];
+    [self.locationManager startUpdatingLocation];
+
 }
 
 #pragma mark CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
-    if(status == kCLAuthorizationStatusAuthorizedAlways){
-        self.locationStatusChangeBlock();
-    }
+    self.locationStatusChangeBlock();
 }
 
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations{
+    NSLog(@"");
+}
 
 @end

@@ -34,7 +34,7 @@
 
 -(void)presentSystemPromtWithCompletionBlock:(VWWPermissionEmptyBlock)completionBlock{
     [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-        [self updatePermissionStatus];
+        completionBlock();
     }];
 }
 @end
