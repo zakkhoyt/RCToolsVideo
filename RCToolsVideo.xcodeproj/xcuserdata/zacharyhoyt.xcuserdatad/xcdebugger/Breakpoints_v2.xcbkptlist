@@ -384,11 +384,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWPermissionsManager.m"
-            timestampString = "455944957.85361"
+            timestampString = "455946042.607699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-readPermissions"
             landmarkType = "5">
             <Locations>
@@ -448,11 +448,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWCoreLocationAlwaysPermission.m"
-            timestampString = "455944115.625557"
+            timestampString = "455945587.186294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "-presentSystemPromtWithCompletionBlock:"
             landmarkType = "5">
          </BreakpointContent>
@@ -464,11 +464,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWCoreLocationAlwaysPermission.m"
-            timestampString = "455944728.758537"
+            timestampString = "455945587.186294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -480,11 +480,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWCoreLocationAlwaysPermission.m"
-            timestampString = "455944163.428678"
+            timestampString = "455945587.186294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "-updatePermissionStatus"
             landmarkType = "5">
          </BreakpointContent>
@@ -496,11 +496,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWCoreLocationAlwaysPermission.m"
-            timestampString = "455944728.758537"
+            timestampString = "455945587.186294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-locationManager:didChangeAuthorizationStatus:"
             landmarkType = "5">
          </BreakpointContent>
@@ -624,44 +624,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWPermissionsManager.m"
-            timestampString = "455944992.88725"
+            timestampString = "455946042.607699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-init"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWPermissionsManager.m"
-            timestampString = "455945022.485024"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-init"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWPermissionsManager.m"
-            timestampString = "455945203.288293"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-displayPermissions:required:title:fromViewController:resultsBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWPermissionsManager.m"
+            timestampString = "455946042.607699"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "-displayPermissions:required:title:fromViewController:resultsBlock:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWCoreLocationWhenInUsePermission.m"
+            timestampString = "455945825.955197"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-locationManager:didChangeAuthorizationStatus:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VWWPermissionKit/VWWPermissionKit/VWWPermissionKit/VWWPermissionManager/VWWCoreLocationWhenInUsePermission.m"
+            timestampString = "455945827.202735"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-locationManager:didChangeAuthorizationStatus:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
+		CF4E0ED21B2E24D900A523B2 /* VWWPermissionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4E0ECF1B2E24D000A523B2 /* VWWPermissionKit.framework */; };
+		CF4E0ED31B2E24D900A523B2 /* VWWPermissionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CF4E0ECF1B2E24D000A523B2 /* VWWPermissionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */; };
 		CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */; };
 		CF555E751B1AB5220094BFCD /* UIView+RenderToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E731B1AB5220094BFCD /* UIView+RenderToImage.m */; };
@@ -54,11 +56,30 @@
 		CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */; };
 		CFD098BE19CBCF0A00C88A76 /* VWWOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098BD19CBCF0A00C88A76 /* VWWOptionsTableViewController.m */; };
 		CFD098C119CBD2E600C88A76 /* VWWPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098C019CBD2E600C88A76 /* VWWPreviewViewController.m */; };
-		CFD5DE441B2CEA6400AB1C56 /* VWWPermissionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD5DE411B2CEA5100AB1C56 /* VWWPermissionKit.framework */; };
-		CFD5DE451B2CEA6400AB1C56 /* VWWPermissionKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CFD5DE411B2CEA5100AB1C56 /* VWWPermissionKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CF4E0ECE1B2E24D000A523B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF4E0EC91B2E24D000A523B2 /* VWWPermissionKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CF1C50551B2CDE64006BE053;
+			remoteInfo = VWWPermissionKit;
+		};
+		CF4E0ED01B2E24D000A523B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF4E0EC91B2E24D000A523B2 /* VWWPermissionKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CF1C505F1B2CDE64006BE053;
+			remoteInfo = VWWPermissionKitTests;
+		};
+		CF4E0ED41B2E24DA00A523B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF4E0EC91B2E24D000A523B2 /* VWWPermissionKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CF1C50541B2CDE64006BE053;
+			remoteInfo = VWWPermissionKit;
+		};
 		CF555E691B1AB4A50094BFCD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */;
@@ -87,27 +108,6 @@
 			remoteGlobalIDString = CFCB901119CBB88D00D05317;
 			remoteInfo = RCToolsVideo;
 		};
-		CFD5DE401B2CEA5100AB1C56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFD5DE391B2CEA5100AB1C56 /* VWWPermissionKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CF1C50551B2CDE64006BE053;
-			remoteInfo = VWWPermissionKit;
-		};
-		CFD5DE421B2CEA5100AB1C56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFD5DE391B2CEA5100AB1C56 /* VWWPermissionKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CF1C505F1B2CDE64006BE053;
-			remoteInfo = VWWPermissionKitTests;
-		};
-		CFD5DE461B2CEA6400AB1C56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CFD5DE391B2CEA5100AB1C56 /* VWWPermissionKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = CF1C50541B2CDE64006BE053;
-			remoteInfo = VWWPermissionKit;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -117,7 +117,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CFD5DE451B2CEA6400AB1C56 /* VWWPermissionKit.framework in Embed Frameworks */,
+				CF4E0ED31B2E24D900A523B2 /* VWWPermissionKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,6 +126,7 @@
 
 /* Begin PBXFileReference section */
 		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CF4E0EC91B2E24D000A523B2 /* VWWPermissionKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VWWPermissionKit.xcodeproj; path = VWWPermissionKit/VWWPermissionKit.xcodeproj; sourceTree = "<group>"; };
 		CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		CF555E701B1AB5220094BFCD /* PHAsset+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+Utility.h"; sourceTree = "<group>"; };
 		CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+Utility.m"; sourceTree = "<group>"; };
@@ -208,7 +209,6 @@
 		CFD098BD19CBCF0A00C88A76 /* VWWOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWOptionsTableViewController.m; sourceTree = "<group>"; };
 		CFD098BF19CBD2E600C88A76 /* VWWPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWPreviewViewController.h; sourceTree = "<group>"; };
 		CFD098C019CBD2E600C88A76 /* VWWPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWPreviewViewController.m; sourceTree = "<group>"; };
-		CFD5DE391B2CEA5100AB1C56 /* VWWPermissionKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VWWPermissionKit.xcodeproj; path = VWWPermissionKit/VWWPermissionKit/VWWPermissionKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +219,7 @@
 				CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */,
 				CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */,
 				CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */,
-				CFD5DE441B2CEA6400AB1C56 /* VWWPermissionKit.framework in Frameworks */,
+				CF4E0ED21B2E24D900A523B2 /* VWWPermissionKit.framework in Frameworks */,
 				CFCB906419CBBAD900D05317 /* AssetsLibrary.framework in Frameworks */,
 				CFCB906219CBBAD400D05317 /* MobileCoreServices.framework in Frameworks */,
 				CFCB906019CBBACC00D05317 /* CoreVideo.framework in Frameworks */,
@@ -258,6 +258,15 @@
 				CFD098C019CBD2E600C88A76 /* VWWPreviewViewController.m */,
 			);
 			name = Preview;
+			sourceTree = "<group>";
+		};
+		CF4E0ECA1B2E24D000A523B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF4E0ECF1B2E24D000A523B2 /* VWWPermissionKit.framework */,
+				CF4E0ED11B2E24D000A523B2 /* VWWPermissionKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CF555E641B1AB4A50094BFCD /* Products */ = {
@@ -332,7 +341,7 @@
 		CFCB900919CBB88D00D05317 = {
 			isa = PBXGroup;
 			children = (
-				CFD5DE391B2CEA5100AB1C56 /* VWWPermissionKit.xcodeproj */,
+				CF4E0EC91B2E24D000A523B2 /* VWWPermissionKit.xcodeproj */,
 				CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */,
 				CFCB901419CBB88D00D05317 /* RCToolsVideo */,
 				CFCB902E19CBB88D00D05317 /* RCToolsVideoTests */,
@@ -519,15 +528,6 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
-		CFD5DE3A1B2CEA5100AB1C56 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CFD5DE411B2CEA5100AB1C56 /* VWWPermissionKit.framework */,
-				CFD5DE431B2CEA5100AB1C56 /* VWWPermissionKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -544,7 +544,7 @@
 			);
 			dependencies = (
 				CF555E6E1B1AB4AE0094BFCD /* PBXTargetDependency */,
-				CFD5DE471B2CEA6400AB1C56 /* PBXTargetDependency */,
+				CF4E0ED51B2E24DA00A523B2 /* PBXTargetDependency */,
 			);
 			name = RCToolsVideo;
 			productName = RCToolsVideo;
@@ -605,8 +605,8 @@
 					ProjectRef = CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */;
 				},
 				{
-					ProductGroup = CFD5DE3A1B2CEA5100AB1C56 /* Products */;
-					ProjectRef = CFD5DE391B2CEA5100AB1C56 /* VWWPermissionKit.xcodeproj */;
+					ProductGroup = CF4E0ECA1B2E24D000A523B2 /* Products */;
+					ProjectRef = CF4E0EC91B2E24D000A523B2 /* VWWPermissionKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -618,6 +618,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		CF4E0ECF1B2E24D000A523B2 /* VWWPermissionKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VWWPermissionKit.framework;
+			remoteRef = CF4E0ECE1B2E24D000A523B2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CF4E0ED11B2E24D000A523B2 /* VWWPermissionKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VWWPermissionKitTests.xctest;
+			remoteRef = CF4E0ED01B2E24D000A523B2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -630,20 +644,6 @@
 			fileType = wrapper.framework;
 			path = GPUImage.framework;
 			remoteRef = CF555E6B1B1AB4A50094BFCD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFD5DE411B2CEA5100AB1C56 /* VWWPermissionKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = VWWPermissionKit.framework;
-			remoteRef = CFD5DE401B2CEA5100AB1C56 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CFD5DE431B2CEA5100AB1C56 /* VWWPermissionKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = VWWPermissionKitTests.xctest;
-			remoteRef = CFD5DE421B2CEA5100AB1C56 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -718,6 +718,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CF4E0ED51B2E24DA00A523B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VWWPermissionKit;
+			targetProxy = CF4E0ED41B2E24DA00A523B2 /* PBXContainerItemProxy */;
+		};
 		CF555E6E1B1AB4AE0094BFCD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GPUImage;
@@ -727,11 +732,6 @@
 			isa = PBXTargetDependency;
 			target = CFCB901119CBB88D00D05317 /* RCToolsVideo */;
 			targetProxy = CFCB902C19CBB88D00D05317 /* PBXContainerItemProxy */;
-		};
-		CFD5DE471B2CEA6400AB1C56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = VWWPermissionKit;
-			targetProxy = CFD5DE461B2CEA6400AB1C56 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

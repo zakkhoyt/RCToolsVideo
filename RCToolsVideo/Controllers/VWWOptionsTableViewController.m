@@ -40,7 +40,7 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     UIBarButtonItem *readyButton = [[UIBarButtonItem alloc]initWithTitle:@"Ready" style:UIBarButtonItemStylePlain target:self action:@selector(readyButtonAction:)];
     self.navigationItem.rightBarButtonItem = readyButton;
     
-    UIBarButtonItem *aboutButton = [[UIBarButtonItem alloc]initWithTitle:@"Privacy" style:UIBarButtonItemStylePlain target:self action:@selector(aboutButtonAction:)];
+    UIBarButtonItem *aboutButton = [[UIBarButtonItem alloc]initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(aboutButtonAction:)];
     self.navigationItem.leftBarButtonItem = aboutButton;
 
 }
@@ -60,6 +60,28 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     self.forcesSwitch.on = [VWWUserDefaults renderAccelerometers];
 }
 
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSArray *permissions =
+    @[
+      [VWWCameraPermission permissionWithLabelText:@"We need to access your camera to record video."],
+      [VWWMicrophonePermission permissionWithLabelText:@"We need to access your microphone to add audio to videos"],
+      [VWWCoreLocationWhenInUsePermission permissionWithLabelText:@"For rendering your heading, altitude, speed, distance home, etc..."],
+      [VWWPhotosPermission permissionWithLabelText:@"To save your videos to your Photos library."],
+      ];
+    
+    
+    [VWWPermissionsManager requirePermissions:permissions
+                                        title:@"We'll need some things from you before we get started."
+                           fromViewController:self
+                                 resultsBlock:^(NSArray *permissions) {
+                                     [permissions enumerateObjectsUsingBlock:^(VWWPermission *permission, NSUInteger idx, BOOL *stop) {
+                                         NSLog(@"%@ - %@", permission.type, [permission stringForStatus]);
+                                     }];
+                                 }];
+
+}
 
 
 - (void)readyButtonAction:(id)sender {
@@ -88,27 +110,7 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 }
 
 -(void)aboutButtonAction:(id)sender{
-//    [self performSegueWithIdentifier:@"SegueOptionsToAbout" sender:self];
-        NSArray *permissions =
-        @[
-          [VWWCameraPermission permissionWithLabelText:@"We need to access your camera to record video."],
-//          [VWWMicrophonePermission permissionWithLabelText:@"We need to access your microphone to add audio to videos"],
-          [VWWCoreLocationWhenInUsePermission permissionWithLabelText:@"For rendering your heading, altitude, speed, distance home, etc..."],
-          [VWWPhotosPermission permissionWithLabelText:@"To save your videos to your Photos library."],
-        ];
-    
-    
-        [VWWPermissionsManager requirePermissions:permissions
-                                            title:@"We'll need some things from you before we get started."
-                               fromViewController:self
-                                     resultsBlock:^(NSArray *permissions) {
-                                         [permissions enumerateObjectsUsingBlock:^(VWWPermission *permission, NSUInteger idx, BOOL *stop) {
-                                             NSLog(@"%@ - %@", permission.type, [permission stringForStatus]);
-                                         }];
-                                     }];
-        
-    
-
+    [self performSegueWithIdentifier:@"SegueOptionsToAbout" sender:self];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
