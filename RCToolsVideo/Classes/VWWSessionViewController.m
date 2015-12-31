@@ -15,9 +15,10 @@
 @property (strong, nonatomic) GPUImageOutput<GPUImageInput> *filter;
 @property (strong, nonatomic) GPUImageMovieWriter *movieWriter;
 @property (strong, nonatomic) GPUImagePicture *sourcePicture;
+@property (nonatomic, strong) GPUImageUIElement *uiElementInput;
 
 @property (weak, nonatomic) IBOutlet UIView *toolsView;
-@property (strong, nonatomic) GPUImageView *gpuImageView;
+@property (strong, nonatomic) GPUImageView *filterView;
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
 @property (nonatomic, strong) PHPhotoLibrary *photos;
@@ -36,48 +37,42 @@
     [UIApplication sharedApplication].statusBarHidden = YES;
     self.navigationController.navigationBarHidden = YES;
     
-    __weak VWWSessionViewController *welf = self;
-    VWWHUDContainerView *hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
-    hudView.frame = self.view.bounds;
-    [hudView setNeedsDisplay];
-    self.hudView = hudView;
-    [self.view addSubview:self.hudView];
-    [self.hudView setImageBlock:^(UIImage *image) {
-        static NSUInteger counter = 1;
-        NSLog(@"Counter: %lu", (unsigned long)counter++);
-        if(counter == 1){
-            [welf.filter useNextFrameForImageCapture];
-            [welf.sourcePicture useNextFrameForImageCapture];
-            welf.sourcePicture = [[GPUImagePicture alloc] initWithImage:image smoothlyScaleOutput:YES];
-            [welf.sourcePicture processImageWithCompletionHandler:^{
-                [welf.sourcePicture addTarget:welf.filter];
-            }];
-        } else {
-            [welf.sourcePicture updateCGImage:image.CGImage smoothlyScaleOutput:YES];
-            [welf.sourcePicture processImage];
-        }
-    }];
+//    __weak VWWSessionViewController *welf = self;
+//    VWWHUDContainerView *hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
+//    hudView.frame = self.view.bounds;
+//    [hudView setNeedsDisplay];
+//    self.hudView = hudView;
+//    [self.view addSubview:self.hudView];
+//    [self.hudView setImageBlock:^(UIImage *image) {
+//        static NSUInteger counter = 1;
+//        NSLog(@"Counter: %lu", (unsigned long)counter++);
+//        if(counter == 1){
+//            [welf.filter useNextFrameForImageCapture];
+//            [welf.sourcePicture useNextFrameForImageCapture];
+//            welf.sourcePicture = [[GPUImagePicture alloc] initWithImage:image smoothlyScaleOutput:YES];
+//            [welf.sourcePicture processImageWithCompletionHandler:^{
+//                [welf.sourcePicture addTarget:welf.filter];
+//            }];
+//        } else {
+////            [welf.sourcePicture updateCGImage:image.CGImage smoothlyScaleOutput:YES];
+//            [welf.sourcePicture updateCGI
+//            [welf.sourcePicture processImage];
+//        }
+//    }];
 
-    self.gpuImageView = [[GPUImageView alloc]initWithFrame:self.view.bounds];
-    self.gpuImageView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
+    self.filterView = [[GPUImageView alloc]initWithFrame:self.view.bounds];
+    self.filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     self.toolsView.backgroundColor = [UIColor clearColor];
     self.recordButton.layer.cornerRadius = self.recordButton.frame.size.height / 2.0;
     self.calibrateButton.layer.cornerRadius = self.calibrateButton.frame.size.height / 2.0;
     self.exitButton.layer.cornerRadius = self.exitButton.frame.size.height / 2.0;
     
-    
-    
-    [self.view addSubview:self.gpuImageView];
-    [self.gpuImageView addSubview:self.toolsView];
+    [self.view addSubview:self.filterView];
+    [self.filterView addSubview:self.toolsView];
 
     self.videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
-    
-    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
-    if(deviceOrientation == UIDeviceOrientationLandscapeRight){
-        self.videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
-    } else {
-        self.videoCamera.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
-    }
+    self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    [self.videoCamera setHorizontallyMirrorFrontFacingCamera:YES];
     
     [self setupFilters];
     
@@ -89,22 +84,52 @@
 
 -(void)setupFilters{
     
-    self.filter = [[GPUImageOverlayBlendFilter alloc] init];
-    [(GPUImageFilter*)self.filter setBackgroundColorRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    [self.videoCamera addTarget:self.filter];
+//    self.filter = [[GPUImageOverlayBlendFilter alloc] init];
+//    [(GPUImageFilter*)self.filter setBackgroundColorRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+//    [self.videoCamera addTarget:self.filter];
+//    
+//    UIImage *image = [self.hudView imageRepresentation];
+//    self.sourcePicture = [[GPUImagePicture alloc] initWithImage:image smoothlyScaleOutput:YES];
+//    [self.sourcePicture processImage];
+//    [self.sourcePicture addTarget:self.filter];
+//
+//    
+////    [NSTimer scheduledTimerWithTimeInterval:1.0 block:^{
+////        [self updateText];
+////    } repeats:YES];
+//    
+//    
+//    [self.filter addTarget:self.gpuImageView];
     
-    UIImage *image = [self.hudView imageRepresentation];
-    self.sourcePicture = [[GPUImagePicture alloc] initWithImage:image smoothlyScaleOutput:YES];
-    [self.sourcePicture processImage];
-    [self.sourcePicture addTarget:self.filter];
+    GPUImageOutput<GPUImageInput> *zhFilter = [GPUImageSepiaFilter new];
+    GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
+    blendFilter.mix = 1.0;
+    
+    NSDate *startTime = [NSDate date];
+    
+    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 240.0f, 320.0f)];
+    timeLabel.font = [UIFont systemFontOfSize:17.0f];
+    timeLabel.text = @"Time: 0.0 s";
+    timeLabel.textAlignment = NSTextAlignmentCenter;
+    timeLabel.backgroundColor = [UIColor clearColor];
+    timeLabel.textColor = [UIColor whiteColor];
+    
+    _uiElementInput = [[GPUImageUIElement alloc] initWithView:timeLabel];
+    
+    [zhFilter addTarget:blendFilter];
+    [_uiElementInput addTarget:blendFilter];
+    
+    __unsafe_unretained GPUImageUIElement *weakUIElementInput = _uiElementInput;
+    
+    [zhFilter setFrameProcessingCompletionBlock:^(GPUImageOutput * filter, CMTime frameTime){
+        timeLabel.text = [NSString stringWithFormat:@"Time: %f s", -[startTime timeIntervalSinceNow]];
+        [weakUIElementInput update];
+    }];
+    
+    
+    [self.videoCamera addTarget:zhFilter];
+    [blendFilter addTarget:_filterView];
 
-    
-//    [NSTimer scheduledTimerWithTimeInterval:1.0 block:^{
-//        [self updateText];
-//    } repeats:YES];
-    
-    
-    [self.filter addTarget:self.gpuImageView];
 }
 
 //// This usually breaks with:

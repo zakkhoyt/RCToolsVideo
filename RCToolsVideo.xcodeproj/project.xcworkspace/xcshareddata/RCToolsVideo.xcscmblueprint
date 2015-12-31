@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "858397D44628BCD6B4D561AA7E6A3564134BD955",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "858397D44628BCD6B4D561AA7E6A3564134BD955" : 0,
+    "A9788885F6902694E4A8AFC66ED4851D59409038" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6E32AB08-7A4C-4EF5-BCA6-133D10A829D0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "858397D44628BCD6B4D561AA7E6A3564134BD955" : "RCToolsVideo",
+    "A9788885F6902694E4A8AFC66ED4851D59409038" : "RCToolsVideo\/VWWPermissionKit"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RCToolsVideo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RCToolsVideo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:zakkhoyt\/RCToolsVideo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "858397D44628BCD6B4D561AA7E6A3564134BD955"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:zakkhoyt\/VWWPermissionKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A9788885F6902694E4A8AFC66ED4851D59409038"
+    }
+  ]
+}
