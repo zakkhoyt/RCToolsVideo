@@ -7,81 +7,90 @@
 //
 
 #import "VWWHUDHeadingView.h"
+#import "VWWHeadingGridView.h"
 
+@interface VWWHUDHeadingView ()
+@property (nonatomic, strong) VWWHeadingGridView *headingGridView;
+@property (nonatomic, strong) UILabel *headingLabel;
+@end
 @implementation VWWHUDHeadingView
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.headingLabel.text = @"n/a";
+    }
+    return self;
+}
 
 -(void)setHeading:(CLHeading*)heading{
     _heading = heading;
-    [self setNeedsDisplay];
+
+    [self setLabel];
+    [self setGrid];
 }
 
--(void)drawSolidLineUsingContext:(CGContextRef)context
-                       fromPoint:(CGPoint)fromPoint
-                         toPoint:(CGPoint)toPoint
-                           color:(UIColor*)color{
-    CGContextSetStrokeColorWithColor(context, color.CGColor);
-    CGContextSetLineWidth(context, 0.5f);
-    CGContextMoveToPoint(context, fromPoint.x, fromPoint.y);
-    CGContextAddLineToPoint(context, toPoint.x, toPoint.y);
-    CGContextStrokePath(context);
+-(void)setLabel{
+    if(self.headingLabel == nil){
+        CGRect frame = CGRectMake(0, 0, self.bounds.size.width, 21);
+        self.headingLabel = [[UILabel alloc]initWithFrame:frame];
+        self.headingLabel.textColor = [UIColor whiteColor];
+        self.headingLabel.textAlignment = NSTextAlignmentCenter;
+        self.headingLabel.shadowOffset = CGSizeMake(0, -1);
+        self.headingLabel.shadowColor = [UIColor blackColor];
+        [self addSubview:self.headingLabel];
+    }
     
+    float magneticHeading = 0;
+    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
+    if(deviceOrientation == UIDeviceOrientationLandscapeRight){
+        magneticHeading = self.heading.magneticHeading - 90;
+        if(magneticHeading < 0){
+            magneticHeading += 360;
+        }
+    } else {
+        magneticHeading = self.heading.magneticHeading + 90;
+        if(magneticHeading > 360){
+            magneticHeading -= 360;
+        }
+    }
+    
+    self.headingLabel.text = [NSString stringWithFormat:@"Heading: %.2f +/-%lu",
+                              magneticHeading,
+                              (unsigned long)self.heading.headingAccuracy];
+
 }
+
+-(void)setGrid{
+    // The grid is drawn once and then panned in this view
+    // The grid is 560 degrees wide. Self will show 200 of those degrees.
+    if(self.headingGridView == nil){
+        self.headingGridView = [[VWWHeadingGridView alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width * 2.8, self.bounds.size.height)];
+        self.headingGridView.backgroundColor = [UIColor clearColor];
+        self.clipsToBounds = YES;
+        [self addSubview:self.headingGridView];
+    }
+    // 1.0 = 200 degrees
+    CGFloat magneticHeading = self.heading.magneticHeading + 90;
+    if(magneticHeading > 360){
+        magneticHeading -= 360;
+    }
+    CGFloat translateX = magneticHeading * self.bounds.size.width / 200.0;
+    self.headingGridView.transform = CGAffineTransformMakeTranslation(-translateX, 0);
+
+}
+
 
 
 - (void)drawRect:(CGRect)rect {
-    
-    // 20 ticks horizontal
-    // NSEW each 9 (also big)
-    // Arrow in center
-    
-    CGContextRef cgContext = UIGraphicsGetCurrentContext();
-    
-    CGContextBeginPath(cgContext);
-    
-    const NSUInteger kHorizontalTicks = 20;
-    const CGFloat kSmallTickHeight = 10;
-    const CGFloat kLargeTickHeight = 20;
-    const CGFloat kGutter = 8;
-    CGFloat xPerTick = self.bounds.size.width / kHorizontalTicks - 1;
-    
-    for(NSUInteger index = 0; index <= kHorizontalTicks; index++){
-        CGFloat x = index * xPerTick;
-
-//        CGFloat y = index % 9 == 0 ? self.bounds.size.height - (kGutter + kSmallTickHeight) : self.bounds.size.height - (kGutter + kLargeTickHeight);
-        CGFloat y =  self.bounds.size.height - (kGutter + kSmallTickHeight);
-        [self drawSolidLineUsingContext:cgContext
-                              fromPoint:CGPointMake(x, y)
-                                toPoint:CGPointMake(x, y+kSmallTickHeight)
-                                  color:[UIColor whiteColor]];
+    if(self.heading) {
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGPoint start = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height - 12);
+        CGPoint end = CGPointMake(self.bounds.size.width / 2.0, self.bounds.size.height);
+        [self drawSolidLineUsingContext:context fromPoint:start toPoint:end width:6 color:[UIColor whiteColor]];
     }
-    
-    
-//    [self drawSolidLineUsingContext:cgContext
-//                          fromPoint:CGPointMake(0, self.bounds.size.height / 2.0)
-//                            toPoint:CGPointMake(self.bounds.size.width, self.bounds.size.height / 2.0)
-//                              color:[UIColor whiteColor]];
-    
-    
-//    CGFloat yMax = xBaseline - self.session.limits.x.max * yFactor;
-//    [self drawDashedLineUsingContext:cgContext fromPoint:CGPointMake(0, yMax) toPoint:CGPointMake(self.bounds.size.width, yMax) color:xColor];
-//    
-//    CGFloat yMin = xBaseline - self.session.limits.x.min * yFactor;
-//    [self drawDashedLineUsingContext:cgContext fromPoint:CGPointMake(0, yMin) toPoint:CGPointMake(self.bounds.size.width, yMin) color:xColor];
-//    
-//    CGContextSetLineWidth(cgContext, 2.0f);
-//    for(NSInteger index = 0; index < kSamples; index++){
-//        NSDictionary *d = self.session.samples[startIndex + index];
-//        NSNumber *yNumber = d[@"x"];
-//        CGFloat y = -yNumber.floatValue * yFactor + xBaseline;
-//        if(index == 0){
-//            CGContextMoveToPoint(cgContext, 0, y);
-//        } else {
-//            CGFloat x = index * xFactor;
-//            CGContextAddLineToPoint(cgContext, x, y);
-//        }
-//    }
-//    CGContextStrokePath(cgContext);
-    
 }
+
+
 
 @end

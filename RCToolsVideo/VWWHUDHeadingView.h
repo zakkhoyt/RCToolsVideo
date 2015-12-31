@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "VWWHUDView.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface VWWHUDHeadingView : UIView
+@interface VWWHUDHeadingView : VWWHUDView
 @property (nonatomic, strong) CLHeading *heading;
 @end

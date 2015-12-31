@@ -72,6 +72,9 @@
 +(BOOL)renderAttitudeIndicator;
 +(void)setRenderAttitudeIndicator:(BOOL)renderAttitudeIndicator;
 
+// Borders
++(BOOL)renderBorders;
++(void)setRenderBorders:(BOOL)renderBorders;
 
 
 // TextColor

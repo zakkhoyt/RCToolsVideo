@@ -7,13 +7,12 @@
 //
 
 #import "VWWOptionsTableViewController.h"
-#import "VWWPreviewViewController.h"
 #import "VWWSessionViewController.h"
 #import "VWW.h"
 
 
 static NSString *VWWSegueOptionsToSession = @"VWWSegueOptionsToSession";
-static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
+
 
 @interface VWWOptionsTableViewController ()
 @property (weak, nonatomic) IBOutlet UISwitch *headingSwitch;
@@ -56,7 +55,6 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
 
 
 - (void)readyButtonAction:(id)sender {
-    
     [VWWUserDefaults setRenderHeading:self.headingSwitch.on];
     [VWWUserDefaults setRenderAltitude:self.altitudeSeitch.on];
     [VWWUserDefaults setRenderDistanceFromHome:self.distanceHomeSwitch.on];
@@ -66,18 +64,7 @@ static NSString *VWWSegueOptionsToPreview = @"VWWSegueOptionsToPreview";
     [VWWUserDefaults setRenderAttitudeIndicator:self.attitudeSwitch.on];
     [VWWUserDefaults setRenderAccelerometers:self.forcesSwitch.on];
     
-    UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [ac addAction:[UIAlertAction actionWithTitle:@"Preview" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self performSegueWithIdentifier:VWWSegueOptionsToPreview sender:self];
-    }]];
-    [ac addAction:[UIAlertAction actionWithTitle:@"Video" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [self performSegueWithIdentifier:VWWSegueOptionsToSession sender:self];
-    }]];
-    [ac addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
- 
-    }]];
-    
-    [self presentViewController:ac animated:YES completion:NULL];
+    [self performSegueWithIdentifier:VWWSegueOptionsToSession sender:self];
 }
 
 -(void)aboutButtonAction:(id)sender{

@@ -8,7 +8,7 @@
 #import "NSTimer+Blocks.h"
 #import "GPUImage.h"
 #import "MBProgressHUD.h"
-#import "VWWHUDView.h"
+#import "VWWHUDContainerView.h"
 
 @interface VWWSessionViewController ()
 @property (strong, nonatomic) GPUImageVideoCamera *videoCamera;
@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
 @property (nonatomic, strong) PHPhotoLibrary *photos;
 @property (nonatomic, strong) NSURL *movieURL;
-@property (nonatomic, strong) VWWHUDView *hudView;
+@property (nonatomic, strong) VWWHUDContainerView *hudView;
 @property (weak, nonatomic) IBOutlet UIButton *calibrateButton;
 @end
 
@@ -42,7 +42,7 @@
 
     [self addOrientationMonitor];
     
-    _hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
+    _hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDContainerView" owner:self options:nil] firstObject];
     _hudView.frame = self.view.bounds;
     [_hudView setNeedsDisplay];
     self.hudView.transform = CGAffineTransformMakeRotation(M_PI);

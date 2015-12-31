@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "VWWHUDView.h"
 
-@interface VWWHUDAttitudeView : UIView
-
+@interface VWWHUDAttitudeView : VWWHUDView
+-(void)setPitch:(CGFloat)pitch roll:(CGFloat)roll yaw:(CGFloat)yaw;
 @end

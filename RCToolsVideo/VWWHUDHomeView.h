@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "VWWHUDView.h"
+@import CoreLocation;
 
-@interface VWWHUDHomeView : UIView
-
+@interface VWWHUDHomeView : VWWHUDView
+@property (nonatomic, strong) CLLocation *homeLocation;
+@property (nonatomic, strong) CLLocation *currentLocation;
 @end
