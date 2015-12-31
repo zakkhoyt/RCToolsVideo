@@ -18,6 +18,8 @@
 @property (nonatomic, strong) GPUImageUIElement *uiElementInput;
 @property (strong, nonatomic) GPUImageView *filterView;
 
+@property (nonatomic) UIDeviceOrientation lastOrientation;
+
 @property (weak, nonatomic) IBOutlet UIView *toolsView;
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
@@ -38,10 +40,12 @@
     self.navigationController.navigationBarHidden = YES;
     
 
-    VWWHUDView *hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
-    hudView.frame = self.view.bounds;
-    [hudView setNeedsDisplay];
-    self.hudView = hudView;
+    [self addOrientationMonitor];
+    
+    _hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
+    _hudView.frame = self.view.bounds;
+    [_hudView setNeedsDisplay];
+    self.hudView.transform = CGAffineTransformMakeRotation(M_PI);
     [self.view addSubview:self.hudView];
 
     self.filterView = [[GPUImageView alloc]initWithFrame:self.view.bounds];
@@ -58,6 +62,9 @@
 
     self.videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    
+//    GPUImageCannyEdgeDetectionFilter *canny = [GPUImageCannyEdgeDetectionFilter new];
+    
     
     GPUImageOutput<GPUImageInput> *zhFilter = [GPUImageFilter new];
     GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
@@ -84,6 +91,62 @@
 }
 
 #pragma mark Private methods
+
+-(void)addOrientationMonitor {
+    NSLog(@"%s", __FUNCTION__);
+    _lastOrientation = [UIDevice currentDevice].orientation;
+    [NSTimer scheduledTimerWithTimeInterval:0.1 block:^{
+        
+//        if(_isRecording) {
+//            //            NSLog(@"Ignoring rotate because we are recording");
+//            return;
+//        }
+        
+        UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+        if(orientation != _lastOrientation) {
+            _lastOrientation = [UIDevice currentDevice].orientation;
+            [self updateUIForOrientation];
+        }
+    } repeats:YES];
+    [self updateUIForOrientation];
+}
+
+-(void)updateUIForOrientation {
+    NSLog(@"%s", __FUNCTION__);
+    
+//    [UIView animateWithDuration:0.3 animations:^{
+//        [self updateResolutionLabel];
+//        [self.rotatableViews enumerateObjectsUsingBlock:^(UIView  * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            switch (_lastOrientation) {
+                case UIDeviceOrientationLandscapeLeft:{
+                    
+                    [_hudView removeFromSuperview];
+                    
+                    _hudView = [[[NSBundle mainBundle]loadNibNamed:@"VWWHUDView" owner:self options:nil] firstObject];
+                    _hudView.frame = CGRectMake(0, 0, self.view.bounds.size.height, self.view.bounds.size.width);
+                    [_hudView setNeedsDisplay];
+                    self.hudView.transform = CGAffineTransformMakeRotation(M_PI);
+                    [self.view addSubview:self.hudView];
+
+                }
+//                    obj.transform = CGAffineTransformMakeRotation(M_PI_2);
+                    break;
+                case UIDeviceOrientationLandscapeRight:
+//                    obj.transform = CGAffineTransformMakeRotation(-M_PI_2);
+                    break;
+                case UIDeviceOrientationPortraitUpsideDown:
+//                    obj.transform = CGAffineTransformMakeRotation(M_PI);
+                    break;
+                default:
+//                    obj.transform = CGAffineTransformIdentity;
+                    break;
+            }
+//        }];
+//    }];
+    
+}
+
+
 
 //// This usually breaks with:
 //// NSAssert(framebufferReferenceCount > 0, @"Tried to overrelease a framebuffer, did you forget to call -useNextFrameForImageCapture before using -imageFromCurrentFramebuffer?");
