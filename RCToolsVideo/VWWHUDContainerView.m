@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Zakk Hoyt. All rights reserved.
 //
 // Exampel image here: http://hobbywireless.com/images/STORM%20OSD%20kit_01.jpg
+// https://www.google.com/search?site=&tbm=isch&source=hp&biw=1204&bih=811&q=FPV+OSD&oq=FPV+OSD&gs_l=img.4..0l3j0i30j0i5i30j0i24l5.627.2929.0.3063.9.8.1.0.0.0.85.586.8.8.0..3..0...1.1.64.img..1.8.526.KF8DCE7OZqQ#imgrc=QdOgu2glfef1qM%3A
+// https://www.google.com/search?site=&tbm=isch&source=hp&biw=1204&bih=811&q=FPV+hud&oq=FPV+hud&gs_l=img.3..0i30.577.1745.0.1895.7.7.0.0.0.0.105.519.6j1.7.0....0...1.1.64.img..0.7.514.lyY5xHgDHjY
 
 //accelerometers        current|max
 //gyros                 current|max

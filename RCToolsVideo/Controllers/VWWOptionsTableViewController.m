@@ -30,6 +30,7 @@ static NSString *VWWSegueOptionsToSession = @"VWWSegueOptionsToSession";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [UIApplication sharedApplication].statusBarHidden = YES;
+    
     UIBarButtonItem *readyButton = [[UIBarButtonItem alloc]initWithTitle:@"Ready" style:UIBarButtonItemStylePlain target:self action:@selector(readyButtonAction:)];
     self.navigationItem.rightBarButtonItem = readyButton;
     

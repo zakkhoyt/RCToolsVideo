@@ -63,9 +63,6 @@
     self.videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionBack];
     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     
-//    GPUImageCannyEdgeDetectionFilter *canny = [GPUImageCannyEdgeDetectionFilter new];
-    
-    
     GPUImageOutput<GPUImageInput> *zhFilter = [GPUImageFilter new];
     GPUImageAlphaBlendFilter *blendFilter = [[GPUImageAlphaBlendFilter alloc] init];
     blendFilter.mix = 1.0;
