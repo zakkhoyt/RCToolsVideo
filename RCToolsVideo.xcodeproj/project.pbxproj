@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34E55C6213B2C258D5C6AACE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 507994C650B9383CBED34EBB /* libPods.a */; };
 		CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF49936219CBD45F00399675 /* CoreLocation.framework */; };
-		CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */; };
 		CF555E741B1AB5220094BFCD /* PHAsset+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */; };
 		CF555E751B1AB5220094BFCD /* UIView+RenderToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF555E731B1AB5220094BFCD /* UIView+RenderToImage.m */; };
 		CF555E7B1B1D40310094BFCD /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = CF555E7A1B1D40310094BFCD /* TODO */; };
@@ -47,7 +47,6 @@
 		CFD0989B19CBCA3B00C88A76 /* VWWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0988B19CBCA3B00C88A76 /* VWWViewController.m */; };
 		CFD0989C19CBCA3B00C88A76 /* VWWUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0989219CBCA3B00C88A76 /* VWWUserDefaults.m */; };
 		CFD0989D19CBCA3B00C88A76 /* VWWUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD0989419CBCA3B00C88A76 /* VWWUtilities.m */; };
-		CFD098A419CBCA8000C88A76 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098A319CBCA8000C88A76 /* MBProgressHUD.m */; };
 		CFD098B919CBCB9B00C88A76 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B419CBCB9B00C88A76 /* NSTimer+Blocks.m */; };
 		CFD098BA19CBCB9B00C88A76 /* UIFont+VWW.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B619CBCB9B00C88A76 /* UIFont+VWW.m */; };
 		CFD098BB19CBCB9B00C88A76 /* UIView+VWW.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD098B819CBCB9B00C88A76 /* UIView+VWW.m */; };
@@ -56,27 +55,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CF555E691B1AB4A50094BFCD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
-			remoteInfo = GPUImage;
-		};
-		CF555E6B1B1AB4A50094BFCD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCE209E51943F20C002FEED8;
-			remoteInfo = GPUImageFramework;
-		};
-		CF555E6D1B1AB4AE0094BFCD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
-			remoteInfo = GPUImage;
-		};
 		CFCB902C19CBB88D00D05317 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CFCB900A19CBB88D00D05317 /* Project object */;
@@ -87,8 +65,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CBBD9B6CD0C841A86702E8E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		507994C650B9383CBED34EBB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF49936219CBD45F00399675 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		CF555E701B1AB5220094BFCD /* PHAsset+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+Utility.h"; sourceTree = "<group>"; };
 		CF555E711B1AB5220094BFCD /* PHAsset+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+Utility.m"; sourceTree = "<group>"; };
 		CF555E721B1AB5220094BFCD /* UIView+RenderToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RenderToImage.h"; sourceTree = "<group>"; };
@@ -156,8 +135,6 @@
 		CFD0989219CBCA3B00C88A76 /* VWWUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUserDefaults.m; sourceTree = "<group>"; };
 		CFD0989319CBCA3B00C88A76 /* VWWUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWUtilities.h; sourceTree = "<group>"; };
 		CFD0989419CBCA3B00C88A76 /* VWWUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWUtilities.m; sourceTree = "<group>"; };
-		CFD098A219CBCA8000C88A76 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		CFD098A319CBCA8000C88A76 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		CFD098B319CBCB9B00C88A76 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
 		CFD098B419CBCB9B00C88A76 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
 		CFD098B519CBCB9B00C88A76 /* UIFont+VWW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+VWW.h"; sourceTree = "<group>"; };
@@ -168,6 +145,7 @@
 		CFD098BD19CBCF0A00C88A76 /* VWWOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWOptionsTableViewController.m; sourceTree = "<group>"; };
 		CFD098BF19CBD2E600C88A76 /* VWWPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWPreviewViewController.h; sourceTree = "<group>"; };
 		CFD098C019CBD2E600C88A76 /* VWWPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWPreviewViewController.m; sourceTree = "<group>"; };
+		E55DB198D6EB8B40550DAAF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +153,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF555E6F1B1AB4B40094BFCD /* libGPUImage.a in Frameworks */,
 				CF49936319CBD45F00399675 /* CoreLocation.framework in Frameworks */,
 				CFCB906619CBBADE00D05317 /* QuartzCore.framework in Frameworks */,
 				CFCB906419CBBAD900D05317 /* AssetsLibrary.framework in Frameworks */,
@@ -187,6 +164,7 @@
 				CFCB905819CBBAB800D05317 /* UIKit.framework in Frameworks */,
 				CFCB905619CBBAB200D05317 /* Foundation.framework in Frameworks */,
 				CFCB905419CBBAAD00D05317 /* OpenGLES.framework in Frameworks */,
+				34E55C6213B2C258D5C6AACE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +178,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0041E5AC55A9A1474C4734FA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1CBBD9B6CD0C841A86702E8E /* Pods.debug.xcconfig */,
+				E55DB198D6EB8B40550DAAF6 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A25BA2DD7F16D81A3184DB65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				507994C650B9383CBED34EBB /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CF2F415519CC0C86008B68DD /* Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,15 +211,6 @@
 				CFD098C019CBD2E600C88A76 /* VWWPreviewViewController.m */,
 			);
 			name = Preview;
-			sourceTree = "<group>";
-		};
-		CF555E641B1AB4A50094BFCD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */,
-				CF555E6C1B1AB4A50094BFCD /* GPUImage.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		CF555E871B1D55520094BFCD /* About */ = {
@@ -272,10 +258,11 @@
 		CFCB900919CBB88D00D05317 = {
 			isa = PBXGroup;
 			children = (
-				CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */,
 				CFCB901419CBB88D00D05317 /* RCToolsVideo */,
 				CFCB902E19CBB88D00D05317 /* RCToolsVideoTests */,
 				CFCB901319CBB88D00D05317 /* Products */,
+				0041E5AC55A9A1474C4734FA /* Pods */,
+				A25BA2DD7F16D81A3184DB65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -297,7 +284,6 @@
 				CFCB902219CBB88D00D05317 /* Images.xcassets */,
 				CFD0988C19CBCA3B00C88A76 /* Include */,
 				CFCB901519CBB88D00D05317 /* Supporting Files */,
-				CFD098A019CBCA8000C88A76 /* ThirdParty */,
 				CFD0987A19CBBD5F00C88A76 /* UserInterface */,
 				CFD098A719CBCABF00C88A76 /* View */,
 				CFD0987C19CBCA3B00C88A76 /* ViewControllers */,
@@ -402,23 +388,6 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
-		CFD098A019CBCA8000C88A76 /* ThirdParty */ = {
-			isa = PBXGroup;
-			children = (
-				CFD098A119CBCA8000C88A76 /* MBProgressHUD */,
-			);
-			path = ThirdParty;
-			sourceTree = "<group>";
-		};
-		CFD098A119CBCA8000C88A76 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				CFD098A219CBCA8000C88A76 /* MBProgressHUD.h */,
-				CFD098A319CBCA8000C88A76 /* MBProgressHUD.m */,
-			);
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
 		CFD098A519CBCAAA00C88A76 /* Session */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,14 +434,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFCB903519CBB88D00D05317 /* Build configuration list for PBXNativeTarget "RCToolsVideo" */;
 			buildPhases = (
+				26DD7CC8670DF3B503247B34 /* Check Pods Manifest.lock */,
 				CFCB900E19CBB88D00D05317 /* Sources */,
 				CFCB900F19CBB88D00D05317 /* Frameworks */,
 				CFCB901019CBB88D00D05317 /* Resources */,
+				54F6D1A57129AF2F351E90A3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CF555E6E1B1AB4AE0094BFCD /* PBXTargetDependency */,
 			);
 			name = RCToolsVideo;
 			productName = RCToolsVideo;
@@ -503,7 +473,7 @@
 		CFCB900A19CBB88D00D05317 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Zakk Hoyt";
 				TargetAttributes = {
 					CFCB901119CBB88D00D05317 = {
@@ -527,12 +497,6 @@
 			mainGroup = CFCB900919CBB88D00D05317;
 			productRefGroup = CFCB901319CBB88D00D05317 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = CF555E641B1AB4A50094BFCD /* Products */;
-					ProjectRef = CF555E631B1AB4A50094BFCD /* GPUImage.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				CFCB901119CBB88D00D05317 /* RCToolsVideo */,
@@ -540,23 +504,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		CF555E6A1B1AB4A50094BFCD /* libGPUImage.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libGPUImage.a;
-			remoteRef = CF555E691B1AB4A50094BFCD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CF555E6C1B1AB4A50094BFCD /* GPUImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUImage.framework;
-			remoteRef = CF555E6B1B1AB4A50094BFCD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CFCB901019CBB88D00D05317 /* Resources */ = {
@@ -579,6 +526,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26DD7CC8670DF3B503247B34 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		54F6D1A57129AF2F351E90A3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CFCB900E19CBB88D00D05317 /* Sources */ = {
@@ -610,7 +590,6 @@
 				CF652B981B1C396D000D0B58 /* VWWHUDForcesView.m in Sources */,
 				CF652B8C1B1C1EE8000D0B58 /* VWWHUDDateView.m in Sources */,
 				CF652B861B1C1E7D000D0B58 /* VWWHUDHomeView.m in Sources */,
-				CFD098A419CBCA8000C88A76 /* MBProgressHUD.m in Sources */,
 				CF555E861B1D53B20094BFCD /* UIView+ParallaxMotion.m in Sources */,
 				CFD098BA19CBCB9B00C88A76 /* UIFont+VWW.m in Sources */,
 			);
@@ -627,11 +606,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CF555E6E1B1AB4AE0094BFCD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GPUImage;
-			targetProxy = CF555E6D1B1AB4AE0094BFCD /* PBXContainerItemProxy */;
-		};
 		CFCB902D19CBB88D00D05317 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CFCB901119CBB88D00D05317 /* RCToolsVideo */;
@@ -680,6 +654,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -741,39 +716,43 @@
 		};
 		CFCB903619CBB88D00D05317 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CBBD9B6CD0C841A86702E8E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"GPUImage/**",
 				);
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vaporwarewolf.rctoolsvideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		CFCB903719CBB88D00D05317 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E55DB198D6EB8B40550DAAF6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zakk hoyt (65NJ4ZPC44)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"GPUImage/**",
 				);
 				INFOPLIST_FILE = RCToolsVideo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vaporwarewolf.rctoolsvideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "85fdb32d-59ab-4901-86b9-9902360a6ce1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -792,6 +771,7 @@
 				);
 				INFOPLIST_FILE = RCToolsVideoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "VaporWareWolf-Software.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RCToolsVideo.app/RCToolsVideo";
@@ -810,6 +790,7 @@
 				);
 				INFOPLIST_FILE = RCToolsVideoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "VaporWareWolf-Software.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RCToolsVideo.app/RCToolsVideo";
